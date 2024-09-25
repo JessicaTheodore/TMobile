@@ -12,7 +12,7 @@ public class Level1 extends Map {
 
     public Level1() {
         super("lvl1.txt", new CommonTileset());
-        this.playerStartPosition = new Point(1000, 1000);
+        this.playerStartPosition = new Point(460, 2290);
     }
 
         @Override
