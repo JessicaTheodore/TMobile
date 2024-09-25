@@ -16,6 +16,7 @@ public class MenuScreen extends Screen {
     protected int menuItemSelected = -1;
     protected SpriteFont playGame;
     protected SpriteFont credits;
+    protected SpriteFont title;
     protected Map background;
     protected int keyPressTimer;
     protected int pointerLocationX, pointerLocationY;
@@ -27,12 +28,15 @@ public class MenuScreen extends Screen {
 
     @Override
     public void initialize() {
-        playGame = new SpriteFont("PLAY GAME", 200, 123, "Arial", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("Play Game", 200, 123, "Arial", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
         credits = new SpriteFont("CREDITS", 200, 223, "Arial", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
+        title = new SpriteFont("The Legend Of Hobbomock", 70, 55, "Arial", 55, new Color(12,4,6));
+        title.setOutlineColor(Color.black);
+        title.setOutlineThickness(3);
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
         keyPressTimer = 0;
@@ -90,11 +94,13 @@ public class MenuScreen extends Screen {
             }
         }
     }
-
+ 
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
         playGame.draw(graphicsHandler);
         credits.draw(graphicsHandler);
+        title.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, new Color(49, 207, 240), Color.black, 2);
     }
+    
 }
