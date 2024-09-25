@@ -13,6 +13,7 @@ import Utils.Point;
 public class TitleScreenMap extends Map {
 
     private Sprite cat;
+    private Sprite back;
 
     public TitleScreenMap() {
         super("title_screen_map.txt", new CommonTileset());
@@ -21,11 +22,16 @@ public class TitleScreenMap extends Map {
         cat.setScale(2);
         cat.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
         cat.setLocation(catLocation.x, catLocation.y); 
+        back = new Sprite(ImageLoader.loadSubImage("Title.png", Colors.MAGENTA, 200,0, 800, 600));
+        back.setScale(1);
+        back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+        back.setLocation(0, 0);  
     }
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         cat.draw(graphicsHandler);
+        back.draw(graphicsHandler);
     }
 }
