@@ -31,14 +31,14 @@ public class Cat extends Player {
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
         return new HashMap<String, Frame[]>() {{
             put("STAND_RIGHT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(11, 0))
+                    new FrameBuilder(spriteSheet.getSprite(10, 0))
                             .withScale(2)
                             .withBounds(6, 12, 12, 7)
                             .build()
             });
 
             put("STAND_LEFT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(11, 0))
+                    new FrameBuilder(spriteSheet.getSprite(10, 0))
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(6, 12, 12, 7)
