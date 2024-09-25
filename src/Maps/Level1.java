@@ -21,9 +21,7 @@ public class Level1 extends Map {
         @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
-        triggers.add(new Trigger(790, 1030, 100, 10, new IntroScript(), "gameStart"));
-        triggers.add(new Trigger(790, 960, 10, 80, new IntroScript(), "gameStart"));
-        triggers.add(new Trigger(890, 960, 10, 80, new IntroScript(), "gameStart"));
+        triggers.add(new Trigger(950, 950, 100, 100, new IntroScript(), "gameStart"));
         return triggers;
     }
 
