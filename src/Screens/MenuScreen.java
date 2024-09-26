@@ -34,7 +34,7 @@ public class MenuScreen extends Screen {
         credits = new SpriteFont("CREDITS", 200, 323, "Times new roman", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        title = new SpriteFont("The Legend Of Hobbomock", 70, 55, "Times new roman", 55, new Color(0,0,0));
+        title = new SpriteFont("The Legend Of Hobbomock", 90, 55, "Times new roman", 55, new Color(255,255,255));
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
         background = new TitleScreenMap();
