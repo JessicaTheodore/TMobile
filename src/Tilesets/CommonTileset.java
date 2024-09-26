@@ -318,6 +318,26 @@ public class CommonTileset extends Tileset {
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(topWaterTile);
+
+        // full water tile (custom)
+        Frame waterFrame = new FrameBuilder(getSubImage(6, 0))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder waterTile = new MapTileBuilder(waterFrame)
+                .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(waterTile);
+
+        // beach tile -> bottom sand top water (custom)
+        Frame beachFrame = new FrameBuilder(getSubImage(6,1))
+                .withScale(tileScale)
+                .build();
+
+        MapTileBuilder beachTile = new MapTileBuilder(beachFrame)
+                .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(beachTile);
         
         return mapTiles;
     }
