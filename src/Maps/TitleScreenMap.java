@@ -31,7 +31,7 @@ public class TitleScreenMap extends Map {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
-        cat.draw(graphicsHandler);
         back.draw(graphicsHandler);
+        cat.draw(graphicsHandler);
     }
 }

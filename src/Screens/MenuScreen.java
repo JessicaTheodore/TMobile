@@ -28,10 +28,10 @@ public class MenuScreen extends Screen {
 
     @Override
     public void initialize() {
-        playGame = new SpriteFont("Play Game", 200, 123, "Arial", 30, new Color(49, 207, 240));
+        playGame = new SpriteFont("Play Game", 200, 253, "Arial", 30, new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("CREDITS", 200, 223, "Arial", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("CREDITS", 200, 323, "Arial", 30, new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
         title = new SpriteFont("The Legend Of Hobbomock", 70, 55, "Arial", 55, new Color(12,4,6));
@@ -73,12 +73,12 @@ public class MenuScreen extends Screen {
             playGame.setColor(new Color(255, 215, 0));
             credits.setColor(new Color(49, 207, 240));
             pointerLocationX = 170;
-            pointerLocationY = 130;
+            pointerLocationY = 260;
         } else if (currentMenuItemHovered == 1) {
             playGame.setColor(new Color(49, 207, 240));
             credits.setColor(new Color(255, 215, 0));
             pointerLocationX = 170;
-            pointerLocationY = 230;
+            pointerLocationY = 330;
         }
 
         // if space is pressed on menu item, change to appropriate screen based on which menu item was chosen
