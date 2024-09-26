@@ -16,7 +16,7 @@ public class Cat extends Player {
 
     public Cat(float x, float y) {
         super(new SpriteSheet(ImageLoader.load("Hiker.png"), 64, 64), x, y, "STAND_RIGHT");
-        walkSpeed = 6f;
+        walkSpeed = 3f;
     }
 
     public void update() {
@@ -46,77 +46,77 @@ public class Cat extends Player {
             });
 
             put("WALK_RIGHT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(11, 0), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 0), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 1), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 1), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 2), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 2), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 3), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 3), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 4), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 4), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 5), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 5), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 6), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 6), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build(),    
-                    new FrameBuilder(spriteSheet.getSprite(11, 7), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 7), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
                             .build()
             });
 
             put("WALK_LEFT", new Frame[] {
-                    new FrameBuilder(spriteSheet.getSprite(11, 0), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 0), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 1), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 1), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 2), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 2), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 3), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 3), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 4), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 4), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 5), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 5), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
                             .build(),
-                    new FrameBuilder(spriteSheet.getSprite(11, 6), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 6), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
                             .build(),    
-                    new FrameBuilder(spriteSheet.getSprite(11, 7), 14)
+                    new FrameBuilder(spriteSheet.getSprite(11, 7), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
