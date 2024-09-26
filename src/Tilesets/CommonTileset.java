@@ -318,8 +318,7 @@ public class CommonTileset extends Tileset {
                 .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(topWaterTile);
-
-
+        
         return mapTiles;
     }
 }
