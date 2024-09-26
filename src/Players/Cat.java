@@ -77,6 +77,10 @@ public class Cat extends Player {
                     new FrameBuilder(spriteSheet.getSprite(11, 7), 5)
                             .withScale(2)
                             .withBounds(15, 5, 35, 50)
+                            .build(),
+                    new FrameBuilder(spriteSheet.getSprite(11, 8), 5)
+                            .withScale(2)
+                            .withBounds(15, 5, 35, 50)
                             .build()
             });
 
@@ -117,6 +121,11 @@ public class Cat extends Player {
                             .withBounds(15, 5, 35, 50)
                             .build(),    
                     new FrameBuilder(spriteSheet.getSprite(11, 7), 5)
+                            .withScale(2)
+                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                            .withBounds(15, 5, 35, 50)
+                            .build(),
+                    new FrameBuilder(spriteSheet.getSprite(11, 8), 5)
                             .withScale(2)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .withBounds(15, 5, 35, 50)
