@@ -26,7 +26,7 @@ public class GamePanel extends JPanel {
 
 	private Key showFPSKey = Key.G;
 	private SpriteFont fpsDisplayLabel;
-	private boolean showFPS = false;
+	private boolean showFPS = true;
 	private int currentFPS;
 	private boolean doPaint;
 
