@@ -45,6 +45,20 @@ public class Cat extends Player {
                             .build()
             });
 
+            put("STAND_UP", new Frame[] {
+                new FrameBuilder(spriteSheet.getSprite(8, 0))
+                        .withScale(2)
+                        .withBounds(15, 5, 35, 50)
+                        .build()
+            });
+
+            put("STAND_DOWN", new Frame[] {
+                new FrameBuilder(spriteSheet.getSprite(10, 0))
+                        .withScale(2)
+                        .withBounds(15, 5, 35, 50)
+                        .build()
+            });
+
             put("WALK_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(11, 0), 5)
                             .withScale(2)
@@ -131,6 +145,84 @@ public class Cat extends Player {
                             .withBounds(15, 5, 35, 50)
                             .build()
             });
+        
+        //     put("WALK_UP", new Frame[] {
+        //         new FrameBuilder(spriteSheet.getSprite(8, 0), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(8, 1), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(8, 2), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(8, 3), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(8, 4), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(8, 5), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(8, 6), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),    
+        //         new FrameBuilder(spriteSheet.getSprite(8, 7), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(8, 8), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build()
+        //         });
+        
+        //    put("WALK_DOWN", new Frame[] {
+        //         new FrameBuilder(spriteSheet.getSprite(10, 0), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(10, 1), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(10, 2), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(10, 3), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(10, 4), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(10, 5), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(10, 6), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),    
+        //         new FrameBuilder(spriteSheet.getSprite(10, 7), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build(),
+        //         new FrameBuilder(spriteSheet.getSprite(10, 8), 5)
+        //                 .withScale(2)
+        //                 .withBounds(15, 5, 35, 50)
+        //                 .build()
+        //         });
         }};
     }
 }
