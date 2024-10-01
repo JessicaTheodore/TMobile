@@ -131,11 +131,13 @@ public abstract class Player extends GameObject {
 
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
             moveAmountY -= walkSpeed;
+            facingDirection = Direction.UP;
             currentWalkingYDirection = Direction.UP;
             lastWalkingYDirection = Direction.UP;
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             moveAmountY += walkSpeed;
+            facingDirection = Direction.DOWN;
             currentWalkingYDirection = Direction.DOWN;
             lastWalkingYDirection = Direction.DOWN;
         }
@@ -166,11 +168,29 @@ public abstract class Player extends GameObject {
     protected void handlePlayerAnimation() {
         if (playerState == PlayerState.STANDING) {
             // sets animation to a STAND animation based on which way player is facing
-            this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+            // this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+            if (facingDirection == Direction.RIGHT) {
+                this.currentAnimationName = "STAND_RIGHT";
+            } else if (facingDirection == Direction.LEFT) {
+                this.currentAnimationName = "STAND_LEFT";
+            } else if (facingDirection == Direction.UP) {
+                this.currentAnimationName = "STAND_UP";
+            } else if (facingDirection == Direction.DOWN) {
+                this.currentAnimationName = "STAND_DOWN";
+            }
         }
         else if (playerState == PlayerState.WALKING) {
             // sets animation to a WALK animation based on which way player is facing
-            this.currentAnimationName = facingDirection == Direction.RIGHT ? "WALK_RIGHT" : "WALK_LEFT";
+            // this.currentAnimationName = facingDirection == Direction.RIGHT ? "WALK_RIGHT" : "WALK_LEFT";
+            if (facingDirection == Direction.RIGHT) {
+                this.currentAnimationName = "WALK_RIGHT";
+            } else if (facingDirection == Direction.LEFT) {
+                this.currentAnimationName = "WALK_LEFT";
+            } else if (facingDirection == Direction.UP) {
+                this.currentAnimationName = "WALK_UP";
+            } else if (facingDirection == Direction.DOWN) {
+                this.currentAnimationName = "WALK_DOWN";
+            }
         }
     }
 
@@ -214,13 +234,31 @@ public abstract class Player extends GameObject {
     public void lock() {
         isLocked = true;
         playerState = PlayerState.STANDING;
-        this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+        // this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+        if (facingDirection == Direction.RIGHT) {
+            this.currentAnimationName = "STAND_RIGHT";
+        } else if (facingDirection == Direction.LEFT) {
+            this.currentAnimationName = "STAND_LEFT";
+        } else if (facingDirection == Direction.UP) {
+            this.currentAnimationName = "STAND_UP";
+        } else if (facingDirection == Direction.DOWN) {
+            this.currentAnimationName = "STAND_DOWN";
+        }
     }
 
     public void unlock() {
         isLocked = false;
         playerState = PlayerState.STANDING;
-        this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+        // this.currentAnimationName = facingDirection == Direction.RIGHT ? "STAND_RIGHT" : "STAND_LEFT";
+        if (facingDirection == Direction.RIGHT) {
+            this.currentAnimationName = "STAND_RIGHT";
+        } else if (facingDirection == Direction.LEFT) {
+            this.currentAnimationName = "STAND_LEFT";
+        } else if (facingDirection == Direction.UP) {
+            this.currentAnimationName = "STAND_UP";
+        } else if (facingDirection == Direction.DOWN) {
+            this.currentAnimationName = "STAND_DOWN";
+        }
     }
 
     // used by other files or scripts to force player to stand
@@ -232,6 +270,12 @@ public abstract class Player extends GameObject {
         }
         else if (direction == Direction.LEFT) {
             this.currentAnimationName = "STAND_LEFT";
+        }
+        else if (direction == Direction.UP) {
+            this.currentAnimationName = "STAND_UP";
+        }
+        else if (direction == Direction.DOWN) {
+            this.currentAnimationName = "STAND_DOWN";
         }
     }
 
@@ -245,6 +289,14 @@ public abstract class Player extends GameObject {
         else if (direction == Direction.LEFT) {
             this.currentAnimationName = "WALK_LEFT";
         }
+        else if (direction == Direction.UP) {
+            this.currentAnimationName = "WALK_UP";
+        }
+        else if (direction == Direction.DOWN) {
+            this.currentAnimationName = "WALK_DOWN";
+        }
+
+
         if (direction == Direction.UP) {
             moveY(-speed);
         }
