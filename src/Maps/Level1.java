@@ -2,10 +2,14 @@ package Maps;
 
 import java.util.ArrayList;
 
+import Engine.ImageLoader;
+import Engine.ScreenManager;
+import GameObject.Sprite;
 import Level.Map;
 import Level.Trigger;
 import Scripts.Level1.IntroScript;
 import Tilesets.CommonTileset;
+import Utils.Colors;
 import Utils.Point;
 
 public class Level1 extends Map {
@@ -13,6 +17,7 @@ public class Level1 extends Map {
     public Level1() {
         super("lvl1.txt", new CommonTileset());
         this.playerStartPosition = new Point(460, 2290);
+
     }
 
         @Override
