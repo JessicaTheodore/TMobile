@@ -87,6 +87,25 @@ public abstract class Player extends GameObject {
             case WALKING:
                 playerWalking();
                 break;
+            case STICK_ATTACK:
+                stickAttack();
+                break;
+        }
+    }
+
+    protected void stickAttack(){
+        if (facingDirection == Direction.RIGHT) {
+            this.currentAnimationName = "STICK_RIGHT";
+        } else if (facingDirection == Direction.LEFT) {
+            this.currentAnimationName = "STICK_LEFT";
+        } else if (facingDirection == Direction.UP) {
+            this.currentAnimationName = "STICK_UP";
+        } else if (facingDirection == Direction.DOWN) {
+            this.currentAnimationName = "STICK_DOWN";
+        }
+
+        if (Keyboard.isKeyUp(STICK_ATTACK_KEY)) {
+            playerState = PlayerState.STANDING;
         }
     }
 
@@ -100,6 +119,11 @@ public abstract class Player extends GameObject {
         // if a walk key is pressed, player enters WALKING state
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY) || Keyboard.isKeyDown(MOVE_RIGHT_KEY) || Keyboard.isKeyDown(MOVE_UP_KEY) || Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             playerState = PlayerState.WALKING;
+        } 
+
+        // if the stick attack key is pressed, the player enters the STICK_ATTACK state
+        if(Keyboard.isKeyDown(STICK_ATTACK_KEY)){
+            playerState = PlayerState.STICK_ATTACK;
         }
     }
 
