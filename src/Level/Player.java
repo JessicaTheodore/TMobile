@@ -90,6 +90,9 @@ public abstract class Player extends GameObject {
             case STICK_ATTACK:
                 stickAttack();
                 break;
+            case ROCK_ATTACK:
+                rockAttack();
+                break;
         }
     }
 
@@ -109,6 +112,22 @@ public abstract class Player extends GameObject {
         }
     }
 
+    protected void rockAttack(){
+        if (facingDirection == Direction.RIGHT) {
+            this.currentAnimationName = "ROCK_RIGHT";
+        } else if (facingDirection == Direction.LEFT) {
+            this.currentAnimationName = "ROCK_LEFT";
+        } else if (facingDirection == Direction.UP) {
+            this.currentAnimationName = "ROCK_UP";
+        } else if (facingDirection == Direction.DOWN) {
+            this.currentAnimationName = "ROCK_DOWN";
+        }
+        
+        if (Keyboard.isKeyUp(ROCK_ATTACK_KEY)) {
+            playerState = PlayerState.STANDING;
+        }
+    }
+
     // player STANDING state logic
     protected void playerStanding() {
         if (!keyLocker.isKeyLocked(INTERACT_KEY) && Keyboard.isKeyDown(INTERACT_KEY)) {
@@ -124,6 +143,11 @@ public abstract class Player extends GameObject {
         // if the stick attack key is pressed, the player enters the STICK_ATTACK state
         if(Keyboard.isKeyDown(STICK_ATTACK_KEY)){
             playerState = PlayerState.STICK_ATTACK;
+        }
+
+        // if the rock attack key is pressed, the player enters the ROCK_ATTACK state
+        if(Keyboard.isKeyDown(ROCK_ATTACK_KEY)){
+            playerState = PlayerState.ROCK_ATTACK;
         }
     }
 

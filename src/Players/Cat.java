@@ -362,6 +362,146 @@ public class Cat extends Player {
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
                 });
+                
+                put("ROCK_RIGHT", new Frame[] {
+                        new FrameBuilder(spriteSheet.getSprite(3, 0), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(3, 1), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(3, 2), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(3, 3), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(3, 0), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(3, 5), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(3, 6), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),    
+                        new FrameBuilder(spriteSheet.getSprite(3, 7), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                });
+                
+                put("ROCK_LEFT", new Frame[] {
+                        new FrameBuilder(spriteSheet.getSprite(1, 0), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(1, 1), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(1, 2), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(1, 3), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(1, 4), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(1, 5), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(1, 6), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),    
+                        new FrameBuilder(spriteSheet.getSprite(1, 7), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                });
+                
+                put("ROCK_UP", new Frame[] {
+                        new FrameBuilder(spriteSheet.getSprite(0, 0), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(0, 1), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(0, 2), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(0, 3), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(0, 4), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(0, 5), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(0, 6), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),    
+                        new FrameBuilder(spriteSheet.getSprite(0, 7), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                });
+                
+                put("ROCK_DOWN", new Frame[] {
+                        new FrameBuilder(spriteSheet.getSprite(2, 0), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(2, 1), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(2, 2), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(2, 3), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35,50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(2, 4), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(2, 5), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                        new FrameBuilder(spriteSheet.getSprite(2, 6), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),    
+                        new FrameBuilder(spriteSheet.getSprite(2, 7), 5)
+                                .withScale(2)
+                                .withBounds(15, 5, 35, 50)
+                                .build(),
+                });
         }};
     }
 }
