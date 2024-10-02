@@ -103,7 +103,7 @@ public abstract class Player extends GameObject {
         } else if (facingDirection == Direction.DOWN) {
             this.currentAnimationName = "STICK_DOWN";
         }
-
+        
         if (Keyboard.isKeyUp(STICK_ATTACK_KEY)) {
             playerState = PlayerState.STANDING;
         }
