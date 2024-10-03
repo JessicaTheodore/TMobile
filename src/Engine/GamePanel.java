@@ -2,8 +2,11 @@ package Engine;
 
 import GameObject.Rectangle;
 import GameObject.Sprite;
+import Maps.TitleScreenMap;
+import Screens.PlayLevelScreen;
 import SpriteFont.SpriteFont;
 import Utils.Colors;
+import Screens.PlayLevelScreen;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +33,6 @@ public class GamePanel extends JPanel {
 	private boolean showFPS = true;
 	private int currentFPS;
 	private boolean doPaint;
-	private Sprite ranger;
 
 	// The JPanel and various important class instances are setup here
 	public GamePanel() {
@@ -47,10 +49,6 @@ public class GamePanel extends JPanel {
 		pauseLabel = new SpriteFont("PAUSE", 365, 280, "Arial", 24, Color.white);
 		pauseLabel.setOutlineColor(Color.black);
 		pauseLabel.setOutlineThickness(2.0f);
-
-		ranger = new Sprite(ImageLoader.loadSubImage("RangerIcon.png", Colors.MAGENTA, 0,0, 32, 32));
-        ranger.setScale(2);
-        ranger.setLocation(720, 505); 
 
 		fpsDisplayLabel = new SpriteFont("FPS", 4, 3, "Arial", 12, Color.black);
 
@@ -121,7 +119,6 @@ public class GamePanel extends JPanel {
 	public void draw() {			
 		// draw current game state
 		screenManager.draw(graphicsHandler);
-		ranger.draw(graphicsHandler);
 
 		// if game is paused, draw pause gfx over Screen gfx
 		if (isGamePaused) {
