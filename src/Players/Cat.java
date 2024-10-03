@@ -259,36 +259,44 @@ public class Cat extends Player {
                 });
                 
                 put("STICK_LEFT", new Frame[] {
-                        new FrameBuilder(spriteSheet.getSprite(1, 0), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 0), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 1), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 1), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 2), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 2), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 3), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 3), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 4), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 4), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 5), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 5), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(1, 6), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 6), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),    
-                        new FrameBuilder(spriteSheet.getSprite(1, 7), 5)
+                        new FrameBuilder(spriteSheet.getSprite(3, 7), 5)
                                 .withScale(2)
+                                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
                 });
