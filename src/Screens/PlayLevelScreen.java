@@ -1,13 +1,16 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.ImageLoader;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.Sprite;
 import Level.*;
 import Maps.Level1;
 import Maps.TestMap;
 import Players.Cat;
+import Utils.Colors;
 import Utils.Direction;
 import Utils.Point;
 
@@ -19,9 +22,14 @@ public class PlayLevelScreen extends Screen {
     protected PlayLevelScreenState playLevelScreenState;
     protected WinScreen winScreen;
     protected FlagManager flagManager;
+    private Sprite ranger;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
+
+        ranger = new Sprite(ImageLoader.loadSubImage("RangerIcon.png", Colors.MAGENTA, 0,0, 32, 32));
+        ranger.setScale(2);
+        ranger.setLocation(720, 505); 
     }
 
     public void initialize() {
@@ -79,6 +87,7 @@ public class PlayLevelScreen extends Screen {
         switch (playLevelScreenState) {
             case RUNNING:
                 map.draw(player, graphicsHandler);
+                ranger.draw(graphicsHandler);
                 break;
             case LEVEL_COMPLETED:
                 winScreen.draw(graphicsHandler);

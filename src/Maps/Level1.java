@@ -2,6 +2,7 @@ package Maps;
 
 import java.util.ArrayList;
 
+import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import Engine.ScreenManager;
 import GameObject.Sprite;
@@ -14,10 +15,11 @@ import Utils.Point;
 
 public class Level1 extends Map {
 
+    protected Sprite ranger;
+
     public Level1() {
         super("lvl1.txt", new CommonTileset());
         this.playerStartPosition = new Point(460, 2290);
-
     }
 
         @Override

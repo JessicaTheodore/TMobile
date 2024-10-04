@@ -93,6 +93,18 @@ public abstract class Player extends GameObject {
             case ROCK_ATTACK:
                 rockAttack();
                 break;
+            case HELP:
+                help();
+                break;
+        }
+    }
+
+    protected void help(){
+        if(Keyboard.isKeyDown(RANGER_KEY)){
+            // CREATE A NEW PANEL HERE
+            // AND KEEP THE SAME PANEL IDEAS HERE TOO
+            // MAKE IT A THING THAT YOU CAN X OUT OF
+            // EXIT ON CLOSE
         }
     }
 
