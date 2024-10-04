@@ -51,7 +51,7 @@ public class Textbox {
     private SpriteFont text = null;
     private ArrayList<SpriteFont> options = null;
     private KeyLocker keyLocker = new KeyLocker();
-    private Key interactKey = Key.SPACE;
+    private Key interactKey = Key.E;
 
     private Map map;
 
@@ -109,7 +109,7 @@ public class Textbox {
             int fontY = !map.getCamera().isAtBottomOfMap() ? fontBottomY : fontTopY;
   
             // create text spritefont that will be drawn in textbox
-            text = new SpriteFont(currentTextItem.getText(), fontX, fontY, "Arial", 30, Color.black);
+            text = new SpriteFont(currentTextItem.getText(), fontX, fontY, "SansSerif", 22, Color.black);
 
             // if there are options associated with this text item, prepare option spritefont text to be drawn in options textbox
             if (currentTextItem.getOptions() != null) {
@@ -118,7 +118,7 @@ public class Textbox {
                 int fontOptionY = !map.getCamera().isAtBottomOfMap() ? fontOptionBottomYStart : fontOptionTopYStart;
 
                 options = new ArrayList<>();
-                // for each option, crate option text spritefont that will be drawn in options textbox
+                // for each option, create option text spritefont that will be drawn in options textbox
                 for (int i = 0; i < currentTextItem.getOptions().size(); i++) {
                     options.add(new SpriteFont(currentTextItem.options.get(i), fontOptionX, fontOptionY + (i *  fontOptionSpacing), "Arial", 30, Color.black));
                 }
@@ -160,7 +160,8 @@ public class Textbox {
         // if camera is at bottom of screen, textbox is drawn at top of screen instead of the bottom like usual
         // to prevent it from covering the player
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
-        graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, Color.white, Color.black, 2);
+        Color transparency = new Color(255, 255, 255, 180);
+        graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.black, 3);
 
         if (text != null) {
             // draw text in textbox

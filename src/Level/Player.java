@@ -36,7 +36,7 @@ public abstract class Player extends GameObject {
     protected Key MOVE_LEFT_KEY = Key.A;
     protected Key MOVE_RIGHT_KEY = Key.D;
     protected Key MOVE_UP_KEY = Key.W;
-    protected Key MOVE_DOWN_KEY = Key.S;
+    protected Key MOVE_DOWN_KEY = Key.S; 
     protected Key INTERACT_KEY = Key.E;
     protected Key STICK_ATTACK_KEY = Key.SPACE;
     protected Key ROCK_ATTACK_KEY = Key.SHIFT;
