@@ -7,6 +7,8 @@ import Engine.Keyboard;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -55,9 +57,17 @@ public class Textbox {
 
     private Map map;
 
+    private Font maruMonica;
+
+    /// CODE FOR DRAWING THE E IN THE CORNER STILL NOT DONE JUST IGNORE THIS THANKS :)
+    // private String pressEToStart;
+    // private SpriteFont pressEToStartSpriteFont;
+
     public Textbox(Map map) {
         this.map = map;
         this.textQueue = new LinkedList<>();
+        /// CODE FOR DRAWING THE E IN THE CORNER STILL NOT DONE JUST IGNORE THIS THANKS :)
+        //this.pressEToStart = "E to continue";
     }
 
     public void addText(String text) {
@@ -92,6 +102,22 @@ public class Textbox {
         }
     }
 
+    /// CODE FOR DRAWING THE E IN THE CORNER STILL NOT DONE JUST IGNORE THIS THANKS :)
+
+    // public void createPressEToStartSpriteFont() {
+    //     Font maruMonica;
+    //     try { 
+    //         InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
+    //         maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+    //         pressEToStartSpriteFont = new SpriteFont(pressEToStart, fontX, fontBottomY + 20, maruMonica, Color.black);
+    //     } catch (FontFormatException e) {
+    //         e.printStackTrace();
+    //     } catch (IOException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
+
+
     // returns whether the textQueue is out of items to display or not
     // useful for scripts to know when to complete
     public boolean isTextQueueEmpty() {
@@ -107,9 +133,27 @@ public class Textbox {
             // if camera is at bottom of screen, text is drawn at top of screen instead of the bottom like usual
             // to prevent it from covering the player
             int fontY = !map.getCamera().isAtBottomOfMap() ? fontBottomY : fontTopY;
-  
-            // create text spritefont that will be drawn in textbox
-            text = new SpriteFont(currentTextItem.getText(), fontX, fontY, "SansSerif", 22, Color.black);
+
+            try {
+                InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
+                if (is != null) {
+                    maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+                } else {
+                    System.out.println("Font not found");
+                }
+            } catch (FontFormatException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (maruMonica != null) {
+                // create text spritefont that will be drawn in textbox
+                text = new SpriteFont(currentTextItem.getText(), fontX, fontY, maruMonica.deriveFont(30f), Color.black);
+            } else {
+                //fall back *just* in case the file doesn't work for some reason
+                text = new SpriteFont(currentTextItem.getText(), fontX, fontY, "Arial", 22, Color.black);
+            }
 
             // if there are options associated with this text item, prepare option spritefont text to be drawn in options textbox
             if (currentTextItem.getOptions() != null) {
@@ -161,11 +205,17 @@ public class Textbox {
         // to prevent it from covering the player
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
         Color transparency = new Color(255, 255, 255, 180);
-        graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.black, 3);
+        graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.darkGray, 3);
 
         if (text != null) {
             // draw text in textbox
             text.drawWithParsedNewLines(graphicsHandler, 10);
+            
+
+            /// CODE FOR DRAWING THE E IN THE CORNER STILL NOT DONE JUST IGNORE THIS THANKS :)
+            // if (pressEToStartSpriteFont != null) {
+            //     pressEToStartSpriteFont.draw(graphicsHandler);
+            // }
             
             if (options != null) {
                 // draw options textbox
