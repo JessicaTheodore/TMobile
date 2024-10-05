@@ -59,15 +59,9 @@ public class Textbox {
 
     private Font maruMonica;
 
-    /// CODE FOR DRAWING THE E IN THE CORNER STILL NOT DONE JUST IGNORE THIS THANKS :)
-    // private String pressEToStart;
-    // private SpriteFont pressEToStartSpriteFont;
-
     public Textbox(Map map) {
         this.map = map;
         this.textQueue = new LinkedList<>();
-        /// CODE FOR DRAWING THE E IN THE CORNER STILL NOT DONE JUST IGNORE THIS THANKS :)
-        //this.pressEToStart = "E to continue";
     }
 
     public void addText(String text) {
@@ -101,22 +95,6 @@ public class Textbox {
             textQueue.add(textItem);
         }
     }
-
-    /// CODE FOR DRAWING THE E IN THE CORNER STILL NOT DONE JUST IGNORE THIS THANKS :)
-
-    // public void createPressEToStartSpriteFont() {
-    //     Font maruMonica;
-    //     try { 
-    //         InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
-    //         maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
-    //         pressEToStartSpriteFont = new SpriteFont(pressEToStart, fontX, fontBottomY + 20, maruMonica, Color.black);
-    //     } catch (FontFormatException e) {
-    //         e.printStackTrace();
-    //     } catch (IOException e) {
-    //         e.printStackTrace();
-    //     }
-    // }
-
 
     // returns whether the textQueue is out of items to display or not
     // useful for scripts to know when to complete
@@ -206,6 +184,10 @@ public class Textbox {
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
         Color transparency = new Color(255, 255, 255, 180);
         graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.darkGray, 3);
+        graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new Font("Arial Bold", Font.PLAIN, 18), Color.black);
+        //graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new SpriteFont(currentTextItem.getText(), maruMonica.deriveFont(30f), Color.black);
+
+
 
         if (text != null) {
             // draw text in textbox
