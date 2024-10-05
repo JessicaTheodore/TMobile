@@ -13,7 +13,7 @@ import java.util.HashMap;
 // This is the class for the Cat player character
 // basically just sets some values for physics and then defines animations
 public class Cat extends Player {
-
+    
     public Cat(float x, float y) {
         super(new SpriteSheet(ImageLoader.load("Hiker.png"), 64, 64), x, y, "STAND_DOWN");
         walkSpeed = 3f;
@@ -416,10 +416,6 @@ public class Cat extends Player {
                                 .withScale(2)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(7, 11), 5)
-                                .withScale(2)
-                                .withBounds(15, 5, 35, 50)
-                                .build(),
                 });
                 
                 put("ROCK_LEFT", new Frame[] {
@@ -464,10 +460,6 @@ public class Cat extends Player {
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(5, 10), 5)
-                                .withScale(2)
-                                .withBounds(15, 5, 35, 50)
-                                .build(),
-                        new FrameBuilder(spriteSheet.getSprite(5, 11), 5)
                                 .withScale(2)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
@@ -518,10 +510,6 @@ public class Cat extends Player {
                                 .withScale(2)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
-                        new FrameBuilder(spriteSheet.getSprite(4, 11), 5)
-                                .withScale(2)
-                                .withBounds(15, 5, 35, 50)
-                                .build(),
                 });
                 
                 put("ROCK_DOWN", new Frame[] {
@@ -566,10 +554,6 @@ public class Cat extends Player {
                                 .withBounds(15, 5, 35, 50)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(6, 10), 5)
-                                .withScale(2)
-                                .withBounds(15, 5, 35, 50)
-                                .build(),
-                        new FrameBuilder(spriteSheet.getSprite(6, 11), 5)
                                 .withScale(2)
                                 .withBounds(15, 5, 35, 50)
                                 .build(),

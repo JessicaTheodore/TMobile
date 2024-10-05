@@ -36,13 +36,11 @@ public abstract class Player extends GameObject {
     protected Key MOVE_LEFT_KEY = Key.A;
     protected Key MOVE_RIGHT_KEY = Key.D;
     protected Key MOVE_UP_KEY = Key.W;
-    protected Key MOVE_DOWN_KEY = Key.S;
+    protected Key MOVE_DOWN_KEY = Key.S; 
     protected Key INTERACT_KEY = Key.E;
     protected Key STICK_ATTACK_KEY = Key.SPACE;
     protected Key ROCK_ATTACK_KEY = Key.SHIFT;
     protected Key RANGER_KEY = Key.H;
-    
-
     protected boolean isLocked = false;
 
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
@@ -106,10 +104,12 @@ public abstract class Player extends GameObject {
         } else if (facingDirection == Direction.DOWN) {
             this.currentAnimationName = "STICK_DOWN";
         }
-        
-        if (Keyboard.isKeyUp(STICK_ATTACK_KEY)) {
+
+        keyLocker.lockKey(STICK_ATTACK_KEY);
+
+        if (getCurrentFrameIndex() == 7) {
             playerState = PlayerState.STANDING;
-        }
+       }
     }
 
     protected void rockAttack(){
@@ -123,8 +123,10 @@ public abstract class Player extends GameObject {
             this.currentAnimationName = "ROCK_DOWN";
         }
         
-        if (Keyboard.isKeyUp(ROCK_ATTACK_KEY)) {
-            playerState = PlayerState.STANDING;
+        keyLocker.lockKey(ROCK_ATTACK_KEY);
+        
+        if (getCurrentFrameIndex() == 10) {
+             playerState = PlayerState.STANDING;
         }
     }
 
@@ -360,10 +362,8 @@ public abstract class Player extends GameObject {
     }
 
     // Uncomment this to have game draw player's bounds to make it easier to visualize
-    /*
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
-    */
 }
