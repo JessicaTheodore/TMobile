@@ -8,6 +8,8 @@ import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 
 // This is the class for the main menu screen
 public class MenuScreen extends Screen {
@@ -22,19 +24,37 @@ public class MenuScreen extends Screen {
     protected int pointerLocationX, pointerLocationY;
     protected KeyLocker keyLocker = new KeyLocker();
 
+    private Font maruMonica;
+
     public MenuScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
     @Override
     public void initialize() {
-        playGame = new SpriteFont("Play Game", 200, 253, "Times New roman", 30, new Color(49, 207, 240));
+
+         try {
+                InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
+                if (is != null) {
+                    maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+                } else {
+                    System.out.println("Font not found");
+                }
+            } catch (FontFormatException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } 
+
+        //text = new SpriteFont(currentTextItem.getText(), fontX, fontY, maruMonica.deriveFont(30f), Color.black);
+
+        playGame = new SpriteFont("Play Game", 200, 253, maruMonica.deriveFont(30f), new Color(49, 207, 240));
         playGame.setOutlineColor(Color.black);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("CREDITS", 200, 323, "Times new roman", 30, new Color(49, 207, 240));
+        credits = new SpriteFont("CREDITS", 200, 323, maruMonica.deriveFont(30f), new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
-        title = new SpriteFont("The Legend Of Hobbomock", 90, 55, "Times new roman", 55, new Color(255,255,255));
+        title = new SpriteFont("The Legend Of Hobbomock", 100, 55, maruMonica.deriveFont(65f), new Color(255,255,255));
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
         background = new TitleScreenMap();
