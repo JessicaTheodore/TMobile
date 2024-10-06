@@ -51,11 +51,13 @@ import Utils.Point;
             ranger.draw(graphicsHandler);
          
         }
-        
+
        @Override
         public ArrayList<Trigger> loadTriggers() {
+
+            Point hikerLocation = getMapTile(3, 6).getLocation().subtractX(6).subtractY(7);
             ArrayList<Trigger> triggers = new ArrayList<>();
-            triggers.add(new Trigger(3, 6, 100, 100, new IntroScript(), "gameStart"));
+            triggers.add(new Trigger(hikerLocation.x, hikerLocation.y, 800, 600, new IntroScript(), "gameStart"));
             //triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
             return triggers;
         }
