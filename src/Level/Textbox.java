@@ -185,7 +185,7 @@ public class Textbox {
         Color transparency = new Color(255, 255, 255, 180);
         graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.darkGray, 3);
         graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new Font("Arial Bold", Font.PLAIN, 18), Color.gray);
-        //graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new SpriteFont(currentTextItem.getText(), maruMonica.deriveFont(30f), Color.black);
+        //graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new SpriteFont(currentTextItem.getText(), y, y, maruMonica.deriveFont(30f), Color.black));
 
 
 
