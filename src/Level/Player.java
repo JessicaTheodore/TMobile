@@ -110,6 +110,7 @@ public abstract class Player extends GameObject {
         if (getCurrentFrameIndex() == 7) {
             playerState = PlayerState.STICK_ATTACK;
             playerState = PlayerState.STANDING;
+            setCurrentAnimationFrameIndex(0);
        }
     }
 
@@ -127,8 +128,9 @@ public abstract class Player extends GameObject {
         keyLocker.lockKey(ROCK_ATTACK_KEY);
         
         if (getCurrentFrameIndex() == 10) {
-             playerState = PlayerState.ROCK_ATTACK;
-             playerState = PlayerState.STANDING;
+            playerState = PlayerState.ROCK_ATTACK;
+            playerState = PlayerState.STANDING;
+            setCurrentAnimationFrameIndex(0);
         }
     }
 
