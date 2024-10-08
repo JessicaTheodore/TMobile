@@ -1,7 +1,6 @@
 package Engine;
 
 import GameObject.ImageEffect;
-
 import java.awt.*;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;

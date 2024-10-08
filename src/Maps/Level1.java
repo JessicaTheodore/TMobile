@@ -22,10 +22,10 @@ public class Level1 extends Map {
         this.playerStartPosition = new Point(460, 2290);
     }
 
-        @Override
-        public ArrayList<Trigger> loadTriggers() {
-            ArrayList<Trigger> triggers = new ArrayList<>();
-            triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
-            return triggers;
-    }
+    //     @Override
+    //     public ArrayList<Trigger> loadTriggers() {
+    //         ArrayList<Trigger> triggers = new ArrayList<>();
+    //         triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
+    //         return triggers;
+    // }
 }
