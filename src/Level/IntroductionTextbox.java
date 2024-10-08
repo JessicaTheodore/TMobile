@@ -7,6 +7,8 @@ import Engine.Keyboard;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -18,9 +20,9 @@ public class IntroductionTextbox extends Textbox {
     private KeyLocker keyLocker = new KeyLocker();
     private SpriteFont introText;
     private Queue<SpriteFont> script;
+    private Font maruMonica;
 
     public IntroductionTextbox(Map map) {
-        //call constructor of parent class
         super(map);
         this.map = map;
         keyLocker.lockKey(interactKey);
@@ -33,7 +35,7 @@ public class IntroductionTextbox extends Textbox {
         if (!script.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
             introText = script.peek();
         }
-        // if interact key is pressed, remove the current text from the queue to prepare for the next text item to be displayed
+        
         if (Keyboard.isKeyDown(interactKey) && !keyLocker.isKeyLocked(interactKey)) {
             
             keyLocker.lockKey(interactKey);
@@ -51,19 +53,30 @@ public class IntroductionTextbox extends Textbox {
         if(introText != null) {
             introText.draw(graphicsHandler);
         }
-
-        SpriteFont pressE = new SpriteFont("press E", x + 200, y + height -65, new Font("TimesRoman", Font.PLAIN, 12), Color.black);
-        pressE.draw(graphicsHandler);
     }
 
     private void initializeScript() {
-        int x=100;
+
+         //importing font type
+        try {
+            InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
+            if (is != null) {
+                maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+            } else {
+                System.out.println("Font not found");
+            }
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+
+        int x = 45;
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
-       
         
         script = new LinkedList<>();
-        script.add(new SpriteFont("Park Ranger: Heading up the Giant, huh? ", x, y, "Arial", 22, Color.black));
-        script.add(new SpriteFont("Player: Beautiful day for some hiking, I think.", x, y, "Arial", 22, Color.black));
+        script.add(new SpriteFont("Park Ranger: Heading up the Giant, huh? ", x, y + 25, maruMonica.deriveFont(33f), Color.black));
+        script.add(new SpriteFont("Player: Beautiful day for some hiking, I think.", x, y + 25, maruMonica.deriveFont(33f), Color.black));
     }
     
 }

@@ -57,7 +57,7 @@ public class Textbox {
 
     private Map map;
 
-    //private Font maruMonica;
+    private Font maruMonica;
 
     public Textbox(Map map) {
         this.map = map;
@@ -157,13 +157,29 @@ public class Textbox {
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
+        
+        //importing font type
+        try {
+            InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
+            if (is != null) {
+                maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+            } else {
+                System.out.println("Font not found");
+            }
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+
         // draw textbox
         // if camera is at bottom of screen, textbox is drawn at top of screen instead of the bottom like usual
         // to prevent it from covering the player
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
         Color transparency = new Color(255, 255, 255, 180);
         graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.darkGray, 3);
-        graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new Font("Arial Bold", Font.PLAIN, 18), Color.gray);
+        SpriteFont pressE = new SpriteFont("(E)", x + width - 41, y + height - 27, maruMonica.deriveFont(22f), Color.black);
+        pressE.draw(graphicsHandler);
         
         if (text != null) {
             // draw text in textbox
