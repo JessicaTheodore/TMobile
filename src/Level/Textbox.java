@@ -112,27 +112,6 @@ public class Textbox {
             // to prevent it from covering the player
             int fontY = !map.getCamera().isAtBottomOfMap() ? fontBottomY : fontTopY;
 
-            // try {
-            //     InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
-            //     if (is != null) {
-            //         maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
-            //     } else {
-            //         System.out.println("Font not found");
-            //     }
-            // } catch (FontFormatException e) {
-            //     e.printStackTrace();
-            // } catch (IOException e) {
-            //     e.printStackTrace();
-            // }
-
-            // if (maruMonica != null) {
-            //     // create text spritefont that will be drawn in textbox
-            //     text = new SpriteFont(currentTextItem.getText(), fontX, fontY, maruMonica.deriveFont(30f), Color.black);
-            // } else {
-            //     //fall back *just* in case the file doesn't work for some reason
-            //     text = new SpriteFont(currentTextItem.getText(), fontX, fontY, "Arial", 22, Color.black);
-            // }
-
             // if there are options associated with this text item, prepare option spritefont text to be drawn in options textbox
             if (currentTextItem.getOptions() != null) {
                 // if camera is at bottom of screen, text is drawn at top of screen instead of the bottom like usual
@@ -185,8 +164,7 @@ public class Textbox {
         Color transparency = new Color(255, 255, 255, 180);
         graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.darkGray, 3);
         graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new Font("Arial Bold", Font.PLAIN, 18), Color.gray);
-        //graphicsHandler.drawString("(E)", x + width - 45, y + height - 10, new SpriteFont(currentTextItem.getText(), y, y, maruMonica.deriveFont(30f), Color.black));
-
+        
         if (text != null) {
             // draw text in textbox
             text.drawWithParsedNewLines(graphicsHandler, 10);

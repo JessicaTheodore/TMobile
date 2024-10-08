@@ -17,6 +17,7 @@ import Maps.IntroductionScreenMap;
 import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
 import Utils.Direction;
+import Level.IntroductionTextbox;
 
 public class IntroductionScreen extends Screen {
 
@@ -26,7 +27,7 @@ public class IntroductionScreen extends Screen {
     protected FlagManager flagManager;
     protected Map background;
     protected SpriteFont credits;
-    protected Textbox textbox;
+    protected IntroductionTextbox textbox;
     private Font maruMonica;
 
     public IntroductionScreen(ScreenCoordinator screenCoordinator) {
@@ -51,7 +52,7 @@ public class IntroductionScreen extends Screen {
                 e.printStackTrace();
             } 
 
-        credits = new SpriteFont("Press Space to continue", 330, 433, maruMonica.deriveFont(16f), new Color(49, 207, 240));
+        credits = new SpriteFont("Press X to skip", 330, 433, maruMonica.deriveFont(16f), new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
 
@@ -60,19 +61,20 @@ public class IntroductionScreen extends Screen {
         
         background.preloadScripts();
 
-        textbox = new Textbox(background);
+        textbox = new IntroductionTextbox(background);
 
-        keyLocker.lockKey(Key.SPACE);
+        keyLocker.lockKey(Key.X);
     }
     
     public void update() {
       // if space is pressed on menu item, change to appropriate screen based on which menu item was chosen
-        if (Keyboard.isKeyUp(Key.SPACE)) {
-            keyLocker.unlockKey(Key.SPACE);
+        if (Keyboard.isKeyUp(Key.X)) {
+            keyLocker.unlockKey(Key.X);
         }
-        if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
+        if (!keyLocker.isKeyLocked(Key.X) && Keyboard.isKeyDown(Key.X)) {
                 screenCoordinator.setGameState(GameState.LEVEL);
         }
+        textbox.update();
     }
     
     public void draw(GraphicsHandler graphicsHandler) {
