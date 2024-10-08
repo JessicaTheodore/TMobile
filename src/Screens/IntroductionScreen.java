@@ -46,13 +46,13 @@ public class IntroductionScreen extends Screen {
                 } else {
                     System.out.println("Font not found");
                 }
-            } catch (FontFormatException e) {
+            } catch (FontFormatException e) { 
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             } 
 
-        credits = new SpriteFont("Press X to skip", 330, 433, maruMonica.deriveFont(16f), new Color(49, 207, 240));
+        credits = new SpriteFont("Press X to continue", 330, 433, maruMonica.deriveFont(16f), new Color(49, 207, 240));
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
 

@@ -34,10 +34,10 @@ import Utils.Point;
             hiker.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
             hiker.setLocation(hikerLocation.x, hikerLocation.y); 
 
-            Point rangerLocation = getMapTile(11, 7).getLocation().subtractX(6).subtractY(7);
+            Point rangerLocation = getMapTile(10, 6).getLocation().subtractX(4).subtractY(6);
             //temporarily will be the walrus image
-            ranger = new Sprite(ImageLoader.loadSubImage("Walrus.png", Colors.MAGENTA, 0, 0, 24, 24));
-            ranger.setScale(4);
+            ranger = new Sprite(ImageLoader.loadSubImage("Ranger.png", Colors.MAGENTA, 0, 128, 70, 70));
+            ranger.setScale(3);
             ranger.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
             ranger.setLocation(rangerLocation.x, rangerLocation.y); 
 
@@ -50,16 +50,6 @@ import Utils.Point;
             hiker.draw(graphicsHandler);
             ranger.draw(graphicsHandler);
          
-        }
-
-       @Override
-        public ArrayList<Trigger> loadTriggers() {
-
-            Point hikerLocation = getMapTile(3, 6).getLocation().subtractX(6).subtractY(7);
-            ArrayList<Trigger> triggers = new ArrayList<>();
-            triggers.add(new Trigger(hikerLocation.x, hikerLocation.y, 800, 600, new IntroScript(), "gameStart"));
-            //triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
-            return triggers;
         }
 
     }

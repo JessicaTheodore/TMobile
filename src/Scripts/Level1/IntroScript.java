@@ -24,7 +24,7 @@ public class IntroScript extends Script {
                 addText("Grizzlies with glowing eyes, whispering trees \n attacking those who come too close…");
                 addText("I've even seen some just like you \ngo up and never come back.");
                 addText("R: Some say the legend is to blame. ");
-                addText("Player: The legend? ");
+                addText("Player: The legend?");
                 addText("R: … ");
                 addText("R: The Legend of Hobbomock. ");
                 addText("Player: …Who?");
