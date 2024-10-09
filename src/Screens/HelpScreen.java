@@ -26,8 +26,9 @@ public class HelpScreen {
 
     public void draw(GraphicsHandler graphicsHandler){
         if(helpScreenOn){
-            graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), null);
-            graphicsHandler.drawImage((helpMenu), 00, 00, 800, 600);
+            //PlayLevelScreen.map.draw(graphicsHandler);
+            graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
+            graphicsHandler.drawImage((helpMenu), 0, 0, 800, 550);
         }
     }
 }

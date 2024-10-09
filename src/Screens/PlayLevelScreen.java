@@ -112,6 +112,7 @@ public class PlayLevelScreen extends Screen {
     public void draw(GraphicsHandler graphicsHandler) {
         // based on screen state, draw appropriate graphics
         if(helpOn){
+            map.draw(player, graphicsHandler);
             helpScreen.draw(graphicsHandler);
         }else{
             switch (playLevelScreenState) {
