@@ -38,9 +38,9 @@ public class PlayLevelScreen extends Screen {
         ranger.setScale(2);
         ranger.setLocation(720, 505); 
 
-        helpScreenSprite = new Sprite(ImageLoader.loadSubImage("HelpScreen.png", Colors.MAGENTA, 0,0, 128, 128));
-        helpScreenSprite.setScale(3);
-        helpScreenSprite.setLocation(210, 80); 
+        helpScreenSprite = new Sprite(ImageLoader.loadSubImage("Help.png", Colors.MAGENTA, 0,0, 180, 120));
+        helpScreenSprite.setScale(1);
+        helpScreenSprite.setLocation(0, 0); 
 
     }
 
