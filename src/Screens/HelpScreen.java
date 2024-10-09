@@ -1,6 +1,7 @@
 package Screens;
 
 import Engine.*;
+import Game.ScreenCoordinator;
 import Level.FlagManager;
 
 import java.awt.*;
@@ -12,6 +13,7 @@ public class HelpScreen {
     protected FlagManager flagManager;
     protected boolean helpScreenOn = false;
     protected KeyLocker keyLocker = new KeyLocker();
+    private PlayLevelScreen playLevelScreen ;
 
     public HelpScreen(FlagManager flagManager){
         this.flagManager = flagManager;
@@ -26,7 +28,7 @@ public class HelpScreen {
 
     public void draw(GraphicsHandler graphicsHandler){
         if(helpScreenOn){
-            //PlayLevelScreen.map.draw(graphicsHandler);
+            playLevelScreen.drawMap(graphicsHandler);
             graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
             graphicsHandler.drawImage((helpMenu), 0, 0, 800, 550);
         }

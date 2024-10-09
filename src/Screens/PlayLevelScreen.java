@@ -29,6 +29,7 @@ public class PlayLevelScreen extends Screen {
     protected KeyLocker keyLocker = new KeyLocker();
     protected HelpScreen helpScreen;
     private boolean helpOn = false;
+    private Sprite helpScreenSprite;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -36,6 +37,11 @@ public class PlayLevelScreen extends Screen {
         ranger = new Sprite(ImageLoader.loadSubImage("RangerIcon.png", Colors.MAGENTA, 0,0, 32, 32));
         ranger.setScale(2);
         ranger.setLocation(720, 505); 
+
+        helpScreenSprite = new Sprite(ImageLoader.loadSubImage("HelpScreen.png", Colors.MAGENTA, 0,0, 128, 128));
+        helpScreenSprite.setScale(3);
+        helpScreenSprite.setLocation(210, 80); 
+
     }
 
     public void initialize() {
@@ -113,7 +119,7 @@ public class PlayLevelScreen extends Screen {
         // based on screen state, draw appropriate graphics
         if(helpOn){
             map.draw(player, graphicsHandler);
-            helpScreen.draw(graphicsHandler);
+            helpScreenSprite.draw(graphicsHandler);
         }else{
             switch (playLevelScreenState) {
                 case RUNNING:
@@ -139,6 +145,10 @@ public class PlayLevelScreen extends Screen {
 
     public void goBackToMenu() {
         screenCoordinator.setGameState(GameState.MENU);
+    }
+
+    public void drawMap(GraphicsHandler graphicsHandler){
+        map.draw(player, graphicsHandler);
     }
 
     // This enum represents the different states this screen can be in
