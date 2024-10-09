@@ -40,21 +40,21 @@ public class Cat extends Player {
                 put("STAND_LEFT", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(9, 0))
                                 .withScale(2)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build()
                 });
 
                 put("STAND_UP", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(8, 0))
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build()
                 });
 
                 put("STAND_DOWN", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(10, 0))
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build()
                 });
 
@@ -101,160 +101,160 @@ public class Cat extends Player {
                         new FrameBuilder(spriteSheet.getSprite(11, 0), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(11, 1), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(11, 2), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(11, 3), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(11, 4), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(11, 5), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(11, 6), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(11, 7), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(11, 8), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(18, 28, 32, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build()
                 });
         
                 put("WALK_UP", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(8, 0), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(8, 1), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(8, 2), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(8, 3), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(8, 4), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(8, 5), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(8, 6), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(8, 7), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(8, 8), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build()
                 });
         
                 put("WALK_DOWN", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(10, 0), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(10, 1), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(10, 2), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(10, 3), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(10, 4), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(10, 5), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(10, 6), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(10, 7), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(10, 8), 5)
                                 .withScale(2)
-                                .withBounds(14, 28, 36, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build()
                 });
 
                 put("STICK_RIGHT", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(3, 0), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 1), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 2), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 3), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 0), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 5), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 6), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(3, 7), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                 });
                 
@@ -262,112 +262,112 @@ public class Cat extends Player {
                         new FrameBuilder(spriteSheet.getSprite(3, 0), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 1), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 2), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 3), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 4), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 5), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(3, 6), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(3, 7), 5)
                                 .withScale(2)
                                 .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                                .withBounds(15, 28, 35, 25)                                
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                 });
                 
                 put("STICK_UP", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(0, 0), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 1), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 2), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 3), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 4), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 5), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 6), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(0, 7), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                 });
                 
                 put("STICK_DOWN", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(2, 0), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(2, 1), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(2, 2), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(2, 3), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35,25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(2, 4), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(2, 5), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(2, 6), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(2, 7), 5)
                                 .withScale(2)
-                                .withBounds(15, 28, 35, 25)
+                                .withBounds(15, 28, 32, 25)
                                 .build(),
                 });
                 

@@ -8,25 +8,15 @@ import ScriptActions.*;
 
 
 // Script to make the BreakableLog break when hit by the player
+// In the future, this won't be a script it will be based off hitbox of the stick attack
 public class BreakableLogScript extends Script {
     
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 
-        scriptActions.add(new ConditionalScriptAction() {{
-            addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
+        scriptActions.add(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
 
-                // these requirements may not be neccessary depending on how the script is activated in the first place
-                // these flags below dont exist yet 
-                // addRequirement(new FlagRequirement("touchingLog", true));
-                // addRequirement(new FlagRequirement("attackingLog", true));
-
-                addScriptAction(new WaitScriptAction(100));
-                addScriptAction(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
-            }});
-        }});
-    
         return scriptActions;
     }
 
