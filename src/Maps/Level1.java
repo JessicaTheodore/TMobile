@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import GameObject.Sprite;
 import Level.Map;
 import Level.NPC;
-// import Level.Trigger;
+import Level.Trigger;
+import Level.Trigger;
 // import Scripts.Level1.IntroScript;
 // import Tilesets.CommonTileset;
 import Tilesets.MainTileset;
@@ -24,6 +25,8 @@ import NPCs.BreakableLog;
 // import Scripts.TestMap.BugScript;
 // import Scripts.TestMap.DinoScript;
 // import Scripts.TestMap.WalrusScript;
+import Scripts.Level1.BreakableLogScript;
+import Scripts.TestMap.LostBallScript;
 
 public class Level1 extends Map {
 
@@ -38,7 +41,8 @@ public class Level1 extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        BreakableLog breakableLog = new BreakableLog(0, getMapTile(23,35).getLocation());
+        BreakableLog breakableLog = new BreakableLog(0, getMapTile(25,37).getLocation());
+        breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
 
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
@@ -57,10 +61,13 @@ public class Level1 extends Map {
         return npcs;
     }
 
-    //     @Override
-    //     public ArrayList<Trigger> loadTriggers() {
-    //         ArrayList<Trigger> triggers = new ArrayList<>();
-    //         triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
-    //         return triggers;
-    // }
+        @Override
+        public ArrayList<Trigger> loadTriggers() {
+            ArrayList<Trigger> triggers = new ArrayList<>();
+            // triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
+
+            // Breakable log trigger
+            triggers.add(new Trigger(1280,1870,75,140, new BreakableLogScript(), "touchingLog"));
+            return triggers;
+    }
 }
