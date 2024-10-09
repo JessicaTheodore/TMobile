@@ -1,26 +1,33 @@
 package Screens;
 
-import Engine.GraphicsHandler;
-import Engine.Screen;
+import Engine.*;
+import Level.FlagManager;
 
-public class HelpScreen extends Screen{
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
-    @Override
-    public void initialize() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'initialize'");
-    }
+public class HelpScreen {
 
-    @Override
-    public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
+    protected BufferedImage helpMenu;
+    protected FlagManager flagManager;
+    protected boolean helpScreenOn = false;
+    protected KeyLocker keyLocker = new KeyLocker();
 
-    @Override
-    public void draw(GraphicsHandler graphicsHandler) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'draw'");
+    public HelpScreen(FlagManager flagManager){
+        this.flagManager = flagManager;
+
+        helpMenu = ImageLoader.load("HelpScreen.png");
     }
     
+    
+    public void changeStatus(){
+        helpScreenOn = !helpScreenOn;
+    }
+
+    public void draw(GraphicsHandler graphicsHandler){
+        if(helpScreenOn){
+            graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), null);
+            graphicsHandler.drawImage((helpMenu), 00, 00, 800, 600);
+        }
+    }
 }

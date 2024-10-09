@@ -9,6 +9,9 @@ import Utils.Colors;
 import Screens.PlayLevelScreen;
 
 import javax.swing.*;
+
+import Game.ScreenCoordinator;
+
 import java.awt.*;
 
 /*

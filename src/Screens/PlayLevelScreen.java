@@ -2,6 +2,9 @@ package Screens;
 
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Engine.Key;
+import Engine.KeyLocker;
+import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
@@ -23,6 +26,9 @@ public class PlayLevelScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     private Sprite ranger;
+    protected KeyLocker keyLocker = new KeyLocker();
+    protected HelpScreen helpScreen;
+    private boolean helpOn = false;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -44,6 +50,9 @@ public class PlayLevelScreen extends Screen {
         map = new Level1();
         map.setFlagManager(flagManager);
 
+        //set up help screen
+        helpScreen = new HelpScreen(map.getFlagManager());
+
         // setup player
         player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
@@ -63,8 +72,29 @@ public class PlayLevelScreen extends Screen {
     }
 
     public void update() {
-        // based on screen state, perform specific actions
-        switch (playLevelScreenState) {
+        // Opens help screen when h is clicked
+        if(Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn){
+            helpOn = true;
+            helpScreen.changeStatus();
+            keyLocker.lockKey(Key.H);
+        }
+        if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && helpOn){
+            helpOn = false;
+            helpScreen.changeStatus();
+            keyLocker.lockKey(Key.ESC);
+        }
+        if(Keyboard.isKeyUp(Key.H)){
+            keyLocker.unlockKey(Key.H);
+        }
+        if(Keyboard.isKeyUp(Key.ESC)){
+            keyLocker.unlockKey(Key.ESC);
+        }
+        if(helpOn){
+            //helpScreen.update();
+        }else{
+
+            // based on screen state, perform specific actions
+            switch (playLevelScreenState) {
             // if level is "running" update player and map to keep game logic for the platformer level going
             case RUNNING:
                 player.update();
@@ -75,24 +105,26 @@ public class PlayLevelScreen extends Screen {
                 winScreen.update();
                 break;
         }
-
-        // if flag is set at any point during gameplay, game is "won"
-        if (map.getFlagManager().isFlagSet("hasFoundBall")) {
-            playLevelScreenState = PlayLevelScreenState.LEVEL_COMPLETED;
         }
+        
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
         // based on screen state, draw appropriate graphics
-        switch (playLevelScreenState) {
-            case RUNNING:
-                map.draw(player, graphicsHandler);
-                ranger.draw(graphicsHandler);
-                break;
-            case LEVEL_COMPLETED:
-                winScreen.draw(graphicsHandler);
-                break;
+        if(helpOn){
+            helpScreen.draw(graphicsHandler);
+        }else{
+            switch (playLevelScreenState) {
+                case RUNNING:
+                    map.draw(player, graphicsHandler);
+                    ranger.draw(graphicsHandler);
+                    break;
+                case LEVEL_COMPLETED:
+                    winScreen.draw(graphicsHandler);
+                    break;
+            }
         }
+        
     }
 
     public PlayLevelScreenState getPlayLevelScreenState() {
