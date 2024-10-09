@@ -157,7 +157,7 @@ public class Textbox {
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
-        
+
         //importing font type
         try {
             InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
@@ -178,7 +178,7 @@ public class Textbox {
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
         Color transparency = new Color(255, 255, 255, 180);
         graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.darkGray, 3);
-        SpriteFont pressE = new SpriteFont("(E)", x + width - 41, y + height - 27, maruMonica.deriveFont(22f), Color.black);
+        SpriteFont pressE = new SpriteFont("(E)", x + width - 35, y + height - 30, maruMonica.deriveFont(24f), Color.black);
         pressE.draw(graphicsHandler);
         
         if (text != null) {

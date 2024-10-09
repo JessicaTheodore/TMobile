@@ -4,6 +4,10 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
+import Engine.Screen;
+import Game.GameState;
+import Game.ScreenCoordinator;
+import Screens.IntroductionScreen;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
@@ -21,9 +25,11 @@ public class IntroductionTextbox extends Textbox {
     private SpriteFont introText;
     private Queue<SpriteFont> script;
     private Font maruMonica;
+    protected ScreenCoordinator screenCoordinator;
 
-    public IntroductionTextbox(Map map) {
+    public IntroductionTextbox(Map map, ScreenCoordinator screenCoordinator) {
         super(map);
+        this.screenCoordinator = screenCoordinator;
         this.map = map;
         keyLocker.lockKey(interactKey);
         initializeScript();
@@ -34,10 +40,11 @@ public class IntroductionTextbox extends Textbox {
        
         if (!script.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
             introText = script.peek();
+        } else if (script.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
+            screenCoordinator.setGameState(GameState.LEVEL);
         }
         
         if (Keyboard.isKeyDown(interactKey) && !keyLocker.isKeyLocked(interactKey)) {
-            
             keyLocker.lockKey(interactKey);
             script.poll();
         }
@@ -101,7 +108,6 @@ public class IntroductionTextbox extends Textbox {
         script.add(new SpriteFont("R: If you can keep your wits about you, go ahead and\n climb the Giant…", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: Ignore the warnings and the legends.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: Just don't say I didn't warn you.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-
     }
     
 }

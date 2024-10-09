@@ -34,7 +34,7 @@ import Utils.Point;
             hiker.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
             hiker.setLocation(hikerLocation.x, hikerLocation.y); 
 
-            Point rangerLocation = getMapTile(10, 6).getLocation().subtractX(4).subtractY(6);
+            Point rangerLocation = getMapTile(10, 6).getLocation().subtractX(6).subtractY(7);
             //temporarily will be the walrus image
             ranger = new Sprite(ImageLoader.loadSubImage("Ranger.png", Colors.MAGENTA, 0, 128, 70, 70));
             ranger.setScale(3);
