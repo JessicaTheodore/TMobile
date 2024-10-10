@@ -20,12 +20,14 @@ import Tilesets.MainTileset;
 import Utils.Point;
 // import NPCs.Bear;
 import NPCs.BreakableLog;
+import NPCs.Bear;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import Scripts.TestMap.BugScript;
 // import Scripts.TestMap.DinoScript;
 // import Scripts.TestMap.WalrusScript;
 import Scripts.Level1.BreakableLogScript;
+import Scripts.Level1.BeatBear;
 import Scripts.TestMap.LostBallScript;
 
 public class Level1 extends Map {
@@ -44,6 +46,10 @@ public class Level1 extends Map {
         BreakableLog breakableLog = new BreakableLog(0, getMapTile(25,37).getLocation());
         breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
+
+        Bear bear = new Bear(0, getMapTile(25,37).getLocation());
+       bear.setInteractScript(new BeatBear());
+        npcs.add(bear);
 
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
         // bear.setInteractScript(new WalrusScript());

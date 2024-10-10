@@ -9,13 +9,13 @@ import GameObject.SpriteSheet;
 import Level.NPC;
 import Utils.Point;
 
+import java.awt.Color;
 import java.util.HashMap;
 
-// This class is for the Bear NPC
 public class Bear extends NPC {
 
     public Bear(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("bear.png"), 24, 24), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Bear.png"), 24, 24), "STAND_LEFT");
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Bear extends NPC {
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
-                            .withBounds(7, 13, 11, 7)
+                            .withBounds(37, 29, 27, 47)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
@@ -40,5 +40,9 @@ public class Bear extends NPC {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
+
+        // DRAWS HITBOX
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
+
 }
