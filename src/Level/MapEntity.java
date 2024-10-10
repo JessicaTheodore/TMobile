@@ -101,4 +101,14 @@ public class MapEntity extends GameObject {
     public void setIsUncollidable(boolean isUncollidable) {
         this.isUncollidable = isUncollidable;
     }
+
+    public void initialize() {
+        this.x = startPositionX;
+        this.y = startPositionY;
+        this.amountMovedX = 0;
+        this.amountMovedY = 0;
+        this.previousX = startPositionX;
+        this.previousY = startPositionY;
+        updateCurrentFrame();
+    }
 }

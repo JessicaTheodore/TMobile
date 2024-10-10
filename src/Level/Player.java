@@ -6,16 +6,19 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
+import Game.GameState;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
 
-public abstract class Player extends GameObject {
+// used to extend GameObject, changed it to MapEntity for convenience, I don't know the repurcussions of this
+public abstract class Player extends MapEntity {
     // values that affect player movement
     // these should be set in a subclass
     protected float walkSpeed = 0;
     protected int interactionRange = 1;
+    protected int playerHP = 3;
     protected Direction currentWalkingXDirection;
     protected Direction currentWalkingYDirection;
     protected Direction lastWalkingXDirection;
@@ -23,7 +26,7 @@ public abstract class Player extends GameObject {
 
     // values used to handle player movement
     protected float moveAmountX, moveAmountY;
-    protected float lastAmountMovedX, lastAmountMovedY;
+    protected float lastAmountMovedX, lastAmountMovedY, rockMovementSpeed = 2;
 
     // values used to keep track of player's current state
     protected PlayerState playerState;
@@ -43,8 +46,12 @@ public abstract class Player extends GameObject {
     protected Key RANGER_KEY = Key.H;
     protected boolean isLocked = false;
 
+    protected GameState gameState;
+
+    
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
-        super(spriteSheet, x, y, startingAnimationName);
+        // super(spriteSheet, x, y, startingAnimationName);
+        super(x, y, spriteSheet, startingAnimationName);
         facingDirection = Direction.RIGHT;
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
@@ -123,10 +130,15 @@ public abstract class Player extends GameObject {
             this.currentAnimationName = "ROCK_UP";
         } else if (facingDirection == Direction.DOWN) {
             this.currentAnimationName = "ROCK_DOWN";
-        }
-        
+        } 
+
         keyLocker.lockKey(ROCK_ATTACK_KEY);
         
+        if(getCurrentFrameIndex() == 8){
+            RockProjectile rock = new RockProjectile(getLocation(), rockMovementSpeed, currentFrameIndex);
+            rock.update();
+        }
+
         if (getCurrentFrameIndex() == 10) {
             playerState = PlayerState.ROCK_ATTACK;
             playerState = PlayerState.STANDING;
@@ -330,6 +342,15 @@ public abstract class Player extends GameObject {
         }
         else if (direction == Direction.DOWN) {
             this.currentAnimationName = "STAND_DOWN";
+        }
+    }
+    
+    public void hurtPlayer(MapEntity mapEntity){
+        if(mapEntity instanceof Enemy){
+            playerHP--;            
+        } 
+        if(playerHP == 0){
+            gameState = GameState.DEATH;
         }
     }
 

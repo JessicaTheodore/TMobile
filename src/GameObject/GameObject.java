@@ -319,4 +319,14 @@ public class GameObject extends AnimatedSprite {
 			super.drawBounds(graphicsHandler, color);
 		}
 	}
+
+	public void initialize() {
+        this.x = startPositionX;
+        this.y = startPositionY;
+        this.amountMovedX = 0;
+        this.amountMovedY = 0;
+        this.previousX = startPositionX;
+        this.previousY = startPositionY;
+        updateCurrentFrame();
+    }
 }
