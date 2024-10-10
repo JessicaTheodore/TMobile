@@ -93,8 +93,8 @@ public class PlayLevelScreen extends Screen {
         bears = new Sprite[5];
         for (int i = 0; i < bears.length; i++) {
             // Load each bear with its own sprite, assuming bear.png is 243x245 dimensions
-            bears[i] = loadSprite("Walrus.png", 0, 0, 24, 24);
-            bears[i].setScale(1);  // Set bear's scale to 1 (adjust if needed)
+            bears[i] = loadSprite("Bear.png", 0, 0, 24, 24);
+            bears[i].setScale(3);  // Set bear's scale to 1 (adjust if needed)
 
             // Set unique locations for each bear on the map (you can modify positions)
             bears[i].setLocation(100 + i * 120, 450);  // Example positions
