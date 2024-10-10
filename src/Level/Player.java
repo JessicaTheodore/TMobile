@@ -134,10 +134,10 @@ public abstract class Player extends MapEntity {
 
         keyLocker.lockKey(ROCK_ATTACK_KEY);
         
-        if(getCurrentFrameIndex() == 8){
-            RockProjectile rock = new RockProjectile(getLocation(), rockMovementSpeed, currentFrameIndex);
-            rock.update();
-        }
+        // if(getCurrentFrameIndex() == 8){
+        //     RockProjectile rock = new RockProjectile(getLocation(), rockMovementSpeed, currentFrameIndex);
+        //     rock.update();
+        // }
 
         if (getCurrentFrameIndex() == 10) {
             playerState = PlayerState.ROCK_ATTACK;

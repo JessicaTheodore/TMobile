@@ -16,7 +16,7 @@ public class Cat extends Player {
     
     public Cat(float x, float y) {
         super(new SpriteSheet(ImageLoader.load("Hiker.png"), 64, 64), x, y, "STAND_DOWN");
-        walkSpeed = 3f;
+        walkSpeed = 4f;
     }
  
     public void update() {

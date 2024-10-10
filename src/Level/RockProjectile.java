@@ -42,17 +42,17 @@ public class RockProjectile extends Player {
         existenceFrames--;
     }
 
-    // @Override
-    // public void onEndCollisionCheckX(boolean hasCollided, Direction direction, MapEntity entityCollidedWith) {
-    //     // if fireball collides with anything solid on the x axis, it is removed
-    //     if (hasCollided) {
-    //         this.mapEntityStatus = MapEntityStatus.REMOVED;
-    //     }
-    // }
+    @Override
+    public void onEndCollisionCheckX(boolean hasCollided, Direction direction, MapEntity entityCollidedWith) {
+        // if fireball collides with anything solid on the x axis, it is removed
+        if (hasCollided) {
+            this.mapEntityStatus = MapEntityStatus.REMOVED;
+        }
+    }
 
-    // public void touchedEnemy(Enemy enemy){
-    //     enemy.hurtEnemy(this);
-    // }
+    public void touchedEnemy(Enemy enemy){
+        enemy.hurtEnemy(this);
+    }
 
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
