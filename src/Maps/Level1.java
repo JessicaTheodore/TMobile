@@ -47,7 +47,7 @@ public class Level1 extends Map {
         breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
 
-        Bear bear = new Bear(1, getMapTile(48,35).getLocation());
+        Bear bear = new Bear(0, getMapTile(25,37).getLocation());
        bear.setInteractScript(new BeatBear());
         npcs.add(bear);
 
