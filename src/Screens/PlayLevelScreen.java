@@ -14,7 +14,6 @@ import Maps.Level1;
 import Players.Cat;
 import Utils.Colors;
 import Utils.Direction;
-import java.awt.image.BufferedImage;
 
 // This class is for when the RPG game is actually being played
 public class PlayLevelScreen extends Screen {
@@ -25,7 +24,6 @@ public class PlayLevelScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     private Sprite ranger;
-    private Sprite[] bears;  // Array to hold 5 bear sprites
     protected KeyLocker keyLocker = new KeyLocker();
     protected HelpScreen helpScreen;
     private boolean helpOn = false;
@@ -34,31 +32,13 @@ public class PlayLevelScreen extends Screen {
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
 
-        // Setup Ranger sprite (change dimensions according to image size)
-        ranger = loadSprite("HelpIcon.png", 0, 0, 64, 64);
+        ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
         ranger.setScale(1);
-        ranger.setLocation(725, 505);
-        
-        // Initialize help screen sprite
-        helpScreenSprite = loadSprite("Helper.png", 0, 0, 800, 605);
-        helpScreenSprite.setScale(1);
-        helpScreenSprite.setLocation(0, 0);
-    }
+        ranger.setLocation(725, 505); 
 
-    // Helper function to load sprite and check dimensions
-    private Sprite loadSprite(String filePath, int x, int y, int width, int height) {
-        BufferedImage image = ImageLoader.load(filePath);
-        // Check if image loaded correctly
-        if (image == null) {
-            throw new IllegalArgumentException("Image not found: " + filePath);
-        }
-        System.out.println("Loaded image: " + filePath + " Dimensions: " + image.getWidth() + "x" + image.getHeight());
-        
-        // Ensure requested subimage dimensions are valid
-        if (x < 0 || y < 0 || x + width > image.getWidth() || y + height > image.getHeight()) {
-            throw new IllegalArgumentException("Invalid dimensions for image: " + filePath);
-        }
-        return new Sprite(image.getSubimage(x, y, width, height));
+        helpScreenSprite = new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605));
+        helpScreenSprite.setScale(1);
+        helpScreenSprite.setLocation(0, 0); 
     }
 
     public void initialize() {
@@ -89,23 +69,12 @@ public class PlayLevelScreen extends Screen {
         // Preload all scripts ahead of time rather than loading them dynamically
         map.preloadScripts();
 
-        // Initialize bear sprites
-        bears = new Sprite[5];
-        for (int i = 0; i < bears.length; i++) {
-            // Load each bear with its own sprite, assuming bear.png is 243x245 dimensions
-            bears[i] = loadSprite("Bear.png", 0, 0, 24, 24);
-            bears[i].setScale(3);  // Set bear's scale to 1 (adjust if needed)
-
-            // Set unique locations for each bear on the map (you can modify positions)
-            bears[i].setLocation(100 + i * 120, 450);  // Example positions
-        }
-
         // Initialize win screen
         winScreen = new WinScreen(this);
     }
 
     public void update() {
-        // Opens help screen when H is clicked
+        // Opens help screen when h is clicked
         if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn) {
             helpOn = true;
             helpScreen.changeStatus();
@@ -122,13 +91,18 @@ public class PlayLevelScreen extends Screen {
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
         }
-
-        if (!helpOn) {
+        
+        if (helpOn) {
+            //helpScreen.update();
+        } else {
+            // Based on screen state, perform specific actions
             switch (playLevelScreenState) {
+                // If level is "running" update player and map to keep game logic for the platformer level going
                 case RUNNING:
                     player.update();
                     map.update(player);
                     break;
+                // If level has been completed, bring up level cleared screen
                 case LEVEL_COMPLETED:
                     winScreen.update();
                     break;
@@ -137,6 +111,7 @@ public class PlayLevelScreen extends Screen {
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
+        // Based on screen state, draw appropriate graphics
         if (helpOn) {
             map.draw(player, graphicsHandler);
             helpScreenSprite.draw(graphicsHandler);
@@ -145,11 +120,6 @@ public class PlayLevelScreen extends Screen {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
                     ranger.draw(graphicsHandler);
-                    
-                    // Draw all bears
-                    for (Sprite bear : bears) {
-                        bear.draw(graphicsHandler);
-                    }
                     break;
                 case LEVEL_COMPLETED:
                     winScreen.draw(graphicsHandler);
@@ -174,7 +144,7 @@ public class PlayLevelScreen extends Screen {
         map.draw(player, graphicsHandler);
     }
 
-    // Enum for PlayLevelScreen states
+    // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
         RUNNING, LEVEL_COMPLETED
     }
