@@ -1,5 +1,7 @@
 package Screens;
 
+import java.util.ArrayList;
+
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import Engine.Key;
@@ -26,8 +28,10 @@ public class PlayLevelScreen extends Screen {
     private Sprite ranger;
     protected KeyLocker keyLocker = new KeyLocker();
     protected HelpScreen helpScreen;
-    private boolean helpOn = false;
-    private Sprite helpScreenSprite;
+    protected boolean helpOn = false;
+    protected final int helpSize = 99;
+    protected boolean[] helpStages = new boolean[helpSize]; // 0: Starting area , 1: 
+    protected Sprite[] helpScreenSprite = new Sprite[helpSize];
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -36,9 +40,15 @@ public class PlayLevelScreen extends Screen {
         ranger.setScale(1);
         ranger.setLocation(725, 505); 
 
-        helpScreenSprite = new Sprite(ImageLoader.loadSubImage("BreakLogHelp.png", Colors.MAGENTA, 0, 0, 800, 605));
-        helpScreenSprite.setScale(1);
-        helpScreenSprite.setLocation(0, 0); 
+        helpStages[0] = true;
+        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("BreakLogHelp.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[0].setScale(1);
+        helpScreenSprite[0].setLocation(0, 0); 
+
+        helpStages[1] = false;
+        helpScreenSprite[1] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[1].setScale(1);
+        helpScreenSprite[1].setLocation(0, 0); 
     }
 
     public void initialize() {
@@ -113,8 +123,24 @@ public class PlayLevelScreen extends Screen {
     public void draw(GraphicsHandler graphicsHandler) {
         // Based on screen state, draw appropriate graphics
         if (helpOn) {
-            map.draw(player, graphicsHandler);
-            helpScreenSprite.draw(graphicsHandler);
+
+            for(int i = helpSize-1; i >=0; i--){
+                System.out.println(i +": " +helpStages[i]);
+                if(helpStages[i] == true){
+                    map.draw(player, graphicsHandler);
+                    helpScreenSprite[i].draw(graphicsHandler);
+                    break;
+                }
+            }
+            
+            
+            /* for(int i = 99; i >= 0 ; i--){
+                if(helpStages[i] == true){
+                    //map.draw(player, graphicsHandler);
+                    //helpScreenSprite[0].draw(graphicsHandler);
+                    break;
+                }
+            }  */
         } else {
             switch (playLevelScreenState) {
                 case RUNNING:
