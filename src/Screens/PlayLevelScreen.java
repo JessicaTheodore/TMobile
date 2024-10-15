@@ -104,7 +104,6 @@ public class PlayLevelScreen extends Screen {
         }
         if(flagManager.isFlagSet("brokeLog")){
             helpStages[1] = true;
-            System.out.println("help stage 1 true");
         }
         
         
