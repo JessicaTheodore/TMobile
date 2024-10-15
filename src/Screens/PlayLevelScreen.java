@@ -28,7 +28,10 @@ public class PlayLevelScreen extends Screen {
     private Sprite ranger;
     protected KeyLocker keyLocker = new KeyLocker();
     protected HelpScreen helpScreen;
+    protected PauseScreen pauseScreen;
+    protected Sprite pause;
     protected boolean helpOn = false;
+    protected boolean pauseOn = false;
     protected final int helpSize = 99;
     protected boolean[] helpStages = new boolean[helpSize]; // 0: Starting area , 1: 
     protected Sprite[] helpScreenSprite = new Sprite[helpSize];
@@ -39,6 +42,10 @@ public class PlayLevelScreen extends Screen {
         ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
         ranger.setScale(1);
         ranger.setLocation(725, 505); 
+
+        /* pause = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        pause.setScale(1);
+        pause.setLocation(0, 0);  */
 
         helpStages[0] = true;
         helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("BreakLogHelp.png", Colors.MAGENTA, 0, 0, 800, 605)));
@@ -67,6 +74,9 @@ public class PlayLevelScreen extends Screen {
         // Setup help screen
         helpScreen = new HelpScreen(map.getFlagManager());
 
+        // Setup pause screen
+        pauseScreen = new PauseScreen(map.getFlagManager());
+
         // Setup player
         player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
         player.setMap(map);
@@ -86,7 +96,7 @@ public class PlayLevelScreen extends Screen {
 
     public void update() {
         // Opens help screen when h is clicked
-        if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn) {
+        if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn && !pauseOn) {
             helpOn = true;
             helpScreen.changeStatus();
             keyLocker.lockKey(Key.H);
@@ -94,6 +104,11 @@ public class PlayLevelScreen extends Screen {
         if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && helpOn) {
             helpOn = false;
             helpScreen.changeStatus();
+            keyLocker.lockKey(Key.ESC);
+        }
+        if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
+            pauseOn = !pauseOn;
+            pauseScreen.changeStatus();
             keyLocker.lockKey(Key.ESC);
         }
         if (Keyboard.isKeyUp(Key.H)) {
@@ -109,7 +124,9 @@ public class PlayLevelScreen extends Screen {
         
         if (helpOn) {
             //helpScreen.update();
-        } else {
+        } else if(pauseOn){
+
+        }else {
             // Based on screen state, perform specific actions
             switch (playLevelScreenState) {
                 // If level is "running" update player and map to keep game logic for the platformer level going
@@ -137,7 +154,11 @@ public class PlayLevelScreen extends Screen {
                 }
             }
             
-        } else {
+        } else if(pauseOn){
+            map.draw(player, graphicsHandler);
+            //pause.draw(graphicsHandler);
+        }
+        else {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
