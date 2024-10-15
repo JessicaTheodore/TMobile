@@ -105,7 +105,7 @@ public class MenuScreen extends Screen {
         if (Keyboard.isKeyUp(Key.SPACE)) {
             keyLocker.unlockKey(Key.SPACE);
         }
-        if (!keyLocker.isKeyLocked(Key.SPACE) && Keyboard.isKeyDown(Key.SPACE)) {
+        if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
             menuItemSelected = currentMenuItemHovered;
             if (menuItemSelected == 0) {
                 //goes into the introduction screen dialogue
