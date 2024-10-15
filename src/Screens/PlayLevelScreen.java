@@ -58,6 +58,7 @@ public class PlayLevelScreen extends Screen {
         flagManager.addFlag("hasTalkedToWalrus", false);
         flagManager.addFlag("hasTalkedToDinosaur", false);
         flagManager.addFlag("hasFoundBall", false);
+        flagManager.addFlag("brokeLog", false);
 
         // Define/setup map
         map = new Level1();
@@ -101,6 +102,11 @@ public class PlayLevelScreen extends Screen {
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
         }
+        if(flagManager.isFlagSet("brokeLog")){
+            helpStages[1] = true;
+            System.out.println("help stage 1 true");
+        }
+        
         
         if (helpOn) {
             //helpScreen.update();
@@ -125,7 +131,6 @@ public class PlayLevelScreen extends Screen {
         if (helpOn) {
 
             for(int i = helpSize-1; i >=0; i--){
-                System.out.println(i +": " +helpStages[i]);
                 if(helpStages[i] == true){
                     map.draw(player, graphicsHandler);
                     helpScreenSprite[i].draw(graphicsHandler);
@@ -133,14 +138,6 @@ public class PlayLevelScreen extends Screen {
                 }
             }
             
-            
-            /* for(int i = 99; i >= 0 ; i--){
-                if(helpStages[i] == true){
-                    //map.draw(player, graphicsHandler);
-                    //helpScreenSprite[0].draw(graphicsHandler);
-                    break;
-                }
-            }  */
         } else {
             switch (playLevelScreenState) {
                 case RUNNING:

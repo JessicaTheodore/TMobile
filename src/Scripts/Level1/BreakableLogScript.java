@@ -16,6 +16,17 @@ public class BreakableLogScript extends Script {
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 
         scriptActions.add(new NPCChangeVisibilityScriptAction(Visibility.HIDDEN));
+        scriptActions.add(new ConditionalScriptAction() {{
+            addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
+                addRequirement(new FlagRequirement("brokeLog", false));
+                addScriptAction(new ChangeFlagScriptAction("brokeLog", true));
+            }});
+
+            addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
+                addRequirement(new FlagRequirement("brokeLog", true));
+                addScriptAction(new TextboxScriptAction("I sure love doing walrus things!"));
+            }});
+        }});
 
         return scriptActions;
     }
