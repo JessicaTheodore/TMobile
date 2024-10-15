@@ -47,7 +47,7 @@ public abstract class Player extends MapEntity {
     protected boolean isLocked = false;
 
     protected GameState gameState;
-
+    protected boolean pickedUpSlingshot;
     
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
         // super(spriteSheet, x, y, startingAnimationName);
@@ -164,7 +164,7 @@ public abstract class Player extends MapEntity {
         }
 
         // if the rock attack key is pressed, the player enters the ROCK_ATTACK state
-        if(Keyboard.isKeyDown(ROCK_ATTACK_KEY)){
+        if(Keyboard.isKeyDown(ROCK_ATTACK_KEY) && pickedUpSlingshot){
             playerState = PlayerState.ROCK_ATTACK;
         }
     }

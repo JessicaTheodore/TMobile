@@ -31,7 +31,7 @@ public class RockProjectile extends Player {
     @Override
     public void update() {
         // if timer is up, set map entity status to REMOVED
-        // the camera class will see this next frame and remove it permanently from the map
+        // the camera class will see this next frame and remove it permanently from the mapwd
         if (existenceFrames == 0) {
             this.mapEntityStatus = MapEntityStatus.REMOVED;
         } else {
