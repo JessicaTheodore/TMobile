@@ -2,6 +2,7 @@ package MapEditor;
 
 import Level.Map;
 import Maps.Level1;
+import Maps.PauseScreenMap;
 import Maps.TestMap;
 import Maps.TitleScreenMap;
 
@@ -13,6 +14,7 @@ public class EditorMaps {
             add("TestMap");
             add("TitleScreen");
             add("Level1");
+            add("PauseScreen");
         }};
     }
 
@@ -24,6 +26,8 @@ public class EditorMaps {
                 return new TitleScreenMap();
             case "Level1":
                 return new Level1();
+            case "PauseScreen":
+                return new PauseScreenMap();
             default:
                 throw new RuntimeException("Unrecognized map name");
         }

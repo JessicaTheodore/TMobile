@@ -49,12 +49,10 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new MenuScreen(this);
 						break;
 					case LEVEL:
-						if(level1start){
-							currentScreen = new PlayLevelScreen(this);
-							level1start = false;
-						}else{
-							currentScreen = paused;
-						}
+						
+						currentScreen = new PlayLevelScreen(this);
+						level1start = false;
+						
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
@@ -63,7 +61,6 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new IntroductionScreen(this);
 						break;
 					case PAUSE:
-						paused = currentScreen;
 						currentScreen = new PauseScreen(this);
 						break;
 				}

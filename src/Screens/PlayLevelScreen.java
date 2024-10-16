@@ -108,7 +108,7 @@ public class PlayLevelScreen extends Screen {
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             pauseOn = !pauseOn;
-            pauseScreen.changeStatus();
+            //pauseScreen.changeStatus();
             screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
         }

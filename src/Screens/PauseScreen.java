@@ -3,13 +3,17 @@ package Screens;
 import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.Sprite;
 import Level.FlagManager;
+import Maps.PauseScreenMap;
 import SpriteFont.SpriteFont;
+import Utils.Colors;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
+import Level.Map;
 
 public class PauseScreen extends Screen{
 
@@ -20,6 +24,8 @@ public class PauseScreen extends Screen{
     protected KeyLocker keyLocker = new KeyLocker();
     private PlayLevelScreen playLevelScreen ;
     protected ScreenCoordinator screenCoordinator;
+    private Sprite pauseSprite;
+    protected Map background;
 
     private Font maruMonica;
 
@@ -28,14 +34,11 @@ public class PauseScreen extends Screen{
         this.screenCoordinator = screenCoordinator;
 
         pauseMenu = ImageLoader.load("PauseScreen.png");
+        pauseSprite = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128)));
+        pauseSprite.setScale(3);
+        pauseSprite.setLocation(130, 100);  
     }
     
-    
-    public void changeStatus(){
-        pauseScreenOn = !pauseScreenOn;
-    }
-
-
     @Override
     public void initialize() {
 
@@ -53,25 +56,27 @@ public class PauseScreen extends Screen{
             } 
         System.out.println("pause screen");
         keyLocker.lockKey(Key.ESC);
-        words = new SpriteFont("Play Game", 200, 253, maruMonica.deriveFont(30f), new Color(49, 207, 240));
+        words = new SpriteFont("Pause Screen",180, 203, maruMonica.deriveFont(100f), new Color(49, 207, 240));
         words.setOutlineColor(Color.black);
         words.setOutlineThickness(3);
-        
-        try {
-            Thread.sleep(1);
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
 
+        background = new PauseScreenMap();
+        background.setAdjustCamera(false);
+        
+        keyLocker.lockKey(Key.ESC);
+
+        
     }
 
-    
-
+    public void changeStatus(){
+        pauseScreenOn = !pauseScreenOn;
+    }
 
     @Override
     public void update() {
-        keyLocker.unlockKey(Key.ESC);
+        if(Keyboard.isKeyUp(Key.ESC)){
+            keyLocker.unlockKey(Key.ESC);
+        }        
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)){
             screenCoordinator.setGameState(GameState.LEVEL);
             keyLocker.lockKey(Key.ESC);
@@ -79,12 +84,12 @@ public class PauseScreen extends Screen{
     }
 
     public void draw(GraphicsHandler graphicsHandler){
-        if(pauseScreenOn){
-            playLevelScreen.drawMap(graphicsHandler);
-            graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
-            graphicsHandler.drawImage((pauseMenu), 0, 0, 800, 550);
-            words.draw(graphicsHandler);
-        }
+        background.draw(graphicsHandler);
+        //pauseSprite.draw(graphicsHandler);
+        //playLevelScreen.drawMap(graphicsHandler);
+        //graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
+        //graphicsHandler.drawImage((pauseMenu), 0, 0, 800, 550);
+        words.draw(graphicsHandler);
     }
 }
 
