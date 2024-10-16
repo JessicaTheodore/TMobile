@@ -54,9 +54,8 @@ public class PauseScreen extends Screen{
             } catch (IOException e) {
                 e.printStackTrace();
             } 
-        System.out.println("pause screen");
         keyLocker.lockKey(Key.ESC);
-        words = new SpriteFont("Pause Screen",180, 203, maruMonica.deriveFont(100f), new Color(49, 207, 240));
+        words = new SpriteFont("Pause Screen",180, 203, maruMonica.deriveFont(100f), new Color(255, 255, 255));
         words.setOutlineColor(Color.black);
         words.setOutlineThickness(3);
 
