@@ -48,7 +48,7 @@ public class PlayLevelScreen extends Screen {
         pause.setLocation(130, 100);  
 
         helpStages[0] = true;
-        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("BreakLogHelp.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Help1.png", Colors.MAGENTA, 0, 0, 800, 605)));
         helpScreenSprite[0].setScale(1);
         helpScreenSprite[0].setLocation(0, 0); 
 
@@ -75,7 +75,7 @@ public class PlayLevelScreen extends Screen {
         helpScreen = new HelpScreen(map.getFlagManager());
 
         // Setup pause screen
-        pauseScreen = new PauseScreen(map.getFlagManager());
+        pauseScreen = new PauseScreen(screenCoordinator);
 
         // Setup player
         player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
@@ -109,6 +109,7 @@ public class PlayLevelScreen extends Screen {
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             pauseOn = !pauseOn;
             pauseScreen.changeStatus();
+            screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
         }
         if (Keyboard.isKeyUp(Key.H)) {
@@ -155,8 +156,8 @@ public class PlayLevelScreen extends Screen {
             }
             
         } else if(pauseOn){
-            map.draw(player, graphicsHandler);
-            pause.draw(graphicsHandler);
+            //map.draw(player, graphicsHandler);
+            //pause.draw(graphicsHandler);
         }
         else {
             switch (playLevelScreenState) {

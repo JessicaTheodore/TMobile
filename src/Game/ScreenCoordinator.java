@@ -5,6 +5,7 @@ import Engine.GraphicsHandler;
 import Engine.Screen;
 import Screens.CreditsScreen;
 import Screens.MenuScreen;
+import Screens.PauseScreen;
 import Screens.PlayLevelScreen;
 import Screens.IntroductionScreen;
 
@@ -15,6 +16,8 @@ import Screens.IntroductionScreen;
 public class ScreenCoordinator extends Screen {
 	// currently shown Screen
 	protected Screen currentScreen = new DefaultScreen();
+	protected boolean level1start = true;
+	protected Screen paused;
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
 	protected GameState gameState;
@@ -46,13 +49,22 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new MenuScreen(this);
 						break;
 					case LEVEL:
-						currentScreen = new PlayLevelScreen(this);
+						if(level1start){
+							currentScreen = new PlayLevelScreen(this);
+							level1start = false;
+						}else{
+							currentScreen = paused;
+						}
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
 						break;
 					case INTRO:
 						currentScreen = new IntroductionScreen(this);
+						break;
+					case PAUSE:
+						paused = currentScreen;
+						currentScreen = new PauseScreen(this);
 						break;
 				}
 				currentScreen.initialize();
