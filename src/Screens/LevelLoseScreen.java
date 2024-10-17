@@ -7,24 +7,30 @@ import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 
-// This class is for the win level screen
-public class WinScreen extends Screen {
-    protected SpriteFont winMessage;
+// This is the class for the level lose screen
+public class LevelLoseScreen extends Screen {
+    protected SpriteFont loseMessage;
     protected SpriteFont instructions;
     protected KeyLocker keyLocker = new KeyLocker();
     protected PlayLevelScreen playLevelScreen;
     private Font maruMonica;
 
-    public WinScreen(PlayLevelScreen playLevelScreen) {
+    public LevelLoseScreen(PlayLevelScreen playLevelScreen) {
         this.playLevelScreen = playLevelScreen;
         initialize();
     }
 
+    // super("title_screen_map.txt", new CommonTileset());
+    // back = new Sprite(ImageLoader.loadSubImage("Intro.png", Colors.MAGENTA, 0, 0, 800, 600));
+    // back.setScale(1);
+    // back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+    // back.setLocation(0, 0);
+
     @Override
     public void initialize() {
 
-        //importing font type
-        try {
+         //importing font type
+         try {
             InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
             if (is != null) {
                 maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
@@ -37,16 +43,16 @@ public class WinScreen extends Screen {
             e.printStackTrace();
         }
 
-        winMessage = new SpriteFont("You win!", 350, 239, maruMonica.deriveFont(30f), Color.white);
-        instructions = new SpriteFont("Press Space to play again or Escape to go back to the main menu", 120, 279, maruMonica.deriveFont(30f), Color.white);
-        keyLocker.lockKey(Key.SPACE);
+        loseMessage = new SpriteFont("The Giant has claimed another soul.", 350, 239, maruMonica.deriveFont(20f), Color.white);
+        instructions = new SpriteFont("Press Space to restart level or Escape to go back to the main menu", 120, 279, maruMonica.deriveFont(20f), Color.white);
+        keyLocker.lockKey(Key.E);
         keyLocker.lockKey(Key.ESC);
     }
 
     @Override
     public void update() {
-        if (Keyboard.isKeyUp(Key.SPACE)) {
-            keyLocker.unlockKey(Key.SPACE);
+        if (Keyboard.isKeyUp(Key.E)) {
+            keyLocker.unlockKey(Key.E);
         }
         if (Keyboard.isKeyUp(Key.ESC)) {
             keyLocker.unlockKey(Key.ESC);
@@ -62,7 +68,7 @@ public class WinScreen extends Screen {
 
     public void draw(GraphicsHandler graphicsHandler) {
         graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.black);
-        winMessage.draw(graphicsHandler);
+        loseMessage.draw(graphicsHandler);
         instructions.draw(graphicsHandler);
     }
 }
