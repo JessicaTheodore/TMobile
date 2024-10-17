@@ -178,34 +178,42 @@ public abstract class Player extends MapEntity {
 
         // if walk left key is pressed, move player to the left
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
-            moveAmountX -= walkSpeed;
-            facingDirection = Direction.LEFT;
-            currentWalkingXDirection = Direction.LEFT;
-            lastWalkingXDirection = Direction.LEFT;
+            if(this.getX() + moveAmountX - walkSpeed > -50){
+                moveAmountX -= walkSpeed;
+                facingDirection = Direction.LEFT;
+                currentWalkingXDirection = Direction.LEFT;
+                lastWalkingXDirection = Direction.LEFT;
+            }
         }
 
         // if walk right key is pressed, move player to the right
         else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
-            moveAmountX += walkSpeed;
-            facingDirection = Direction.RIGHT;
-            currentWalkingXDirection = Direction.RIGHT;
-            lastWalkingXDirection = Direction.RIGHT;
+            if(this.getX() + moveAmountX - walkSpeed < 3260){
+                moveAmountX += walkSpeed;
+                facingDirection = Direction.RIGHT;
+                currentWalkingXDirection = Direction.RIGHT;
+                lastWalkingXDirection = Direction.RIGHT;
+            }
         }
         else {
             currentWalkingXDirection = Direction.NONE;
         }
 
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
+            if(this.getY() + moveAmountX - walkSpeed > -50){
             moveAmountY -= walkSpeed;
             facingDirection = Direction.UP;
             currentWalkingYDirection = Direction.UP;
             lastWalkingYDirection = Direction.UP;
+            }
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
+            if(this.getY() + moveAmountX - walkSpeed < 2760){
             moveAmountY += walkSpeed;
             facingDirection = Direction.DOWN;
             currentWalkingYDirection = Direction.DOWN;
             lastWalkingYDirection = Direction.DOWN;
+            }
         }
         else {
             currentWalkingYDirection = Direction.NONE;
