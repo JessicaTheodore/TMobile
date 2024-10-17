@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
+import Level.FlagManager;
 import Screens.ControlsHome;
 import Screens.ControlsScreen;
 import Screens.CreditsScreen;
@@ -30,6 +31,7 @@ public class ScreenCoordinator extends Screen {
 	protected Screen hold;
 	protected Screen level1 = new PlayLevelScreen(this);
 	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
+	protected FlagManager flagManager = new FlagManager();
 
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
@@ -49,6 +51,7 @@ public class ScreenCoordinator extends Screen {
 	public void initialize() {
 		// start game off with Menu Screen
 		gameState = GameState.MENU;
+		flagManager.addFlag("fresh", true);
 	}
 
 	@Override
