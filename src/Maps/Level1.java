@@ -1,5 +1,6 @@
 package Maps;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 // import Engine.GraphicsHandler;
@@ -49,7 +50,7 @@ public class Level1 extends Map {
         breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
 
-        BreakableBranch breakableBranch = new BreakableBranch(1, getMapTile(11,4).getLocation());
+        BreakableBranch breakableBranch = new BreakableBranch(1, new Point(504,64));
         breakableBranch.setInteractScript(new BreakableBranchScript());
         npcs.add(breakableBranch);
 
