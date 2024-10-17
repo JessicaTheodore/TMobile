@@ -52,7 +52,7 @@ public class MenuScreen extends Screen {
         playGame = new SpriteFont("Play Game", 200, 253, maruMonica.deriveFont(30f), Color.BLACK);
         playGame.setOutlineColor(Color.white);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("CREDITS", 200, 393, maruMonica.deriveFont(30f), Color.white);
+        credits = new SpriteFont("Credits", 200, 393, maruMonica.deriveFont(30f), Color.white);
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
         controls = new SpriteFont("Controls", 200, 323, maruMonica.deriveFont(30f), Color.white);
