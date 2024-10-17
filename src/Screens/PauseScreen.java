@@ -26,6 +26,14 @@ public class PauseScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     private Sprite pauseSprite;
     protected Map background;
+    protected SpriteFont controls;
+    protected SpriteFont exit;
+    protected SpriteFont restart;
+    protected int curr = 0;
+    protected int chosen;
+    private int timer;
+    private int xLoc;
+    private int yLoc;
 
     private Font maruMonica;
 
@@ -55,9 +63,23 @@ public class PauseScreen extends Screen{
                 e.printStackTrace();
             } 
         keyLocker.lockKey(Key.ESC);
-        words = new SpriteFont("Pause Screen",180, 203, maruMonica.deriveFont(100f), new Color(255, 255, 255));
+        words = new SpriteFont("Pause Screen",180, 50, maruMonica.deriveFont(100f), new Color(255, 255, 255));
         words.setOutlineColor(Color.black);
         words.setOutlineThickness(3);
+
+        controls = new SpriteFont("Controls",330, 200, maruMonica.deriveFont(40f), new Color(255, 255, 255));
+        controls.setOutlineColor(Color.black);
+        controls.setOutlineThickness(3);
+
+        exit = new SpriteFont("Exit",330, 260, maruMonica.deriveFont(40f), new Color(255, 255, 255));
+        exit.setOutlineColor(Color.black);
+        exit.setOutlineThickness(3);
+
+        restart = new SpriteFont("Restart",330, 320, maruMonica.deriveFont(40f), new Color(255, 255, 255));
+        restart.setOutlineColor(Color.black);
+        restart.setOutlineThickness(3);
+
+        timer = 0;
 
         background = new PauseScreenMap();
         background.setAdjustCamera(false);
@@ -73,9 +95,67 @@ public class PauseScreen extends Screen{
 
     @Override
     public void update() {
+        if(Keyboard.isKeyDown(Key.S) && timer == 0){
+            timer = 14;
+            curr++;
+        }else if(Keyboard.isKeyDown(Key.W) && timer == 0){
+            timer = 14;
+            curr--;
+        }else{
+            if(timer > 0){
+                timer--;
+            }
+        }
+
+        if(curr > 2){
+            curr = 0;
+        }else if(curr < 0){
+            curr = 1;
+        }
+
+        if(curr == 0){
+            controls.setColor(new Color(0, 0, 0));
+            controls.setOutlineColor(new Color(255, 255, 255));
+            exit.setColor(new Color(255, 255, 255));
+            exit.setOutlineColor(new Color(0, 0, 0));
+            restart.setColor(new Color(255, 255, 255));
+            restart.setOutlineColor(new Color(0, 0, 0));
+            xLoc = 300;
+            yLoc = 212;
+        }else if(curr == 1){
+            exit.setColor(new Color(0, 0, 0));
+            controls.setColor(new Color(255, 255, 255));
+            exit.setOutlineColor(new Color(255, 255, 255));
+            controls.setOutlineColor(new Color(0, 0, 0));
+            restart.setColor(new Color(255, 255, 255));
+            restart.setOutlineColor(new Color(0, 0, 0));
+            xLoc = 300;
+            yLoc = 272;
+        }else if(curr == 2){
+            exit.setColor(new Color(255, 255, 255));
+            controls.setColor(new Color(255, 255, 255));
+            exit.setOutlineColor(new Color(0, 0, 0));
+            controls.setOutlineColor(new Color(0, 0, 0));
+            restart.setColor(new Color(0, 0, 0));
+            restart.setOutlineColor(new Color(255, 255, 255));
+            xLoc = 300;
+            yLoc = 332;
+        }
+
         if(Keyboard.isKeyUp(Key.ESC)){
             keyLocker.unlockKey(Key.ESC);
-        }        
+        } 
+        
+        if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
+            chosen = curr;
+            if (chosen == 0) {
+                //goes into the introduction screen dialogue
+                screenCoordinator.setGameState(GameState.CONTROLS);
+            } else if (chosen == 1) {
+                screenCoordinator.setGameState(GameState.LEVEL);
+            }
+        }
+
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)){
             screenCoordinator.setGameState(GameState.LEVEL);
             keyLocker.lockKey(Key.ESC);
@@ -89,6 +169,10 @@ public class PauseScreen extends Screen{
         //graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
         //graphicsHandler.drawImage((pauseMenu), 0, 0, 800, 550);
         words.draw(graphicsHandler);
+        controls.draw(graphicsHandler);
+        exit.draw(graphicsHandler);
+        restart.draw(graphicsHandler);
+        graphicsHandler.drawFilledRectangleWithBorder(xLoc, yLoc, 20, 20, new Color(255, 255, 255), Color.black, 2);
     }
 }
 

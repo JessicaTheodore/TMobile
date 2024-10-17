@@ -19,9 +19,11 @@ public class ControlsScreen extends Screen{
     protected ScreenCoordinator screenCoordinator;
     private Font maruMonica;
     protected KeyLocker keyLocker = new KeyLocker();
-    private SpriteFont[] controls = new SpriteFont[8];
+    private SpriteFont[] controls = new SpriteFont[9];
     private SpriteFont controlTitle;
     protected Map background;
+    protected SpriteFont exit;
+    private int timer = 0;
 
     public ControlsScreen(ScreenCoordinator screenCoordinator){
         this.screenCoordinator = screenCoordinator;
@@ -45,15 +47,20 @@ public class ControlsScreen extends Screen{
         controlTitle = new SpriteFont("Contols",310, 25, maruMonica.deriveFont(70f), new Color(255, 255, 255));
         controlTitle.setOutlineColor(Color.black);
         controlTitle.setOutlineThickness(3);
+
+        exit = new SpriteFont("Exit",730, 525, maruMonica.deriveFont(40f), new Color(0, 0, 0));
+        exit.setOutlineColor(Color.WHITE);
+        exit.setOutlineThickness(3);
         
         controls[0] = new SpriteFont("W: Move Up",340, 130, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[1] = new SpriteFont("A: Move Left",335, 170, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[2] = new SpriteFont("S: Move Down",325, 210, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[3] = new SpriteFont("D: Move Right",328, 250, maruMonica.deriveFont(30f), new Color(255, 255, 255));
-        controls[4] = new SpriteFont("H: Help Screen",322, 290, maruMonica.deriveFont(30f), new Color(255, 255, 255));
-        controls[5] = new SpriteFont("ESC: Pasue / Exit",310, 330, maruMonica.deriveFont(30f), new Color(255, 255, 255));
-        controls[6] = new SpriteFont("L Shift: Ranged Attack",283, 370, maruMonica.deriveFont(30f), new Color(255, 255, 255));
-        controls[7] = new SpriteFont("Space: Mele Attack",300, 410, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[4] = new SpriteFont("E: Interact",345, 290, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[5] = new SpriteFont("H: Help Screen",322, 330, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[6] = new SpriteFont("ESC: Pasue / Exit",310, 370, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[7] = new SpriteFont("L Shift: Ranged Attack",283, 410, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[8] = new SpriteFont("Space: Mele Attack",300, 450, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         for(int i = 0; i < controls.length; i++){
             controls[i].setOutlineColor(Color.black);
             controls[i].setOutlineThickness(3);
@@ -63,16 +70,28 @@ public class ControlsScreen extends Screen{
         background.setAdjustCamera(false);
 
         keyLocker.lockKey(Key.ESC);
+        keyLocker.lockKey(Key.E);
+
     }
 
     @Override
     public void update() {
         if(Keyboard.isKeyUp(Key.ESC)){
             keyLocker.unlockKey(Key.ESC);
+        }  
+        if(Keyboard.isKeyUp(Key.E)){
+            keyLocker.unlockKey(Key.E);
         }        
-        if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)){
-            screenCoordinator.setGameState(GameState.LEVEL);
+        if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && timer == 0){
+            screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
+        }else if(Keyboard.isKeyDown(Key.E) && !keyLocker.isKeyLocked(Key.E) && timer == 0){
+            screenCoordinator.setGameState(GameState.PAUSE);
+            keyLocker.lockKey(Key.E);
+        }else{
+            if(timer > 0){
+                timer --;
+            }
         }
     }
 
@@ -83,7 +102,8 @@ public class ControlsScreen extends Screen{
         for(int i = 0; i < controls.length; i++){
             controls[i].draw(graphicsHandler);
         }
-        
+        exit.draw(graphicsHandler);
+        graphicsHandler.drawFilledRectangleWithBorder(695, 534, 20, 20, Color.WHITE, Color.black, 2);
     }
     
 }
