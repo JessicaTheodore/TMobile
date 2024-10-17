@@ -48,7 +48,7 @@ public class PlayLevelScreen extends Screen {
         pause.setLocation(130, 100);  
 
         helpStages[0] = true;
-        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Help1.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("BreakLogHelp.png", Colors.MAGENTA, 0, 0, 800, 605)));
         helpScreenSprite[0].setScale(1);
         helpScreenSprite[0].setLocation(0, 0); 
 

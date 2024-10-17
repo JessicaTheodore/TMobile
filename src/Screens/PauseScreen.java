@@ -29,6 +29,7 @@ public class PauseScreen extends Screen{
     protected SpriteFont controls;
     protected SpriteFont exit;
     protected SpriteFont restart;
+    protected SpriteFont menu;
     protected int curr = 0;
     protected int chosen;
     private int timer;
@@ -79,6 +80,10 @@ public class PauseScreen extends Screen{
         restart.setOutlineColor(Color.black);
         restart.setOutlineThickness(3);
 
+        menu = new SpriteFont("Menu",330, 380, maruMonica.deriveFont(40f), new Color(255, 255, 255));
+        menu.setOutlineColor(Color.black);
+        menu.setOutlineThickness(3);
+
         timer = 0;
 
         background = new PauseScreenMap();
@@ -107,10 +112,10 @@ public class PauseScreen extends Screen{
             }
         }
 
-        if(curr > 2){
+        if(curr > 3){
             curr = 0;
         }else if(curr < 0){
-            curr = 1;
+            curr = 3;
         }
 
         if(curr == 0){
@@ -120,6 +125,8 @@ public class PauseScreen extends Screen{
             exit.setOutlineColor(new Color(0, 0, 0));
             restart.setColor(new Color(255, 255, 255));
             restart.setOutlineColor(new Color(0, 0, 0));
+            menu.setColor(Color.white);
+            menu.setOutlineColor(Color.black);
             xLoc = 300;
             yLoc = 212;
         }else if(curr == 1){
@@ -129,6 +136,8 @@ public class PauseScreen extends Screen{
             controls.setOutlineColor(new Color(0, 0, 0));
             restart.setColor(new Color(255, 255, 255));
             restart.setOutlineColor(new Color(0, 0, 0));
+            menu.setColor(Color.white);
+            menu.setOutlineColor(Color.black);
             xLoc = 300;
             yLoc = 272;
         }else if(curr == 2){
@@ -138,8 +147,22 @@ public class PauseScreen extends Screen{
             controls.setOutlineColor(new Color(0, 0, 0));
             restart.setColor(new Color(0, 0, 0));
             restart.setOutlineColor(new Color(255, 255, 255));
+            menu.setColor(Color.white);
+            menu.setOutlineColor(Color.black);
             xLoc = 300;
             yLoc = 332;
+        }
+        else if(curr == 3){
+            exit.setColor(new Color(255, 255, 255));
+            controls.setColor(new Color(255, 255, 255));
+            exit.setOutlineColor(new Color(0, 0, 0));
+            controls.setOutlineColor(new Color(0, 0, 0));
+            restart.setColor(Color.white);
+            restart.setOutlineColor(Color.black);
+            menu.setColor(Color.black);
+            menu.setOutlineColor(Color.white);
+            xLoc = 300;
+            yLoc = 392;
         }
 
         if(Keyboard.isKeyUp(Key.ESC)){
@@ -153,6 +176,10 @@ public class PauseScreen extends Screen{
                 screenCoordinator.setGameState(GameState.CONTROLS);
             } else if (chosen == 1) {
                 screenCoordinator.setGameState(GameState.LEVEL);
+            }else if (chosen == 2) {
+                screenCoordinator.setGameState(GameState.LEVEL);
+            }else if (chosen == 3) {
+                screenCoordinator.setGameState(GameState.MENU);
             }
         }
 
@@ -172,6 +199,7 @@ public class PauseScreen extends Screen{
         controls.draw(graphicsHandler);
         exit.draw(graphicsHandler);
         restart.draw(graphicsHandler);
+        menu.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(xLoc, yLoc, 20, 20, new Color(255, 255, 255), Color.black, 2);
     }
 }
