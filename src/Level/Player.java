@@ -208,7 +208,7 @@ public abstract class Player extends MapEntity {
             }
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
-            if(this.getY() + moveAmountX - walkSpeed < 2760){
+            if(this.getY() + moveAmountX - walkSpeed < 2771){
             moveAmountY += walkSpeed;
             facingDirection = Direction.DOWN;
             currentWalkingYDirection = Direction.DOWN;
