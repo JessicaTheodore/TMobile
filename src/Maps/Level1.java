@@ -21,6 +21,7 @@ import Utils.Point;
 // import NPCs.Bear;
 import NPCs.BreakableLog;
 import NPCs.Bear;
+import NPCs.BreakableBranch;
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import Scripts.TestMap.BugScript;
@@ -28,6 +29,7 @@ import NPCs.Bear;
 // import Scripts.TestMap.WalrusScript;
 import Scripts.Level1.BreakableLogScript;
 import Scripts.Level1.BeatBear;
+import Scripts.Level1.BreakableBranchScript;
 import Scripts.TestMap.LostBallScript;
 
 public class Level1 extends Map {
@@ -47,8 +49,12 @@ public class Level1 extends Map {
         breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
 
-        Bear bear = new Bear(0, getMapTile(48,35).getLocation());
-       bear.setInteractScript(new BeatBear());
+        BreakableBranch breakableBranch = new BreakableBranch(1, getMapTile(11,4).getLocation());
+        breakableBranch.setInteractScript(new BreakableBranchScript());
+        npcs.add(breakableBranch);
+
+        Bear bear = new Bear(2, getMapTile(48,35).getLocation());
+        bear.setInteractScript(new BeatBear());
         npcs.add(bear);
 
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
