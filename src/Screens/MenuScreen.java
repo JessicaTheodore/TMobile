@@ -48,10 +48,10 @@ public class MenuScreen extends Screen {
 
         //text = new SpriteFont(currentTextItem.getText(), fontX, fontY, maruMonica.deriveFont(30f), Color.black);
 
-        playGame = new SpriteFont("Play Game", 200, 253, maruMonica.deriveFont(30f), new Color(49, 207, 240));
-        playGame.setOutlineColor(Color.black);
+        playGame = new SpriteFont("Play Game", 200, 253, maruMonica.deriveFont(30f), Color.BLACK);
+        playGame.setOutlineColor(Color.white);
         playGame.setOutlineThickness(3);
-        credits = new SpriteFont("CREDITS", 200, 323, maruMonica.deriveFont(30f), new Color(49, 207, 240));
+        credits = new SpriteFont("CREDITS", 200, 323, maruMonica.deriveFont(30f), Color.white);
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
         title = new SpriteFont("The Legend Of Hobbomock", 100, 55, maruMonica.deriveFont(65f), new Color(255,255,255));
@@ -90,13 +90,17 @@ public class MenuScreen extends Screen {
 
         // sets location for blue square in front of text (pointerLocation) and also sets color of spritefont text based on which menu item is being hovered
         if (currentMenuItemHovered == 0) {
-            playGame.setColor(new Color(255, 215, 0));
-            credits.setColor(new Color(49, 207, 240));
+            playGame.setColor(Color.black);
+            playGame.setOutlineColor(Color.white);
+            credits.setColor(Color.white);
+            credits.setOutlineColor(Color.black);
             pointerLocationX = 170;
             pointerLocationY = 260;
         } else if (currentMenuItemHovered == 1) {
-            playGame.setColor(new Color(49, 207, 240));
-            credits.setColor(new Color(255, 215, 0));
+            playGame.setColor(Color.white);
+            playGame.setOutlineColor(Color.black);
+            credits.setColor(Color.black);
+            credits.setOutlineColor(Color.white);
             pointerLocationX = 170;
             pointerLocationY = 330;
         }
@@ -121,7 +125,7 @@ public class MenuScreen extends Screen {
         playGame.draw(graphicsHandler);
         credits.draw(graphicsHandler);
         title.draw(graphicsHandler);
-        graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, new Color(49, 207, 240), Color.black, 2);
+        graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, Color.white, Color.black, 2);
     }
     
 }
