@@ -1,5 +1,7 @@
 package Game;
 
+import java.util.ArrayList;
+
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
@@ -9,6 +11,12 @@ import Screens.CreditsScreen;
 import Screens.MenuScreen;
 import Screens.PauseScreen;
 import Screens.PlayLevelScreen;
+import ScriptActions.ChangeFlagScriptAction;
+import ScriptActions.ConditionalScriptAction;
+import ScriptActions.ConditionalScriptActionGroup;
+import ScriptActions.FlagRequirement;
+import ScriptActions.ScriptAction;
+import ScriptActions.TextboxScriptAction;
 import Screens.IntroductionScreen;
 
 /*
@@ -19,7 +27,10 @@ public class ScreenCoordinator extends Screen {
 	// currently shown Screen
 	protected Screen currentScreen = new DefaultScreen();
 	protected boolean level1start = true;
-	protected Screen paused;
+	protected Screen hold;
+	protected Screen level1 = new PlayLevelScreen(this);
+	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
+
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
 	protected GameState gameState;
@@ -51,10 +62,7 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new MenuScreen(this);
 						break;
 					case LEVEL:
-						
 						currentScreen = new PlayLevelScreen(this);
-						level1start = false;
-						
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);

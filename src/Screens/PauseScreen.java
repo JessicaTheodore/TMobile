@@ -72,7 +72,7 @@ public class PauseScreen extends Screen{
         controls.setOutlineColor(Color.black);
         controls.setOutlineThickness(3);
 
-        exit = new SpriteFont("Exit",330, 260, maruMonica.deriveFont(40f), new Color(255, 255, 255));
+        exit = new SpriteFont("Resume",330, 260, maruMonica.deriveFont(40f), new Color(255, 255, 255));
         exit.setOutlineColor(Color.black);
         exit.setOutlineThickness(3);
 
