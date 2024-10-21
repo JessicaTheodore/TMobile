@@ -1,11 +1,23 @@
 package Game;
 
+import java.util.ArrayList;
+
 import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
+import Level.FlagManager;
+import Screens.ControlsHome;
+import Screens.ControlsScreen;
 import Screens.CreditsScreen;
 import Screens.MenuScreen;
+import Screens.PauseScreen;
 import Screens.PlayLevelScreen;
+import ScriptActions.ChangeFlagScriptAction;
+import ScriptActions.ConditionalScriptAction;
+import ScriptActions.ConditionalScriptActionGroup;
+import ScriptActions.FlagRequirement;
+import ScriptActions.ScriptAction;
+import ScriptActions.TextboxScriptAction;
 import Screens.IntroductionScreen;
 
 /*
@@ -15,6 +27,12 @@ import Screens.IntroductionScreen;
 public class ScreenCoordinator extends Screen {
 	// currently shown Screen
 	protected Screen currentScreen = new DefaultScreen();
+	protected boolean level1start = true;
+	protected Screen hold;
+	protected Screen level1 = new PlayLevelScreen(this);
+	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
+	protected FlagManager flagManager = new FlagManager();
+
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
 	protected GameState gameState;
@@ -33,6 +51,7 @@ public class ScreenCoordinator extends Screen {
 	public void initialize() {
 		// start game off with Menu Screen
 		gameState = GameState.MENU;
+		flagManager.addFlag("fresh", true);
 	}
 
 	@Override
@@ -53,6 +72,15 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case INTRO:
 						currentScreen = new IntroductionScreen(this);
+						break;
+					case PAUSE:
+						currentScreen = new PauseScreen(this);
+						break;
+					case CONTROLS:
+						currentScreen = new ControlsScreen(this);
+						break;
+					case CONTROLSHOME:
+						currentScreen = new ControlsHome(this);
 						break;
 				}
 				currentScreen.initialize();

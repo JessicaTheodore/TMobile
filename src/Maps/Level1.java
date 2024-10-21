@@ -1,5 +1,6 @@
 package Maps;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
 // import Engine.GraphicsHandler;
@@ -23,8 +24,13 @@ import Enemies.BearEnemy;
 import Utils.Point;
 // import NPCs.Bear;
 import NPCs.BreakableLog;
+<<<<<<< HEAD
 import NPCs.Slingshot;
 
+=======
+import NPCs.Bear;
+import NPCs.BreakableBranch;
+>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import Scripts.TestMap.BugScript;
@@ -32,6 +38,7 @@ import NPCs.Slingshot;
 // import Scripts.TestMap.WalrusScript;
 import Scripts.Level1.BreakableLogScript;
 import Scripts.Level1.BeatBear;
+import Scripts.Level1.BreakableBranchScript;
 import Scripts.TestMap.LostBallScript;
 
 public class Level1 extends Map {

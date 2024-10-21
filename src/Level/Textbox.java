@@ -180,7 +180,7 @@ public class Textbox {
         graphicsHandler.drawFilledRectangleWithBorder(x, y, width, height, transparency, Color.darkGray, 3);
         SpriteFont pressE = new SpriteFont("(E)", x + width - 35, y + height - 30, maruMonica.deriveFont(24f), Color.black);
         pressE.draw(graphicsHandler);
-        
+             
         if (text != null) {
             // draw text in textbox
             text.drawWithParsedNewLines(graphicsHandler, 10);

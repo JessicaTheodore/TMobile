@@ -77,9 +77,9 @@ public class Camera extends Rectangle {
             npc.update(player);
         }
 
-        for (Enemy enemy : activeEnemies) {
-            enemy.update(player, Enemy enemy, PlayerState playerState);
-        }
+        // for (Enemy enemy : activeEnemies) {
+        //     enemy.update(player, Enemy enemy, PlayerState playerState);
+        // }
     }
 
     // updates any currently running script

@@ -35,6 +35,7 @@ public class PlayLevelScreen extends Screen {
     protected final int helpSize = 99;
     protected boolean[] helpStages = new boolean[helpSize]; // 0: Starting area , 1: 
     protected Sprite[] helpScreenSprite = new Sprite[helpSize];
+    protected boolean start = true;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -59,39 +60,46 @@ public class PlayLevelScreen extends Screen {
     }
 
     public void initialize() {
-        // Setup flag manager
         flagManager = new FlagManager();
-        flagManager.addFlag("gameStart", false);
-        flagManager.addFlag("hasTalkedToWalrus", false);
-        flagManager.addFlag("hasTalkedToDinosaur", false);
-        flagManager.addFlag("hasFoundBall", false);
-        flagManager.addFlag("brokeLog", false);
 
-        // Define/setup map
-        map = new Level1();
-        map.setFlagManager(flagManager);
+        if(start){
+            System.out.println("flag is true");
+            // Setup flag manager
+            flagManager.addFlag("gameStart", false);
+            flagManager.addFlag("hasTalkedToWalrus", false);
+            flagManager.addFlag("hasTalkedToDinosaur", false);
+            flagManager.addFlag("hasFoundBall", false);
+            flagManager.addFlag("brokeLog", false);
 
-        // Setup help screen
-        helpScreen = new HelpScreen(map.getFlagManager());
+            // Define/setup map
+            map = new Level1();
+            map.setFlagManager(flagManager);
 
-        // Setup pause screen
-        pauseScreen = new PauseScreen(map.getFlagManager());
+            // Setup help screen
+            helpScreen = new HelpScreen(map.getFlagManager());
 
-        // Setup player
-        player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
-        player.setMap(map);
-        playLevelScreenState = PlayLevelScreenState.RUNNING;
-        player.setFacingDirection(Direction.DOWN);
-        map.setPlayer(player);
+            // Setup pause screen
+            pauseScreen = new PauseScreen(screenCoordinator);
 
-        // Let pieces of map know which button to listen for as the "interact" button
-        map.getTextbox().setInteractKey(player.getInteractKey());
+            // Setup player
+            player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            player.setMap(map);
+            playLevelScreenState = PlayLevelScreenState.RUNNING;
+            player.setFacingDirection(Direction.DOWN);
+            map.setPlayer(player);
 
-        // Preload all scripts ahead of time rather than loading them dynamically
-        map.preloadScripts();
+            // Let pieces of map know which button to listen for as the "interact" button
+            map.getTextbox().setInteractKey(player.getInteractKey());
 
-        // Initialize win screen
-        winScreen = new WinScreen(this);
+            // Preload all scripts ahead of time rather than loading them dynamically
+            map.preloadScripts();
+
+            // Initialize win screen
+            winScreen = new WinScreen(this);
+        }else{
+            System.out.println("flag is false");
+        }
+        
     }
 
     public void update() {
@@ -108,7 +116,9 @@ public class PlayLevelScreen extends Screen {
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             pauseOn = !pauseOn;
-            pauseScreen.changeStatus();
+            //pauseScreen.changeStatus();
+            start = false;
+            screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
         }
         if (Keyboard.isKeyUp(Key.H)) {
@@ -155,8 +165,8 @@ public class PlayLevelScreen extends Screen {
             }
             
         } else if(pauseOn){
-            map.draw(player, graphicsHandler);
-            pause.draw(graphicsHandler);
+            //map.draw(player, graphicsHandler);
+            //pause.draw(graphicsHandler);
         }
         else {
             switch (playLevelScreenState) {

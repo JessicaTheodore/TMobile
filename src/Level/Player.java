@@ -88,14 +88,14 @@ public abstract class Player extends MapEntity {
         player.hurtPlayer(this);
     }
 
-    public void hurtEnemy(MapEntity mapEntity){
-        if(mapEntity instanceof Enemy && enemyHP > 0){
-            enemyHP--;            
-        } 
-        if(enemyHP == 0){
-            // this is where I want to put the code of getting rid of the enemy
-        }
-    }
+    // public void hurtEnemy(MapEntity mapEntity){
+    //     if(mapEntity instanceof Enemy && enemyHP > 0){
+    //         enemyHP--;            
+    //     } 
+    //     if(enemyHP == 0){
+    //         // this is where I want to put the code of getting rid of the enemy
+    //     }
+    // }
 
     // based on player's current state, call appropriate player state handling method
     protected void handlePlayerState() {
@@ -192,7 +192,9 @@ public abstract class Player extends MapEntity {
 
         // if walk left key is pressed, move player to the left
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
-            moveAmountX -= walkSpeed;
+            if(this.getX() + moveAmountX - walkSpeed > -50){
+                moveAmountX -= walkSpeed;
+            }
             facingDirection = Direction.LEFT;
             currentWalkingXDirection = Direction.LEFT;
             lastWalkingXDirection = Direction.LEFT;
@@ -200,7 +202,9 @@ public abstract class Player extends MapEntity {
 
         // if walk right key is pressed, move player to the right
         else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
-            moveAmountX += walkSpeed;
+            if(this.getX() + moveAmountX - walkSpeed < 3260){
+                moveAmountX += walkSpeed;
+            }
             facingDirection = Direction.RIGHT;
             currentWalkingXDirection = Direction.RIGHT;
             lastWalkingXDirection = Direction.RIGHT;
@@ -210,13 +214,17 @@ public abstract class Player extends MapEntity {
         }
 
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
+            if(this.getY() + moveAmountX - walkSpeed > -50){
             moveAmountY -= walkSpeed;
+            }
             facingDirection = Direction.UP;
             currentWalkingYDirection = Direction.UP;
             lastWalkingYDirection = Direction.UP;
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
+            if(this.getY() + moveAmountX - walkSpeed < 2771){
             moveAmountY += walkSpeed;
+            }
             facingDirection = Direction.DOWN;
             currentWalkingYDirection = Direction.DOWN;
             lastWalkingYDirection = Direction.DOWN;

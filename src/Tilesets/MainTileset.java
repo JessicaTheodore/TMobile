@@ -397,6 +397,116 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(leaves4Tile);
 
+        // Leaves top left, Grass bottom right
+
+        Frame leavesTL_grassBR_Frame = new FrameBuilder(getSubImage(3, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesTL_grassBR_Tile = new MapTileBuilder(grassFrame)
+            .withTopLayer(leavesTL_grassBR_Frame);
+
+        mapTiles.add(leavesTL_grassBR_Tile);
+
+        // Leaves top right, Grass bottom left
+
+        Frame leavesTR_grassBL_Frame = new FrameBuilder(getSubImage(3, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesTR_grassBL_Tile = new MapTileBuilder(grassFrame)
+            .withTopLayer(leavesTR_grassBL_Frame);
+
+        mapTiles.add(leavesTR_grassBL_Tile);
+
+        // Leaves bottom left, Grass top right
+
+        Frame leavesBL_grassTR_Frame = new FrameBuilder(getSubImage(4, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesBL_grassTR_Tile = new MapTileBuilder(grassFrame)
+            .withTopLayer(leavesBL_grassTR_Frame);
+
+        mapTiles.add(leavesBL_grassTR_Tile);
+
+        // Leaves bottom right, Grass top left
+
+        Frame leavesBR_grassTL_Frame = new FrameBuilder(getSubImage(4, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesBR_grassTL_Tile = new MapTileBuilder(grassFrame)
+            .withTopLayer(leavesBR_grassTL_Frame);
+
+        mapTiles.add(leavesBR_grassTL_Tile);
+
+        // Leaves top left, Dirt bottom right
+
+        Frame leavesTL_dirtBR_Frame = new FrameBuilder(getSubImage(3, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesTL_dirtBR_Tile = new MapTileBuilder(dirtFrame)
+            .withTopLayer(leavesTL_dirtBR_Frame);
+
+        mapTiles.add(leavesTL_dirtBR_Tile);
+
+        // Leaves top right, Dirt bottom left
+
+        Frame leavesTR_dirtBL_Frame = new FrameBuilder(getSubImage(3, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesTR_dirtBL_Tile = new MapTileBuilder(dirtFrame)
+            .withTopLayer(leavesTR_dirtBL_Frame);
+
+        mapTiles.add(leavesTR_dirtBL_Tile);
+
+        // Leaves bottom left, Dirt top right
+
+        Frame leavesBL_dirtTR_Frame = new FrameBuilder(getSubImage(4, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesBL_dirtTR_Tile = new MapTileBuilder(dirtFrame)
+            .withTopLayer(leavesBL_dirtTR_Frame);
+
+        mapTiles.add(leavesBL_dirtTR_Tile);
+
+        // Leaves bottom right, Dirt top left
+
+        Frame leavesBR_dirtTL_Frame = new FrameBuilder(getSubImage(4, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesBR_dirtTL_Tile = new MapTileBuilder(dirtFrame)
+            .withTopLayer(leavesBR_dirtTL_Frame);
+
+        mapTiles.add(leavesBR_dirtTL_Tile);
+
+        // Leaves peak, Grass background
+
+        Frame leavesPeak_grass_Frame = new FrameBuilder(getSubImage(3, 4))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesPeak_grass_Tile = new MapTileBuilder(grassFrame)
+            .withTopLayer(leavesPeak_grass_Frame);
+
+        mapTiles.add(leavesPeak_grass_Tile);
+
+        // Leaves peak, Dirt background
+
+        Frame leavesPeak_dirt_Frame = new FrameBuilder(getSubImage(3, 4))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesPeak_dirt_Tile = new MapTileBuilder(dirtFrame)
+            .withTopLayer(leavesPeak_dirt_Frame);
+
+        mapTiles.add(leavesPeak_dirt_Tile);
+
         // Water
 
         Frame[] waterFrames = new Frame[] {
@@ -496,6 +606,31 @@ public class MainTileset extends Tileset {
         MapTileBuilder topSand_bottomWater_Tile = new MapTileBuilder(topSand_bottomWater_Frames);
 
         mapTiles.add(topSand_bottomWater_Tile);
+
+        // Log 2 - UNPASSABLE
+
+        Frame log2BarrierFrame = new FrameBuilder(getSubImage(2, 7))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder log2BarrierTile = new MapTileBuilder(grassFrame)
+            .withTopLayer(log2BarrierFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(log2BarrierTile);
+
+        // Leaves - UNPASSABLE
+
+        Frame leaves1BarrierFrame = new FrameBuilder(getSubImage(3, 0))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leaves1BarrierTile = new MapTileBuilder(grassFrame)
+            .withTopLayer(leaves1BarrierFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(leaves1BarrierTile);
+
 
         return mapTiles;
     }
