@@ -180,20 +180,20 @@ public abstract class Player extends MapEntity {
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
             if(this.getX() + moveAmountX - walkSpeed > -50){
                 moveAmountX -= walkSpeed;
-                facingDirection = Direction.LEFT;
-                currentWalkingXDirection = Direction.LEFT;
-                lastWalkingXDirection = Direction.LEFT;
             }
+            facingDirection = Direction.LEFT;
+            currentWalkingXDirection = Direction.LEFT;
+            lastWalkingXDirection = Direction.LEFT;
         }
 
         // if walk right key is pressed, move player to the right
         else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
             if(this.getX() + moveAmountX - walkSpeed < 3260){
                 moveAmountX += walkSpeed;
-                facingDirection = Direction.RIGHT;
-                currentWalkingXDirection = Direction.RIGHT;
-                lastWalkingXDirection = Direction.RIGHT;
             }
+            facingDirection = Direction.RIGHT;
+            currentWalkingXDirection = Direction.RIGHT;
+            lastWalkingXDirection = Direction.RIGHT;
         }
         else {
             currentWalkingXDirection = Direction.NONE;
@@ -202,18 +202,18 @@ public abstract class Player extends MapEntity {
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
             if(this.getY() + moveAmountX - walkSpeed > -50){
             moveAmountY -= walkSpeed;
+            }
             facingDirection = Direction.UP;
             currentWalkingYDirection = Direction.UP;
             lastWalkingYDirection = Direction.UP;
-            }
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             if(this.getY() + moveAmountX - walkSpeed < 2771){
             moveAmountY += walkSpeed;
+            }
             facingDirection = Direction.DOWN;
             currentWalkingYDirection = Direction.DOWN;
             lastWalkingYDirection = Direction.DOWN;
-            }
         }
         else {
             currentWalkingYDirection = Direction.NONE;
