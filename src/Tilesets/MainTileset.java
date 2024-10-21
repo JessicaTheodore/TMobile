@@ -607,6 +607,31 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(topSand_bottomWater_Tile);
 
+        // Log 2 - UNPASSABLE
+
+        Frame log2BarrierFrame = new FrameBuilder(getSubImage(2, 7))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder log2BarrierTile = new MapTileBuilder(grassFrame)
+            .withTopLayer(log2BarrierFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(log2BarrierTile);
+
+        // Leaves - UNPASSABLE
+
+        Frame leaves1BarrierFrame = new FrameBuilder(getSubImage(3, 0))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leaves1BarrierTile = new MapTileBuilder(grassFrame)
+            .withTopLayer(leaves1BarrierFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(leaves1BarrierTile);
+
+
         return mapTiles;
     }
 
