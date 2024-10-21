@@ -346,7 +346,7 @@ public abstract class Player extends MapEntity {
     }
     
     public void hurtPlayer(MapEntity mapEntity){
-        if(mapEntity instanceof Enemy){
+        if(mapEntity instanceof Enemy && playerHP > 0){
             playerHP--;            
         } 
         if(playerHP == 0){

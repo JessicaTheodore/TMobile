@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import GameObject.Sprite;
 import Level.Map;
 import Level.NPC;
+import Level.Enemy;
 import Level.Trigger;
 import Level.Trigger;
 // import Scripts.Level1.IntroScript;
@@ -17,10 +18,13 @@ import Tilesets.MainTileset;
 
 
 
+import Enemies.BearEnemy;
+
 import Utils.Point;
 // import NPCs.Bear;
 import NPCs.BreakableLog;
-import NPCs.Bear;
+import NPCs.Slingshot;
+
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import Scripts.TestMap.BugScript;
@@ -42,15 +46,18 @@ public class Level1 extends Map {
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
+        ArrayList<Enemy> enemies = new ArrayList<>();
 
         BreakableLog breakableLog = new BreakableLog(0, getMapTile(25,37).getLocation());
         breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
 
-        Bear bear = new Bear(0, getMapTile(48,35).getLocation());
-       bear.setInteractScript(new BeatBear());
-        npcs.add(bear);
-
+        BearEnemy bear = new BearEnemy(0, 2, getMapTile(48,35).getLocation());
+        enemies.add(bear);
+        
+        Slingshot slingshot = new Slingshot(1, getMapTile(48, 40).getLocation());
+        // slingshot.setInteractScript(new PickUpSlingShot());
+        npcs.add(slingshot);
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
         // bear.setInteractScript(new WalrusScript());
         // npcs.add(bear);
