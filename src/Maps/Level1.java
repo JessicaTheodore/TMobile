@@ -24,13 +24,13 @@ import Enemies.BearEnemy;
 import Utils.Point;
 // import NPCs.Bear;
 import NPCs.BreakableLog;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import NPCs.Slingshot;
 
-=======
+//=======
 import NPCs.Bear;
 import NPCs.BreakableBranch;
->>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
+//>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import Scripts.TestMap.BugScript;
