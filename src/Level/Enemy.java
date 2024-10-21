@@ -53,27 +53,8 @@ public class Enemy extends MapEntity {
 
     public int getId() { return id; }
 
-    public void update(Player player, Enemy enemy, PlayerState playerState) {
-        if (intersects(player) && playerState == PlayerState.WALKING) {
-            touchedPlayer(player);
-        } else if(intersects(player) && playerState == PlayerState.STICK_ATTACK){
-            hurtEnemy(enemy);
-        }
+    public void update(Player player) {
         super.update();
-    }
-
-    // A subclass can override this method to specify what it does when it touches the player
-    public void touchedPlayer(Player player) {
-        player.hurtPlayer(this);
-    }
-
-    public void hurtEnemy(MapEntity mapEntity){
-        if(mapEntity instanceof Enemy && enemyHP > 0){
-            enemyHP--;            
-        } 
-        if(enemyHP == 0){
-            // this is where I want to put the code of getting rid of the enemy
-        }
     }
 
     @Override
