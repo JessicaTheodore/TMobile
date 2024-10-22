@@ -5,10 +5,17 @@ import java.awt.*;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
-
-public class GraphicsHandler {
+public class GraphicsHandler extends JPanel {
     private Graphics2D g;
+
+    //variables for the user-inputted player name
+    private String playerName;
 
     public Graphics2D getGraphics() {
         return g;
@@ -70,6 +77,53 @@ public class GraphicsHandler {
         g.drawString(text, x, y);
     }
 
+    //this will draw the actual pop up box that prompts the user to enter their name
+    public void drawString(String text, int x, int y, Font font, Color color, boolean showTextField) {
+        //draws the text ("What's your name?")
+        g.setFont(font);
+        g.setColor(color);
+        g.drawString(text, x, y);
+        //setPlayerName("TEST");
+
+        if (showTextField && playerName == null) {
+            //System.out.println("This is working");
+            JFrame frame = new JFrame("Enter your player name:");
+            GraphicsHandler handler = new GraphicsHandler();
+            frame.add(handler);
+            frame.setSize(250, 250);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
+
+            //adds the textbox field for the player name input
+            JTextField playerInputTextField = new JTextField(16);
+            playerInputTextField.setFont(font);
+            this.setLayout(null);
+            this.add(playerInputTextField);
+
+            //adds the button to continue
+            JButton submitButton = new JButton("Continue");
+
+            //adds to the panel
+            JPanel panel = new JPanel();
+            panel.add(new JLabel("Enter your player name"));
+            panel.add(playerInputTextField);
+            panel.add(submitButton);
+
+            //adds panel to the frame
+            frame.add(panel);
+            frame.setLocation(null);
+            frame.setVisible(true);
+        }        
+    }
+
+    //formats the name into the game
+    public void drawString(String text, String playerName, int x, int y, Font font, Color color) {
+        String finalText = String.format(text, playerName);
+        g.setFont(font);
+        g.setColor(color);
+        g.drawString(finalText, x, y);
+    }
+
     // https://stackoverflow.com/a/35222059 and https://stackoverflow.com/a/31831120
     public void drawStringWithOutline(String text, int x, int y, Font font, Color textColor, Color outlineColor, float outlineThickness) {
         // remember original settings
@@ -101,5 +155,13 @@ public class GraphicsHandler {
         g.setColor(originalColor);
         g.setStroke(originalStroke);
         g.setRenderingHints(originalHints);
+    }
+
+    public void setPlayerName(String name) {
+        playerName = name;
+    }
+    
+    public String getPlayerName() {
+        return playerName;
     }
 }

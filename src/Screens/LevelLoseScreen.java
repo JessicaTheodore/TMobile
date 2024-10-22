@@ -46,7 +46,7 @@ public class LevelLoseScreen extends Screen {
         }
 
         loseMessage = new SpriteFont("The Giant has claimed another soul.", 350, 239, maruMonica.deriveFont(20f), Color.white);
-        instructions = new SpriteFont("Press Space to restart level or Escape to go back to the main menu", 120, 279, maruMonica.deriveFont(20f), Color.white);
+        instructions = new SpriteFont("Press Space to Restart Level or Escape to go back to the Main Menu", 120, 279, maruMonica.deriveFont(20f), Color.white);
         keyLocker.lockKey(Key.E);
         keyLocker.lockKey(Key.ESC);
     }
