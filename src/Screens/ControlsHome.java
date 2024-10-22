@@ -22,6 +22,7 @@ public class ControlsHome extends Screen{
     private SpriteFont[] controls = new SpriteFont[9];
     private SpriteFont controlTitle;
     protected Map background;
+    protected SpriteFont e;
     protected SpriteFont exit;
     private int timer = 0;
 
@@ -51,6 +52,10 @@ public class ControlsHome extends Screen{
         exit = new SpriteFont("Exit",730, 525, maruMonica.deriveFont(40f), new Color(0, 0, 0));
         exit.setOutlineColor(Color.WHITE);
         exit.setOutlineThickness(3);
+
+        e = new SpriteFont("E", 700, 535, maruMonica.deriveFont(17f), Color.YELLOW);
+        e.setOutlineColor(Color.black);
+        e.setOutlineThickness(3);
         
         controls[0] = new SpriteFont("W: Move Up",340, 130, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[1] = new SpriteFont("A: Move Left",335, 170, maruMonica.deriveFont(30f), new Color(255, 255, 255));
@@ -104,6 +109,7 @@ public class ControlsHome extends Screen{
         }
         exit.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(695, 534, 20, 20, Color.WHITE, Color.black, 2);
+        e.draw(graphicsHandler);
     }
     
 }
