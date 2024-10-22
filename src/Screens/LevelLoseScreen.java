@@ -1,6 +1,8 @@
 package Screens;
 
 import Engine.*;
+import Game.GameState;
+import Game.ScreenCoordinator;
 import SpriteFont.SpriteFont;
 
 import java.awt.*;
@@ -12,11 +14,11 @@ public class LevelLoseScreen extends Screen {
     protected SpriteFont loseMessage;
     protected SpriteFont instructions;
     protected KeyLocker keyLocker = new KeyLocker();
-    protected PlayLevelScreen playLevelScreen;
+    protected ScreenCoordinator screenCoordinator;
     private Font maruMonica;
 
-    public LevelLoseScreen(PlayLevelScreen playLevelScreen) {
-        this.playLevelScreen = playLevelScreen;
+    public LevelLoseScreen(ScreenCoordinator screenCoordinator) {
+        this.screenCoordinator = screenCoordinator;
         initialize();
     }
 
@@ -60,9 +62,9 @@ public class LevelLoseScreen extends Screen {
 
         // if space is pressed, reset level. if escape is pressed, go back to main menu
         if (Keyboard.isKeyDown(Key.SPACE) && !keyLocker.isKeyLocked(Key.SPACE)) {
-            playLevelScreen.resetLevel();
+            screenCoordinator.setGameState(GameState.NEWLEVEL);
         } else if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)) {
-            playLevelScreen.goBackToMenu();
+            screenCoordinator.setGameState(GameState.MENU);
         }
     }
 

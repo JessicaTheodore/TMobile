@@ -3,6 +3,7 @@ package Screens;
 import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.ImageEffect;
 import GameObject.Sprite;
 import Level.FlagManager;
 import Maps.PauseScreenMap;
@@ -23,6 +24,7 @@ public class ControlsScreen extends Screen{
     private SpriteFont controlTitle;
     protected Map background;
     protected SpriteFont exit;
+    protected Sprite back;
     private int timer = 0;
 
     public ControlsScreen(ScreenCoordinator screenCoordinator){
@@ -72,6 +74,11 @@ public class ControlsScreen extends Screen{
         keyLocker.lockKey(Key.ESC);
         keyLocker.lockKey(Key.E);
 
+        back = new Sprite(ImageLoader.loadSubImage("Intro.png", Colors.MAGENTA, 0, 0, 800, 600));
+        back.setScale(1);
+        back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+        back.setLocation(0, 0);
+
     }
 
     @Override
@@ -98,6 +105,7 @@ public class ControlsScreen extends Screen{
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
+        back.draw(graphicsHandler);
         controlTitle.draw(graphicsHandler);
         for(int i = 0; i < controls.length; i++){
             controls[i].draw(graphicsHandler);

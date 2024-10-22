@@ -6,6 +6,7 @@ import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Level.FlagManager;
+import Maps.Level1;
 import Screens.ControlsHome;
 import Screens.ControlsScreen;
 import Screens.CreditsScreen;
@@ -19,6 +20,7 @@ import ScriptActions.FlagRequirement;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import Screens.IntroductionScreen;
+import Screens.LevelLoseScreen;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -29,7 +31,7 @@ public class ScreenCoordinator extends Screen {
 	protected Screen currentScreen = new DefaultScreen();
 	protected boolean level1start = true;
 	protected Screen hold;
-	protected Screen level1 = new PlayLevelScreen(this);
+	protected Screen level1;
 	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 	protected FlagManager flagManager = new FlagManager();
 
@@ -65,7 +67,11 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new MenuScreen(this);
 						break;
 					case LEVEL:
+						currentScreen = level1;
+						break;
+					case NEWLEVEL:
 						currentScreen = new PlayLevelScreen(this);
+						level1 = currentScreen;
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
@@ -81,6 +87,11 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case CONTROLSHOME:
 						currentScreen = new ControlsHome(this);
+						break;
+					case DEATH:
+						currentScreen = new LevelLoseScreen(this);
+						break;
+					default:
 						break;
 				}
 				currentScreen.initialize();

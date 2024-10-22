@@ -24,8 +24,13 @@ import Enemies.BearEnemy;
 import Utils.Point;
 // import NPCs.Bear;
 import NPCs.BreakableLog;
+//<<<<<<< HEAD
 import NPCs.Slingshot;
 
+//=======
+import NPCs.Bear;
+import NPCs.BreakableBranch;
+//>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import Scripts.TestMap.BugScript;
@@ -40,9 +45,18 @@ import Scripts.TestMap.LostBallScript;
 public class Level1 extends Map {
 
     protected Sprite ranger;
+    protected float x;
+    protected float y;
 
     public Level1() {
         super("lvl1.txt", new MainTileset());
+        this.playerStartPosition = new Point(460, 2290);
+    }
+
+    public Level1(float x, float y) {
+        super("lvl1.txt", new MainTileset());
+        this.x = x;
+        this.y = y;
         this.playerStartPosition = new Point(460, 2290);
     }
 

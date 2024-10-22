@@ -39,7 +39,7 @@ import Utils.Point;
             ranger = new Sprite(ImageLoader.loadSubImage("Ranger.png", Colors.MAGENTA, 0, 128, 70, 70));
             ranger.setScale(3);
             ranger.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
-            ranger.setLocation(rangerLocation.x, rangerLocation.y); 
+            ranger.setLocation(rangerLocation.x, rangerLocation.y - 20); 
 
         }
 

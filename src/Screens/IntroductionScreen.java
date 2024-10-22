@@ -72,7 +72,7 @@ public class IntroductionScreen extends Screen {
             keyLocker.unlockKey(Key.X);
         }
         if (!keyLocker.isKeyLocked(Key.X) && Keyboard.isKeyDown(Key.X)) {
-                screenCoordinator.setGameState(GameState.LEVEL);
+                screenCoordinator.setGameState(GameState.NEWLEVEL);
         }
         textbox.update();
     }

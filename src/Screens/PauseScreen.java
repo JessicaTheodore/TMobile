@@ -3,6 +3,7 @@ package Screens;
 import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.ImageEffect;
 import GameObject.Sprite;
 import Level.FlagManager;
 import Maps.PauseScreenMap;
@@ -30,6 +31,8 @@ public class PauseScreen extends Screen{
     protected SpriteFont exit;
     protected SpriteFont restart;
     protected SpriteFont menu;
+    protected SpriteFont quitGame;
+    protected Sprite back;
     protected int curr = 0;
     protected int chosen;
     private int timer;
@@ -84,6 +87,15 @@ public class PauseScreen extends Screen{
         menu.setOutlineColor(Color.black);
         menu.setOutlineThickness(3);
 
+        quitGame = new SpriteFont("Quit Game",330, 440, maruMonica.deriveFont(40f), new Color(255, 255, 255));
+        quitGame.setOutlineColor(Color.black);
+        quitGame.setOutlineThickness(3);
+
+        back = new Sprite(ImageLoader.loadSubImage("Intro.png", Colors.MAGENTA, 0, 0, 800, 600));
+        back.setScale(1);
+        back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+        back.setLocation(0, 0);
+
         timer = 0;
 
         background = new PauseScreenMap();
@@ -112,10 +124,10 @@ public class PauseScreen extends Screen{
             }
         }
 
-        if(curr > 3){
+        if(curr > 4){
             curr = 0;
         }else if(curr < 0){
-            curr = 3;
+            curr = 4;
         }
 
         if(curr == 0){
@@ -127,6 +139,8 @@ public class PauseScreen extends Screen{
             restart.setOutlineColor(new Color(0, 0, 0));
             menu.setColor(Color.white);
             menu.setOutlineColor(Color.black);
+            quitGame.setColor(Color.white);
+            quitGame.setOutlineColor(Color.black);
             xLoc = 300;
             yLoc = 212;
         }else if(curr == 1){
@@ -138,6 +152,8 @@ public class PauseScreen extends Screen{
             restart.setOutlineColor(new Color(0, 0, 0));
             menu.setColor(Color.white);
             menu.setOutlineColor(Color.black);
+            quitGame.setColor(Color.white);
+            quitGame.setOutlineColor(Color.black);
             xLoc = 300;
             yLoc = 272;
         }else if(curr == 2){
@@ -149,6 +165,8 @@ public class PauseScreen extends Screen{
             restart.setOutlineColor(new Color(255, 255, 255));
             menu.setColor(Color.white);
             menu.setOutlineColor(Color.black);
+            quitGame.setColor(Color.white);
+            quitGame.setOutlineColor(Color.black);
             xLoc = 300;
             yLoc = 332;
         }
@@ -161,36 +179,58 @@ public class PauseScreen extends Screen{
             restart.setOutlineColor(Color.black);
             menu.setColor(Color.black);
             menu.setOutlineColor(Color.white);
+            quitGame.setColor(Color.white);
+            quitGame.setOutlineColor(Color.black);
             xLoc = 300;
             yLoc = 392;
+        }else if(curr == 4){
+            exit.setColor(new Color(255, 255, 255));
+            controls.setColor(new Color(255, 255, 255));
+            exit.setOutlineColor(new Color(0, 0, 0));
+            controls.setOutlineColor(new Color(0, 0, 0));
+            restart.setColor(Color.white);
+            restart.setOutlineColor(Color.black);
+            menu.setColor(Color.white);
+            menu.setOutlineColor(Color.black);
+            quitGame.setColor(Color.black);
+            quitGame.setOutlineColor(Color.white);
+            xLoc = 300;
+            yLoc = 452;
         }
 
         if(Keyboard.isKeyUp(Key.ESC)){
             keyLocker.unlockKey(Key.ESC);
         } 
-        
-        if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
-            chosen = curr;
-            if (chosen == 0) {
-                //goes into the introduction screen dialogue
-                screenCoordinator.setGameState(GameState.CONTROLS);
-            } else if (chosen == 1) {
-                screenCoordinator.setGameState(GameState.LEVEL);
-            }else if (chosen == 2) {
-                screenCoordinator.setGameState(GameState.LEVEL);
-            }else if (chosen == 3) {
-                screenCoordinator.setGameState(GameState.MENU);
-            }
-        }
 
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC)){
-            screenCoordinator.setGameState(GameState.LEVEL);
             keyLocker.lockKey(Key.ESC);
+            screenCoordinator.setGameState(GameState.LEVEL);
+        }else{
+            if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
+                chosen = curr;
+                if (chosen == 0) {
+                    //goes into the introduction screen dialogue
+                    screenCoordinator.setGameState(GameState.CONTROLS);
+                } else if (chosen == 1) {
+                    screenCoordinator.setGameState(GameState.LEVEL);
+                }else if (chosen == 2) {
+                    screenCoordinator.setGameState(GameState.NEWLEVEL);
+                }else if (chosen == 3) {
+                    screenCoordinator.setGameState(GameState.MENU);
+                }else if(chosen == 4){
+                    System.exit(0);
+                }
+            }
         }
+        
+        
+
+        
     }
 
     public void draw(GraphicsHandler graphicsHandler){
         background.draw(graphicsHandler);
+        back.draw(graphicsHandler);
         //pauseSprite.draw(graphicsHandler);
         //playLevelScreen.drawMap(graphicsHandler);
         //graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
@@ -200,6 +240,7 @@ public class PauseScreen extends Screen{
         exit.draw(graphicsHandler);
         restart.draw(graphicsHandler);
         menu.draw(graphicsHandler);
+        quitGame.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(xLoc, yLoc, 20, 20, new Color(255, 255, 255), Color.black, 2);
     }
 }
