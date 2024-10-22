@@ -13,6 +13,8 @@ public class SpriteFont {
 	protected Color color;
 	protected Color outlineColor;
 	protected float outlineThickness = 1f;
+	protected boolean showTextField = false;
+	protected boolean needName = false;
 
 	public SpriteFont(String text, float x, float y, String fontName, int fontSize, Color color) {
 		this.text = text;
@@ -20,6 +22,10 @@ public class SpriteFont {
 		this.x = x;
 		this.y = y;
 		this.color = color;
+		//just in case the thing messes up, only spritefont with boolean in the constructor
+		// will run the field, otherwise it will be false
+		this.showTextField = false;
+		this.needName = false;
 	}
 
 	public SpriteFont(String text, float x, float y, Font font, Color color) {
@@ -28,6 +34,36 @@ public class SpriteFont {
 		this.x = x;
 		this.y = y;
 		this.color = color;
+		this.showTextField = false;
+		this.needName = false;
+	}
+
+	public SpriteFont(String text, float x, float y, Font font, Color color, boolean showTextField) {
+		this.text = text;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.showTextField = showTextField;
+		this.needName = false;
+	}
+
+	public SpriteFont(String text, boolean needName, float x, float y, Font font, Color color) {
+		this.text = text;
+		this.needName = needName;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.showTextField = false;
+	}
+
+	public boolean isShowTextField() {
+		return showTextField;
+	}
+
+	public boolean doesNeedNameReplacement() {
+		return needName;
 	}
 
 	public void setColor(Color color) {
@@ -133,7 +169,14 @@ public class SpriteFont {
 			if (outlineColor != null && !outlineColor.equals(color)) {
 				graphicsHandler.drawStringWithOutline(line, Math.round(x), drawLocationY, font, color, outlineColor, outlineThickness);
 			} else {
-				graphicsHandler.drawString(line, Math.round(x), drawLocationY, font, color);
+				//takes the user's inputted name
+				if (isShowTextField()) {
+                    graphicsHandler.drawString(line, Math.round(x), drawLocationY, font, color, true);
+				} else if (doesNeedNameReplacement()) {
+					graphicsHandler.drawString(line, graphicsHandler.getPlayerName(), Math.round(x), drawLocationY, font, color);
+				} else {
+                    graphicsHandler.drawString(line, Math.round(x), drawLocationY, font, color);
+                }
 			}
 			drawLocationY += font.getSize() + gapBetweenLines;
 		}

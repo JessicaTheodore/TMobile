@@ -61,7 +61,7 @@ public class IntroductionTextbox extends Textbox {
             introText.drawWithParsedNewLines(graphicsHandler, 5);
         }
     }
-
+    
     private void initializeScript() {
 
          //importing font type
@@ -103,8 +103,10 @@ public class IntroductionTextbox extends Textbox {
         script.add(new SpriteFont("Player: Whatever man- people have made up crazier\n rumors on campus.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("Player: I heard something about a pipe bomb last week?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("Player: Besides, I'm going on my hike, some random\n warnings won't stop me. ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Say, what's your name boy?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Ok ____ ... you seem like a nice kid.\n Take this, it could come in handy.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
+        //based off of the sprite font boolean, the pop up dialogue will show
+        //insert true into the arguments below
+        script.add(new SpriteFont("R: Say, what's your name boy?", x, y + 10, maruMonica.deriveFont(33f), Color.black, true));
+        script.add(new SpriteFont("R: Ok %s... you seem like a nice kid.\n Take this, it could come in handy.", true, x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: If you can keep your wits about you, go ahead and\n climb the Giant…", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: Ignore the warnings and the legends.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: Just don't say I didn't warn you.", x, y + 10, maruMonica.deriveFont(33f), Color.black));

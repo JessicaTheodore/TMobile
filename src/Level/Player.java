@@ -304,7 +304,6 @@ public abstract class Player extends MapEntity {
     public Direction getLastWalkingXDirection() { return lastWalkingXDirection; }
     public Direction getLastWalkingYDirection() { return lastWalkingYDirection; }
 
-    
     public void lock() {
         isLocked = true;
         playerState = PlayerState.STANDING;
