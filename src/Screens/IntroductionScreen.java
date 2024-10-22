@@ -52,7 +52,7 @@ public class IntroductionScreen extends Screen {
                 e.printStackTrace();
             } 
 
-        credits = new SpriteFont("Press X to continue", 360, 433, maruMonica.deriveFont(16f), Color.white);
+        credits = new SpriteFont("Press 'X' to skip", 360, 433, maruMonica.deriveFont(16f), Color.white);
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
 
