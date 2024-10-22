@@ -20,6 +20,7 @@ import ScriptActions.FlagRequirement;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import Screens.IntroductionScreen;
+import Screens.LevelLoseScreen;
 
 /*
  * Based on the current game state, this class determines which Screen should be shown
@@ -88,6 +89,7 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new ControlsHome(this);
 						break;
 					case DEATH:
+						currentScreen = new LevelLoseScreen(this);
 						break;
 					default:
 						break;

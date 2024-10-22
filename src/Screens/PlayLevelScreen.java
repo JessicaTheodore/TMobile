@@ -65,7 +65,6 @@ public class PlayLevelScreen extends Screen {
         flagManager = new FlagManager();
 
         if(start){
-            System.out.println("flag is true");
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("hasTalkedToWalrus", false);
@@ -98,8 +97,6 @@ public class PlayLevelScreen extends Screen {
 
             // Initialize win screen
             winScreen = new WinScreen(this);
-        }else{
-            System.out.println("flag is false");
         }
         
     }
@@ -122,6 +119,10 @@ public class PlayLevelScreen extends Screen {
             start = false;
             screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
+        }
+        if(Keyboard.isKeyDown(Key.L) && !keyLocker.isKeyLocked(Key.L)){
+            screenCoordinator.setGameState(GameState.DEATH);
+            keyLocker.lockKey(Key.L);
         }
         if (Keyboard.isKeyUp(Key.H)) {
             keyLocker.unlockKey(Key.H);
