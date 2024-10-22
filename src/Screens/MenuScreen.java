@@ -21,6 +21,7 @@ public class MenuScreen extends Screen {
     protected SpriteFont controls;
     protected SpriteFont title;
     protected SpriteFont quitGame;
+    protected SpriteFont e;
     protected Map background;
     protected int keyPressTimer;
     protected int pointerLocationX, pointerLocationY;
@@ -52,6 +53,10 @@ public class MenuScreen extends Screen {
         title = new SpriteFont("The Legend Of Hobbomock", 100, 55, maruMonica.deriveFont(65f), new Color(255,255,255));
         title.setOutlineColor(Color.black);
         title.setOutlineThickness(3);
+
+        e = new SpriteFont("E", 176, 261, maruMonica.deriveFont(17f), Color.YELLOW);
+        e.setOutlineColor(Color.black);
+        e.setOutlineThickness(3);
 
         playGame = new SpriteFont("Play Game", 200, 253, maruMonica.deriveFont(30f), Color.BLACK);
         playGame.setOutlineColor(Color.white);
@@ -147,6 +152,9 @@ public class MenuScreen extends Screen {
             pointerLocationY = 470;
         }
 
+        e.setLocation(pointerLocationX + 6, pointerLocationY + 1);
+
+
         // if space is pressed on menu item, change to appropriate screen based on which menu item was chosen
         if (Keyboard.isKeyUp(Key.SPACE)) {
             keyLocker.unlockKey(Key.SPACE);
@@ -175,6 +183,7 @@ public class MenuScreen extends Screen {
         quitGame.draw(graphicsHandler);
         controls.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, Color.white, Color.black, 2);
+        e.draw(graphicsHandler);
     }
     
 }

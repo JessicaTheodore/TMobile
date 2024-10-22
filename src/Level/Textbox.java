@@ -57,6 +57,7 @@ public class Textbox {
 
     private Map map;
 
+    //variable for the font
     private Font maruMonica;
 
     public Textbox(Map map) {
