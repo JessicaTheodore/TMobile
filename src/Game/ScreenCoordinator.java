@@ -6,6 +6,7 @@ import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Level.FlagManager;
+import Maps.Level1;
 import Screens.ControlsHome;
 import Screens.ControlsScreen;
 import Screens.CreditsScreen;
@@ -29,7 +30,7 @@ public class ScreenCoordinator extends Screen {
 	protected Screen currentScreen = new DefaultScreen();
 	protected boolean level1start = true;
 	protected Screen hold;
-	protected Screen level1 = new PlayLevelScreen(this);
+	protected Screen level1;
 	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 	protected FlagManager flagManager = new FlagManager();
 
@@ -51,7 +52,6 @@ public class ScreenCoordinator extends Screen {
 	public void initialize() {
 		// start game off with Menu Screen
 		gameState = GameState.MENU;
-		level1.initialize();
 		flagManager.addFlag("fresh", true);
 	}
 
@@ -64,32 +64,35 @@ public class ScreenCoordinator extends Screen {
 				switch(gameState) {
 					case MENU:
 						currentScreen = new MenuScreen(this);
-						currentScreen.initialize();
 						break;
 					case LEVEL:
 						currentScreen = level1;
 						break;
+					case NEWLEVEL:
+						currentScreen = new PlayLevelScreen(this);
+						level1 = currentScreen;
+						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
-						currentScreen.initialize();
 						break;
 					case INTRO:
 						currentScreen = new IntroductionScreen(this);
-						currentScreen.initialize();
 						break;
 					case PAUSE:
 						currentScreen = new PauseScreen(this);
-						currentScreen.initialize();
 						break;
 					case CONTROLS:
 						currentScreen = new ControlsScreen(this);
-						currentScreen.initialize();
 						break;
 					case CONTROLSHOME:
 						currentScreen = new ControlsHome(this);
-						currentScreen.initialize();
+						break;
+					case DEATH:
+						break;
+					default:
 						break;
 				}
+				currentScreen.initialize();
 			}
 			previousGameState = gameState;
 

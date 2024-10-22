@@ -61,31 +61,6 @@ public class PlayLevelScreen extends Screen {
         helpScreenSprite[1].setLocation(0, 0); 
     }
 
-    public PlayLevelScreen(ScreenCoordinator screenCoordinator, float x, float y) {
-        this.screenCoordinator = screenCoordinator;
-
-        ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
-        ranger.setScale(1);
-        ranger.setLocation(725, 505); 
-
-        pause = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128)));
-        pause.setScale(3);
-        pause.setLocation(130, 100);  
-
-        helpStages[0] = true;
-        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("BreakLogHelp.png", Colors.MAGENTA, 0, 0, 800, 605)));
-        helpScreenSprite[0].setScale(1);
-        helpScreenSprite[0].setLocation(0, 0); 
-
-        helpStages[1] = false;
-        helpScreenSprite[1] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
-        helpScreenSprite[1].setScale(1);
-        helpScreenSprite[1].setLocation(0, 0); 
-
-        this.x = x;
-        this.y = y;
-    }
-
     public void initialize() {
         flagManager = new FlagManager();
 
@@ -142,7 +117,7 @@ public class PlayLevelScreen extends Screen {
             keyLocker.lockKey(Key.ESC);
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
-            pauseOn = !pauseOn;
+            //pauseOn = !pauseOn;
             //pauseScreen.changeStatus();
             start = false;
             screenCoordinator.setGameState(GameState.PAUSE);
