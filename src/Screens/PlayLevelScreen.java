@@ -104,6 +104,12 @@ public class PlayLevelScreen extends Screen {
 
     public void update() {
         // Opens help screen when h is clicked
+
+        if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && helpOn) {
+            helpOn = false;
+            helpScreen.changeStatus();
+            keyLocker.lockKey(Key.H);
+        }
         if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn && !pauseOn) {
             helpOn = true;
             helpScreen.changeStatus();
@@ -114,6 +120,7 @@ public class PlayLevelScreen extends Screen {
             helpScreen.changeStatus();
             keyLocker.lockKey(Key.ESC);
         }
+        
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             //pauseOn = !pauseOn;
             //pauseScreen.changeStatus();
