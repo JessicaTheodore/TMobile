@@ -29,6 +29,7 @@ public class PauseScreen extends Screen{
     protected Map background;
     protected SpriteFont controls;
     protected SpriteFont exit;
+    protected SpriteFont e;
     protected SpriteFont restart;
     protected SpriteFont menu;
     protected SpriteFont quitGame;
@@ -70,6 +71,10 @@ public class PauseScreen extends Screen{
         words = new SpriteFont("Pause Screen",180, 50, maruMonica.deriveFont(100f), new Color(255, 255, 255));
         words.setOutlineColor(Color.black);
         words.setOutlineThickness(3);
+
+        e = new SpriteFont("E", 176, 261, maruMonica.deriveFont(17f), Color.YELLOW);
+        e.setOutlineColor(Color.black);
+        e.setOutlineThickness(3);
 
         controls = new SpriteFont("Controls",330, 200, maruMonica.deriveFont(40f), new Color(255, 255, 255));
         controls.setOutlineColor(Color.black);
@@ -198,6 +203,8 @@ public class PauseScreen extends Screen{
             yLoc = 452;
         }
 
+        e.setLocation(xLoc+6, yLoc + 1);
+
         if(Keyboard.isKeyUp(Key.ESC)){
             keyLocker.unlockKey(Key.ESC);
         } 
@@ -242,6 +249,7 @@ public class PauseScreen extends Screen{
         menu.draw(graphicsHandler);
         quitGame.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(xLoc, yLoc, 20, 20, new Color(255, 255, 255), Color.black, 2);
+        e.draw(graphicsHandler);
     }
 }
 
