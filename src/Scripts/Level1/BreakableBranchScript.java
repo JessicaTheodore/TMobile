@@ -23,7 +23,7 @@ public class BreakableBranchScript extends Script {
             }});
 
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
-                addRequirement(new FlagRequirement("brokeLog", true));
+                //addRequirement(new FlagRequirement("brokeLog", true));
                 // addScriptAction(new TextboxScriptAction("I sure love doing walrus things!"));
             }});
         }});

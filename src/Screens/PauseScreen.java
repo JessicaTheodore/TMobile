@@ -3,6 +3,7 @@ package Screens;
 import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.ImageEffect;
 import GameObject.Sprite;
 import Level.FlagManager;
 import Maps.PauseScreenMap;
@@ -31,6 +32,7 @@ public class PauseScreen extends Screen{
     protected SpriteFont restart;
     protected SpriteFont menu;
     protected SpriteFont quitGame;
+    protected Sprite back;
     protected int curr = 0;
     protected int chosen;
     private int timer;
@@ -88,6 +90,11 @@ public class PauseScreen extends Screen{
         quitGame = new SpriteFont("Quit Game",330, 440, maruMonica.deriveFont(40f), new Color(255, 255, 255));
         quitGame.setOutlineColor(Color.black);
         quitGame.setOutlineThickness(3);
+
+        back = new Sprite(ImageLoader.loadSubImage("Intro.png", Colors.MAGENTA, 0, 0, 800, 600));
+        back.setScale(1);
+        back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+        back.setLocation(0, 0);
 
         timer = 0;
 
@@ -223,6 +230,7 @@ public class PauseScreen extends Screen{
 
     public void draw(GraphicsHandler graphicsHandler){
         background.draw(graphicsHandler);
+        back.draw(graphicsHandler);
         //pauseSprite.draw(graphicsHandler);
         //playLevelScreen.drawMap(graphicsHandler);
         //graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
