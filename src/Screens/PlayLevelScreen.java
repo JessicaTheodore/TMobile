@@ -13,9 +13,11 @@ import Game.ScreenCoordinator;
 import GameObject.Sprite;
 import Level.*;
 import Maps.Level1;
+import NPCs.Bear;
 import Players.Cat;
 import Utils.Colors;
 import Utils.Direction;
+import Utils.HealthSystem;
 
 // This class is for when the RPG game is actually being played
 public class PlayLevelScreen extends Screen {
@@ -38,6 +40,9 @@ public class PlayLevelScreen extends Screen {
     protected boolean start = true;
     protected float x;
     protected float y;
+
+    private HealthSystem healthSystem;
+
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -98,6 +103,9 @@ public class PlayLevelScreen extends Screen {
 
             // Initialize win screen
             winScreen = new WinScreen(this);
+
+            healthSystem = new HealthSystem(5); // 5 hearts initially
+
         }
         
     }
@@ -143,6 +151,15 @@ public class PlayLevelScreen extends Screen {
         if(flagManager.isFlagSet("brokeLog")){
             helpStages[1] = true;
         }
+
+        if (playerCollidesWithBear()) {
+            healthSystem.decreaseHealth();
+            
+            // If the player is out of hearts, go to the GAME_OVER screen
+            if (healthSystem.getCurrentHealth() <= 0) {
+                screenCoordinator.setGameState(GameState.GAMEOVER);
+            }
+        }        
         
         
         if (helpOn) {
@@ -191,6 +208,7 @@ public class PlayLevelScreen extends Screen {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
                     ranger.draw(graphicsHandler);
+                    healthSystem.draw(graphicsHandler);
                     break;
                 case LEVEL_COMPLETED:
                     winScreen.draw(graphicsHandler);
@@ -209,6 +227,17 @@ public class PlayLevelScreen extends Screen {
 
     public void goBackToMenu() {
         screenCoordinator.setGameState(GameState.MENU);
+    }
+
+    private boolean playerCollidesWithBear() {
+    // Example logic for collision detection with a bear object
+    // Replace with your actual collision check logic
+    for (MapEntity entity : map.getEnemies()) {
+        if (entity instanceof Bear && player.intersects(entity)) {
+            return true;
+        }
+    }
+    return false;
     }
 
     public void drawMap(GraphicsHandler graphicsHandler) {
