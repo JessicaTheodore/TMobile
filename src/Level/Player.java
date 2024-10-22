@@ -11,6 +11,7 @@ import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
+import Enemies.BearEnemy;
 
 // used to extend GameObject, changed it to MapEntity for convenience, I don't know the repurcussions of this
 public abstract class Player extends MapEntity {
@@ -45,6 +46,8 @@ public abstract class Player extends MapEntity {
     protected Key ROCK_ATTACK_KEY = Key.SHIFT;
     protected Key RANGER_KEY = Key.H;
     protected boolean isLocked = false;
+    protected float xLoc;
+    protected float yLoc;
 
     protected GameState gameState;
     protected boolean pickedUpSlingshot;
@@ -52,6 +55,8 @@ public abstract class Player extends MapEntity {
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
         // super(spriteSheet, x, y, startingAnimationName);
         super(x, y, spriteSheet, startingAnimationName);
+        this.xLoc = x;
+        this.yLoc = y;
         facingDirection = Direction.RIGHT;
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
@@ -81,6 +86,18 @@ public abstract class Player extends MapEntity {
 
         // update player's animation
         super.update();
+    }
+
+    public void hurtPlayer() {
+        if(playerHP > 0) {
+            playerHP--;
+        } else {
+            // this is where the death screen would pop up
+        }
+    }
+
+    public void touchedEnemy(BearEnemy bear) {
+        bear.hurtBear();
     }
 
     // based on player's current state, call appropriate player state handling method
@@ -180,20 +197,20 @@ public abstract class Player extends MapEntity {
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
             if(this.getX() + moveAmountX - walkSpeed > -50){
                 moveAmountX -= walkSpeed;
-                facingDirection = Direction.LEFT;
-                currentWalkingXDirection = Direction.LEFT;
-                lastWalkingXDirection = Direction.LEFT;
             }
+            facingDirection = Direction.LEFT;
+            currentWalkingXDirection = Direction.LEFT;
+            lastWalkingXDirection = Direction.LEFT;
         }
 
         // if walk right key is pressed, move player to the right
         else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
             if(this.getX() + moveAmountX - walkSpeed < 3260){
                 moveAmountX += walkSpeed;
-                facingDirection = Direction.RIGHT;
-                currentWalkingXDirection = Direction.RIGHT;
-                lastWalkingXDirection = Direction.RIGHT;
             }
+            facingDirection = Direction.RIGHT;
+            currentWalkingXDirection = Direction.RIGHT;
+            lastWalkingXDirection = Direction.RIGHT;
         }
         else {
             currentWalkingXDirection = Direction.NONE;
@@ -202,18 +219,18 @@ public abstract class Player extends MapEntity {
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
             if(this.getY() + moveAmountX - walkSpeed > -50){
             moveAmountY -= walkSpeed;
+            }
             facingDirection = Direction.UP;
             currentWalkingYDirection = Direction.UP;
             lastWalkingYDirection = Direction.UP;
-            }
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
             if(this.getY() + moveAmountX - walkSpeed < 2771){
             moveAmountY += walkSpeed;
+            }
             facingDirection = Direction.DOWN;
             currentWalkingYDirection = Direction.DOWN;
             lastWalkingYDirection = Direction.DOWN;
-            }
         }
         else {
             currentWalkingYDirection = Direction.NONE;
@@ -353,7 +370,7 @@ public abstract class Player extends MapEntity {
     }
     
     public void hurtPlayer(MapEntity mapEntity){
-        if(mapEntity instanceof Enemy){
+        if(mapEntity instanceof Enemy && playerHP > 0){
             playerHP--;            
         } 
         if(playerHP == 0){

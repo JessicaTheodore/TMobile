@@ -36,6 +36,8 @@ public class PlayLevelScreen extends Screen {
     protected boolean[] helpStages = new boolean[helpSize]; // 0: Starting area , 1: 
     protected Sprite[] helpScreenSprite = new Sprite[helpSize];
     protected boolean start = true;
+    protected float x;
+    protected float y;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -63,7 +65,6 @@ public class PlayLevelScreen extends Screen {
         flagManager = new FlagManager();
 
         if(start){
-            System.out.println("flag is true");
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("hasTalkedToWalrus", false);
@@ -96,8 +97,6 @@ public class PlayLevelScreen extends Screen {
 
             // Initialize win screen
             winScreen = new WinScreen(this);
-        }else{
-            System.out.println("flag is false");
         }
         
     }
@@ -115,11 +114,15 @@ public class PlayLevelScreen extends Screen {
             keyLocker.lockKey(Key.ESC);
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
-            pauseOn = !pauseOn;
+            //pauseOn = !pauseOn;
             //pauseScreen.changeStatus();
             start = false;
             screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
+        }
+        if(Keyboard.isKeyDown(Key.L) && !keyLocker.isKeyLocked(Key.L)){
+            screenCoordinator.setGameState(GameState.DEATH);
+            keyLocker.lockKey(Key.L);
         }
         if (Keyboard.isKeyUp(Key.H)) {
             keyLocker.unlockKey(Key.H);
@@ -150,6 +153,11 @@ public class PlayLevelScreen extends Screen {
                     break;
             }
         }
+
+        this.x = player.getX();
+        this.y = player.getY();
+
+
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -196,6 +204,10 @@ public class PlayLevelScreen extends Screen {
     public void drawMap(GraphicsHandler graphicsHandler) {
         map.draw(player, graphicsHandler);
     }
+
+    public float getX(){return this.x;}
+    public float getY(){return this.y;}
+
 
     // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
