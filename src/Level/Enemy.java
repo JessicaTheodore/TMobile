@@ -21,8 +21,6 @@ public class Enemy extends MapEntity {
         this.enemyHP = enemyHP;
     }
 
-    
-
     public Enemy(int id, int enemyHP,float x, float y, HashMap<String, Frame[]> animations, String startingAnimation) {
         super(x, y, animations, startingAnimation);
         this.id = id;
@@ -55,6 +53,13 @@ public class Enemy extends MapEntity {
 
     public void update(Player player) {
         super.update();
+        if (intersects(player)) {
+            touchedPlayer(player);
+        }
+    }
+
+    public void touchedPlayer(Player player) {
+        player.hurtPlayer(this);
     }
 
     @Override

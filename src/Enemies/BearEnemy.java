@@ -1,6 +1,7 @@
 package Enemies;
 
 import Builders.FrameBuilder;
+import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import GameObject.Frame;
 import GameObject.ImageEffect;
@@ -9,6 +10,7 @@ import Level.Enemy;
 import Utils.Direction;
 import Utils.Point;
 import java.util.HashMap;
+import java.awt.Color;
 
 public class BearEnemy extends Enemy {
     protected Point startLocation;
@@ -25,7 +27,7 @@ public class BearEnemy extends Enemy {
     }
 
     public BearEnemy(int id, int enemyHP, Point startLocation, Point endLocation, Direction facingDirection) {
-        super(id, 2, startLocation.x, startLocation.y, new SpriteSheet(ImageLoader.load("Bear.png"), 24, 24), "WALK_RIGHT");
+        super(id, 2, startLocation.x, startLocation.y, new SpriteSheet(ImageLoader.load("Bear.png"), 24, 24), "STAND_LEFT");
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.startFacingDirection = facingDirection;
@@ -38,18 +40,27 @@ public class BearEnemy extends Enemy {
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(3)
-                            .withBounds(37, 29, 27, 47)
+                            .withBounds(0, 0, 24, 24)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
         }};
     }
 
-    public void hurtEnemy(){
+    public void hurtBear(){
         if(bearHP > 0) {
             this.bearHP--;
         } else {
+            this.isHidden();
             // this is where I want to put the code of getting rid of the enemy
         }
     }
+
+    @Override
+    public void draw(GraphicsHandler graphicsHandler) {
+        super.draw(graphicsHandler);
+
+        // DRAWS HITBOX
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    }    
 }

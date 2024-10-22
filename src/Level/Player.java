@@ -11,6 +11,7 @@ import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
+import Enemies.BearEnemy;
 
 // used to extend GameObject, changed it to MapEntity for convenience, I don't know the repurcussions of this
 public abstract class Player extends MapEntity {
@@ -83,19 +84,17 @@ public abstract class Player extends MapEntity {
         super.update();
     }
 
-    // A subclass can override this method to specify what it does when it touches the player
-    public void touchedPlayer(Player player) {
-        player.hurtPlayer(this);
+    public void hurtPlayer() {
+        if(playerHP > 0) {
+            playerHP--;
+        } else {
+            // this is where the death screen would pop up
+        }
     }
 
-    // public void hurtEnemy(MapEntity mapEntity){
-    //     if(mapEntity instanceof Enemy && enemyHP > 0){
-    //         enemyHP--;            
-    //     } 
-    //     if(enemyHP == 0){
-    //         // this is where I want to put the code of getting rid of the enemy
-    //     }
-    // }
+    public void touchedEnemy(BearEnemy bear) {
+        bear.hurtBear();
+    }
 
     // based on player's current state, call appropriate player state handling method
     protected void handlePlayerState() {

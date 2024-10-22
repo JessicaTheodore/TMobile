@@ -24,18 +24,14 @@ import Enemies.BearEnemy;
 import Utils.Point;
 // import NPCs.Bear;
 import NPCs.BreakableLog;
-<<<<<<< HEAD
 import NPCs.Slingshot;
 
-=======
-import NPCs.Bear;
-import NPCs.BreakableBranch;
->>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
 // import Scripts.TestMap.BugScript;
 // import Scripts.TestMap.DinoScript;
 // import Scripts.TestMap.WalrusScript;
+import Scripts.Level1.PickUpSlingShot;
 import Scripts.Level1.BreakableLogScript;
 import Scripts.Level1.BeatBear;
 import Scripts.Level1.BreakableBranchScript;
@@ -53,17 +49,13 @@ public class Level1 extends Map {
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
-        ArrayList<Enemy> enemies = new ArrayList<>();
 
         BreakableLog breakableLog = new BreakableLog(0, getMapTile(25,37).getLocation());
         breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
-
-        BearEnemy bear = new BearEnemy(0, 2, getMapTile(48,35).getLocation());
-        enemies.add(bear);
         
-        Slingshot slingshot = new Slingshot(1, getMapTile(48, 40).getLocation());
-        // slingshot.setInteractScript(new PickUpSlingShot());
+        Slingshot slingshot = new Slingshot(1, getMapTile(14, 51).getLocation());
+        slingshot.setInteractScript(new PickUpSlingShot());
         npcs.add(slingshot);
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
         // bear.setInteractScript(new WalrusScript());
@@ -79,6 +71,15 @@ public class Level1 extends Map {
         // npcs.add(bug);
 
         return npcs;
+    }
+
+    public ArrayList<Enemy> loadEnemies() {
+        ArrayList<Enemy> enemies = new ArrayList<>();
+
+        BearEnemy bear = new BearEnemy(0, 2, getMapTile(14,55).getLocation());
+        enemies.add(bear);
+
+        return enemies;
     }
 
         @Override
