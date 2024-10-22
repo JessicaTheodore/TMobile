@@ -10,6 +10,7 @@ import Maps.Level1;
 import Screens.ControlsHome;
 import Screens.ControlsScreen;
 import Screens.CreditsScreen;
+import Screens.GameOverScreen;
 import Screens.MenuScreen;
 import Screens.PauseScreen;
 import Screens.PlayLevelScreen;
@@ -87,6 +88,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case CONTROLSHOME:
 						currentScreen = new ControlsHome(this);
+						break;
+					case GAMEOVER:
+						currentScreen = new GameOverScreen(this);
 						break;
 					case DEATH:
 						currentScreen = new LevelLoseScreen(this);
