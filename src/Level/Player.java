@@ -19,7 +19,7 @@ public abstract class Player extends MapEntity {
     // these should be set in a subclass
     protected float walkSpeed = 0;
     protected int interactionRange = 1;
-    protected int playerHP = 3;
+    protected int playerHP = 5;
     protected Direction currentWalkingXDirection;
     protected Direction currentWalkingYDirection;
     protected Direction lastWalkingXDirection;
@@ -49,8 +49,8 @@ public abstract class Player extends MapEntity {
     protected float xLoc;
     protected float yLoc;
 
+    protected boolean pickedUpSlingshot = false;
     protected GameState gameState;
-    protected boolean pickedUpSlingshot;
     
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
         // super(spriteSheet, x, y, startingAnimationName);
@@ -334,6 +334,10 @@ public abstract class Player extends MapEntity {
         } else if (facingDirection == Direction.DOWN) {
             this.currentAnimationName = "STAND_DOWN";
         }
+    }
+
+    public void changeSlingshotStatus() {
+        pickedUpSlingshot = true;
     }
 
     public void unlock() {

@@ -68,7 +68,7 @@ public class Level1 extends Map {
         breakableLog.setInteractScript(new BreakableLogScript());
         npcs.add(breakableLog);
         
-        Slingshot slingshot = new Slingshot(1, getMapTile(14, 51).getLocation());
+        Slingshot slingshot = new Slingshot(1, getMapTile(51, 48).getLocation());
         slingshot.setInteractScript(new PickUpSlingShot());
         npcs.add(slingshot);
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));

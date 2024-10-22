@@ -104,7 +104,9 @@ public class PlayLevelScreen extends Screen {
 
     public void update() {
         // Opens help screen when h is clicked
-
+        if(flagManager.isFlagSet("pickedUpSlingShot")) {
+            player.changeSlingshotStatus();
+        }
         if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && helpOn) {
             helpOn = false;
             helpScreen.changeStatus();

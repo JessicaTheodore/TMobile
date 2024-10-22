@@ -52,7 +52,6 @@ public class BearEnemy extends Enemy {
             this.bearHP--;
         } else {
             this.isHidden();
-            // this is where I want to put the code of getting rid of the enemy
         }
     }
 
