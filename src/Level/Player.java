@@ -45,6 +45,8 @@ public abstract class Player extends MapEntity {
     protected Key ROCK_ATTACK_KEY = Key.SHIFT;
     protected Key RANGER_KEY = Key.H;
     protected boolean isLocked = false;
+    protected float xLoc;
+    protected float yLoc;
 
     protected GameState gameState;
     protected boolean pickedUpSlingshot;
@@ -52,6 +54,8 @@ public abstract class Player extends MapEntity {
     public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
         // super(spriteSheet, x, y, startingAnimationName);
         super(x, y, spriteSheet, startingAnimationName);
+        this.xLoc = x;
+        this.yLoc = y;
         facingDirection = Direction.RIGHT;
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;

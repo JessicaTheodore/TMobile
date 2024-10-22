@@ -44,9 +44,18 @@ import Scripts.TestMap.LostBallScript;
 public class Level1 extends Map {
 
     protected Sprite ranger;
+    protected float x;
+    protected float y;
 
     public Level1() {
         super("lvl1.txt", new MainTileset());
+        this.playerStartPosition = new Point(460, 2290);
+    }
+
+    public Level1(float x, float y) {
+        super("lvl1.txt", new MainTileset());
+        this.x = x;
+        this.y = y;
         this.playerStartPosition = new Point(460, 2290);
     }
 

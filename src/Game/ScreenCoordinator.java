@@ -51,6 +51,7 @@ public class ScreenCoordinator extends Screen {
 	public void initialize() {
 		// start game off with Menu Screen
 		gameState = GameState.MENU;
+		level1.initialize();
 		flagManager.addFlag("fresh", true);
 	}
 
@@ -63,27 +64,32 @@ public class ScreenCoordinator extends Screen {
 				switch(gameState) {
 					case MENU:
 						currentScreen = new MenuScreen(this);
+						currentScreen.initialize();
 						break;
 					case LEVEL:
-						currentScreen = new PlayLevelScreen(this);
+						currentScreen = level1;
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
+						currentScreen.initialize();
 						break;
 					case INTRO:
 						currentScreen = new IntroductionScreen(this);
+						currentScreen.initialize();
 						break;
 					case PAUSE:
 						currentScreen = new PauseScreen(this);
+						currentScreen.initialize();
 						break;
 					case CONTROLS:
 						currentScreen = new ControlsScreen(this);
+						currentScreen.initialize();
 						break;
 					case CONTROLSHOME:
 						currentScreen = new ControlsHome(this);
+						currentScreen.initialize();
 						break;
 				}
-				currentScreen.initialize();
 			}
 			previousGameState = gameState;
 

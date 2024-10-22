@@ -36,6 +36,8 @@ public class PlayLevelScreen extends Screen {
     protected boolean[] helpStages = new boolean[helpSize]; // 0: Starting area , 1: 
     protected Sprite[] helpScreenSprite = new Sprite[helpSize];
     protected boolean start = true;
+    protected float x;
+    protected float y;
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -57,6 +59,31 @@ public class PlayLevelScreen extends Screen {
         helpScreenSprite[1] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
         helpScreenSprite[1].setScale(1);
         helpScreenSprite[1].setLocation(0, 0); 
+    }
+
+    public PlayLevelScreen(ScreenCoordinator screenCoordinator, float x, float y) {
+        this.screenCoordinator = screenCoordinator;
+
+        ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
+        ranger.setScale(1);
+        ranger.setLocation(725, 505); 
+
+        pause = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128)));
+        pause.setScale(3);
+        pause.setLocation(130, 100);  
+
+        helpStages[0] = true;
+        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("BreakLogHelp.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[0].setScale(1);
+        helpScreenSprite[0].setLocation(0, 0); 
+
+        helpStages[1] = false;
+        helpScreenSprite[1] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[1].setScale(1);
+        helpScreenSprite[1].setLocation(0, 0); 
+
+        this.x = x;
+        this.y = y;
     }
 
     public void initialize() {
@@ -150,6 +177,11 @@ public class PlayLevelScreen extends Screen {
                     break;
             }
         }
+
+        this.x = player.getX();
+        this.y = player.getY();
+
+
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -196,6 +228,10 @@ public class PlayLevelScreen extends Screen {
     public void drawMap(GraphicsHandler graphicsHandler) {
         map.draw(player, graphicsHandler);
     }
+
+    public float getX(){return this.x;}
+    public float getY(){return this.y;}
+
 
     // This enum represents the different states this screen can be in
     private enum PlayLevelScreenState {
