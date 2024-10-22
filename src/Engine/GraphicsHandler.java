@@ -2,6 +2,7 @@ package Engine;
 
 import GameObject.ImageEffect;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
@@ -79,23 +80,22 @@ public class GraphicsHandler extends JPanel {
 
     //this will draw the actual pop up box that prompts the user to enter their name
     public void drawString(String text, int x, int y, Font font, Color color, boolean showTextField) {
-        //draws the text ("What's your name?")
         g.setFont(font);
         g.setColor(color);
         g.drawString(text, x, y);
         //setPlayerName("TEST");
 
-        if (showTextField && playerName == null) {
-            //System.out.println("This is working");
+        if (showTextField) {
+            System.out.println("This is working");
             JFrame frame = new JFrame("Enter your player name:");
             GraphicsHandler handler = new GraphicsHandler();
             frame.add(handler);
             frame.setSize(250, 250);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setVisible(true);
 
             //adds the textbox field for the player name input
-            JTextField playerInputTextField = new JTextField(16);
+            JTextField playerInputTextField = new JTextField(12);
             playerInputTextField.setFont(font);
             this.setLayout(null);
             this.add(playerInputTextField);
@@ -111,11 +111,12 @@ public class GraphicsHandler extends JPanel {
 
             //adds panel to the frame
             frame.add(panel);
-            frame.setLocation(null);
+            frame.setLocation(40, 50);
             frame.setVisible(true);
         }        
+        
     }
-
+    
     //formats the name into the game
     public void drawString(String text, String playerName, int x, int y, Font font, Color color) {
         String finalText = String.format(text, playerName);

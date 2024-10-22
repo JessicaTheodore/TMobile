@@ -170,8 +170,10 @@ public class SpriteFont {
 				graphicsHandler.drawStringWithOutline(line, Math.round(x), drawLocationY, font, color, outlineColor, outlineThickness);
 			} else {
 				//takes the user's inputted name
+				//added second argument to equal false
 				if (isShowTextField()) {
                     graphicsHandler.drawString(line, Math.round(x), drawLocationY, font, color, true);
+					showTextField = false;
 				} else if (doesNeedNameReplacement()) {
 					graphicsHandler.drawString(line, graphicsHandler.getPlayerName(), Math.round(x), drawLocationY, font, color);
 				} else {
