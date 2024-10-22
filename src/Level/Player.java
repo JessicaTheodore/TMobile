@@ -96,10 +96,6 @@ public abstract class Player extends MapEntity {
         }
     }
 
-    public void touchedEnemy(BearEnemy bear) {
-        bear.hurtBear();
-    }
-
     // based on player's current state, call appropriate player state handling method
     protected void handlePlayerState() {
         switch (playerState) {
@@ -373,10 +369,17 @@ public abstract class Player extends MapEntity {
         }
     }
     
+    public void touchedEnemy(MapEntity mapEntity, BearEnemy bear) {
+        if(mapEntity instanceof Enemy && playerState == PlayerState.STICK_ATTACK) {
+            bear.hurtBear();
+        }
+    }
+
     public void hurtPlayer(MapEntity mapEntity){
-        if(mapEntity instanceof Enemy && playerHP > 0){
+        if(mapEntity instanceof Enemy && playerHP > 0 && playerState == PlayerState.WALKING){
             playerHP--;            
-        } 
+        }
+        
         if(playerHP == 0){
             gameState = GameState.DEATH;
         }
@@ -417,6 +420,6 @@ public abstract class Player extends MapEntity {
     // Uncomment this to have game draw player's bounds to make it easier to visualize
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
-        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
 }

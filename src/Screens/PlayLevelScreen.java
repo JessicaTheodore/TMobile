@@ -107,7 +107,6 @@ public class PlayLevelScreen extends Screen {
             healthSystem = new HealthSystem(5); // 5 hearts initially
 
         }
-        
     }
 
     public void update() {

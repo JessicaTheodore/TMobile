@@ -7,6 +7,7 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Enemy;
+import Level.MapEntityStatus;
 import Utils.Direction;
 import Utils.Point;
 import java.util.HashMap;
@@ -24,6 +25,7 @@ public class BearEnemy extends Enemy {
 
     public BearEnemy(int id, int enemyHP, Point location) {
         super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("Bear.png"), 24, 24), "STAND_LEFT");
+        isUncollidable = true;
     }
 
     public BearEnemy(int id, int enemyHP, Point startLocation, Point endLocation, Direction facingDirection) {
@@ -32,6 +34,7 @@ public class BearEnemy extends Enemy {
         this.endLocation = endLocation;
         this.startFacingDirection = facingDirection;
         this.initialize();
+        isUncollidable = true;
     }
 
     @Override
@@ -51,6 +54,7 @@ public class BearEnemy extends Enemy {
         if(bearHP > 0) {
             this.bearHP--;
         } else {
+            // mapEntityStatus = MapEntityStatus.REMOVED;
             this.isHidden();
         }
     }
