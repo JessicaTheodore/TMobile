@@ -73,8 +73,8 @@ public class Level1 extends Map {
         slingshot.setInteractScript(new PickUpSlingShot());
         npcs.add(slingshot);
 
-        BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480,25));
-        npcs.add(brokenBranch);
+        // BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480,25));
+        // npcs.add(brokenBranch);
 
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
         // bear.setInteractScript(new WalrusScript());
