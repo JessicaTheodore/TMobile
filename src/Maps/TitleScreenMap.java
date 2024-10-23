@@ -22,7 +22,7 @@ public class TitleScreenMap extends Map {
         cat.setScale(2);
         cat.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
         cat.setLocation(catLocation.x, catLocation.y); 
-        back = new Sprite(ImageLoader.loadSubImage("title.png", Colors.MAGENTA, 0,50, 800, 600));
+        back = new Sprite(ImageLoader.loadSubImage("title.png", Colors.MAGENTA, 0,0, 800, 605));
         back.setScale(1);
         back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
         back.setLocation(0, 0);  

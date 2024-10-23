@@ -32,7 +32,7 @@ public class ScreenCoordinator extends Screen {
 	protected Screen currentScreen = new DefaultScreen();
 	protected boolean level1start = true;
 	protected Screen hold;
-	protected Screen level1;
+	protected Screen level;
 	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 	protected FlagManager flagManager = new FlagManager();
 
@@ -68,11 +68,11 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new MenuScreen(this);
 						break;
 					case LEVEL:
-						currentScreen = level1;
+						currentScreen = level;
 						break;
 					case NEWLEVEL:
 						currentScreen = new PlayLevelScreen(this);
-						level1 = currentScreen;
+						level = currentScreen;
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);

@@ -61,9 +61,14 @@ public class PlayLevelScreen extends Screen {
         helpScreenSprite[0].setLocation(0, 0); 
 
         helpStages[1] = false;
-        helpScreenSprite[1] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[1] = (new Sprite(ImageLoader.loadSubImage("SlingShotHelp.png", Colors.MAGENTA, 0, 0, 800, 605)));
         helpScreenSprite[1].setScale(1);
         helpScreenSprite[1].setLocation(0, 0); 
+
+        helpScreenSprite[2] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[2].setScale(1);
+        helpScreenSprite[2].setLocation(0, 0); 
+
     }
 
     public void initialize() {
@@ -147,6 +152,10 @@ public class PlayLevelScreen extends Screen {
         }
         if(flagManager.isFlagSet("brokeLog")){
             helpStages[1] = true;
+        }
+
+        if(flagManager.isFlagSet("pickedUpSlingShot")){
+            //helpStages[2] = true;
         }
         
         
