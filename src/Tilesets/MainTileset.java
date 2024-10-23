@@ -631,6 +631,39 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(leaves1BarrierTile);
 
+        // Passable water tile (for branch bridge)
+
+        Frame[] passableWaterFrames = new Frame[] {
+            new FrameBuilder(getSubImage(5, 0), 5)
+                    .withScale(tileScale)
+                    .build(),
+            new FrameBuilder(getSubImage(5, 1), 5)
+                    .withScale(tileScale)
+                    .build(),
+            new FrameBuilder(getSubImage(5, 2), 5)
+                    .withScale(tileScale)
+                    .build(),
+            new FrameBuilder(getSubImage(5, 3), 5)
+                    .withScale(tileScale)
+                    .build(),
+            new FrameBuilder(getSubImage(5, 4), 5)
+                    .withScale(tileScale)
+                    .build(),
+            new FrameBuilder(getSubImage(5, 5), 5)
+                    .withScale(tileScale)
+                    .build(),
+            new FrameBuilder(getSubImage(5, 6), 5)
+                    .withScale(tileScale)
+                    .build(),
+            new FrameBuilder(getSubImage(5, 7), 5)
+                    .withScale(tileScale)
+                    .build()
+        };
+
+        MapTileBuilder passableWaterTile = new MapTileBuilder(passableWaterFrames)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(passableWaterTile);
 
         return mapTiles;
     }
