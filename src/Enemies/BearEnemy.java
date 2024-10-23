@@ -49,10 +49,11 @@ public class BearEnemy extends Enemy {
             });
         }};
     }
-
+    
+    // this gets called from the Player class when the player is in the stick attack state, which will do damage to the bear until its HP goes to 0
     public void hurtBear(){
         if(bearHP > 0) {
-            this.bearHP--;
+            this.bearHP--; 
         } else {
             // mapEntityStatus = MapEntityStatus.REMOVED;
             this.isHidden();

@@ -4,6 +4,7 @@ import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import GameObject.Sprite;
 import java.awt.Graphics2D;
+import Level.Player;
 
 public class HealthSystem {
     private int maxHealth;

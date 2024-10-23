@@ -5,6 +5,7 @@ import GameObject.SpriteSheet;
 import ScriptActions.NPCChangeVisibilityScriptAction;
 import Utils.Visibility;
 import Level.MapEntity;
+import Enemies.BearEnemy;
 
 import java.util.HashMap;
 
@@ -52,14 +53,10 @@ public class Enemy extends MapEntity {
     public int getId() { return id; }
 
     public void update(Player player) {
-        super.update();
+        super.update(); // this goes and updates the current position and animation of the enemy
         if (intersects(player)) {
-            touchedPlayer(player);
+                player.touchedPlayer(player); // this is called into the Player class when the enemy intersects swith the player
         }
-    }
-
-    public void touchedPlayer(Player player) {
-        player.hurtPlayer(this);
     }
 
     @Override

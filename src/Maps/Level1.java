@@ -90,8 +90,16 @@ public class Level1 extends Map {
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
 
-        BearEnemy bear = new BearEnemy(0, 2, getMapTile(14,55).getLocation());
-        enemies.add(bear);
+        BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(8,23).getLocation());
+        enemies.add(bear1);
+        BearEnemy bear2 = new BearEnemy(1, 2, getMapTile(6,26).getLocation());
+        enemies.add(bear2);
+        BearEnemy bear3 = new BearEnemy(2, 2, getMapTile(9,28).getLocation());
+        enemies.add(bear3);
+        BearEnemy bear4 = new BearEnemy(3, 2, getMapTile(13,27).getLocation());
+        enemies.add(bear4);
+        BearEnemy bear5 = new BearEnemy(4, 2, getMapTile(13,23).getLocation());
+        enemies.add(bear5);
 
         return enemies;
     }

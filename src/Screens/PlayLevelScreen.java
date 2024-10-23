@@ -104,7 +104,7 @@ public class PlayLevelScreen extends Screen {
             // Initialize win screen
             winScreen = new WinScreen(this);
 
-            healthSystem = new HealthSystem(5); // 5 hearts initially
+            healthSystem = new HealthSystem(player.getCurrentHealth()); // 5 hearts initially
         }
     }
 

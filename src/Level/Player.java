@@ -7,11 +7,14 @@ import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
 import Game.GameState;
+import Game.ScreenCoordinator;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
 import Enemies.BearEnemy;
+import Level.Enemy;
+import Utils.HealthSystem;
 
 // used to extend GameObject, changed it to MapEntity for convenience, I don't know the repurcussions of this
 public abstract class Player extends MapEntity {
@@ -48,6 +51,8 @@ public abstract class Player extends MapEntity {
     protected boolean isLocked = false;
     protected float xLoc;
     protected float yLoc;
+
+    // protected ScreenCoordinator screenCoordinator = new ScreenCoordinator();
 
     protected boolean pickedUpSlingshot = false;
     protected GameState gameState;
@@ -86,14 +91,6 @@ public abstract class Player extends MapEntity {
 
         // update player's animation
         super.update();
-    }
-
-    public void hurtPlayer() {
-        if(playerHP > 0) {
-            playerHP--;
-        } else {
-            // this is where the death screen would pop up
-        }
     }
 
     // based on player's current state, call appropriate player state handling method
@@ -243,7 +240,7 @@ public abstract class Player extends MapEntity {
         if (Keyboard.isKeyUp(MOVE_LEFT_KEY) && Keyboard.isKeyUp(MOVE_RIGHT_KEY) && Keyboard.isKeyUp(MOVE_UP_KEY) && Keyboard.isKeyUp(MOVE_DOWN_KEY)) {
             playerState = PlayerState.STANDING;
         }
-    }
+    }  
 
     protected void updateLockedKeys() {
         if (Keyboard.isKeyUp(INTERACT_KEY) && !isLocked) {
@@ -368,21 +365,36 @@ public abstract class Player extends MapEntity {
             this.currentAnimationName = "STAND_DOWN";
         }
     }
-    
-    public void touchedEnemy(MapEntity mapEntity, BearEnemy bear) {
-        if(mapEntity instanceof Enemy && playerState == PlayerState.STICK_ATTACK) {
-            bear.hurtBear();
+
+    // This gets called from within the Enemy class when the enemy hitbox intersects with the player hitbox
+    public void touchedPlayer(Player player) {
+        if(playerState == PlayerState.STICK_ATTACK) {
+                        // I want to make it so the bear gets hit when the hitboxes intersect when the player is attacking/in the attacking state
+                        // The only issue with this is that I don't have access to this method because the I don't have the reference to the bear enemy here
+                        // if I try to include the bear enemy in here, then I have to edit the touched player parameters, which then mean I need to change the 
+                        // parameters for update in the Enemy class, which means then i have to change every paramter everywhere to include the bear
+                        // it just doen't work because what if i want to add more than just one enemy
+                        // it simply just cannot work and that is driving me inssane right now. 
+        } else {
+            // decreaseHealth(); from the health system class. makes the hp system in player work with the heart display on the screen of this class
+            hurtPlayer(player); // I want the  player to get hit when they are not in the attacking state/walking and standing state
         }
     }
 
     public void hurtPlayer(MapEntity mapEntity){
-        if(mapEntity instanceof Enemy && playerHP > 0 && playerState == PlayerState.WALKING){
-            playerHP--;            
+        // if(playerState == PlayerState.WALKING || playerState == PlayerState.STANDING) {
+        //         playerHP--;   
+        // }
+        playerHP--;
+
+        // when the player's HP gets down to 0, they die and have to restart from the beginning of the level
+        if(playerHP == 0) {
+            // screenCoordinator.setGameState(GameState.DEATH);
         }
-        
-        if(playerHP == 0){
-            gameState = GameState.DEATH;
-        }
+    }
+
+    public int getCurrentHealth(){
+        return this.playerHP;
     }
 
     // used by other files or scripts to force player to walk
