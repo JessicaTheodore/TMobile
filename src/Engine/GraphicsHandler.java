@@ -86,22 +86,29 @@ public class GraphicsHandler extends JPanel {
         //setPlayerName("TEST");
 
         if (showTextField) {
-            System.out.println("This is working");
+            // System.out.println("This is working");
             JFrame frame = new JFrame("Enter your player name:");
             GraphicsHandler handler = new GraphicsHandler();
             frame.add(handler);
-            frame.setSize(250, 250);
+            frame.setSize(250, 150);
             frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
             frame.setVisible(true);
 
             //adds the textbox field for the player name input
-            JTextField playerInputTextField = new JTextField(12);
+            JTextField playerInputTextField = new JTextField(10);
             playerInputTextField.setFont(font);
             this.setLayout(null);
             this.add(playerInputTextField);
 
             //adds the button to continue
             JButton submitButton = new JButton("Continue");
+
+            //will close the box when the continue button is clicked
+            //also will take the player input for the same and set it to the playerName variable so it can show up! :D
+            submitButton.addActionListener(e -> {
+                setPlayerName(playerInputTextField.getText());
+                frame.dispose();
+            });
 
             //adds to the panel
             JPanel panel = new JPanel();
@@ -111,7 +118,7 @@ public class GraphicsHandler extends JPanel {
 
             //adds panel to the frame
             frame.add(panel);
-            frame.setLocation(40, 50);
+            frame.setLocation(620, 400);
             frame.setVisible(true);
         }        
         
