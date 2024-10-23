@@ -23,12 +23,13 @@ import Enemies.BearEnemy;
 
 import Utils.Point;
 // import NPCs.Bear;
-import NPCs.BreakableLog;
+import NPCs.BrokenBranch;
 //<<<<<<< HEAD
 import NPCs.Slingshot;
 
 //=======
 import NPCs.Bear;
+import NPCs.BranchBridge;
 import Enemies.BreakableBranch;
 import Enemies.BreakableLog;
 //>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
@@ -38,7 +39,6 @@ import Enemies.BreakableLog;
 // import Scripts.TestMap.DinoScript;
 // import Scripts.TestMap.WalrusScript;
 import Scripts.Level1.PickUpSlingShot;
-import Scripts.Level1.BreakableLogScript;
 import Scripts.Level1.BeatBear;
 import Scripts.Level1.BreakableBranchScript;
 import Scripts.TestMap.LostBallScript;
@@ -68,6 +68,13 @@ public class Level1 extends Map {
         Slingshot slingshot = new Slingshot(1, getMapTile(51, 48).getLocation());
         slingshot.setInteractScript(new PickUpSlingShot());
         npcs.add(slingshot);
+
+        BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480,25));
+        npcs.add(brokenBranch);
+
+        BranchBridge bridge = new BranchBridge(3, new Point(720,80));
+        npcs.add(bridge);
+
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
         // bear.setInteractScript(new WalrusScript());
         // npcs.add(bear);
