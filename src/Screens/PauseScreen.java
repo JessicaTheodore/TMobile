@@ -46,10 +46,10 @@ public class PauseScreen extends Screen{
     public PauseScreen(ScreenCoordinator screenCoordinator){
         this.screenCoordinator = screenCoordinator;
 
-        pauseMenu = ImageLoader.load("PauseScreen.png");
+        /* pauseMenu = ImageLoader.load("PauseScreen.png");
         pauseSprite = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128)));
         pauseSprite.setScale(3);
-        pauseSprite.setLocation(130, 100);  
+        pauseSprite.setLocation(130, 100);   */
     }
     
     @Override
