@@ -2,10 +2,6 @@ package Level;
     
 import GameObject.Frame;
 import GameObject.SpriteSheet;
-import ScriptActions.NPCChangeVisibilityScriptAction;
-import Utils.Visibility;
-import Level.MapEntity;
-import Enemies.BearEnemy;
 
 import java.util.HashMap;
 
@@ -25,6 +21,7 @@ public class Enemy extends MapEntity {
     public Enemy(int id, int enemyHP,float x, float y, HashMap<String, Frame[]> animations, String startingAnimation) {
         super(x, y, animations, startingAnimation);
         this.id = id;
+        this.enemyHP = enemyHP;
     }
 
     public Enemy(int id, int enemyHP,float x, float y, Frame[] frames) {
@@ -58,6 +55,10 @@ public class Enemy extends MapEntity {
             System.out.println("Intersected");
             player.touchedPlayer(player); // this is called into the Player class when the enemy intersects swith the player
         }
+    }
+
+    public void hurtEnemy(){
+
     }
 
     @Override

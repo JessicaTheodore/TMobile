@@ -1,4 +1,6 @@
-package NPCs;
+package Enemies;
+
+import java.util.HashMap;
 
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
@@ -6,24 +8,21 @@ import Engine.ImageLoader;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
-import Level.NPC;
+import Level.Enemy;
 import Utils.Point;
-
 import java.awt.Color;
-import java.util.HashMap;
 
-public class BreakableLog extends NPC {
-
-    public BreakableLog(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("breakablelog.png"), 100, 100), "STAND_LEFT");
+public class BreakableLog extends Enemy {
+    public BreakableLog(int id, int hp, Point location) {
+        super(id, hp, location.x, location.y, new SpriteSheet(ImageLoader.load("breakablelog.png"), 100, 100), "FACING_RIGHT");
     }
 
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
         return new HashMap<String, Frame[]>() {{
-            put("STAND_LEFT", new Frame[] {
+            put("FACING_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
-                            .withScale(3)
+                            .withScale(8)
                             .withBounds(45, 29, 15, 47)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
@@ -36,7 +35,6 @@ public class BreakableLog extends NPC {
         super.draw(graphicsHandler);
 
         // DRAWS HITBOX
-        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
-
 }

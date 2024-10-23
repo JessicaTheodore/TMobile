@@ -50,8 +50,10 @@ public class BearEnemy extends Enemy {
         }};
     }
     
+    
+    @Override
     // this gets called from the Player class when the player is in the stick attack state, which will do damage to the bear until its HP goes to 0
-    public void hurtBear(){
+    public void hurtEnemy(){
         this.bearHP--; 
         System.out.println(getBearHP());
 

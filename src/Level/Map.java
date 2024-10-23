@@ -459,6 +459,7 @@ public abstract class Map {
         // gets active surrounding npcs
         surroundingMapEntities.addAll(getActiveNPCs());
         surroundingMapEntities.addAll(getActiveEnhancedMapTiles());
+        surroundingMapEntities.addAll(getActiveEnemies());
         return surroundingMapEntities;
     }
 

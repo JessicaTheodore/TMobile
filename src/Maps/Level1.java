@@ -30,6 +30,7 @@ import NPCs.Slingshot;
 //=======
 import NPCs.Bear;
 import Enemies.BreakableBranch;
+import Enemies.BreakableLog;
 //>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -63,10 +64,6 @@ public class Level1 extends Map {
     @Override
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
-
-        BreakableLog breakableLog = new BreakableLog(0, getMapTile(25,37).getLocation());
-        breakableLog.setInteractScript(new BreakableLogScript());
-        npcs.add(breakableLog);
         
         Slingshot slingshot = new Slingshot(1, getMapTile(51, 48).getLocation());
         slingshot.setInteractScript(new PickUpSlingShot());
@@ -90,7 +87,7 @@ public class Level1 extends Map {
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
 
-        BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(8,23).getLocation());
+        BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(13,54).getLocation());
         enemies.add(bear1);
         BearEnemy bear2 = new BearEnemy(1, 2, getMapTile(6,26).getLocation());
         enemies.add(bear2);
@@ -102,8 +99,8 @@ public class Level1 extends Map {
         enemies.add(bear5);
 
         // This is the branch attatched to the tree that gets broken
-        BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
-        enemies.add(branch);
+        BreakableLog log = new BreakableLog(5, 1, getMapTile(10, 50).getLocation());
+        enemies.add(log);
 
         return enemies;
     }
