@@ -21,6 +21,7 @@ import ScriptActions.FlagRequirement;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import Screens.IntroductionScreen;
+import Screens.LevelCompleteScreen;
 import Screens.LevelLoseScreen;
 
 /*
@@ -95,6 +96,8 @@ public class ScreenCoordinator extends Screen {
 					case DEATH:
 						currentScreen = new LevelLoseScreen(this);
 						break;
+					case LEVELCOMPLETE:
+						currentScreen = new LevelCompleteScreen(this);
 					default:
 						break;
 				}

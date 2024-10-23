@@ -32,6 +32,7 @@ import NPCs.Slingshot;
 import NPCs.Bear;
 import NPCs.BranchBridge;
 import Enemies.BreakableBranch;
+import Engine.GraphicsHandler;
 //>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -40,6 +41,7 @@ import Enemies.BreakableBranch;
 // import Scripts.TestMap.WalrusScript;
 import Scripts.Level1.PickUpSlingShot;
 import Scripts.Level1.BreakableLogScript;
+import Scripts.Level1.NextLevel;
 import Scripts.Level1.BeatBear;
 import Scripts.Level1.BreakableBranchScript;
 import Scripts.TestMap.LostBallScript;
@@ -121,6 +123,13 @@ public class Level1 extends Map {
         public ArrayList<Trigger> loadTriggers() {
             ArrayList<Trigger> triggers = new ArrayList<>();
             // triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
+            triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
+
             return triggers;
+    }
+
+    @Override
+    public void draw(GraphicsHandler graphicsHandler){
+        triggers.get(triggers.size()-1).draw(graphicsHandler);
     }
 }

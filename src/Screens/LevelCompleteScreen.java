@@ -12,6 +12,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import Level.Map;
+import Maps.PauseScreenMap;
 
 public class LevelCompleteScreen extends Screen {
 
@@ -51,7 +52,7 @@ public class LevelCompleteScreen extends Screen {
             }
         } catch (FontFormatException | IOException e) {
             e.printStackTrace();
-        }
+        } 
 
         message = new SpriteFont("Level Complete!", 150, 50, maruMonica.deriveFont(80f), new Color(255, 255, 255));
         message.setOutlineColor(Color.black);
@@ -131,7 +132,7 @@ public class LevelCompleteScreen extends Screen {
             chosen = curr;
             if (chosen == 0) {
                 // Proceed to the next level.
-                screenCoordinator.setGameState(GameState.NEXT_LEVEL);
+                screenCoordinator.setGameState(GameState.MENU);
             } else if (chosen == 1) {
                 // Restart the current level.
                 screenCoordinator.setGameState(GameState.LEVEL);
