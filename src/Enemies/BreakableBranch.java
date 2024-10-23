@@ -7,6 +7,7 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Enemy;
+import Level.EnhancedMapTile;
 import Level.MapEntityStatus;
 import Level.NPC;
 import Utils.Point;
@@ -40,7 +41,16 @@ public class BreakableBranch extends Enemy {
         this.branchHP--;
         if(branchHP == 0){
             mapEntityStatus = MapEntityStatus.REMOVED;
+            
+            
+            // create a new walkable tile and add it to the enhanced map tile list
+            map.addEnhancedMapTile();
+
+            // this is for the hide show method
+
             // then it needs to spawn in an enhanced map tile over the river tiles
+            // this will be an enhanced map tile branchbridge
+            // these tiles will become visible in this part of the code so you can walk over them to complete the level
         }
     }
 
