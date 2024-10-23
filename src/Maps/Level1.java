@@ -108,6 +108,10 @@ public class Level1 extends Map {
         // This is the branch attatched to the tree that gets broken
         BreakableLog log = new BreakableLog(5, 1, getMapTile(10, 50).getLocation());
         enemies.add(log);
+        
+        BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
+        // branch.setInteractScript(new BreakableBranchScript());
+        enemies.add(branch);
 
         return enemies;
     }
