@@ -28,7 +28,7 @@ public class BreakableBranch extends Enemy {
             put("FACING_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(8)
-                            .withBounds(0, 0, 80, 28)
+                            .withBounds(0, 50, 80, 28)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
@@ -49,7 +49,7 @@ public class BreakableBranch extends Enemy {
         super.draw(graphicsHandler);
 
         // DRAWS HITBOX
-        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
 
     

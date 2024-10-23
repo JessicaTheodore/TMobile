@@ -32,6 +32,7 @@ import NPCs.Bear;
 import NPCs.BranchBridge;
 import Enemies.BreakableBranch;
 import Enemies.BreakableLog;
+import Engine.GraphicsHandler;
 //>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -41,6 +42,7 @@ import Enemies.BreakableLog;
 import Scripts.Level1.PickUpSlingShot;
 import Scripts.Level1.BeatBear;
 import Scripts.Level1.BreakableBranchScript;
+import Scripts.Level1.NextLevel;
 import Scripts.TestMap.LostBallScript;
 
 public class Level1 extends Map {
@@ -108,6 +110,10 @@ public class Level1 extends Map {
         // This is the branch attatched to the tree that gets broken
         BreakableLog log = new BreakableLog(5, 1, getMapTile(10, 50).getLocation());
         enemies.add(log);
+        
+        BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
+        // branch.setInteractScript(new BreakableBranchScript());
+        enemies.add(branch);
 
         return enemies;
     }
