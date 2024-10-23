@@ -116,6 +116,13 @@ public class Level1 extends Map {
         public ArrayList<Trigger> loadTriggers() {
             ArrayList<Trigger> triggers = new ArrayList<>();
             // triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
+            triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
+
             return triggers;
+    }
+
+    @Override
+    public void draw(GraphicsHandler graphicsHandler){
+        triggers.get(triggers.size()-1).draw(graphicsHandler);
     }
 }

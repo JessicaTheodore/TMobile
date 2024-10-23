@@ -40,6 +40,7 @@ public class PlayLevelScreen extends Screen {
     protected boolean start = true;
     protected float x;
     protected float y;
+    protected Trigger trigger;
 
     private HealthSystem healthSystem;
 
@@ -82,6 +83,10 @@ public class PlayLevelScreen extends Screen {
             flagManager.addFlag("hasFoundBall", false);
             flagManager.addFlag("brokeLog", false);
             flagManager.addFlag("pickedUpSlingShot", false);
+            flagManager.addFlag("beatLvl1", false);
+
+            // triger for beating level
+
 
             // Define/setup map
             map = new Level1();
@@ -116,7 +121,10 @@ public class PlayLevelScreen extends Screen {
     public void update() {
         // Opens help screen when h is clicked
 
-        
+        if(flagManager.isFlagSet("beatLvl1")){
+            screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
+            System.out.println("beat lvl 1");
+        }
         if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && helpOn) {
             helpOn = false;
             helpScreen.changeStatus();
@@ -225,6 +233,7 @@ public class PlayLevelScreen extends Screen {
                     break;
             }
         }
+        //map.getTriggers().get(map.getTriggers().size()-1).draw(graphicsHandler);
     }
 
     public PlayLevelScreenState getPlayLevelScreenState() {
