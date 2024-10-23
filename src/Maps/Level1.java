@@ -3,7 +3,7 @@ package Maps;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-// import Engine.GraphicsHandler;
+import Engine.GraphicsHandler;
 // import Engine.ImageLoader;
 // import Engine.ScreenManager;
 import GameObject.Sprite;
@@ -116,7 +116,7 @@ public class Level1 extends Map {
         public ArrayList<Trigger> loadTriggers() {
             ArrayList<Trigger> triggers = new ArrayList<>();
             // triggers.add(new Trigger(470, 2300, 100, 100, new IntroScript(), "gameStart"));
-            triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
+            // triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
 
             return triggers;
     }

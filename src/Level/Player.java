@@ -13,7 +13,7 @@ import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
-import Enemies.BearEnemy;
+import Enemies.*; 
 import Level.Enemy;
 import Utils.HealthSystem;
 
@@ -376,6 +376,10 @@ public abstract class Player extends MapEntity {
             for (Enemy enemy : map.getActiveEnemies()){
                 if(enemy instanceof BearEnemy && intersects(enemy)) {
                     enemy.hurtEnemy(); // this is where I would put the code to hurt the enemy but I honestly have no idea how to make that work here  
+                } else if (enemy instanceof BreakableLog && intersects(enemy)){
+                    enemy.hurtEnemy();
+                } else if(enemy instanceof BreakableBranch && intersects(enemy)){
+                    enemy.hurtEnemy();
                 }
             }
                         // I want to make it so the bear gets hit when the hitboxes intersect when the player is attacking/in the attacking state
