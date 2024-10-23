@@ -93,6 +93,7 @@ public class Level1 extends Map {
         BearEnemy bear = new BearEnemy(0, 2, getMapTile(14,55).getLocation());
         enemies.add(bear);
 
+        // This is the branch attatched to the tree that gets broken
         BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
         enemies.add(branch);
 

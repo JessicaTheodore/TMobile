@@ -37,7 +37,7 @@ public class BreakableBranch extends Enemy {
         super.draw(graphicsHandler);
 
         // DRAWS HITBOX
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
 
     
