@@ -3,6 +3,7 @@ package Players;
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import Game.ScreenCoordinator;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
@@ -14,8 +15,8 @@ import java.util.HashMap;
 // basically just sets some values for physics and then defines animations
 public class Cat extends Player {
     
-    public Cat(float x, float y) {
-        super(new SpriteSheet(ImageLoader.load("Hiker.png"), 64, 64), x, y, "STAND_DOWN");
+    public Cat(float x, float y, ScreenCoordinator screenCoordinator) {
+        super(new SpriteSheet(ImageLoader.load("Hiker.png"), 64, 64), x, y, "STAND_DOWN", screenCoordinator);
         walkSpeed = 4f;
     }
  

@@ -94,7 +94,7 @@ public class PlayLevelScreen extends Screen {
             pauseScreen = new PauseScreen(screenCoordinator);
 
             // Setup player
-            player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y);
+            player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, screenCoordinator);
             player.setMap(map);
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);

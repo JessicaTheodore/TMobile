@@ -55,7 +55,8 @@ public class Enemy extends MapEntity {
     public void update(Player player) {
         super.update(); // this goes and updates the current position and animation of the enemy
         if (intersects(player)) {
-                player.touchedPlayer(player); // this is called into the Player class when the enemy intersects swith the player
+            System.out.println("Intersected");
+            player.touchedPlayer(player); // this is called into the Player class when the enemy intersects swith the player
         }
     }
 

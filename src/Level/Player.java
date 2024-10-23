@@ -6,6 +6,7 @@ import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
+import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.GameObject;
@@ -52,12 +53,12 @@ public abstract class Player extends MapEntity {
     protected float xLoc;
     protected float yLoc;
 
-    // protected ScreenCoordinator screenCoordinator = new ScreenCoordinator();
+    protected ScreenCoordinator screenCoordinator;
 
     protected boolean pickedUpSlingshot = false;
     protected GameState gameState;
     
-    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName) {
+    public Player(SpriteSheet spriteSheet, float x, float y, String startingAnimationName, ScreenCoordinator screenCoordinator) {
         // super(spriteSheet, x, y, startingAnimationName);
         super(x, y, spriteSheet, startingAnimationName);
         this.xLoc = x;
@@ -66,6 +67,7 @@ public abstract class Player extends MapEntity {
         playerState = PlayerState.STANDING;
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
+        this.screenCoordinator = screenCoordinator;
     }
 
     public void update() {
@@ -369,6 +371,7 @@ public abstract class Player extends MapEntity {
     // This gets called from within the Enemy class when the enemy hitbox intersects with the player hitbox
     public void touchedPlayer(Player player) {
         if(playerState == PlayerState.STICK_ATTACK) {
+            hurtBear();
                         // I want to make it so the bear gets hit when the hitboxes intersect when the player is attacking/in the attacking state
                         // The only issue with this is that I don't have access to this method because the I don't have the reference to the bear enemy here
                         // if I try to include the bear enemy in here, then I have to edit the touched player parameters, which then mean I need to change the 
@@ -382,14 +385,13 @@ public abstract class Player extends MapEntity {
     }
 
     public void hurtPlayer(MapEntity mapEntity){
-        // if(playerState == PlayerState.WALKING || playerState == PlayerState.STANDING) {
-        //         playerHP--;   
-        // }
         playerHP--;
+        System.out.println("Player is hit\n" + getCurrentHealth());
 
         // when the player's HP gets down to 0, they die and have to restart from the beginning of the level
         if(playerHP == 0) {
-            // screenCoordinator.setGameState(GameState.DEATH);
+            screenCoordinator.setGameState(GameState.DEATH);
+            System.out.println("Player is dead");
         }
     }
 
