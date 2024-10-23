@@ -41,7 +41,7 @@ public class IntroductionTextbox extends Textbox {
         if (!script.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
             introText = script.peek();
         } else if (script.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
-            screenCoordinator.setGameState(GameState.LEVEL);
+            screenCoordinator.setGameState(GameState.NEWLEVEL);
         }
         
         if (Keyboard.isKeyDown(interactKey) && !keyLocker.isKeyLocked(interactKey)) {
