@@ -91,7 +91,7 @@ public class IntroductionTextbox extends Textbox {
         script.add(new SpriteFont("R: It's not wise to head up the Giant now. ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("Player: Strange things?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: Rumors have been spreading by those who make it off\n the mountain… ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Grizzlies with glowing eyes, whispering tree attacking\n those who come too close…", x, y + 10, maruMonica.deriveFont(33f), Color.black));
+        script.add(new SpriteFont("R: Grizzlies with glowing eyes, whispering trees attacking\n those who come too close…", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: I've even seen some just like you go up and never come\n back.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: Some say the legend is to blame.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("Player: The legend?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
