@@ -2,7 +2,6 @@ package Engine;
 
 import GameObject.ImageEffect;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
@@ -124,7 +123,7 @@ public class GraphicsHandler extends JPanel {
         }        
         
     }
-
+    
     //formats the name into the game
     public void drawString(String text, String playerName, int x, int y, Font font, Color color) {
         String finalText = String.format(text, playerName);

@@ -18,7 +18,7 @@ public class HelpScreen {
     public HelpScreen(FlagManager flagManager){
         this.flagManager = flagManager;
 
-        helpMenu = ImageLoader.load("HelpScreen.png");
+        //helpMenu = ImageLoader.load("HelpScreen.png");
     }
     
     

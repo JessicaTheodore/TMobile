@@ -29,7 +29,7 @@ import NPCs.Slingshot;
 
 //=======
 import NPCs.Bear;
-import NPCs.BreakableBranch;
+import Enemies.BreakableBranch;
 //>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -100,6 +100,10 @@ public class Level1 extends Map {
         enemies.add(bear4);
         BearEnemy bear5 = new BearEnemy(4, 2, getMapTile(13,23).getLocation());
         enemies.add(bear5);
+
+        // This is the branch attatched to the tree that gets broken
+        BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
+        enemies.add(branch);
 
         return enemies;
     }

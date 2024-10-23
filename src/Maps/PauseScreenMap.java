@@ -22,9 +22,7 @@ import Utils.Point;
 
         public PauseScreenMap() {
             super("PauseScreenMap.txt", new MainTileset());
-            back = new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128));
-            back.setScale(1);
-            back.setLocation(0, 0); 
+            
 
         }
 

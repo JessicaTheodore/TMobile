@@ -28,12 +28,6 @@ public class BreakableLog extends NPC {
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
-        //     put("STAND_RIGHT", new Frame[] {
-        //            new FrameBuilder(spriteSheet.getSprite(0, 0))
-        //                    .withScale(3)
-        //                    .withBounds(7, 13, 11, 7)
-        //                    .build()
-        //    });
         }};
     }
 
@@ -42,7 +36,7 @@ public class BreakableLog extends NPC {
         super.draw(graphicsHandler);
 
         // DRAWS HITBOX
-        //drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
 
 }
