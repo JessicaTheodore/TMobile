@@ -29,7 +29,7 @@ import NPCs.Slingshot;
 
 //=======
 import NPCs.Bear;
-import NPCs.BreakableBranch;
+import Enemies.BreakableBranch;
 //>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
 // import NPCs.Dinosaur;
@@ -92,6 +92,9 @@ public class Level1 extends Map {
 
         BearEnemy bear = new BearEnemy(0, 2, getMapTile(14,55).getLocation());
         enemies.add(bear);
+
+        BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
+        enemies.add(branch);
 
         return enemies;
     }
