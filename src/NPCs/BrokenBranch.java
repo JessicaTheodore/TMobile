@@ -9,13 +9,14 @@ import GameObject.SpriteSheet;
 import Level.NPC;
 import Utils.Point;
 
+import java.awt.Color;
 import java.util.HashMap; 
 
 // This is the little piece of the branch that stays attactched to the tree when the rest gets broken off 
 public class BrokenBranch extends NPC {
     
         public BrokenBranch(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("brokenbranch.png"), 100, 100), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("brokenbranch.png"), 80, 32), "STAND_LEFT");
     }
 
     @Override
@@ -24,7 +25,7 @@ public class BrokenBranch extends NPC {
             put("STAND_LEFT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(8)
-                            .withBounds(10, 10, 10, 10)
+                            .withBounds(0, 0, 1, 1)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
@@ -36,7 +37,7 @@ public class BrokenBranch extends NPC {
         super.draw(graphicsHandler);
 
         // DRAWS HITBOX
-        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
 
 }

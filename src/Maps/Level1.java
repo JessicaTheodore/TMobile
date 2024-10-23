@@ -30,6 +30,7 @@ import NPCs.Slingshot;
 
 //=======
 import NPCs.Bear;
+import NPCs.BranchBridge;
 import Enemies.BreakableBranch;
 //>>>>>>> 9f8546ec7260beeeda6ff2a4f2a68147d9cb2568
 // import NPCs.Bug;
@@ -73,8 +74,11 @@ public class Level1 extends Map {
         slingshot.setInteractScript(new PickUpSlingShot());
         npcs.add(slingshot);
 
-        // BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480,25));
-        // npcs.add(brokenBranch);
+        BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480,25));
+        npcs.add(brokenBranch);
+
+        BranchBridge bridge = new BranchBridge(3, new Point(720,80));
+        npcs.add(bridge);
 
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
         // bear.setInteractScript(new WalrusScript());
@@ -107,8 +111,8 @@ public class Level1 extends Map {
         enemies.add(bear5);
 
         // This is the branch attatched to the tree that gets broken
-        BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
-        enemies.add(branch);
+        // BreakableBranch branch = new BreakableBranch(1, 1, new Point(480,25));
+        // enemies.add(branch);
 
         return enemies;
     }
