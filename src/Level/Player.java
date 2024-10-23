@@ -371,7 +371,7 @@ public abstract class Player extends MapEntity {
     // This gets called from within the Enemy class when the enemy hitbox intersects with the player hitbox
     public void touchedPlayer(Player player) {
         if(playerState == PlayerState.STICK_ATTACK) {
-            hurtBear();
+            // hurtBear();
                         // I want to make it so the bear gets hit when the hitboxes intersect when the player is attacking/in the attacking state
                         // The only issue with this is that I don't have access to this method because the I don't have the reference to the bear enemy here
                         // if I try to include the bear enemy in here, then I have to edit the touched player parameters, which then mean I need to change the 
