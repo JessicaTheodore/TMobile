@@ -36,7 +36,7 @@ public class BearEnemy extends Enemy {
             put("STAND_LEFT", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0))
                     .withScale(3)
-                    .withBounds(0, 0, 24, 24)
+                    .withBounds(4, 5, 15, 15)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .build()
             });

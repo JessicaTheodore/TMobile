@@ -66,9 +66,9 @@ public class Enemy extends MapEntity {
         // Define how the enemy gets hurt
     }
 
-    @Override
-    public void draw(GraphicsHandler graphicsHandler) {
-        super.draw(graphicsHandler);
-    }
+    // @Override
+    // public void draw(GraphicsHandler graphicsHandler) {
+    //     super.draw(graphicsHandler);
+    // }
 }
 
