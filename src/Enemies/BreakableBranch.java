@@ -32,6 +32,7 @@ public class BreakableBranch extends Enemy {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(8)
                             .withBounds(0, 20, 80, 28)
+                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
         }};

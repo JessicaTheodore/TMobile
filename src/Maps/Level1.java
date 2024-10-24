@@ -13,7 +13,7 @@ import Enemies.BreakableBranch;
 import Enemies.BreakableLog;
 import NPCs.BrokenBranch;
 import NPCs.Slingshot;
-import NPCs.BranchBridge;
+// import NPCs.BranchBridge;
 import Scripts.Level1.BrokeLog;
 import Scripts.Level1.NextLevel;
 import Scripts.Level1.PickUpSlingShot;
@@ -50,8 +50,8 @@ public class Level1 extends Map {
         BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480, 25));
         npcs.add(brokenBranch);
 
-        BranchBridge bridge = new BranchBridge(3, new Point(720, 80));
-        npcs.add(bridge);
+        // BranchBridge bridge = new BranchBridge(3, new Point(720, 80));
+        // npcs.add(bridge);
 
         return npcs;
     }
