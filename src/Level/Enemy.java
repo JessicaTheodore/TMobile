@@ -1,10 +1,8 @@
 package Level;
-    
+
 import GameObject.Frame;
 import GameObject.SpriteSheet;
-
 import java.util.HashMap;
-
 import Engine.GraphicsHandler;
 
 // This class is a base class for all enemies in the game -- all enemies should extend from it
@@ -18,13 +16,13 @@ public class Enemy extends MapEntity {
         this.enemyHP = enemyHP;
     }
 
-    public Enemy(int id, int enemyHP,float x, float y, HashMap<String, Frame[]> animations, String startingAnimation) {
+    public Enemy(int id, int enemyHP, float x, float y, HashMap<String, Frame[]> animations, String startingAnimation) {
         super(x, y, animations, startingAnimation);
         this.id = id;
         this.enemyHP = enemyHP;
     }
 
-    public Enemy(int id, int enemyHP,float x, float y, Frame[] frames) {
+    public Enemy(int id, int enemyHP, float x, float y, Frame[] frames) {
         super(x, y, frames);
         this.id = id;
         this.enemyHP = enemyHP;
@@ -49,16 +47,23 @@ public class Enemy extends MapEntity {
 
     public int getId() { return id; }
 
+    // Original update that requires Player object
     public void update(Player player) {
-        super.update(); // this goes and updates the current position and animation of the enemy
+        super.update();
         if (intersects(player)) {
             System.out.println("Intersected");
-            player.touchedPlayer(player); // this is called into the Player class when the enemy intersects swith the player
+            player.touchedPlayer(player); 
         }
     }
 
-    public void hurtEnemy(){
+    // Overriding update without Player argument
+    @Override
+    public void update() {
+        super.update();
+    }
 
+    public void hurtEnemy() {
+        // Define how the enemy gets hurt
     }
 
     @Override
@@ -66,3 +71,4 @@ public class Enemy extends MapEntity {
         super.draw(graphicsHandler);
     }
 }
+
