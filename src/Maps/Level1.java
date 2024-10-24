@@ -14,9 +14,12 @@ import Enemies.BreakableLog;
 import NPCs.BrokenBranch;
 import NPCs.Slingshot;
 import NPCs.BranchBridge;
+import Scripts.Level1.BrokeLog;
+import Scripts.Level1.NextLevel;
 import Scripts.Level1.PickUpSlingShot;
 import Utils.Point;
 import Level.Player; // Import the Player class
+import Level.Script;
 
 public class Level1 extends Map {
 
@@ -74,8 +77,6 @@ public class Level1 extends Map {
         BearEnemy bear5 = new BearEnemy(4, 2, getMapTile(13, 23).getLocation(), bearMovementRadius);
         enemies.add(bear5);
 
-
-
         // Adding breakable objects
         BreakableLog log = new BreakableLog(5, 1, getMapTile(24, 37).getLocation());
         enemies.add(log);
@@ -88,6 +89,8 @@ public class Level1 extends Map {
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
+        triggers.add(new Trigger(1330, 1890, 50, 150, new BrokeLog(), "brokeLog"));
         return triggers;
     }
 
@@ -102,6 +105,8 @@ public class Level1 extends Map {
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
+        for (int i = 0; i <= triggers.size(); i++) {
+            triggers.get(i).draw(graphicsHandler);
+        }
     }
 }
-
