@@ -41,11 +41,11 @@ public class BreakableLog extends Enemy {
         }
     }
 
-    @Override
-    public void draw(GraphicsHandler graphicsHandler) {
-        super.draw(graphicsHandler);
+    // @Override
+    // public void draw(GraphicsHandler graphicsHandler) {
+    //     super.draw(graphicsHandler);
 
-        // DRAWS HITBOX
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-    }
+    //     // DRAWS HITBOX
+    //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    // }
 }
