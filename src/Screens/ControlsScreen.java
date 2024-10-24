@@ -55,7 +55,7 @@ public class ControlsScreen extends Screen{
         exit.setOutlineColor(Color.WHITE);
         exit.setOutlineThickness(3);
 
-        e = new SpriteFont("E", 700, 535, maruMonica.deriveFont(17f), Color.YELLOW);
+        e = new SpriteFont("E", 703, 538, maruMonica.deriveFont(13f), Color.BLACK);
         e.setOutlineColor(Color.black);
         e.setOutlineThickness(3);
         
@@ -65,9 +65,10 @@ public class ControlsScreen extends Screen{
         controls[3] = new SpriteFont("D: Move Right",328, 250, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[4] = new SpriteFont("E: Interact",345, 290, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[5] = new SpriteFont("H: Help Screen",322, 330, maruMonica.deriveFont(30f), new Color(255, 255, 255));
-        controls[6] = new SpriteFont("ESC: Pasue / Exit",310, 370, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[6] = new SpriteFont("ESC: Pause / Exit",310, 370, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[7] = new SpriteFont("L Shift: Ranged Attack",283, 410, maruMonica.deriveFont(30f), new Color(255, 255, 255));
-        controls[8] = new SpriteFont("Space: Mele Attack",300, 450, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[8] = new SpriteFont("Space: Melee Attack",300, 450, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        
         for(int i = 0; i < controls.length; i++){
             controls[i].setOutlineColor(Color.black);
             controls[i].setOutlineThickness(3);

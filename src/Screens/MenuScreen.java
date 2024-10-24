@@ -3,6 +3,7 @@ package Screens;
 import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import GameObject.Sprite;
 import Level.Map;
 import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
@@ -26,6 +27,7 @@ public class MenuScreen extends Screen {
     protected int keyPressTimer;
     protected int pointerLocationX, pointerLocationY;
     protected KeyLocker keyLocker = new KeyLocker();
+    private Sprite logo;
 
     private Font maruMonica;
 
@@ -58,6 +60,11 @@ public class MenuScreen extends Screen {
         e = new SpriteFont("E", 0, 0, maruMonica.deriveFont(13f), Color.WHITE);
         e.setOutlineColor(Color.BLACK);
         e.setOutlineThickness(3);
+
+        // Logo at the top 
+        logo = new Sprite(ImageLoader.loadSubImage("TLOH.png",0,0,150,39));
+        logo.setScale(5);
+        logo.setLocation(0,40);        
 
         playGame = new SpriteFont("Play Game", 350, 253, maruMonica.deriveFont(30f), Color.BLACK);
         playGame.setOutlineColor(Color.black);
@@ -150,9 +157,9 @@ public class MenuScreen extends Screen {
             playGame.setOutlineColor(Color.black);
             controls.setColor(Color.white);
             controls.setOutlineColor(Color.black);
-            credits.setColor(Color.YELLOW);
+            credits.setColor(Color.white);
             credits.setOutlineColor(Color.black);
-            quitGame.setColor(Color.white);
+            quitGame.setColor(Color.YELLOW);
             quitGame.setOutlineColor(new Color(255,171,0));
             pointerLocationX = 315;
             pointerLocationY = 470;
@@ -181,6 +188,7 @@ public class MenuScreen extends Screen {
         // title.draw(graphicsHandler);
         quitGame.draw(graphicsHandler);
         controls.draw(graphicsHandler);
+        logo.draw(graphicsHandler);
         graphicsHandler.drawFilledRectangleWithBorder(pointerLocationX, pointerLocationY, 20, 20, Color.white, Color.black, 2);
         e.draw(graphicsHandler);
     }

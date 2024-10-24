@@ -17,7 +17,7 @@ public class TitleScreenMap extends Map {
     // private Sprite cat;
     private Sprite back;
     // private Sprite topText;
-    private Sprite logo;
+    // private Sprite logo;
 
     public TitleScreenMap() {
         super("title_screen_map.txt", new CommonTileset());
@@ -35,17 +35,17 @@ public class TitleScreenMap extends Map {
         back.setScale(2);
         back.setLocation(0, -60);      
 
-        // Logo text 
-        logo = new Sprite(ImageLoader.loadSubImage("TLOH.png",0,0,150,39));
-        logo.setScale(5);
-        logo.setLocation(0,40);
+        // // Logo text 
+        // logo = new Sprite(ImageLoader.loadSubImage("TLOH.png",0,0,150,39));
+        // logo.setScale(5);
+        // logo.setLocation(0,40);
     }
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         back.draw(graphicsHandler);
-        logo.draw(graphicsHandler);
+        // logo.draw(graphicsHandler);
         // cat.draw(graphicsHandler);
     }
 }
