@@ -30,7 +30,6 @@ public class BreakableBranch extends Enemy {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(8)
                             .withBounds(0, 50, 80, 28)
-                            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
         }};
@@ -42,9 +41,9 @@ public class BreakableBranch extends Enemy {
         if(branchHP == 0){
             mapEntityStatus = MapEntityStatus.REMOVED;
             
-            
+
             // create a new walkable tile and add it to the enhanced map tile list
-            map.addEnhancedMapTile();
+            // map.addEnhancedMapTile();
 
             // this is for the hide show method
 
