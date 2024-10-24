@@ -66,13 +66,13 @@ public class MenuScreen extends Screen {
         controls.setOutlineColor(Color.black);
         controls.setOutlineThickness(3);
 
-        quitGame = new SpriteFont("Close Game", 200, 393, maruMonica.deriveFont(30f), Color.white);
-        quitGame.setOutlineColor(Color.black);
-        quitGame.setOutlineThickness(3);
-
-        credits = new SpriteFont("Credits", 200, 463, maruMonica.deriveFont(30f), Color.white);
+        credits = new SpriteFont("Credits", 200, 393, maruMonica.deriveFont(30f), Color.white);
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
+
+        quitGame = new SpriteFont("Close Game", 200, 463, maruMonica.deriveFont(30f), Color.white);
+        quitGame.setOutlineColor(Color.black);
+        quitGame.setOutlineThickness(3);
 
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
@@ -133,10 +133,10 @@ public class MenuScreen extends Screen {
             playGame.setOutlineColor(Color.black);
             controls.setColor(Color.white);
             controls.setOutlineColor(Color.black);
-            credits.setColor(Color.white);
-            credits.setOutlineColor(Color.black);
-            quitGame.setColor(Color.black);
-            quitGame.setOutlineColor(Color.white);
+            credits.setColor(Color.black);
+            credits.setOutlineColor(Color.white);
+            quitGame.setColor(Color.white);
+            quitGame.setOutlineColor(Color.black);
             pointerLocationX = 170;
             pointerLocationY = 400;
         }else if(currentMenuItemHovered == 3){
@@ -144,10 +144,10 @@ public class MenuScreen extends Screen {
             playGame.setOutlineColor(Color.black);
             controls.setColor(Color.white);
             controls.setOutlineColor(Color.black);
-            credits.setColor(Color.black);
-            credits.setOutlineColor(Color.white);
-            quitGame.setColor(Color.white);
-            quitGame.setOutlineColor(Color.black);
+            credits.setColor(Color.white);
+            credits.setOutlineColor(Color.black);
+            quitGame.setColor(Color.black);
+            quitGame.setOutlineColor(Color.white);
             pointerLocationX = 170;
             pointerLocationY = 470;
         }
@@ -167,9 +167,9 @@ public class MenuScreen extends Screen {
             } else if (menuItemSelected == 1) {
                 screenCoordinator.setGameState(GameState.CONTROLSHOME);
             }else if(menuItemSelected == 2){
-                System.exit(0);
-            }else if(menuItemSelected == 3){
                 screenCoordinator.setGameState(GameState.CREDITS);
+            }else if(menuItemSelected == 3){
+                System.exit(0);
             }
 
         }
