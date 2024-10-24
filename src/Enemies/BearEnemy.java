@@ -58,7 +58,6 @@ public class BearEnemy extends Enemy {
 
         if(bearHP <= 0){
             mapEntityStatus = MapEntityStatus.REMOVED;
-            // this.isHidden();
         }
     }
 
