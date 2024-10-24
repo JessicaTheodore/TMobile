@@ -71,9 +71,13 @@ public class MenuScreen extends Screen {
         quitGame.setOutlineColor(Color.black);
         quitGame.setOutlineThickness(5);
 
-        credits = new SpriteFont("Credits", 350, 463, maruMonica.deriveFont(30f), Color.white);
+        credits = new SpriteFont("Credits", 350, 393, maruMonica.deriveFont(30f), Color.white);
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(5);
+
+        quitGame = new SpriteFont("Close Game", 350, 463, maruMonica.deriveFont(30f), Color.white);
+        quitGame.setOutlineColor(Color.black);
+        quitGame.setOutlineThickness(3);
 
         background = new TitleScreenMap();
         background.setAdjustCamera(false);
@@ -135,10 +139,10 @@ public class MenuScreen extends Screen {
             playGame.setOutlineColor(Color.black);
             controls.setColor(Color.white);
             controls.setOutlineColor(Color.black);
-            credits.setColor(Color.white);
-            credits.setOutlineColor(Color.black);
-            quitGame.setColor(Color.YELLOW);
-            quitGame.setOutlineColor(new Color(255,171,0));
+            credits.setColor(Color.YELLOW);
+            credits.setOutlineColor(new Color(255,171,0));
+            quitGame.setColor(Color.white);
+            quitGame.setOutlineColor(Color.black);
             pointerLocationX = 315;
             pointerLocationY = 400;
         }else if(currentMenuItemHovered == 3){
@@ -147,18 +151,11 @@ public class MenuScreen extends Screen {
             controls.setColor(Color.white);
             controls.setOutlineColor(Color.black);
             credits.setColor(Color.YELLOW);
-            credits.setOutlineColor(new Color(255,171,0));
+            credits.setOutlineColor(Color.black);
             quitGame.setColor(Color.white);
-            quitGame.setOutlineColor(Color.black);
+            quitGame.setOutlineColor(new Color(255,171,0));
             pointerLocationX = 315;
             pointerLocationY = 470;
-        }
-
-        e.setLocation(pointerLocationX + 7, pointerLocationY + 2);
-
-
-        // if space is pressed on menu item, change to appropriate screen based on which menu item was chosen
-        if (Keyboard.isKeyUp(Key.SPACE)) {
             keyLocker.unlockKey(Key.SPACE);
         }
         if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
@@ -169,9 +166,9 @@ public class MenuScreen extends Screen {
             } else if (menuItemSelected == 1) {
                 screenCoordinator.setGameState(GameState.CONTROLSHOME);
             }else if(menuItemSelected == 2){
-                System.exit(0);
-            }else if(menuItemSelected == 3){
                 screenCoordinator.setGameState(GameState.CREDITS);
+            }else if(menuItemSelected == 3){
+                System.exit(0);
             }
 
         }
