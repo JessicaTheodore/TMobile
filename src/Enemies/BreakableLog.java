@@ -25,8 +25,8 @@ public class BreakableLog extends Enemy {
         return new HashMap<String, Frame[]>() {{
             put("FACING_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
-                            .withScale(3)
-                            .withBounds(45, 29, 15, 47)
+                            .withScale(4)
+                            .withBounds(43, 28, 15, 41)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });

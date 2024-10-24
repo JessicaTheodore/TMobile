@@ -253,4 +253,11 @@ public class MapTile extends MapEntity {
 
     @Override
     public float getAreaOverlapped(IntersectableRectangle other) { return bottomLayer.getAreaOverlapped(other); }
+
+
+    // setter for tile type
+    public void setTileType(TileType tileType){
+        this.tileType = tileType;
+    }
+
 }
