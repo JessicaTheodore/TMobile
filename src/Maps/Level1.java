@@ -74,8 +74,8 @@ public class Level1 extends Map {
         BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480,25));
         npcs.add(brokenBranch);
 
-        BranchBridge bridge = new BranchBridge(3, new Point(720,80));
-        npcs.add(bridge);
+        // BranchBridge bridge = new BranchBridge(3, new Point(720,80));
+        // npcs.add(bridge);
 
         // Bear bear = new Bear(1, getMapTile(4, 28).getLocation().subtractY(40));
         // bear.setInteractScript(new WalrusScript());

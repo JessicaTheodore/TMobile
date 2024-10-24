@@ -3,6 +3,7 @@ package Enemies;
 import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
+import EnhancedMapTiles.BranchBridgeTile;
 import GameObject.Frame;
 import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
@@ -10,6 +11,7 @@ import Level.Enemy;
 import Level.EnhancedMapTile;
 import Level.MapEntityStatus;
 import Level.NPC;
+import Level.TileType;
 import Utils.Point;
 
 import java.awt.Color;
@@ -29,7 +31,7 @@ public class BreakableBranch extends Enemy {
             put("FACING_RIGHT", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0))
                             .withScale(8)
-                            .withBounds(0, 50, 80, 28)
+                            .withBounds(0, 20, 80, 28)
                             .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                             .build()
             });
@@ -42,15 +44,26 @@ public class BreakableBranch extends Enemy {
         if(branchHP == 0){
             mapEntityStatus = MapEntityStatus.REMOVED;
             
-            
-            // create a new walkable tile and add it to the enhanced map tile list
-            map.addEnhancedMapTile();
+            BranchBridgeTile bridge = new BranchBridgeTile(new Point(720,80));
+            bridge.setMap(map);
+            map.addEnhancedMapTile(bridge);
 
-            // this is for the hide show method
+            map.getMapTile(15,3).setTileType(TileType.PASSABLE);
+            map.getMapTile(16,3).setTileType(TileType.PASSABLE);
+            map.getMapTile(17,3).setTileType(TileType.PASSABLE);
 
-            // then it needs to spawn in an enhanced map tile over the river tiles
-            // this will be an enhanced map tile branchbridge
-            // these tiles will become visible in this part of the code so you can walk over them to complete the level
+            map.getMapTile(15,4).setTileType(TileType.PASSABLE);
+            map.getMapTile(16,4).setTileType(TileType.PASSABLE);
+            map.getMapTile(17,4).setTileType(TileType.PASSABLE);
+
+            map.getMapTile(15,5).setTileType(TileType.PASSABLE);
+            map.getMapTile(16,5).setTileType(TileType.PASSABLE);
+            map.getMapTile(17,5).setTileType(TileType.PASSABLE);
+
+            map.getMapTile(15,6).setTileType(TileType.PASSABLE);
+            map.getMapTile(16,6).setTileType(TileType.PASSABLE);
+            map.getMapTile(17,6).setTileType(TileType.PASSABLE);
+
         }
     }
 
