@@ -14,9 +14,12 @@ import Enemies.BreakableLog;
 import NPCs.BrokenBranch;
 import NPCs.Slingshot;
 import NPCs.BranchBridge;
+import Scripts.Level1.BrokeLog;
+import Scripts.Level1.NextLevel;
 import Scripts.Level1.PickUpSlingShot;
 import Utils.Point;
 import Level.Player; // Import the Player class
+import Level.Script;
 
 public class Level1 extends Map {
 
@@ -47,13 +50,8 @@ public class Level1 extends Map {
         BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480, 25));
         npcs.add(brokenBranch);
 
-<<<<<<< HEAD
         BranchBridge bridge = new BranchBridge(3, new Point(720, 80));
         npcs.add(bridge);
-=======
-        // BranchBridge bridge = new BranchBridge(3, new Point(720,80));
-        // npcs.add(bridge);
->>>>>>> origin
 
         return npcs;
     }
@@ -61,33 +59,26 @@ public class Level1 extends Map {
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-// Define a radius for the circular movement
-float bearMovementRadius = 50.0f; // Adjust this value as needed
+        // Define a radius for the circular movement
+        float bearMovementRadius = 50.0f; // Adjust this value as needed
 
-BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(13, 54).getLocation(), bearMovementRadius);
-enemies.add(bear1);
+        BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(13, 54).getLocation(), bearMovementRadius);
+        enemies.add(bear1);
 
-<<<<<<< HEAD
-BearEnemy bear2 = new BearEnemy(1, 2, getMapTile(6, 26).getLocation(), bearMovementRadius);
-enemies.add(bear2);
+        BearEnemy bear2 = new BearEnemy(1, 2, getMapTile(6, 26).getLocation(), bearMovementRadius);
+        enemies.add(bear2);
 
-BearEnemy bear3 = new BearEnemy(2, 2, getMapTile(9, 28).getLocation(), bearMovementRadius);
-enemies.add(bear3);
+        BearEnemy bear3 = new BearEnemy(2, 2, getMapTile(9, 28).getLocation(), bearMovementRadius);
+        enemies.add(bear3);
 
-BearEnemy bear4 = new BearEnemy(3, 2, getMapTile(13, 27).getLocation(), bearMovementRadius);
-enemies.add(bear4);
+        BearEnemy bear4 = new BearEnemy(3, 2, getMapTile(13, 27).getLocation(), bearMovementRadius);
+        enemies.add(bear4);
 
-BearEnemy bear5 = new BearEnemy(4, 2, getMapTile(13, 23).getLocation(), bearMovementRadius);
-enemies.add(bear5);
-
-
+        BearEnemy bear5 = new BearEnemy(4, 2, getMapTile(13, 23).getLocation(), bearMovementRadius);
+        enemies.add(bear5);
 
         // Adding breakable objects
         BreakableLog log = new BreakableLog(5, 1, getMapTile(24, 37).getLocation());
-=======
-        // This is the branch attatched to the tree that gets broken
-        BreakableLog log = new BreakableLog(5, 1, getMapTile(24, 36).getLocation());
->>>>>>> origin
         enemies.add(log);
         BreakableBranch branch = new BreakableBranch(1, 1, new Point(480, 25));
         enemies.add(branch);
@@ -98,20 +89,26 @@ enemies.add(bear5);
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
+        triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
+        triggers.add(new Trigger(1330, 1890, 50, 150, new BrokeLog(), "brokeLog"));
         return triggers;
     }
 
     // Override the update method to take Player as an argument
     @Override
-public void update(Player player) {
-    // System.out.println("Update method in Level1 called.");
-    // Level-specific update logic here
-    super.update(player); // If you want to call the superclass method
-}
+    public void update(Player player) {
+        // System.out.println("Update method in Level1 called.");
+        // Level-specific update logic here
+        super.update(player); // If you want to call the superclass method
+    }
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
+        for (int i = 0; i <= triggers.size(); i++) {
+            triggers.get(i).draw(graphicsHandler);
+        }
+        triggers.get(1).draw(graphicsHandler);
+
     }
 }
-

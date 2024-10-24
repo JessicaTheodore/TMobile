@@ -121,36 +121,88 @@ public class PlayLevelScreen extends Screen {
 
     public void update() {
     // Opens help screen when h is clicked
-    if (flagManager.isFlagSet("beatLvl1")) {
+    if(flagManager.isFlagSet("beatLvl1")){
         screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
         System.out.println("beat lvl 1");
     }
+    if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && helpOn) {
+        helpOn = false;
+        helpScreen.changeStatus();
+        keyLocker.lockKey(Key.H);
+    }
+    if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn && !pauseOn) {
+        helpOn = true;
+        helpScreen.changeStatus();
+        keyLocker.lockKey(Key.H);
+    }
+    if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && helpOn) {
+        helpOn = false;
+        helpScreen.changeStatus();
+        keyLocker.lockKey(Key.ESC);
+    }
     
-    // Other existing keyboard input checks...
-
+    if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
+        //pauseOn = !pauseOn;
+        //pauseScreen.changeStatus();
+        start = false;
+        screenCoordinator.setGameState(GameState.PAUSE);
+        keyLocker.lockKey(Key.ESC);
+    }
+    if(Keyboard.isKeyDown(Key.L) && !keyLocker.isKeyLocked(Key.L)){
+        screenCoordinator.setGameState(GameState.DEATH);
+        keyLocker.lockKey(Key.L);
+    }
+    if (Keyboard.isKeyUp(Key.H)) {
+        keyLocker.unlockKey(Key.H);
+    }
+    if (Keyboard.isKeyUp(Key.ESC)) {
+        keyLocker.unlockKey(Key.ESC);
+    }
+    if(flagManager.isFlagSet("brokeLog")){
+        System.out.println("Broken");
+        helpStages[1] = true;
+    }
+    if(flagManager.isFlagSet("pickedUpSlingShot")){
+        //helpStages[2] = true;
+    }
+    
+    
     if (helpOn) {
-        // Help screen updates if help is enabled
-    } else if (pauseOn) {
-        // Pause screen updates if pause is enabled
-    } else {
-        // Update player and map logic
+        //helpScreen.update();
+    } else if(pauseOn){
+    }else {
+        // Based on screen state, perform specific actions
         switch (playLevelScreenState) {
+            // If level is "running" update player and map to keep game logic for the platformer level going
             case RUNNING:
                 player.update();
                 map.update(player);
-                
-                // Update all enemies (bears)
                 for (MapEntity enemy : map.getEnemies()) {
                     if (enemy instanceof BearEnemy) {
                         enemy.update(); // Call the update method for each bear
                     }
                 }
                 break;
+            // If level has been completed, bring up level cleared screen
             case LEVEL_COMPLETED:
                 winScreen.update();
                 break;
-            }
         }
+    }
+    this.x = player.getX();
+    this.y = player.getY();
+    if(flagManager.isFlagSet("pickedUpSlingShot")) {
+        player.changeSlingshotStatus();
+    }
+    if (playerCollidesWithBear()) {
+        healthSystem.decreaseHealth();
+        
+        // If the player is out of hearts, go to the GAME_OVER screen
+        if (healthSystem.getCurrentHealth() <= 0) {
+            screenCoordinator.setGameState(GameState.GAMEOVER);
+        }
+    }        
+
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -173,6 +225,9 @@ public class PlayLevelScreen extends Screen {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
+                    for(int i = 0; i < map.getTriggers().size(); i ++){
+                        map.getTriggers().get(i).draw(graphicsHandler);
+                    }
                     ranger.draw(graphicsHandler);
                     healthSystem.draw(graphicsHandler);
                     break;
