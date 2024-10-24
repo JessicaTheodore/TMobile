@@ -159,7 +159,7 @@ public class PlayLevelScreen extends Screen {
         keyLocker.unlockKey(Key.ESC);
     }
     if(flagManager.isFlagSet("brokeLog")){
-        System.out.println("Broken");
+        //System.out.println("Broken");
         helpStages[1] = true;
     }
     if(flagManager.isFlagSet("pickedUpSlingShot")){
@@ -225,9 +225,9 @@ public class PlayLevelScreen extends Screen {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
-                    for(int i = 0; i < map.getTriggers().size(); i ++){
+                    /* for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
-                    }
+                    } */
                     ranger.draw(graphicsHandler);
                     healthSystem.draw(graphicsHandler);
                     break;

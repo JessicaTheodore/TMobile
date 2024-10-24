@@ -108,7 +108,5 @@ public class Level1 extends Map {
         for (int i = 0; i <= triggers.size(); i++) {
             triggers.get(i).draw(graphicsHandler);
         }
-        triggers.get(1).draw(graphicsHandler);
-
     }
 }
