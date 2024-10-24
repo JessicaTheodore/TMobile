@@ -12,6 +12,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.swing.text.JTextComponent.KeyBinding;
+
 // This is the class for the main menu screen
 public class MenuScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
@@ -91,11 +93,16 @@ public class MenuScreen extends Screen {
         keyPressTimer = 0;
         menuItemSelected = -1;
         keyLocker.lockKey(Key.SPACE);
+        keyLocker.lockKey(Key.E);
     }
 
     public void update() {
         // update background map (to play tile animations)
         background.update(null);
+
+        if(Keyboard.isKeyUp(Key.E)){
+            keyLocker.unlockKey(Key.E);
+        }
 
         // if down or up is pressed, change menu item "hovered" over (blue square in front of text will move along with currentMenuItemHovered changing)
         if (Keyboard.isKeyDown(Key.S) && keyPressTimer == 0) {
@@ -179,6 +186,8 @@ public class MenuScreen extends Screen {
             }
 
         }
+
+        e.setLocation(pointerLocationX + 6, pointerLocationY + 2);
     }
  
     public void draw(GraphicsHandler graphicsHandler) {
