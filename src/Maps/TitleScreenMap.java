@@ -1,5 +1,7 @@
 package Maps;
 
+import java.awt.Frame;
+
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import GameObject.ImageEffect;
@@ -14,23 +16,36 @@ public class TitleScreenMap extends Map {
 
     // private Sprite cat;
     private Sprite back;
+    // private Sprite topText;
+    private Sprite logo;
 
     public TitleScreenMap() {
         super("title_screen_map.txt", new CommonTileset());
+
+        // Player sprite
+
         // Point catLocation = getMapTile(8, 5).getLocation().subtractX(6).subtractY(7);
         // cat = new Sprite(ImageLoader.loadSubImage("Hiker.png", Colors.MAGENTA, 0,128, 70, 70));
         // cat.setScale(2);
         // cat.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
         // cat.setLocation(catLocation.x, catLocation.y); 
-        back = new Sprite(ImageLoader.loadSubImage("mountain.png", Colors.MAGENTA, 133,0, 800, 605));
-        back.setScale(1);
-        back.setLocation(0, 0);          
+
+        // Background image
+        back = new Sprite(ImageLoader.loadSubImage("newBackground.png", 0,0, 540, 370));
+        back.setScale(2);
+        back.setLocation(0, -60);      
+
+        // Logo text 
+        logo = new Sprite(ImageLoader.loadSubImage("TLOH.png",0,0,150,39));
+        logo.setScale(5);
+        logo.setLocation(0,40);
     }
 
     @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         back.draw(graphicsHandler);
+        logo.draw(graphicsHandler);
         // cat.draw(graphicsHandler);
     }
 }
