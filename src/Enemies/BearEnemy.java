@@ -57,12 +57,12 @@ public class BearEnemy extends Enemy {
         return this.bearHP;
     }
 
-    @Override
-    public void draw(GraphicsHandler graphicsHandler) {
-        super.draw(graphicsHandler);
-        // Draws the hitbox
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-    }
+    // @Override
+    // public void draw(GraphicsHandler graphicsHandler) {
+    //     super.draw(graphicsHandler);
+    //     // Draws the hitbox
+    //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    // }
 
     // Override update to implement circular movement
     @Override
