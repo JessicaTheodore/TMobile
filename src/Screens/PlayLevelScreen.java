@@ -236,7 +236,7 @@ public class PlayLevelScreen extends Screen {
                     break;
             }
         }
-        //map.getTriggers().get(map.getTriggers().size()-1).draw(graphicsHandler);
+        map.getTriggers().get(map.getTriggers().size()-1).draw(graphicsHandler);
     }
 
     public PlayLevelScreenState getPlayLevelScreenState() {
