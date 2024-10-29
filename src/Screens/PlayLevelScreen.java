@@ -33,6 +33,7 @@ public class PlayLevelScreen extends Screen {
     protected HelpScreen helpScreen;
     protected PauseScreen pauseScreen;
     protected Sprite pause;
+    protected Sprite newHelp;
     protected boolean helpOn = false;
     protected boolean pauseOn = false;
     protected final int helpSize = 99;
@@ -42,6 +43,7 @@ public class PlayLevelScreen extends Screen {
     protected float x;
     protected float y;
     protected Trigger trigger;
+    protected boolean helpNew = true; 
 
     private HealthSystem healthSystem;
 
@@ -52,6 +54,10 @@ public class PlayLevelScreen extends Screen {
         ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
         ranger.setScale(1);
         ranger.setLocation(725, 505); 
+
+        newHelp = new Sprite(ImageLoader.loadSubImage("exclam.png", Colors.MAGENTA, 0, 0, 49, 49));
+        newHelp.setScale(1);
+        newHelp.setLocation(732, 445); 
 
         /* pause = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128)));
         pause.setScale(3);
@@ -127,11 +133,13 @@ public class PlayLevelScreen extends Screen {
     }
     if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && helpOn) {
         helpOn = false;
+        helpNew = false;
         helpScreen.changeStatus();
         keyLocker.lockKey(Key.H);
     }
     if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn && !pauseOn) {
         helpOn = true;
+        helpNew = false;
         helpScreen.changeStatus();
         keyLocker.lockKey(Key.H);
     }
@@ -158,10 +166,15 @@ public class PlayLevelScreen extends Screen {
     if (Keyboard.isKeyUp(Key.ESC)) {
         keyLocker.unlockKey(Key.ESC);
     }
-    if(flagManager.isFlagSet("brokeLog")){
-        //System.out.println("Broken");
-        helpStages[1] = true;
+    
+    if(!helpStages[1]){
+        if(flagManager.isFlagSet("brokeLog")){
+            //System.out.println("Broken");
+            helpStages[1] = true;
+            helpNew = true;
+        }
     }
+    
     if(flagManager.isFlagSet("pickedUpSlingShot")){
         //helpStages[2] = true;
     }
@@ -228,6 +241,9 @@ public class PlayLevelScreen extends Screen {
                     /* for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
                     } */
+                    if(helpNew){
+                        newHelp.draw(graphicsHandler);
+                    }
                     ranger.draw(graphicsHandler);
                     healthSystem.draw(graphicsHandler);
                     break;
@@ -236,7 +252,7 @@ public class PlayLevelScreen extends Screen {
                     break;
             }
         }
-        map.getTriggers().get(map.getTriggers().size()-1).draw(graphicsHandler);
+        //map.getTriggers().get(map.getTriggers().size()-1).draw(graphicsHandler);
     }
 
     public PlayLevelScreenState getPlayLevelScreenState() {
