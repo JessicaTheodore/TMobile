@@ -55,9 +55,9 @@ public class PlayLevelScreen extends Screen {
         ranger.setScale(1);
         ranger.setLocation(725, 505); 
 
-        newHelp = new Sprite(ImageLoader.loadSubImage("exclam.png", Colors.MAGENTA, 0, 0, 49, 49));
+        newHelp = new Sprite(ImageLoader.loadSubImage("exclam.png", Colors.MAGENTA, 0, 0, 29, 29));
         newHelp.setScale(1);
-        newHelp.setLocation(732, 445); 
+        newHelp.setLocation(726, 487); 
 
         /* pause = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128)));
         pause.setScale(3);
@@ -241,10 +241,10 @@ public class PlayLevelScreen extends Screen {
                     /* for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
                     } */
+                    ranger.draw(graphicsHandler);
                     if(helpNew){
                         newHelp.draw(graphicsHandler);
                     }
-                    ranger.draw(graphicsHandler);
                     healthSystem.draw(graphicsHandler);
                     break;
                 case LEVEL_COMPLETED:
