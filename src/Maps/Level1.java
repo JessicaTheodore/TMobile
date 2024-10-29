@@ -90,7 +90,7 @@ public class Level1 extends Map {
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
         triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
-        triggers.add(new Trigger(1330, 1890, 50, 150, new BrokeLog(), "brokeLog"));
+        triggers.add(new Trigger(1325, 1860, 70, 180, new BrokeLog(), "brokeLog"));
         return triggers;
     }
 
