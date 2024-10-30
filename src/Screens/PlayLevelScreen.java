@@ -29,6 +29,8 @@ public class PlayLevelScreen extends Screen {
     protected WinScreen winScreen;
     protected FlagManager flagManager;
     private Sprite ranger;
+    protected Sprite pickUp;
+    protected Sprite breakL;
     protected KeyLocker keyLocker = new KeyLocker();
     protected HelpScreen helpScreen;
     protected PauseScreen pauseScreen;
@@ -58,6 +60,14 @@ public class PlayLevelScreen extends Screen {
         newHelp = new Sprite(ImageLoader.loadSubImage("exclam.png", Colors.MAGENTA, 0, 0, 29, 29));
         newHelp.setScale(1);
         newHelp.setLocation(726, 487); 
+
+        pickUp = new Sprite(ImageLoader.loadSubImage("PickUp.png", Colors.MAGENTA, 0, 0, 99, 37));
+        pickUp.setScale(2);
+        pickUp.setLocation(326, 457); 
+
+        breakL = new Sprite(ImageLoader.loadSubImage("SpaceBreak.png", Colors.MAGENTA, 0, 0, 123, 37));
+        breakL.setScale(2);
+        breakL.setLocation(326, 457); 
 
         /* pause = (new Sprite(ImageLoader.loadSubImage("PauseScreen.png", Colors.MAGENTA, 0, 0, 185, 128)));
         pause.setScale(3);
@@ -91,6 +101,8 @@ public class PlayLevelScreen extends Screen {
             flagManager.addFlag("brokeLog", false);
             flagManager.addFlag("pickedUpSlingShot", false);
             flagManager.addFlag("beatLvl1", false);
+            flagManager.addFlag("nearSlingShot", false);
+            flagManager.addFlag("SpaceBreak", false);
 
             // triger for beating level
 
@@ -202,8 +214,7 @@ public class PlayLevelScreen extends Screen {
                 break;
         }
     }
-    this.x = player.getX();
-    this.y = player.getY();
+   
     if(flagManager.isFlagSet("pickedUpSlingShot")) {
         player.changeSlingshotStatus();
     }
@@ -214,7 +225,9 @@ public class PlayLevelScreen extends Screen {
         if (healthSystem.getCurrentHealth() <= 0) {
             screenCoordinator.setGameState(GameState.GAMEOVER);
         }
-    }        
+    }  
+    
+    flagManager.unsetFlag("nearSlightShot");
 
     }
 
@@ -244,6 +257,12 @@ public class PlayLevelScreen extends Screen {
                     ranger.draw(graphicsHandler);
                     if(helpNew){
                         newHelp.draw(graphicsHandler);
+                    }
+                    if(!flagManager.isFlagSet("pickedUpSlingShot") && flagManager.isFlagSet("nearSlingShot")){
+                        pickUp.draw(graphicsHandler);
+                    }
+                    if(!flagManager.isFlagSet("brokeLog") && flagManager.isFlagSet("SpaceBreak")){
+                        breakL.draw(graphicsHandler);
                     }
                     healthSystem.draw(graphicsHandler);
                     break;
