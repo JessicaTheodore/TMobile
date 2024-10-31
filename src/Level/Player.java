@@ -414,6 +414,7 @@ public abstract class Player extends MapEntity {
         if(playerHP == 0) {
             screenCoordinator.setGameState(GameState.DEATH);
             System.out.println("Player is dead");
+            playerHP = 5;
         }
     }
 
