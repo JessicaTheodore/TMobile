@@ -35,7 +35,7 @@ public class HealthSystem {
     
 
     public void draw(GraphicsHandler graphicsHandler) {
-        for (int i = 0; i < currentHealth; i++) {
+        for (int i = 0; i < Player.getCurrentHealth(); i++) {
             heartSprites[i].setLocation(700 - i * (heartSprites[i].getWidth() + 10), 10);
             heartSprites[i].draw(graphicsHandler);
         }
