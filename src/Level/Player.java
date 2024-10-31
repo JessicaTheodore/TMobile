@@ -29,7 +29,7 @@ public abstract class Player extends MapEntity {
     protected Direction currentWalkingYDirection;
     protected Direction lastWalkingXDirection;
     protected Direction lastWalkingYDirection;
-    protected HealthSystem health = new HealthSystem(playerHP);
+    protected HealthSystem health = new HealthSystem(3);
 
     // values used to handle player movement
     protected float moveAmountX, moveAmountY;
