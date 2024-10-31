@@ -665,6 +665,99 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(passableWaterTile);
 
+        // Bottom cliff tile: Horizontal
+
+        Frame bottomCliffHFrame = new FrameBuilder(getSubImage(8, 0))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder bottomCliffHTile = new MapTileBuilder(bottomCliffHFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bottomCliffHTile);
+        
+        // Bottom cliff tile: Right corner 
+
+        Frame bottomCliffRCornerFrame = new FrameBuilder(getSubImage(8, 1))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder bottomCliffRCornerTile = new MapTileBuilder(bottomCliffRCornerFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bottomCliffRCornerTile);
+    
+        // Bottom cliff tile: Left corner
+
+        Frame bottomCliffLCornerFrame = new FrameBuilder(getSubImage(8, 1))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder bottomCliffLCornerTile = new MapTileBuilder(bottomCliffLCornerFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bottomCliffLCornerTile);
+
+        // Inside cliff corner right
+
+        Frame insideCliffRCornerFrame = new FrameBuilder(getSubImage(8, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder insideCliffRCornerTile = new MapTileBuilder(insideCliffRCornerFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(insideCliffRCornerTile);
+
+        // Inside cliff corner left
+
+        Frame insideCliffLCornerFrame = new FrameBuilder(getSubImage(8, 2))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder insideCliffLCornerTile = new MapTileBuilder(insideCliffLCornerFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(insideCliffLCornerTile);
+
+
+        // Upper cliff tile: right
+
+        Frame upperCliffRFrame = new FrameBuilder(getSubImage(8, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder upperCliffRTile = new MapTileBuilder(upperCliffRFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffRTile);
+
+        // Upper cliff tile: left
+
+        Frame upperCliffLFrame = new FrameBuilder(getSubImage(8, 3))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder upperCliffLTile = new MapTileBuilder(upperCliffLFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffLTile);
+
+        // Upper cliff tile: Horizontal
+
+        Frame upperCliffHFrame = new FrameBuilder(getSubImage(8, 4))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder upperCliffHTile = new MapTileBuilder(upperCliffHFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffHTile);
+
+
         return mapTiles;
     }
 
