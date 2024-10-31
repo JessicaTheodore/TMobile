@@ -757,6 +757,52 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(upperCliffHTile);
 
+        // Grass with rock bottom right
+
+        Frame grassWithRockBRFrame = new FrameBuilder(getSubImage(8, 5))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder grassWithRockBRTile = new MapTileBuilder(grassWithRockBRFrame)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(grassWithRockBRTile);
+        
+        // Grass with rock bottom left
+
+        Frame grassWithRockBLFrame = new FrameBuilder(getSubImage(8, 5))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder grassWithRockBLTile = new MapTileBuilder(grassWithRockBLFrame)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(grassWithRockBLTile);
+
+        // Right Cliff
+
+        Frame bottomCliffRFrame = new FrameBuilder(getSubImage(8, 6))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder bottomCliffRTile = new MapTileBuilder(bottomCliffRFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bottomCliffRTile);
+
+        // Left Cliff
+
+        Frame bottomCliffLFrame = new FrameBuilder(getSubImage(8, 6))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder bottomCliffLTile = new MapTileBuilder(bottomCliffLFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bottomCliffLTile);
+
 
         return mapTiles;
     }
