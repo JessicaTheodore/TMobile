@@ -21,6 +21,7 @@ import ScriptActions.FlagRequirement;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import Screens.IntroductionScreen;
+import Screens.Level2DialogueScreen;
 import Screens.LevelCompleteScreen;
 import Screens.LevelLoseScreen;
 
@@ -98,6 +99,8 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case LEVELCOMPLETE:
 						currentScreen = new LevelCompleteScreen(this);
+					case LEVEL2DIALOGUE:
+						currentScreen = new Level2DialogueScreen(this);
 					default:
 						break;
 				}
