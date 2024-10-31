@@ -15,7 +15,7 @@ import java.awt.Color;
 public class BearEnemy extends Enemy {
     protected Point startLocation;
     protected int bearHP;
-    protected float movementSpeed = 1f;
+    protected float movementSpeed = 3f;
 
     // Variables for circular movement
     private float radius; // Radius of the circular path
