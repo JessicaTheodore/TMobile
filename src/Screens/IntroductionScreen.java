@@ -18,6 +18,7 @@ import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
 import Utils.Direction;
 import Level.IntroductionTextbox;
+import Level.Level2Textbox;
 
 public class IntroductionScreen extends Screen {
 
@@ -29,6 +30,8 @@ public class IntroductionScreen extends Screen {
     protected SpriteFont credits;
     protected IntroductionTextbox textbox;
     private Font maruMonica;
+    //THIS IS A TEST MAKE SURE TO COMMENT AFTERWARDSSSSSS
+    //protected Level2Textbox level2Textbox;
 
     public IntroductionScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
@@ -62,6 +65,8 @@ public class IntroductionScreen extends Screen {
         background.preloadScripts();
 
         textbox = new IntroductionTextbox(background, screenCoordinator);
+        //level2Textbox = new Level2Textbox(background, screenCoordinator);
+       
 
         keyLocker.lockKey(Key.X);
     }
@@ -75,11 +80,14 @@ public class IntroductionScreen extends Screen {
                 screenCoordinator.setGameState(GameState.NEWLEVEL);
         }
         textbox.update();
+        //level2Textbox.update();
+        
     }
     
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
         credits.draw(graphicsHandler);
         textbox.draw(graphicsHandler);
+        //level2Textbox.draw(graphicsHandler);
     }
 }
