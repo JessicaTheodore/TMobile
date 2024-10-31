@@ -32,7 +32,7 @@ public class HealthSystem {
     }
     
     // we need to have an update thing here so when the player does take damage, it will update and redraw the correct number of hearts on the screen
-    
+
 
     public void draw(GraphicsHandler graphicsHandler) {
         for (int i = 0; i < Player.getCurrentHealth(); i++) {
