@@ -21,6 +21,7 @@ import Utils.HealthSystem;
 public abstract class Player extends MapEntity {
     // values that affect player movement
     // these should be set in a subclass
+    protected int iFrames = 0;
     protected float walkSpeed = 0;
     protected int interactionRange = 1;
     protected int playerHP = 5;
@@ -28,6 +29,7 @@ public abstract class Player extends MapEntity {
     protected Direction currentWalkingYDirection;
     protected Direction lastWalkingXDirection;
     protected Direction lastWalkingYDirection;
+    protected HealthSystem health = new HealthSystem(playerHP);
 
     // values used to handle player movement
     protected float moveAmountX, moveAmountY;
@@ -85,6 +87,10 @@ public abstract class Player extends MapEntity {
             // move player with respect to map collisions based on how much player needs to move this frame
             lastAmountMovedY = super.moveYHandleCollision(moveAmountY);
             lastAmountMovedX = super.moveXHandleCollision(moveAmountX);
+        }
+
+        if(iFrames > 0){
+            iFrames--;
         }
 
         handlePlayerAnimation();
@@ -395,9 +401,12 @@ public abstract class Player extends MapEntity {
     }
 
     public void hurtPlayer(MapEntity mapEntity){
-        playerHP--;
-        System.out.println("Player is hit\n" + getCurrentHealth());
-
+        if(iFrames == 0) {
+            playerHP--;
+            iFrames = 60;
+            System.out.println("Player is hit\n" + getCurrentHealth());
+            health.decreaseHealth();
+        } 
         // when the player's HP gets down to 0, they die and have to restart from the beginning of the level
         if(playerHP == 0) {
             screenCoordinator.setGameState(GameState.DEATH);
