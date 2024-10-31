@@ -26,24 +26,6 @@ public class Slingshot extends NPC {
                         .withBounds(0, 0, 10, 16) 
                         .build()
             });
-            put("STAND_LEFT", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 1))
-                        .withScale(3)
-                        .withBounds(0, 1, 10, 16) 
-                        .build()
-            });
-            put("STAND_LEFT", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 2))
-                        .withScale(3)
-                        .withBounds(0, 2, 10, 16) 
-                        .build()
-            });
-            put("STAND_LEFT", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 3))
-                        .withScale(3)
-                        .withBounds(0, 3, 10, 16) 
-                        .build()
-            });
         }};
     }
 

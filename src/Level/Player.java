@@ -29,6 +29,7 @@ public abstract class Player extends MapEntity {
     protected Direction currentWalkingYDirection;
     protected Direction lastWalkingXDirection;
     protected Direction lastWalkingYDirection;
+    protected HealthSystem health = new HealthSystem(playerHP);
 
     // values used to handle player movement
     protected float moveAmountX, moveAmountY;
@@ -87,7 +88,7 @@ public abstract class Player extends MapEntity {
             lastAmountMovedY = super.moveYHandleCollision(moveAmountY);
             lastAmountMovedX = super.moveXHandleCollision(moveAmountX);
         }
-        
+
         if(iFrames > 0){
             iFrames--;
         }
@@ -404,6 +405,7 @@ public abstract class Player extends MapEntity {
             playerHP--;
             iFrames = 60;
             System.out.println("Player is hit\n" + getCurrentHealth());
+            health.decreaseHealth();
         } 
         // when the player's HP gets down to 0, they die and have to restart from the beginning of the level
         if(playerHP == 0) {
