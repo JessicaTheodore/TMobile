@@ -24,7 +24,7 @@ public abstract class Player extends MapEntity {
     protected int iFrames = 0;
     protected float walkSpeed = 0;
     protected int interactionRange = 1;
-    protected int playerHP = 5;
+    protected static int playerHP = 5;
     protected Direction currentWalkingXDirection;
     protected Direction currentWalkingYDirection;
     protected Direction lastWalkingXDirection;
@@ -401,12 +401,15 @@ public abstract class Player extends MapEntity {
     }
 
     public void hurtPlayer(MapEntity mapEntity){
-        if(iFrames == 0) {
-            playerHP--;
-            iFrames = 60;
-            System.out.println("Player is hit\n" + getCurrentHealth());
-            health.decreaseHealth();
-        } 
+        if(playerHP>0){
+            if(iFrames == 0) {
+                playerHP--;
+                iFrames = 60;
+                System.out.println("Player is hit\n" + getCurrentHealth());
+                health.decreaseHealth();
+            } 
+        }
+        
         // when the player's HP gets down to 0, they die and have to restart from the beginning of the level
         if(playerHP == 0) {
             screenCoordinator.setGameState(GameState.DEATH);
@@ -414,8 +417,8 @@ public abstract class Player extends MapEntity {
         }
     }
 
-    public int getCurrentHealth(){
-        return this.playerHP;
+    public static int getCurrentHealth(){
+        return playerHP;
     }
 
     // used by other files or scripts to force player to walk
