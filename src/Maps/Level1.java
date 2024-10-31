@@ -13,8 +13,10 @@ import Enemies.BreakableBranch;
 import Enemies.BreakableLog;
 import NPCs.BrokenBranch;
 import NPCs.Slingshot;
+import Scripts.Level1.BreakLog;
 // import NPCs.BranchBridge;
 import Scripts.Level1.BrokeLog;
+import Scripts.Level1.NearSlingShot;
 import Scripts.Level1.NextLevel;
 import Scripts.Level1.PickUpSlingShot;
 import Utils.Point;
@@ -43,7 +45,7 @@ public class Level1 extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        Slingshot slingshot = new Slingshot(1, getMapTile(51, 48).getLocation());
+        Slingshot slingshot = new Slingshot(1, getMapTile(10, 26).getLocation());
         slingshot.setInteractScript(new PickUpSlingShot());
         npcs.add(slingshot);
 
@@ -90,7 +92,9 @@ public class Level1 extends Map {
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
         triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
-        triggers.add(new Trigger(1325, 1860, 70, 180, new BrokeLog(), "brokeLog"));
+        triggers.add(new Trigger(1335, 1860, 70, 180, new BrokeLog(), "brokeLog"));
+        triggers.add(new Trigger(1280, 1850, 80, 190, new BreakLog(), "SpaceBreak"));
+        triggers.add(new Trigger(440, 1220, 100, 100, new NearSlingShot(), "nearSlingShot"));
         return triggers;
     }
 
