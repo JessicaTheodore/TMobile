@@ -20,7 +20,6 @@ public class NearSlingShot extends Script {
                 addScriptAction(new ChangeFlagScriptAction("nearSlingShot", true));
             }});
         }});
-
         return scriptActions;
     }
 

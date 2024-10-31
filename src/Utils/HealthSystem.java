@@ -9,13 +9,16 @@ import Level.Player;
 public class HealthSystem {
     private int maxHealth;
     private int currentHealth;
+    private Sprite[] heartSprites = new Sprite[5];
     private Sprite heartSprite;
 
     public HealthSystem(int maxHealth) {
         this.maxHealth = maxHealth;
         this.currentHealth = maxHealth;
-        this.heartSprite = new Sprite(ImageLoader.load("heart.png"));
-        heartSprite.setScale(1);
+        for(int i = 0; i < 5; i++){
+            this.heartSprites[i] = new Sprite(ImageLoader.load("heart.png"));
+            heartSprites[i].setScale(1);
+        }
     }
 
     public void decreaseHealth() {
@@ -30,8 +33,8 @@ public class HealthSystem {
 
     public void draw(GraphicsHandler graphicsHandler) {
         for (int i = 0; i < currentHealth; i++) {
-            heartSprite.setLocation(700 - i * (heartSprite.getWidth() + 10), 10);
-            heartSprite.draw(graphicsHandler);
+            heartSprites[i].setLocation(700 - i * (heartSprites[i].getWidth() + 10), 10);
+            heartSprites[i].draw(graphicsHandler);
         }
     }
 }

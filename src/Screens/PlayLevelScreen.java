@@ -226,8 +226,6 @@ public class PlayLevelScreen extends Screen {
             screenCoordinator.setGameState(GameState.GAMEOVER);
         }
     }  
-    
-    flagManager.unsetFlag("nearSlightShot");
 
     }
 
@@ -260,9 +258,11 @@ public class PlayLevelScreen extends Screen {
                     }
                     if(!flagManager.isFlagSet("pickedUpSlingShot") && flagManager.isFlagSet("nearSlingShot")){
                         pickUp.draw(graphicsHandler);
+                        flagManager.unsetFlag("nearSlingShot");
                     }
                     if(!flagManager.isFlagSet("brokeLog") && flagManager.isFlagSet("SpaceBreak")){
                         breakL.draw(graphicsHandler);
+                        //flagManager.unsetFlag("SpaceBreak");
                     }
                     healthSystem.draw(graphicsHandler);
                     break;
