@@ -7,6 +7,7 @@ import Engine.Keyboard;
 import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Maps.Level2ScreenMap;
 import Screens.IntroductionScreen;
 import SpriteFont.SpriteFont;
 
@@ -26,11 +27,13 @@ public class Level2Textbox extends Textbox {
     private Queue<SpriteFont> script;
     private Font maruMonica;
     protected ScreenCoordinator screenCoordinator;
+    private Level2ScreenMap level2Map;
 
     public Level2Textbox(Map map, ScreenCoordinator screenCoordinator) {
         super(map);
         this.screenCoordinator = screenCoordinator;
         this.map = map;
+        this.level2Map = (Level2ScreenMap) map;
         keyLocker.lockKey(interactKey);
         initializeScript();
     }
@@ -83,12 +86,14 @@ public class Level2Textbox extends Textbox {
         
         script = new LinkedList<>();
 
-        script.add(new SpriteFont("Trees: *whispering*", x, y + 10, maruMonica.deriveFont(33f), Color.black));
+        script.add(new SpriteFont("Trees: *whispering*", x, y + 10, maruMonica.deriveFont(33f), Color.black, false, level2Map));
         script.add(new SpriteFont("%s: What was that??", true, x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("Trees: *...Hobbomock awakes...*", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("Trees: *...The hiker thinks he's brave...\n but the giant knows...*", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("%s: Are those trees... talking?",true, x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: So %s, you're finally realizing what's happening, aren't you?", true, x, y + 10, maruMonica.deriveFont(33f), Color.black));
+        
+        //PARK RANGER APPEARS AFTER THIS
+        script.add(new SpriteFont("R: So %s, you're finally realizing what's happening, aren't you?", true, x, y + 10, maruMonica.deriveFont(33f), Color.black, true, level2Map));
         script.add(new SpriteFont("%s: Ah! Where'd you come from?", true, x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: I followed you... didn't think you had it in you to continue up the path.\n Most would've turned around at this point.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("%s: ...Thank you?", true, x, y + 10, maruMonica.deriveFont(33f), Color.black));

@@ -20,6 +20,7 @@ import Utils.Point;
         private Sprite back;
         private Sprite hiker;
         private Sprite ranger;
+        private boolean showRanger = true;
 
         public Level2ScreenMap() {
             super("title_screen_map.txt", new CommonTileset());
@@ -35,7 +36,6 @@ import Utils.Point;
             hiker.setLocation(hikerLocation.x, hikerLocation.y); 
 
             Point rangerLocation = getMapTile(10, 6).getLocation().subtractX(6).subtractY(7);
-            //temporarily will be the walrus image
             ranger = new Sprite(ImageLoader.loadSubImage("Ranger.png", Colors.MAGENTA, 0, 128, 70, 70));
             ranger.setScale(3);
             ranger.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
@@ -43,13 +43,18 @@ import Utils.Point;
 
         }
 
+        public void setShowRanger(boolean flag) {
+            showRanger = flag;
+        }
+
         @Override
         public void draw(GraphicsHandler graphicsHandler) {
             super.draw(graphicsHandler);
             back.draw(graphicsHandler);
             hiker.draw(graphicsHandler);
-            ranger.draw(graphicsHandler);
-         
+            //for the ranger to pop up on screen
+            if (showRanger) {
+                ranger.draw(graphicsHandler);
+            }
         }
-
     }

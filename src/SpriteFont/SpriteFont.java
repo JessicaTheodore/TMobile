@@ -1,6 +1,7 @@
 package SpriteFont;
 
 import Engine.GraphicsHandler;
+import Maps.Level2ScreenMap;
 
 import java.awt.*;
 
@@ -15,6 +16,8 @@ public class SpriteFont {
 	protected float outlineThickness = 1f;
 	protected boolean showTextField = false;
 	protected boolean needName = false;
+	protected boolean showRanger = true;
+	protected Level2ScreenMap level2Map;
 
 	public SpriteFont(String text, float x, float y, String fontName, int fontSize, Color color) {
 		this.text = text;
@@ -56,6 +59,30 @@ public class SpriteFont {
 		this.y = y;
 		this.color = color;
 		this.showTextField = false;
+	}
+
+	public SpriteFont(String text, float x, float y, Font font, Color color, boolean showRanger, Level2ScreenMap level2Map) {
+		this.text = text;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.needName = false;
+		this.showRanger = showRanger;
+		this.level2Map = level2Map;
+	}
+
+
+	public SpriteFont(String text, boolean needName, float x, float y, Font font, Color color, boolean showRanger, Level2ScreenMap level2Map) {
+		this.text = text;
+		this.needName = needName;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.showTextField = false;
+		this.showRanger = showRanger;
+		this.level2Map = level2Map;
 	}
 
 	public boolean isShowTextField() {
@@ -153,6 +180,9 @@ public class SpriteFont {
 	}
 
 	public void draw(GraphicsHandler graphicsHandler) {
+		if(level2Map != null) {
+			this.level2Map.setShowRanger(this.showRanger);
+		}
 		int ascent = getAscent(graphicsHandler.getGraphics());
 		if (outlineColor != null && !outlineColor.equals(color)) {
 			graphicsHandler.drawStringWithOutline(text, Math.round(x), Math.round(y) + ascent, font, color, outlineColor, outlineThickness);
@@ -163,6 +193,9 @@ public class SpriteFont {
 
 	// this can be called instead of regular draw to have the text drop to the next line in graphics space on a new line character
 	public void drawWithParsedNewLines(GraphicsHandler graphicsHandler, int gapBetweenLines) {
+		if(level2Map != null) {
+			this.level2Map.setShowRanger(this.showRanger);
+		}
 		int ascent = getAscent(graphicsHandler.getGraphics());
 		int drawLocationY = Math.round(this.y) + ascent;
 		for (String line: text.split("\n")) {

@@ -28,7 +28,8 @@ public class Level2DialogueScreen extends Screen {
     protected KeyLocker keyLocker = new KeyLocker();
     protected FlagManager flagManager;
     protected Map background;
-    protected SpriteFont credits;
+    protected SpriteFont pressX;
+    protected SpriteFont triangle;
     private Font maruMonica;
     protected Level2Textbox level2Textbox;
 
@@ -54,9 +55,13 @@ public class Level2DialogueScreen extends Screen {
                 e.printStackTrace();
             } 
 
-        credits = new SpriteFont("Press 'X' to skip", 360, 433, maruMonica.deriveFont(16f), Color.white);
-        credits.setOutlineColor(Color.black);
-        credits.setOutlineThickness(3);
+        pressX = new SpriteFont("Press 'X' to skip", 360, 433, maruMonica.deriveFont(16f), Color.white);
+        pressX.setOutlineColor(Color.black);
+        pressX.setOutlineThickness(3);
+
+        triangle = new SpriteFont("X", 200, 450, maruMonica.deriveFont(16f), Color.RED);
+        triangle.setOutlineColor(Color.black);
+        triangle.setOutlineThickness(3);
 
         background = new Level2ScreenMap();
         background.setAdjustCamera(false);
@@ -74,7 +79,7 @@ public class Level2DialogueScreen extends Screen {
             keyLocker.unlockKey(Key.X);
         }
         if (!keyLocker.isKeyLocked(Key.X) && Keyboard.isKeyDown(Key.X)) {
-                screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
+                screenCoordinator.setGameState(GameState.MENU);
         }
         level2Textbox.update();
         
@@ -82,7 +87,8 @@ public class Level2DialogueScreen extends Screen {
     
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
-        credits.draw(graphicsHandler);
+        pressX.draw(graphicsHandler);
         level2Textbox.draw(graphicsHandler);
+        triangle.draw(graphicsHandler);
     }
 }
