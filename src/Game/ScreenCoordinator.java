@@ -99,8 +99,10 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case LEVELCOMPLETE:
 						currentScreen = new LevelCompleteScreen(this);
+						break;
 					case LEVEL2DIALOGUE:
 						currentScreen = new Level2DialogueScreen(this);
+						break;
 					default:
 						break;
 				}

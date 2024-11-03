@@ -41,7 +41,7 @@ public class Level2Textbox extends Textbox {
         if (!script.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
             introText = script.peek();
         } else if (script.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
-            screenCoordinator.setGameState(GameState.NEWLEVEL);
+            screenCoordinator.setGameState(GameState.MENU);
         }
         
         if (Keyboard.isKeyDown(interactKey) && !keyLocker.isKeyLocked(interactKey)) {

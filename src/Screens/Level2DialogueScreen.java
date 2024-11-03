@@ -14,6 +14,7 @@ import Level.Map;
 import Level.Player;
 import Level.Textbox;
 import Maps.IntroductionScreenMap;
+import Maps.Level2ScreenMap;
 import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
 import Utils.Direction;
@@ -57,7 +58,7 @@ public class Level2DialogueScreen extends Screen {
         credits.setOutlineColor(Color.black);
         credits.setOutlineThickness(3);
 
-        background = new IntroductionScreenMap();
+        background = new Level2ScreenMap();
         background.setAdjustCamera(false);
         
         background.preloadScripts();
@@ -73,7 +74,7 @@ public class Level2DialogueScreen extends Screen {
             keyLocker.unlockKey(Key.X);
         }
         if (!keyLocker.isKeyLocked(Key.X) && Keyboard.isKeyDown(Key.X)) {
-                screenCoordinator.setGameState(GameState.NEWLEVEL);
+                screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
         }
         level2Textbox.update();
         
