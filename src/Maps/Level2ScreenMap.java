@@ -21,6 +21,10 @@ import Utils.Point;
         private Sprite hiker;
         private Sprite ranger;
         private boolean showRanger = true;
+        private Sprite playerSpeaking;
+        private Sprite rangerSpeaking;
+        private boolean playerIsSpeaking = true;
+        private boolean treesAreSpeaking = true;
 
         public Level2ScreenMap() {
             super("title_screen_map.txt", new CommonTileset());
@@ -41,10 +45,28 @@ import Utils.Point;
             ranger.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
             ranger.setLocation(rangerLocation.x, rangerLocation.y - 20); 
 
+            playerSpeaking = new Sprite(ImageLoader.loadSubImage("Walrus.png", Colors.MAGENTA, 0, 0, 24, 24));
+            playerSpeaking.setScale(3);
+            playerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+            playerSpeaking.setLocation(hikerLocation.x + 46, hikerLocation.y - 26); 
+
+            rangerSpeaking = new Sprite(ImageLoader.loadSubImage("Walrus.png", Colors.MAGENTA, 0, 0, 24, 24));
+            rangerSpeaking.setScale(3);
+            rangerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+            rangerSpeaking.setLocation(rangerLocation.x + 46, rangerLocation.y - 26); 
+
         }
 
         public void setShowRanger(boolean flag) {
             showRanger = flag;
+        }
+
+        public void setPlayerSpeaking(boolean flag) {
+            playerIsSpeaking = flag;
+        }
+
+        public void setTreesSpeaking(boolean flag) {
+            treesAreSpeaking = flag;
         }
 
         @Override
@@ -56,5 +78,14 @@ import Utils.Point;
             if (showRanger) {
                 ranger.draw(graphicsHandler);
             }
+
+            if (!treesAreSpeaking) {
+                if (playerIsSpeaking) {
+                    playerSpeaking.draw(graphicsHandler);
+                } else {
+                    rangerSpeaking.draw(graphicsHandler);
+                }
+            }
+            
         }
     }
