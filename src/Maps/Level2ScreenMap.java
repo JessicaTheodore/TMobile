@@ -45,15 +45,15 @@ import Utils.Point;
             ranger.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
             ranger.setLocation(rangerLocation.x, rangerLocation.y - 20); 
 
-            playerSpeaking = new Sprite(ImageLoader.loadSubImage("Walrus.png", Colors.MAGENTA, 0, 0, 24, 24));
-            playerSpeaking.setScale(3);
+            playerSpeaking = new Sprite(ImageLoader.loadSubImage("pointer.png", Colors.MAGENTA, 0, 0, 24, 24));
+            playerSpeaking.setScale(1);
             playerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
-            playerSpeaking.setLocation(hikerLocation.x + 46, hikerLocation.y - 26); 
+            playerSpeaking.setLocation(hikerLocation.x + 45, hikerLocation.y - 15); 
 
-            rangerSpeaking = new Sprite(ImageLoader.loadSubImage("Walrus.png", Colors.MAGENTA, 0, 0, 24, 24));
-            rangerSpeaking.setScale(3);
+            rangerSpeaking = new Sprite(ImageLoader.loadSubImage("pointer.png", Colors.MAGENTA, 0, 0, 24, 24));
+            rangerSpeaking.setScale(1);
             rangerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
-            rangerSpeaking.setLocation(rangerLocation.x + 46, rangerLocation.y - 26); 
+            rangerSpeaking.setLocation(rangerLocation.x + 22, rangerLocation.y - 26); 
 
         }
 
