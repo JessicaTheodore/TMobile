@@ -104,6 +104,19 @@ public class SpriteFont {
 		this.treesAreSpeaking = false;
 	}
 
+	public SpriteFont(String text, boolean needName, float x, float y, Font font, Color color, Level2ScreenMap level2Map, boolean isPlayerSpeaking) {
+		this.text = text;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.showTextField = false;
+		this.needName = needName;
+		this.level2Map = level2Map;
+		this.isPlayerSpeaking = isPlayerSpeaking;
+		//this.treesAreSpeaking = false;
+	}
+
 	public boolean isShowTextField() {
 		return showTextField;
 	}
