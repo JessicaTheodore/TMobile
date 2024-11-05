@@ -29,7 +29,6 @@ public class Level2DialogueScreen extends Screen {
     protected FlagManager flagManager;
     protected Map background;
     protected SpriteFont pressX;
-    protected SpriteFont triangle;
     private Font maruMonica;
     protected Level2Textbox level2Textbox;
 
@@ -59,10 +58,6 @@ public class Level2DialogueScreen extends Screen {
         pressX.setOutlineColor(Color.black);
         pressX.setOutlineThickness(3);
 
-        triangle = new SpriteFont("X", 200, 450, maruMonica.deriveFont(16f), Color.RED);
-        triangle.setOutlineColor(Color.black);
-        triangle.setOutlineThickness(3);
-
         background = new Level2ScreenMap();
         background.setAdjustCamera(false);
         
@@ -89,6 +84,5 @@ public class Level2DialogueScreen extends Screen {
         background.draw(graphicsHandler);
         pressX.draw(graphicsHandler);
         level2Textbox.draw(graphicsHandler);
-        triangle.draw(graphicsHandler);
     }
 }

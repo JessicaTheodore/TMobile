@@ -46,14 +46,14 @@ import Utils.Point;
             ranger.setLocation(rangerLocation.x, rangerLocation.y - 20); 
 
             playerSpeaking = new Sprite(ImageLoader.loadSubImage("pointer.png", Colors.MAGENTA, 0, 0, 24, 24));
-            playerSpeaking.setScale(1);
+            playerSpeaking.setScale(2);
             playerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
-            playerSpeaking.setLocation(hikerLocation.x + 45, hikerLocation.y - 15); 
+            playerSpeaking.setLocation(hikerLocation.x + 87, hikerLocation.y - 50); 
 
             rangerSpeaking = new Sprite(ImageLoader.loadSubImage("pointer.png", Colors.MAGENTA, 0, 0, 24, 24));
-            rangerSpeaking.setScale(1);
+            rangerSpeaking.setScale(2);
             rangerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
-            rangerSpeaking.setLocation(rangerLocation.x + 22, rangerLocation.y - 26); 
+            rangerSpeaking.setLocation(rangerLocation.x + 87, rangerLocation.y - 50); 
 
         }
 
