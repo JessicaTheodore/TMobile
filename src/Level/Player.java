@@ -422,6 +422,10 @@ public abstract class Player extends MapEntity {
         return playerHP;
     }
 
+    public static void resetHealth(){
+        playerHP = 5;
+    }
+
     // used by other files or scripts to force player to walk
     public void walk(Direction direction, float speed) {
         playerState = PlayerState.WALKING;

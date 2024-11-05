@@ -53,6 +53,8 @@ public class PlayLevelScreen extends Screen {
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
 
+        player.resetHealth();
+
         ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
         ranger.setScale(1);
         ranger.setLocation(725, 505); 
