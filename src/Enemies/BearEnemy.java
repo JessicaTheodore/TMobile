@@ -46,7 +46,7 @@ public class BearEnemy extends Enemy {
     @Override
     public void hurtEnemy() {
         this.bearHP--;
-        System.out.println(getBearHP());
+        System.out.println("hit the bear" + getBearHP());
 
         if (bearHP <= 0) {
             mapEntityStatus = MapEntityStatus.REMOVED;

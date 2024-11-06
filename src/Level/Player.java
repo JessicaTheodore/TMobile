@@ -31,6 +31,8 @@ public abstract class Player extends MapEntity {
     protected Direction lastWalkingYDirection;
     protected HealthSystem health = new HealthSystem(3);
 
+    Rectangle rectangle = new Rectangle(0, 0, 50, 50);
+
     // values used to handle player movement
     protected float moveAmountX, moveAmountY;
     protected float lastAmountMovedX, lastAmountMovedY, rockMovementSpeed = 2;
@@ -92,10 +94,29 @@ public abstract class Player extends MapEntity {
         if(iFrames > 0){
             iFrames--;
         }
-
+        
         handlePlayerAnimation();
 
         updateLockedKeys();
+
+        if (facingDirection == Direction.RIGHT && currentAnimationName.equals("STICK_RIGHT")) {
+            rectangle.setLocation(getCalibratedXLocation()+100, getCalibratedYLocation()+50);
+        } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("STICK_LEFT")) {
+            rectangle.setLocation(getCalibratedXLocation()-15, getCalibratedYLocation()+50);            
+        } else if (facingDirection == Direction.UP && currentAnimationName.equals("STICK_UP")) {
+            rectangle.setLocation(getCalibratedXLocation() + 38, getCalibratedYLocation());    
+        } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("STICK_DOWN")) {
+            rectangle.setLocation(getCalibratedXLocation()+38, getCalibratedYLocation()+100);
+        } 
+
+        if(playerState.equals(PlayerState.WALKING) || playerState.equals(PlayerState.STANDING)){
+            rectangle.setWidth(0);
+        } else {
+            rectangle.setWidth(50);
+        }
+
+        rectangle.setColor(Color.BLACK);
+
 
         // update player's animation
         super.update();
@@ -151,11 +172,6 @@ public abstract class Player extends MapEntity {
         } 
 
         keyLocker.lockKey(ROCK_ATTACK_KEY);
-        
-        // if(getCurrentFrameIndex() == 8){
-        //     RockProjectile rock = new RockProjectile(getLocation(), rockMovementSpeed, currentFrameIndex);
-        //     rock.update();
-        // }
 
         if (getCurrentFrameIndex() == 10) {
             playerState = PlayerState.ROCK_ATTACK;
@@ -375,32 +391,19 @@ public abstract class Player extends MapEntity {
     }
 
     // This gets called from within the Enemy class when the enemy hitbox intersects with the player hitbox
-    public void touchedPlayer(Player player) {
-        if(playerState == PlayerState.STICK_ATTACK) {
-            // check the list of enemies and determine if they are intersecting with you
-            // if that enemy is, then hurt them
-            for (Enemy enemy : map.getActiveEnemies()){
-                if(enemy instanceof BearEnemy && intersects(enemy)) {
-                    enemy.hurtEnemy(); // this is where I would put the code to hurt the enemy but I honestly have no idea how to make that work here  
-                } else if (enemy instanceof BreakableLog && intersects(enemy)){
-                    enemy.hurtEnemy();
-                } else if(enemy instanceof BreakableBranch && intersects(enemy)){
-                    enemy.hurtEnemy();
-                }
+    public void touchedEnemy() {
+        for (Enemy enemy : map.getActiveEnemies()) {
+            if(enemy instanceof BearEnemy){// && rectangle.intersects(enemy)) {
+                enemy.hurtEnemy(); // this is where I would put the code to hurt the enemy but I honestly have no idea how to make that work here  
+            } else if (enemy instanceof BreakableLog){ //&& rectangle.intersects(enemy)){
+                enemy.hurtEnemy();
+            } else if(enemy instanceof BreakableBranch){ //&& rectangle.intersects(enemy)){
+                enemy.hurtEnemy();
             }
-                        // I want to make it so the bear gets hit when the hitboxes intersect when the player is attacking/in the attacking state
-                        // The only issue with this is that I don't have access to this method because the I don't have the reference to the bear enemy here
-                        // if I try to include the bear enemy in here, then I have to edit the touched player parameters, which then mean I need to change the 
-                        // parameters for update in the Enemy class, which means then i have to change every paramter everywhere to include the bear
-                        // it just doen't work because what if i want to add more than just one enemy
-                        // it simply just cannot work and that is driving me inssane right now. 
-        } else {
-            // decreaseHealth(); from the health system class. makes the hp system in player work with the heart display on the screen of this class
-            hurtPlayer(player); // I want the  player to get hit when they are not in the attacking state/walking and standing state
         }
     }
 
-    public void hurtPlayer(MapEntity mapEntity){
+    public void hurtPlayer() {
         if(playerHP>0){
             if(iFrames == 0) {
                 playerHP--;
@@ -462,5 +465,6 @@ public abstract class Player extends MapEntity {
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        rectangle.draw(graphicsHandler);
     }
 }
