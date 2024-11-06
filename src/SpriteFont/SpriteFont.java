@@ -1,6 +1,7 @@
 package SpriteFont;
 
 import Engine.GraphicsHandler;
+import Maps.IntroductionScreenMap;
 import Maps.Level2ScreenMap;
 
 import java.awt.*;
@@ -17,8 +18,10 @@ public class SpriteFont {
 	protected boolean showTextField = false;
 	protected boolean needName = false;
 	protected boolean showRanger = true;
+	protected IntroductionScreenMap level1Map;
 	protected Level2ScreenMap level2Map;
 	protected boolean isPlayerSpeaking = true;
+	protected boolean isPlayerSpeaking1 = true;
 	protected boolean treesAreSpeaking = false;
 
 	public SpriteFont(String text, float x, float y, String fontName, int fontSize, Color color) {
@@ -42,6 +45,17 @@ public class SpriteFont {
 		this.showTextField = false;
 		this.needName = false;
 		this.treesAreSpeaking = true;
+	}
+
+	public SpriteFont(String text, float x, float y, Font font, Color color, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1) {
+		this.text = text;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.needName = false;
+		this.level1Map = level1Map;
+		this.isPlayerSpeaking1 = isPlayerSpeaking1;
 	}
 
 	public SpriteFont(String text, float x, float y, Font font, Color color, Level2ScreenMap level2Map) {
@@ -127,7 +141,7 @@ public class SpriteFont {
 		this.needName = needName;
 		this.level2Map = level2Map;
 		this.isPlayerSpeaking = isPlayerSpeaking;
-		//this.treesAreSpeaking = false;
+		this.treesAreSpeaking = false;
 	}
 
 	public boolean isShowTextField() {
@@ -230,6 +244,11 @@ public class SpriteFont {
 			this.level2Map.setPlayerSpeaking(this.isPlayerSpeaking);
 			this.level2Map.setTreesSpeaking(this.treesAreSpeaking);
 		}
+
+		if (level1Map != null) {
+			this.level1Map.setPlayerSpeaking1(this.isPlayerSpeaking1);
+		}
+
 		int ascent = getAscent(graphicsHandler.getGraphics());
 		if (outlineColor != null && !outlineColor.equals(color)) {
 			graphicsHandler.drawStringWithOutline(text, Math.round(x), Math.round(y) + ascent, font, color, outlineColor, outlineThickness);
@@ -245,6 +264,11 @@ public class SpriteFont {
 			this.level2Map.setPlayerSpeaking(this.isPlayerSpeaking);
 			this.level2Map.setTreesSpeaking(this.treesAreSpeaking);
 		}
+
+		if (level1Map != null) {
+			this.level1Map.setPlayerSpeaking1(this.isPlayerSpeaking1);
+		}
+
 		int ascent = getAscent(graphicsHandler.getGraphics());
 		int drawLocationY = Math.round(this.y) + ascent;
 		for (String line: text.split("\n")) {

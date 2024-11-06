@@ -14,25 +14,26 @@ import Level.Map;
 import Level.Player;
 import Level.Textbox;
 import Maps.IntroductionScreenMap;
-import Maps.Level2ScreenMap;
+import Maps.Level1ScreenMap;
+import Maps.Level2IntroScreenMap;
 import Maps.TitleScreenMap;
 import SpriteFont.SpriteFont;
 import Utils.Direction;
 import Level.IntroductionTextbox;
 import Level.Level2Textbox;
 
-public class Level2DialogueScreen extends Screen {
+public class Level2IntroScreen extends Screen {
 
     protected ScreenCoordinator screenCoordinator;
     protected Player player;
     protected KeyLocker keyLocker = new KeyLocker();
     protected FlagManager flagManager;
     protected Map background;
-    protected SpriteFont pressX;
+    protected SpriteFont welcomeMessage;
+    protected SpriteFont pressE;
     private Font maruMonica;
-    protected Level2Textbox level2Textbox;
 
-    public Level2DialogueScreen(ScreenCoordinator screenCoordinator) {
+    public Level2IntroScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
     }
 
@@ -52,37 +53,39 @@ public class Level2DialogueScreen extends Screen {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
-            } 
-
-        pressX = new SpriteFont("Press 'X' to skip", 360, 433, maruMonica.deriveFont(16f), Color.white);
-        pressX.setOutlineColor(Color.black);
-        pressX.setOutlineThickness(3);
-
-        background = new Level2ScreenMap();
-        background.setAdjustCamera(false);
+            }
         
+        background = new Level2IntroScreenMap();
+        background.setAdjustCamera(false);
         background.preloadScripts();
 
-        level2Textbox = new Level2Textbox(background, screenCoordinator);
+        welcomeMessage = new SpriteFont("LEVEL 2: THE TREES", 170, 250, maruMonica.deriveFont(76f), Color.WHITE);
+        welcomeMessage.setOutlineColor(Color.black);
+        welcomeMessage.setOutlineThickness(6);
+
+        pressE = new SpriteFont(("Press E to continue"), 270, 330, maruMonica.deriveFont(33f), Color.WHITE);
+        pressE.setOutlineColor(Color.black);
+        pressE.setOutlineThickness(5);
+        // textbox = new IntroductionTextbox(background, screenCoordinator);
        
-        keyLocker.lockKey(Key.X);
+        keyLocker.lockKey(Key.E);
     }
     
     public void update() {
       // if X is pressed on menu item, change to appropriate screen based on which menu item was chosen
-        if (Keyboard.isKeyUp(Key.X)) {
-            keyLocker.unlockKey(Key.X);
+        if (Keyboard.isKeyUp(Key.E)) {
+            keyLocker.unlockKey(Key.E);
         }
-        if (!keyLocker.isKeyLocked(Key.X) && Keyboard.isKeyDown(Key.X)) {
-                screenCoordinator.setGameState(GameState.LEVEL2INTROSCREEN);
+        if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
+                screenCoordinator.setGameState(GameState.MENU);
         }
-        level2Textbox.update();
+        // textbox.update();
         
     }
     
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
-        pressX.draw(graphicsHandler);
-        level2Textbox.draw(graphicsHandler);
+        welcomeMessage.draw(graphicsHandler);
+        pressE.draw(graphicsHandler);
     }
 }
