@@ -7,6 +7,7 @@ import Engine.GraphicsHandler;
 import Engine.Screen;
 import Level.FlagManager;
 import Maps.Level1;
+import Maps.Level2IntroScreenMap;
 import Screens.ControlsHome;
 import Screens.ControlsScreen;
 import Screens.CreditsScreen;
@@ -21,7 +22,9 @@ import ScriptActions.FlagRequirement;
 import ScriptActions.ScriptAction;
 import ScriptActions.TextboxScriptAction;
 import Screens.IntroductionScreen;
+import Screens.Level1Screen;
 import Screens.Level2DialogueScreen;
+import Screens.Level2IntroScreen;
 import Screens.LevelCompleteScreen;
 import Screens.LevelLoseScreen;
 
@@ -103,6 +106,11 @@ public class ScreenCoordinator extends Screen {
 					case LEVEL2DIALOGUE:
 						currentScreen = new Level2DialogueScreen(this);
 						break;
+					case LEVEL1SCREEN:
+						currentScreen = new Level1Screen(this);
+						break;
+					case LEVEL2INTROSCREEN:
+						currentScreen = new Level2IntroScreen(this);
 					default:
 						break;
 				}
