@@ -63,7 +63,7 @@ public class Level1 extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
         // Define a radius for the circular movement
         float bearMovementRadius = 50.0f; // Adjust this value as needed
-        
+
         BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(13, 54).getLocation(), bearMovementRadius);
         enemies.add(bear1);
 
@@ -80,7 +80,7 @@ public class Level1 extends Map {
         enemies.add(bear5);
 
         // Adding breakable objects
-        BreakableLog log = new BreakableLog(5, 1, getMapTile(30, 37).getLocation());
+        BreakableLog log = new BreakableLog(5, 1, getMapTile(24, 37).getLocation());
         enemies.add(log);
         BreakableBranch branch = new BreakableBranch(1, 1, new Point(480, 25));
         enemies.add(branch);
