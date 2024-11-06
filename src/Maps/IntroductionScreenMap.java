@@ -20,6 +20,9 @@ import Utils.Point;
         private Sprite back;
         private Sprite hiker;
         private Sprite ranger;
+        private boolean playerIsSpeaking1 = true;
+        private Sprite playerSpeaking;
+        private Sprite rangerSpeaking;
 
         public IntroductionScreenMap() {
             super("title_screen_map.txt", new CommonTileset());
@@ -41,6 +44,20 @@ import Utils.Point;
             ranger.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
             ranger.setLocation(rangerLocation.x, rangerLocation.y - 20); 
 
+            playerSpeaking = new Sprite(ImageLoader.loadSubImage("pointer.png", Colors.MAGENTA, 0, 0, 24, 24));
+            playerSpeaking.setScale(2);
+            playerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+            playerSpeaking.setLocation(hikerLocation.x + 87, hikerLocation.y - 50); 
+
+            rangerSpeaking = new Sprite(ImageLoader.loadSubImage("pointer.png", Colors.MAGENTA, 0, 0, 24, 24));
+            rangerSpeaking.setScale(2);
+            rangerSpeaking.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+            rangerSpeaking.setLocation(rangerLocation.x + 87, rangerLocation.y - 50); 
+
+        }
+
+        public void setPlayerSpeaking1(boolean flag) {
+            playerIsSpeaking1 = flag;
         }
 
         @Override
@@ -49,6 +66,12 @@ import Utils.Point;
             back.draw(graphicsHandler);
             hiker.draw(graphicsHandler);
             ranger.draw(graphicsHandler);
+
+            if (playerIsSpeaking1) {
+                playerSpeaking.draw(graphicsHandler);
+            } else {
+                rangerSpeaking.draw(graphicsHandler);
+            }    
          
         }
 

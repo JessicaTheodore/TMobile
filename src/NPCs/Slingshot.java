@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class Slingshot extends NPC {
 
     public Slingshot(int id, Point location) {
-        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Slingshot.png"), 10, 19), "STAND_LEFT");
+        super(id, location.x, location.y, new SpriteSheet(ImageLoader.load("Slingshot.png"), 13, 19), "STAND_LEFT");
     }
 
     @Override
