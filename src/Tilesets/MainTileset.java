@@ -7,6 +7,7 @@ import GameObject.Frame;
 import GameObject.ImageEffect;
 import Level.TileType;
 import Level.Tileset;
+import ScriptActions.FlagStrategy;
 
 import java.util.ArrayList;
 
@@ -803,8 +804,197 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(bottomCliffLTile);
 
+        // Bright grass
+
+        Frame brightGrassFrame = new FrameBuilder(getSubImage(8, 7))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder brightGrassTile = new MapTileBuilder(brightGrassFrame)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(brightGrassTile);
+
+        // TL grass BR dirt
+
+        Frame TLBrightGrassBRDirtFrame = new FrameBuilder(getSubImage(9, 0))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder TLBrightGrassBRDirtTile = new MapTileBuilder(TLBrightGrassBRDirtFrame)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(TLBrightGrassBRDirtTile);
+
+        // TR grass BL dirt
+
+        Frame TRBrightGrassBLDirtFrame = new FrameBuilder(getSubImage(9, 1))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder TRBrightGrassBLDirtTile = new MapTileBuilder(TRBrightGrassBLDirtFrame)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(TRBrightGrassBLDirtTile);
+
+        // BR grass TL dirt
+
+        Frame BRBrightGrassTLDirtFrame = new FrameBuilder(getSubImage(9, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder BRBrightGrassTLDirtTile = new MapTileBuilder(BRBrightGrassTLDirtFrame)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(BRBrightGrassTLDirtTile);
+
+        // BL grass TR dirt
+
+        Frame BLBrightGrassTRDirtFrame = new FrameBuilder(getSubImage(9, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder BLBrightGrassTRDirtTile = new MapTileBuilder(BLBrightGrassTRDirtFrame)
+            .withTileType(TileType.PASSABLE);
+
+        mapTiles.add(BLBrightGrassTRDirtTile);
+
+        // Upper cliff top 
+
+        Frame upperCliffTopFrame = new FrameBuilder(getSubImage(9, 4))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder upperCliffTopTile = new MapTileBuilder(upperCliffTopFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffTopTile);
+
+        // Upper cliff R corner
+
+        Frame upperCliffRCornerFrame = new FrameBuilder(getSubImage(9, 5))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder upperCliffRCornerTile = new MapTileBuilder(upperCliffRCornerFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffRCornerTile);
+        
+        // Upper cliff L corner
+
+        Frame upperCliffLCornerFrame = new FrameBuilder(getSubImage(9, 5))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder upperCliffLCornerTile = new MapTileBuilder(upperCliffLCornerFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffLCornerTile);
+
+        // Upper cliff L vertical
+
+        Frame upperCliffLVerticalFrame = new FrameBuilder(getSubImage(9, 6))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder upperCliffLVerticalTile = new MapTileBuilder(upperCliffLVerticalFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffLVerticalTile);
+
+
+        // Upper cliff R vertical 
+
+        Frame upperCliffRVerticalFrame = new FrameBuilder(getSubImage(9, 6))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder upperCliffRVerticalTile = new MapTileBuilder(upperCliffRVerticalFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffRVerticalTile);
+
+        // Upper cliff inside corner TL
+
+        Frame upperCliffInsideCornerTLFrame = new FrameBuilder(getSubImage(9, 7))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder upperCliffInsideCornerTLTile = new MapTileBuilder(upperCliffInsideCornerTLFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffInsideCornerTLTile);
+
+        // Upper cliff inside corner TR
+
+        Frame upperCliffInsideCornerTRFrame = new FrameBuilder(getSubImage(9, 7))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder upperCliffInsideCornerTRTile = new MapTileBuilder(upperCliffInsideCornerTRFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(upperCliffInsideCornerTRTile);
+
+        // Leaves TL bright grass
+
+        Frame leavesTL_brightGrassBR_Frame = new FrameBuilder(getSubImage(3, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesTL_brightGrassBR_Tile = new MapTileBuilder(brightGrassFrame)
+            .withTopLayer(leavesTL_brightGrassBR_Frame);
+
+        mapTiles.add(leavesTL_brightGrassBR_Tile);
+
+
+
+        // Leaves TR bright grass
+
+        Frame leavesTR_brightGrassBL_Frame = new FrameBuilder(getSubImage(3, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesTR_brightGrassBL_Tile = new MapTileBuilder(brightGrassFrame)
+            .withTopLayer(leavesTR_brightGrassBL_Frame);
+
+        mapTiles.add(leavesTR_brightGrassBL_Tile);
+
+
+        // Leaves BL bright grass
+
+        Frame leavesBL_brightGrassTR_Frame = new FrameBuilder(getSubImage(4, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesBL_brightGrassTR_Tile = new MapTileBuilder(brightGrassFrame)
+            .withTopLayer(leavesBL_brightGrassTR_Frame);
+
+        mapTiles.add(leavesBL_brightGrassTR_Tile);
+
+
+        // Leaves BR bright grass
+
+        Frame leavesBR_brightGrassTL_Frame = new FrameBuilder(getSubImage(4, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder leavesBR_brightGrassTL_Tile = new MapTileBuilder(brightGrassFrame)
+            .withTopLayer(leavesBR_brightGrassTL_Frame);
+
+        mapTiles.add(leavesBR_brightGrassTL_Tile);
+
+
+        
 
         return mapTiles;
     }
+
+
+
 
 }
