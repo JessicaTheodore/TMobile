@@ -63,7 +63,7 @@ public class Level1 extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
         // Define a radius for the circular movement
         float bearMovementRadius = 50.0f; // Adjust this value as needed
-
+        
         BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(13, 54).getLocation(), bearMovementRadius);
         enemies.add(bear1);
 

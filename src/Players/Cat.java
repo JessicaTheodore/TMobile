@@ -305,35 +305,35 @@ public class Cat extends Player {
                 put("STICK_UP", new Frame[] {
                         new FrameBuilder(spriteSheet.getSprite(0, 0), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 1), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 2), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 3), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 4), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 5), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),
                         new FrameBuilder(spriteSheet.getSprite(0, 6), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),    
                         new FrameBuilder(spriteSheet.getSprite(0, 7), 5)
                                 .withScale(2)
-                                .withBounds(20, 31, 23, 22)
+                                .withBounds(20, 20, 23, 22)
                                 .build(),
                 });
                 

@@ -55,6 +55,7 @@ public class Enemy extends MapEntity {
             player.touchedEnemy();
         } else if(intersects(player)) {
             System.out.println("Player Intersected");
+            player.touchedEnemy();
             player.hurtPlayer();
         }
     }
