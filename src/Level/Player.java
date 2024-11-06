@@ -31,7 +31,7 @@ public abstract class Player extends MapEntity {
     protected Direction lastWalkingYDirection;
     protected HealthSystem health = new HealthSystem(3);
 
-    Rectangle rectangle = new Rectangle(0, 0, 50, 50);
+    protected Rectangle attackRectangle = new Rectangle(0, 0, 50, 50);
 
     // values used to handle player movement
     protected float moveAmountX, moveAmountY;
@@ -100,22 +100,22 @@ public abstract class Player extends MapEntity {
         updateLockedKeys();
 
         if (facingDirection == Direction.RIGHT && currentAnimationName.equals("STICK_RIGHT")) {
-            rectangle.setLocation(getCalibratedXLocation()+100, getCalibratedYLocation()+50);
+            attackRectangle.setLocation(getCalibratedXLocation()+100, getCalibratedYLocation()+50);
         } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("STICK_LEFT")) {
-            rectangle.setLocation(getCalibratedXLocation()-15, getCalibratedYLocation()+50);            
+            attackRectangle.setLocation(getCalibratedXLocation()-15, getCalibratedYLocation()+50);            
         } else if (facingDirection == Direction.UP && currentAnimationName.equals("STICK_UP")) {
-            rectangle.setLocation(getCalibratedXLocation() + 38, getCalibratedYLocation());    
+            attackRectangle.setLocation(getCalibratedXLocation() + 38, getCalibratedYLocation());    
         } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("STICK_DOWN")) {
-            rectangle.setLocation(getCalibratedXLocation()+38, getCalibratedYLocation()+100);
+            attackRectangle.setLocation(getCalibratedXLocation()+38, getCalibratedYLocation()+100);
         } 
 
         if(playerState.equals(PlayerState.WALKING) || playerState.equals(PlayerState.STANDING)){
-            rectangle.setWidth(0);
+            attackRectangle.setWidth(0);
         } else {
-            rectangle.setWidth(50);
+            attackRectangle.setWidth(50);
         }
 
-        rectangle.setColor(Color.BLACK);
+        attackRectangle.setColor(Color.BLACK);
 
 
         // update player's animation
@@ -465,6 +465,6 @@ public abstract class Player extends MapEntity {
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-        rectangle.draw(graphicsHandler);
+        attackRectangle.draw(graphicsHandler);
     }
 }

@@ -50,7 +50,7 @@ public class Enemy extends MapEntity {
     // Original update that requires Player object
     public void update(Player player) {
         super.update();
-        if (intersects(player.rectangle)) {
+        if (intersects(player.attackRectangle)) {
             System.out.println("Attack Intersected");
             player.touchedEnemy();
         } else if(intersects(player)) {
