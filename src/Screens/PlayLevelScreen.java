@@ -49,6 +49,7 @@ public class PlayLevelScreen extends Screen {
     protected float y;
     protected Trigger trigger;
     protected boolean helpNew = true;
+    protected int counter = 0;
 
     private HealthSystem healthSystem;
     private Slingshot slingshot;
@@ -72,8 +73,8 @@ public class PlayLevelScreen extends Screen {
         pickUp.setLocation(326, 457); 
 
         slingShotAcquired = new Sprite(ImageLoader.loadSubImage("SlingShotAcquired.png", Colors.MAGENTA, 0, 0, 99, 37));
-        slingShotAcquired.setScale(2);
-        slingShotAcquired.setLocation(326, 457);
+        slingShotAcquired.setScale(3);
+        slingShotAcquired.setLocation(240, 457);
 
         breakL = new Sprite(ImageLoader.loadSubImage("SpaceBreak.png", Colors.MAGENTA, 0, 0, 123, 37));
         breakL.setScale(2);
@@ -284,8 +285,12 @@ public class PlayLevelScreen extends Screen {
                         //flagManager.setFlag("nearSlingShot");
                         //flagManager.unsetFlag("pickedUpSlingShot");
                     } else if (flagManager.isFlagSet("pickedUpSlingShot") && flagManager.isFlagSet("nearSlingShot")) {
-                        slingShotAcquired.draw(graphicsHandler);
-                    }
+                        if(counter < 600) {
+                            slingShotAcquired.draw(graphicsHandler);
+                        } 
+                        counter++;
+                        //flagManager.unsetFlag("nearSlingShot");
+                    } 
                 
                     if(!flagManager.isFlagSet("brokeLog") && flagManager.isFlagSet("SpaceBreak")){
                         breakL.draw(graphicsHandler);
