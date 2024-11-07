@@ -115,33 +115,33 @@ public abstract class Player extends MapEntity {
         slingshotRectangle.setMap(map);
         
         // This is where the stick hitbox is being put in the direction that the player is facing
-        if (facingDirection == Direction.RIGHT && currentAnimationName.equals("STICK_RIGHT")) {
+        if (facingDirection == Direction.RIGHT && currentAnimationName.equals("STICK_RIGHT") && getCurrentFrameIndex() == 5) {
             stickRectangle.setLocation(getX()+100, getY()+50);
         
-        } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("STICK_LEFT")) {
+        } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("STICK_LEFT") && getCurrentFrameIndex() == 5) {
             stickRectangle.setLocation(getX()-20, getY()+50);            
         
-        } else if (facingDirection == Direction.UP && currentAnimationName.equals("STICK_UP")) {
+        } else if (facingDirection == Direction.UP && currentAnimationName.equals("STICK_UP") && getCurrentFrameIndex() == 5) {
             stickRectangle.setLocation(getX()+40, getY()-20);    
         
-        } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("STICK_DOWN")) {
+        } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("STICK_DOWN") && getCurrentFrameIndex() == 5) {
             stickRectangle.setLocation(getX()+40, getY()+100);
         } 
 
         // This is where the slingshot hitbox is being put in the direction that the player is facing
-        if (facingDirection == Direction.RIGHT && currentAnimationName.equals("ROCK_RIGHT")) {
+        if (facingDirection == Direction.RIGHT && currentAnimationName.equals("ROCK_RIGHT") && getCurrentFrameIndex() == 5) {
             slingshotRectangle.setBounds(new Rectangle(0,0,200,50));
             slingshotRectangle.setLocation(getX()+100, getY()+50);
         
-        } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("ROCK_LEFT")) {
+        } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("ROCK_LEFT") && getCurrentFrameIndex() == 5) {
             slingshotRectangle.setBounds(new Rectangle(0,0,200,50));
             slingshotRectangle.setLocation(getX()-170, getY()+50);
         
-        } else if (facingDirection == Direction.UP && currentAnimationName.equals("ROCK_UP")) {
+        } else if (facingDirection == Direction.UP && currentAnimationName.equals("ROCK_UP") && getCurrentFrameIndex() == 5) {
             slingshotRectangle.setBounds(new Rectangle(0,0,50,200));
             slingshotRectangle.setLocation(getX()+40, getY()-135);
         
-        } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("ROCK_DOWN")) {
+        } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("ROCK_DOWN") && getCurrentFrameIndex() == 5) {
             slingshotRectangle.setBounds(new Rectangle(0,0,50,200));
             slingshotRectangle.setLocation(getX()+40, getY()+100);
         } 
