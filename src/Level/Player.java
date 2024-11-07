@@ -1,6 +1,8 @@
 package Level;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import Engine.GraphicsHandler;
 import Engine.Key;
@@ -422,11 +424,11 @@ public abstract class Player extends MapEntity {
     // This gets called from within the Enemy class when the enemy hitbox intersects with the player hitbox
     public void touchedEnemy() {
         for (Enemy enemy : map.getActiveEnemies()) {
-            if(enemy instanceof BearEnemy){// && rectangle.intersects(enemy)) {
-                enemy.hurtEnemy(); // this is where I would put the code to hurt the enemy but I honestly have no idea how to make that work here  
-            } else if (enemy instanceof BreakableLog){ //&& rectangle.intersects(enemy)){
+            if(enemy instanceof BearEnemy && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
+                enemy.hurtEnemy();  
+            } else if (enemy instanceof BreakableLog && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
                 enemy.hurtEnemy();
-            } else if(enemy instanceof BreakableBranch){ //&& rectangle.intersects(enemy)){
+            } else if(enemy instanceof BreakableBranch && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
                 enemy.hurtEnemy();
             }
         }
@@ -491,10 +493,10 @@ public abstract class Player extends MapEntity {
     }
 
     // Uncomment this to have game draw player's bounds to make it easier to visualize
-    public void draw(GraphicsHandler graphicsHandler) {
-        super.draw(graphicsHandler);
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-        stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
-        slingshotRectangle.drawBounds(graphicsHandler, Color.BLACK);
-    }
+    // public void draw(GraphicsHandler graphicsHandler) {
+    //     super.draw(graphicsHandler);
+    //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    //     stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
+    //     slingshotRectangle.drawBounds(graphicsHandler, Color.BLACK);
+    // }
 }

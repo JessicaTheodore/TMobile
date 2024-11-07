@@ -82,7 +82,7 @@ public class Level1 extends Map {
         // Adding breakable objects
         BreakableLog log = new BreakableLog(5, 1, getMapTile(24, 37).getLocation());
         enemies.add(log);
-        BreakableBranch branch = new BreakableBranch(1, 1, new Point(480, 25));
+        BreakableBranch branch = new BreakableBranch(6, 1, new Point(480, 25));
         enemies.add(branch);
 
         return enemies;
