@@ -54,6 +54,13 @@ public class Level2 extends Map {
         SquirrelEnemy Squirrel1 = new SquirrelEnemy (0,1, new Point(1500,1700), 10);
         enemies.add(Squirrel1);
 
+        SquirrelEnemy Squirrel2 = new SquirrelEnemy (0,1, new Point(1650,1500), 10);
+        enemies.add(Squirrel2);
+
+        SquirrelEnemy Squirrel3 = new SquirrelEnemy (0,1, new Point(1250,1500), 10);
+        enemies.add(Squirrel3);
+
+
         return enemies;
     }
 

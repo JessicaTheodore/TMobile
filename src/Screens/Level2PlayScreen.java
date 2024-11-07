@@ -211,9 +211,9 @@ public class Level2PlayScreen extends Screen {
                     if (enemy instanceof BearEnemy) {
                         enemy.update(); // Call the update method for each bear
                     }
-                    if (enemy instanceof SquirrelEnemy) {
-                        enemy.update(); // Call the update method for each bear
-                    }
+                    // if (enemy instanceof SquirrelEnemy) {
+                    //     enemy.update(); // Call the update method for each bear
+                    // }
                 }
                 break;
             // If level has been completed, bring up level cleared screen
