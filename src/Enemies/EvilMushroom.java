@@ -1,5 +1,6 @@
 package Enemies;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 import Builders.FrameBuilder;
@@ -28,13 +29,13 @@ public class EvilMushroom extends Enemy {
         return new HashMap<String, Frame[]>() {{
             put("GROUNDED", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0))
-                    .withScale(1)
+                    .withScale(2)
                     .withBounds(0, 0, 34, 34)
                     .build()
             });
             put("MIDAIR", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0))
-                    .withScale(1)
+                    .withScale(2)
                     .withBounds(35, 0, 33, 33)
                     .build()
             });
@@ -45,7 +46,7 @@ public class EvilMushroom extends Enemy {
     @Override
     public void hurtEnemy() {
         this.shroomHP--;
-        System.out.println("hit the bear" + getShroomHP());
+        System.out.println("hit the mushroom" + getShroomHP());
 
         if (shroomHP <= 0) {
             mapEntityStatus = MapEntityStatus.REMOVED;
@@ -63,9 +64,13 @@ public class EvilMushroom extends Enemy {
         super.update();
     }
 
-        @Override
+    @Override
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
+
+        // Hitbox
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+
     }
 
 

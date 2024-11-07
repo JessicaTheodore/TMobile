@@ -19,7 +19,7 @@ public class Level2 extends Map {
     
     public Level2() {
         super("lvl2.txt", new MainTileset());
-        this.playerStartPosition = new Point(0,0);
+        this.playerStartPosition = new Point(1060,2890);
     }
 
     public Level2(float x, float y) {
@@ -45,7 +45,7 @@ public class Level2 extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
 
         // Add Enemies here
-        EvilMushroom shroom1 = new EvilMushroom(0,5, new Point(100,100));
+        EvilMushroom shroom1 = new EvilMushroom(0,5, new Point(1000,2000));
         enemies.add(shroom1);
 
         return enemies;
