@@ -23,7 +23,7 @@ public class BearEnemy extends Enemy {
     private float angle;  // Current angle of the bear's position in the circular path
 
     public BearEnemy(int id, int enemyHP, Point location, float radius) {
-        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("Bear(2).png"), 24, 24), "STAND_LEFT");
+        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("NewBear.png"), 24, 24), "STAND");
         this.bearHP = enemyHP; // Initialize bear HP
         this.radius = radius; // Set the radius for circular movement
         this.angle = (float)Math.random() * (float)(2 * Math.PI); // Random starting angle
@@ -34,15 +34,19 @@ public class BearEnemy extends Enemy {
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
         return new HashMap<String, Frame[]>() {{
-            put("STAND_LEFT", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
+            put("STAND", new Frame[] {
+                new FrameBuilder(spriteSheet.getSprite(0, 0),12)
                     .withScale(3)
                     .withBounds(4, 5, 15, 15)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
-                    .build()
-            });
-        }};
-    }
+                    .build(), 
+                    // new FrameBuilder(spriteSheet.getSprite(0, 1), 12)
+                    // .withScale(2)
+                    // .withBounds(4, 5, 15, 15)
+                    // .build()
+                });
+            }};
+        }
 
     @Override
     public void hurtEnemy() {
