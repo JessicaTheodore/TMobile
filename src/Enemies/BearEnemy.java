@@ -16,6 +16,7 @@ public class BearEnemy extends Enemy {
     protected Point startLocation;
     protected int bearHP;
     protected float movementSpeed = 3f;
+    protected int iFrames = 0;
 
     // Variables for circular movement
     private float radius; // Radius of the circular path
@@ -45,8 +46,13 @@ public class BearEnemy extends Enemy {
 
     @Override
     public void hurtEnemy() {
-        this.bearHP--;
-        System.out.println("hit the bear" + getBearHP());
+        if(bearHP > 0){
+            if (iFrames == 0) {
+                iFrames = 60;
+                this.bearHP--;
+                System.out.println("hit the bear" + getBearHP());
+            }
+        }
 
         if (bearHP <= 0) {
             mapEntityStatus = MapEntityStatus.REMOVED;
@@ -69,6 +75,10 @@ public class BearEnemy extends Enemy {
     public void update() {
         super.update();
 
+        if(iFrames > 0){
+            iFrames--;
+        }
+        
         // Update the angle to create circular movement
         angle += movementSpeed * 0.01; // Increment the angle (adjust speed multiplier as needed)
 
