@@ -449,7 +449,9 @@ public abstract class Player extends MapEntity {
                 enemy.hurtEnemy();
             }  else if(enemy instanceof EvilMushroom && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))) {
                 enemy.hurtEnemy();
-            } 
+            } else if(enemy instanceof SquirrelEnemy && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))) {
+                enemy.hurtEnemy();
+            }
         }
     }
 

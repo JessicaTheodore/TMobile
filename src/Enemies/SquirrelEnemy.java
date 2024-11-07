@@ -14,7 +14,7 @@ import java.awt.Color;
 
 public class SquirrelEnemy extends Enemy {
     protected Point startLocation;
-    protected int bearHP;
+    protected int squirrelHP;
     protected float movementSpeed = 3f;
     protected int iFrames = 0;
 
@@ -24,7 +24,7 @@ public class SquirrelEnemy extends Enemy {
 
     public SquirrelEnemy(int id, int enemyHP, Point location, float radius) {
         super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("Squirrel.png"), 64, 57), "STAND");
-        this.bearHP = enemyHP; // Initialize bear HP
+        this.squirrelHP = enemyHP; // Initialize bear HP
         this.radius = radius; // Set the radius for circular movement
         this.angle = (float)Math.random() * (float)(2 * Math.PI); // Random starting angle
         isUncollidable = true;
@@ -36,7 +36,7 @@ public class SquirrelEnemy extends Enemy {
         return new HashMap<String, Frame[]>() {{
             put("STAND", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0),12)
-                    .withScale(3)
+                    .withScale(2)
                     .withBounds(4, 5, 50, 50)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .build(), 
@@ -50,21 +50,21 @@ public class SquirrelEnemy extends Enemy {
 
     @Override
     public void hurtEnemy() {
-        if(bearHP > 0){
+        if(squirrelHP > 0){
             if (iFrames == 0) {
                 iFrames = 60;
-                this.bearHP--;
-                System.out.println("hit the bear" + getBearHP());
+                this.squirrelHP--;
+                System.out.println("hit the bear" + getSquirrelHP());
             }
         }
 
-        if (bearHP <= 0) {
+        if (squirrelHP <= 0) {
             mapEntityStatus = MapEntityStatus.REMOVED;
         }
     }
 
-    public int getBearHP() {
-        return this.bearHP;
+    public int getSquirelHP() {
+        return this.squirrelHP;
     }
 
     // @Override
