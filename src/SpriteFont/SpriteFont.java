@@ -47,7 +47,7 @@ public class SpriteFont {
 		this.treesAreSpeaking = true;
 	}
 
-	public SpriteFont(String text, float x, float y, Font font, Color color, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1, boolean whatever) {
+	public SpriteFont(String text, float x, float y, Font font, Color color, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1) {
 		this.text = text;
 		this.font = font;
 		this.x = x;
@@ -82,7 +82,7 @@ public class SpriteFont {
 		this.showRanger = showRanger;
 	}
 
-	public SpriteFont(String text, float x, float y, Font font, Color color, boolean showTextField) {
+	public SpriteFont(String text, float x, float y, Font font, Color color, boolean showTextField, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1) {
 		this.text = text;
 		this.font = font;
 		this.x = x;
@@ -90,9 +90,11 @@ public class SpriteFont {
 		this.color = color;
 		this.showTextField = showTextField;
 		this.needName = false;
+		this.level1Map = level1Map;
+		this.isPlayerSpeaking1 = isPlayerSpeaking1;
 	}
 
-	public SpriteFont(String text, boolean needName, float x, float y, Font font, Color color) {
+	public SpriteFont(String text, boolean needName, float x, float y, Font font, Color color, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1) {
 		this.text = text;
 		this.needName = needName;
 		this.font = font;
@@ -100,6 +102,8 @@ public class SpriteFont {
 		this.y = y;
 		this.color = color;
 		this.showTextField = false;
+		this.level1Map = level1Map;
+		this.isPlayerSpeaking1 = isPlayerSpeaking1;
 	}
 
 	public SpriteFont(String text, float x, float y, Font font, Color color, boolean showRanger, Level2ScreenMap level2Map, boolean isPlayerSpeaking) {

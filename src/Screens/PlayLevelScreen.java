@@ -32,6 +32,7 @@ public class PlayLevelScreen extends Screen {
     protected FlagManager flagManager;
     private Sprite ranger;
     protected Sprite pickUp;
+    protected Sprite slingShotAcquired;
     protected Sprite breakL;
     protected KeyLocker keyLocker = new KeyLocker();
     protected HelpScreen helpScreen;
@@ -69,6 +70,10 @@ public class PlayLevelScreen extends Screen {
         pickUp = new Sprite(ImageLoader.loadSubImage("PickUp.png", Colors.MAGENTA, 0, 0, 99, 37));
         pickUp.setScale(2);
         pickUp.setLocation(326, 457); 
+
+        slingShotAcquired = new Sprite(ImageLoader.loadSubImage("SlingShotAcquired.png", Colors.MAGENTA, 0, 0, 99, 37));
+        slingShotAcquired.setScale(2);
+        slingShotAcquired.setLocation(326, 457);
 
         breakL = new Sprite(ImageLoader.loadSubImage("SpaceBreak.png", Colors.MAGENTA, 0, 0, 123, 37));
         breakL.setScale(2);
@@ -108,7 +113,8 @@ public class PlayLevelScreen extends Screen {
             flagManager.addFlag("beatLvl1", false);
             flagManager.addFlag("nearSlingShot", false);
             flagManager.addFlag("SpaceBreak", false);
-
+            //flagManager.addFlag("slingshotAcquired", false);
+           
             // triger for beating level
 
 
@@ -225,6 +231,8 @@ public class PlayLevelScreen extends Screen {
    
     if(flagManager.isFlagSet("pickedUpSlingShot")) {
         player.changeSlingshotStatus();
+        // //////////////////////////////////////
+        // flagManager.setFlag("slingshotAcquired");
     }
 
     for (NPC npc : map.getNPCs()) {
@@ -275,6 +283,7 @@ public class PlayLevelScreen extends Screen {
                     }
                     if(!flagManager.isFlagSet("pickedUpSlingShot") && flagManager.isFlagSet("nearSlingShot")){
                         pickUp.draw(graphicsHandler);
+                        slingShotAcquired.draw(graphicsHandler);
                         flagManager.unsetFlag("nearSlingShot");
                     }
                     if(!flagManager.isFlagSet("brokeLog") && flagManager.isFlagSet("SpaceBreak")){
