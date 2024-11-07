@@ -76,7 +76,7 @@ public class EvilMushroom extends Enemy {
     @Override
     public void performAction(Player player) {
         // if shroomy has not yet moved __ pixels in one direction, move forward
-        if (totalAmountMoved < 150) {
+        if (totalAmountMoved < 500) {
             float amountMoved = moveXHandleCollision(speed * direction.getVelocity());
             totalAmountMoved += Math.abs(amountMoved);
         }
