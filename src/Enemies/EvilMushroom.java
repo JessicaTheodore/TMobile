@@ -3,6 +3,7 @@ package Enemies;
 import java.util.HashMap;
 
 import Builders.FrameBuilder;
+import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import GameObject.Frame;
 import GameObject.SpriteSheet;
@@ -16,7 +17,7 @@ public class EvilMushroom extends Enemy {
     protected int shroomHP;
     
     public EvilMushroom(int id, int enemyHP, Point location){
-        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("evilmushroom.png"), 30, 30), "GROUNDED");
+        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("evilmushroom.png"), 34, 34), "GROUNDED");
         this.shroomHP = enemyHP; 
         isUncollidable = true;
         startLocation = location;
@@ -27,14 +28,14 @@ public class EvilMushroom extends Enemy {
         return new HashMap<String, Frame[]>() {{
             put("GROUNDED", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0))
-                    .withScale(3)
-                    .withBounds(0, 0, 33, 33)
+                    .withScale(1)
+                    .withBounds(0, 0, 34, 34)
                     .build()
             });
             put("MIDAIR", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(1, 1))
-                    .withScale(3)
-                    .withBounds(69, 0, 34, 34)
+                new FrameBuilder(spriteSheet.getSprite(0, 0))
+                    .withScale(1)
+                    .withBounds(35, 0, 33, 33)
                     .build()
             });
 
@@ -61,5 +62,11 @@ public class EvilMushroom extends Enemy {
     public void update() {
         super.update();
     }
+
+        @Override
+    public void draw(GraphicsHandler graphicsHandler) {
+        super.draw(graphicsHandler);
+    }
+
 
 }
