@@ -18,7 +18,7 @@ public class EvilMushroom extends Enemy {
     protected int shroomHP;
     
     public EvilMushroom(int id, int enemyHP, Point location){
-        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("evilmushroom.png"), 34, 34), "GROUNDED");
+        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("evilmushroom.png"), 34, 34), "HOPPING");
         this.shroomHP = enemyHP; 
         isUncollidable = true;
         startLocation = location;
@@ -27,19 +27,17 @@ public class EvilMushroom extends Enemy {
     @Override
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
         return new HashMap<String, Frame[]>() {{
-            put("GROUNDED", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
+            put("HOPPING", new Frame[] {
+                new FrameBuilder(spriteSheet.getSprite(0, 0), 10)
+                    .withScale(2)
+                    .withBounds(0, 0, 34, 34)
+                    .build(),
+                new FrameBuilder(spriteSheet.getSprite(0, 1), 10)
                     .withScale(2)
                     .withBounds(0, 0, 34, 34)
                     .build()
-            });
-            put("MIDAIR", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 0))
-                    .withScale(2)
-                    .withBounds(35, 0, 33, 33)
-                    .build()
-            });
 
+            });
         }};
     }
 
@@ -69,7 +67,7 @@ public class EvilMushroom extends Enemy {
         super.draw(graphicsHandler);
 
         // Hitbox
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 40));
 
     }
 
