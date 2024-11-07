@@ -18,7 +18,7 @@ public class MainTileset extends Tileset {
         super(ImageLoader.load("MainTileset.png"), 16, 16, 3);
     }
 
-    @Override
+    @Override 
     public ArrayList<MapTileBuilder> defineTiles() {
         ArrayList<MapTileBuilder> mapTiles = new ArrayList<>();
 
@@ -924,7 +924,7 @@ public class MainTileset extends Tileset {
             .build();
 
         MapTileBuilder upperCliffInsideCornerTLTile = new MapTileBuilder(upperCliffInsideCornerTLFrame)
-            .withTileType(TileType.NOT_PASSABLE);
+            .withTileType(TileType.PASSABLE);
 
         mapTiles.add(upperCliffInsideCornerTLTile);
 
@@ -936,7 +936,7 @@ public class MainTileset extends Tileset {
             .build();
 
         MapTileBuilder upperCliffInsideCornerTRTile = new MapTileBuilder(upperCliffInsideCornerTRFrame)
-            .withTileType(TileType.NOT_PASSABLE);
+            .withTileType(TileType.PASSABLE);
 
         mapTiles.add(upperCliffInsideCornerTRTile);
 
