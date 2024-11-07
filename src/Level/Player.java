@@ -33,6 +33,11 @@ public abstract class Player extends MapEntity {
     protected Direction lastWalkingXDirection;
     protected Direction lastWalkingYDirection;
     protected HealthSystem health = new HealthSystem(3);
+    protected int upBound;
+    protected int downBound;
+    protected int leftBound;
+    protected int rightBound;
+
 
     protected GameObject stickRectangle = new GameObject(50, 50);
     protected GameObject slingshotRectangle = new GameObject(200, 50);
@@ -149,6 +154,18 @@ public abstract class Player extends MapEntity {
             stickRectangle.setWidth(50);
         }
 
+        if(screenCoordinator.getGameState().equals(GameState.NEWLEVEL) || screenCoordinator.getGameState().equals(GameState.LEVEL)){
+            upBound = -50;
+            downBound = 3260;
+            leftBound = -50;
+            rightBound = 2773;
+        }else if(screenCoordinator.getGameState().equals(GameState.LEVEL2)){
+            upBound = -50;
+            downBound = 2967;
+            leftBound = -50;
+            rightBound = 4229;
+        }
+
         // update player's animation
         super.update();
     }
@@ -243,7 +260,7 @@ public abstract class Player extends MapEntity {
 
         // if walk left key is pressed, move player to the left
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
-            if(this.getX() + moveAmountX - walkSpeed > -50){
+            if(this.getX() + moveAmountX - walkSpeed > leftBound){
                 moveAmountX -= walkSpeed;
             }
             facingDirection = Direction.LEFT;
@@ -253,7 +270,7 @@ public abstract class Player extends MapEntity {
 
         // if walk right key is pressed, move player to the right
         else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
-            if(this.getX() + moveAmountX - walkSpeed < 3260){
+            if(this.getX() + moveAmountX - walkSpeed < rightBound){
                 moveAmountX += walkSpeed;
             }
             facingDirection = Direction.RIGHT;
@@ -265,7 +282,7 @@ public abstract class Player extends MapEntity {
         }
 
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
-            if(this.getY() + moveAmountX - walkSpeed > -50){
+            if(this.getY() + moveAmountX - walkSpeed > upBound){
             moveAmountY -= walkSpeed;
             }
             facingDirection = Direction.UP;
@@ -273,7 +290,7 @@ public abstract class Player extends MapEntity {
             lastWalkingYDirection = Direction.UP;
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
-            if(this.getY() + moveAmountX - walkSpeed < 2773){
+            if(this.getY() + moveAmountX - walkSpeed < downBound){
             moveAmountY += walkSpeed;
             }
             facingDirection = Direction.DOWN;
