@@ -23,7 +23,7 @@ public class BearEnemy extends Enemy {
     private float angle;  // Current angle of the bear's position in the circular path
 
     public BearEnemy(int id, int enemyHP, Point location, float radius) {
-        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("Bear.png"), 24, 24), "STAND_LEFT");
+        super(id, enemyHP, location.x, location.y, new SpriteSheet(ImageLoader.load("Bear(2).png"), 24, 24), "STAND_LEFT");
         this.bearHP = enemyHP; // Initialize bear HP
         this.radius = radius; // Set the radius for circular movement
         this.angle = (float)Math.random() * (float)(2 * Math.PI); // Random starting angle
