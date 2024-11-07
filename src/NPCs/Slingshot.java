@@ -53,11 +53,11 @@ public class Slingshot extends NPC {
         cycleTime += oscillationSpeed;  // Increase cycle time for oscillation
         
         // Use sine or cosine to oscillate the position
-        float oscillationX = (float) Math.sin(cycleTime) * offset;  // -2 to +2 on X
+        // float oscillationX = (float) Math.sin(cycleTime) * offset;  // -2 to +2 on X
         float oscillationY = (float) Math.cos(cycleTime) * offset;  // -2 to +2 on Y
 
         // Update the slingshot position
-        this.setLocation(startLocation.x + oscillationX, startLocation.y + oscillationY);
+        this.setLocation(startLocation.x, startLocation.y + oscillationY);
 
        // System.out.println("Slingshot updating with oscillation: x=" + oscillationX + " y=" + oscillationY);
     }
