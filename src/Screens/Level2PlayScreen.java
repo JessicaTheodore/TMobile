@@ -1,7 +1,5 @@
 package Screens;
 
-import java.util.ArrayList;
-
 import Enemies.BearEnemy;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
@@ -12,10 +10,11 @@ import Engine.Screen;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.Sprite;
-import NPCs.Bear;
-import NPCs.Slingshot;
 import Level.*;
 import Maps.Level1;
+import Maps.Level2;
+import Maps.TestMap;
+import NPCs.Bear;
 import Players.Cat;
 import Utils.Colors;
 import Utils.Direction;
@@ -23,7 +22,7 @@ import Utils.HealthSystem;
 import Utils.Point;
 
 // This class is for when the RPG game is actually being played
-public class PlayLevelScreen extends Screen {
+public class Level2PlayScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -32,7 +31,6 @@ public class PlayLevelScreen extends Screen {
     protected FlagManager flagManager;
     private Sprite ranger;
     protected Sprite pickUp;
-    //protected Sprite slingShotAcquired;
     protected Sprite breakL;
     protected KeyLocker keyLocker = new KeyLocker();
     protected HelpScreen helpScreen;
@@ -51,10 +49,9 @@ public class PlayLevelScreen extends Screen {
     protected boolean helpNew = true; 
 
     private HealthSystem healthSystem;
-    private Slingshot slingshot;
 
 
-    public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
+    public Level2PlayScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
 
         player.resetHealth();
@@ -70,10 +67,6 @@ public class PlayLevelScreen extends Screen {
         pickUp = new Sprite(ImageLoader.loadSubImage("PickUp.png", Colors.MAGENTA, 0, 0, 99, 37));
         pickUp.setScale(2);
         pickUp.setLocation(326, 457); 
-
-        // slingShotAcquired = new Sprite(ImageLoader.loadSubImage("SlingShotAcquired.png", Colors.MAGENTA, 0, 0, 99, 37));
-        // slingShotAcquired.setScale(2);
-        // slingShotAcquired.setLocation(326, 457);
 
         breakL = new Sprite(ImageLoader.loadSubImage("SpaceBreak.png", Colors.MAGENTA, 0, 0, 123, 37));
         breakL.setScale(2);
@@ -113,13 +106,12 @@ public class PlayLevelScreen extends Screen {
             flagManager.addFlag("beatLvl1", false);
             flagManager.addFlag("nearSlingShot", false);
             flagManager.addFlag("SpaceBreak", false);
-            //flagManager.addFlag("slingshotAcquired", false);
-           
+
             // triger for beating level
 
 
             // Define/setup map
-            map = new Level1();
+            map = new Level2();
             map.setFlagManager(flagManager);
 
             // Setup help screen
@@ -141,11 +133,9 @@ public class PlayLevelScreen extends Screen {
             // Preload all scripts ahead of time rather than loading them dynamically
             map.preloadScripts();
 
-
-            slingshot = new Slingshot(1, new Point(300, 200));  // Set initial position
-            map.addNPC(slingshot); 
             // Initialize win screen
-            winScreen = new WinScreen(this);
+            ////////////////
+            //winScreen = new WinScreen(this);
 
             healthSystem = new HealthSystem(player.getCurrentHealth()); // 5 hearts initially
         }
@@ -231,13 +221,7 @@ public class PlayLevelScreen extends Screen {
    
     if(flagManager.isFlagSet("pickedUpSlingShot")) {
         player.changeSlingshotStatus();
-        // //////////////////////////////////////
-        // flagManager.setFlag("slingshotAcquired");
     }
-
-    for (NPC npc : map.getNPCs()) {
-        npc.update();  // Call update on each NPC (including Slingshot)
-
     if (playerCollidesWithBear()) {
         healthSystem.decreaseHealth();
         
@@ -245,16 +229,11 @@ public class PlayLevelScreen extends Screen {
         if (healthSystem.getCurrentHealth() <= 0) {
             screenCoordinator.setGameState(GameState.GAMEOVER);
         }
-    }
-}  
-    
+    }  
 
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
-
-        for (NPC npc : map.getNPCs()) {
-            npc.draw(graphicsHandler);  // Draw each NPC
         // Based on screen state, draw appropriate graphics
         if (helpOn) {
 
@@ -283,9 +262,7 @@ public class PlayLevelScreen extends Screen {
                     }
                     if(!flagManager.isFlagSet("pickedUpSlingShot") && flagManager.isFlagSet("nearSlingShot")){
                         pickUp.draw(graphicsHandler);
-                       // slingShotAcquired.draw(graphicsHandler);
-                        flagManager.setFlag("nearSlingShot");
-                       // flagManager.unsetFlag("pickedUpSlingShot");
+                        flagManager.unsetFlag("nearSlingShot");
                     }
                     if(!flagManager.isFlagSet("brokeLog") && flagManager.isFlagSet("SpaceBreak")){
                         breakL.draw(graphicsHandler);
@@ -298,7 +275,6 @@ public class PlayLevelScreen extends Screen {
                     break;
             }
         }
-    }
         //map.getTriggers().get(map.getTriggers().size()-1).draw(graphicsHandler);
     }
 
@@ -337,5 +313,4 @@ public class PlayLevelScreen extends Screen {
         }
         return false;
         }
-    
 }

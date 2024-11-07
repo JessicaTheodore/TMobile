@@ -1,12 +1,15 @@
 package Level;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
 import Engine.Screen;
+import Game.Game;
 import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.GameObject;
@@ -30,8 +33,14 @@ public abstract class Player extends MapEntity {
     protected Direction lastWalkingXDirection;
     protected Direction lastWalkingYDirection;
     protected HealthSystem health = new HealthSystem(3);
+    protected int upBound;
+    protected int downBound;
+    protected int leftBound;
+    protected int rightBound;
 
-    protected Rectangle attackRectangle = new Rectangle(0, 0, 50, 50);
+
+    protected GameObject stickRectangle = new GameObject(50, 50);
+    protected GameObject slingshotRectangle = new GameObject(200, 50);
 
     // values used to handle player movement
     protected float moveAmountX, moveAmountY;
@@ -72,6 +81,7 @@ public abstract class Player extends MapEntity {
         previousPlayerState = playerState;
         this.affectedByTriggers = true;
         this.screenCoordinator = screenCoordinator;
+        stickRectangle.setBounds(new Rectangle(0,0,50,50));
     }
 
     public void update() {
@@ -99,24 +109,62 @@ public abstract class Player extends MapEntity {
 
         updateLockedKeys();
 
+        stickRectangle.setMap(map);
+        stickRectangle.setBounds(new Rectangle(0,0,50,50));
+
+        slingshotRectangle.setMap(map);
+        
+        // This is where the stick hitbox is being put in the direction that the player is facing
         if (facingDirection == Direction.RIGHT && currentAnimationName.equals("STICK_RIGHT")) {
-            attackRectangle.setLocation(getCalibratedXLocation()+100, getCalibratedYLocation()+50);
+            stickRectangle.setLocation(getX()+100, getY()+50);
+        
         } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("STICK_LEFT")) {
-            attackRectangle.setLocation(getCalibratedXLocation()-15, getCalibratedYLocation()+50);            
+            stickRectangle.setLocation(getX()-20, getY()+50);            
+        
         } else if (facingDirection == Direction.UP && currentAnimationName.equals("STICK_UP")) {
-            attackRectangle.setLocation(getCalibratedXLocation() + 38, getCalibratedYLocation());    
+            stickRectangle.setLocation(getX()+40, getY()-20);    
+        
         } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("STICK_DOWN")) {
-            attackRectangle.setLocation(getCalibratedXLocation()+38, getCalibratedYLocation()+100);
+            stickRectangle.setLocation(getX()+40, getY()+100);
         } 
 
+        // This is where the slingshot hitbox is being put in the direction that the player is facing
+        if (facingDirection == Direction.RIGHT && currentAnimationName.equals("ROCK_RIGHT")) {
+            slingshotRectangle.setBounds(new Rectangle(0,0,200,50));
+            slingshotRectangle.setLocation(getX()+100, getY()+50);
+        
+        } else if (facingDirection == Direction.LEFT && currentAnimationName.equals("ROCK_LEFT")) {
+            slingshotRectangle.setBounds(new Rectangle(0,0,200,50));
+            slingshotRectangle.setLocation(getX()-170, getY()+50);
+        
+        } else if (facingDirection == Direction.UP && currentAnimationName.equals("ROCK_UP")) {
+            slingshotRectangle.setBounds(new Rectangle(0,0,50,200));
+            slingshotRectangle.setLocation(getX()+40, getY()-135);
+        
+        } else if (facingDirection == Direction.DOWN && currentAnimationName.equals("ROCK_DOWN")) {
+            slingshotRectangle.setBounds(new Rectangle(0,0,50,200));
+            slingshotRectangle.setLocation(getX()+40, getY()+100);
+        } 
+
+        // This is where we would make the hitboxes dissapear when they are not attacking
         if(playerState.equals(PlayerState.WALKING) || playerState.equals(PlayerState.STANDING)){
-            attackRectangle.setWidth(0);
-        } else {
-            attackRectangle.setWidth(50);
+            stickRectangle.setBounds(new Rectangle(0,0,0,0));
+            slingshotRectangle.setBounds(new Rectangle(0,0,0,0));
+        } else if (playerState.equals(PlayerState.STICK_ATTACK)) {
+            stickRectangle.setWidth(50);
         }
 
-        attackRectangle.setColor(Color.BLACK);
-
+        if(screenCoordinator.getGameState().equals(GameState.NEWLEVEL) || screenCoordinator.getGameState().equals(GameState.LEVEL)){
+            upBound = -50;
+            downBound = 3260;
+            leftBound = -50;
+            rightBound = 2773;
+        }else if(screenCoordinator.getGameState().equals(GameState.LEVEL2)){
+            upBound = -50;
+            downBound = 2967;
+            leftBound = -50;
+            rightBound = 4229;
+        }
 
         // update player's animation
         super.update();
@@ -212,7 +260,7 @@ public abstract class Player extends MapEntity {
 
         // if walk left key is pressed, move player to the left
         if (Keyboard.isKeyDown(MOVE_LEFT_KEY)) {
-            if(this.getX() + moveAmountX - walkSpeed > -50){
+            if(this.getX() + moveAmountX - walkSpeed > leftBound){
                 moveAmountX -= walkSpeed;
             }
             facingDirection = Direction.LEFT;
@@ -222,7 +270,7 @@ public abstract class Player extends MapEntity {
 
         // if walk right key is pressed, move player to the right
         else if (Keyboard.isKeyDown(MOVE_RIGHT_KEY)) {
-            if(this.getX() + moveAmountX - walkSpeed < 3260){
+            if(this.getX() + moveAmountX - walkSpeed < rightBound){
                 moveAmountX += walkSpeed;
             }
             facingDirection = Direction.RIGHT;
@@ -234,7 +282,7 @@ public abstract class Player extends MapEntity {
         }
 
         if (Keyboard.isKeyDown(MOVE_UP_KEY)) {
-            if(this.getY() + moveAmountX - walkSpeed > -50){
+            if(this.getY() + moveAmountX - walkSpeed > upBound){
             moveAmountY -= walkSpeed;
             }
             facingDirection = Direction.UP;
@@ -242,7 +290,7 @@ public abstract class Player extends MapEntity {
             lastWalkingYDirection = Direction.UP;
         }
         else if (Keyboard.isKeyDown(MOVE_DOWN_KEY)) {
-            if(this.getY() + moveAmountX - walkSpeed < 2773){
+            if(this.getY() + moveAmountX - walkSpeed < downBound){
             moveAmountY += walkSpeed;
             }
             facingDirection = Direction.DOWN;
@@ -393,11 +441,11 @@ public abstract class Player extends MapEntity {
     // This gets called from within the Enemy class when the enemy hitbox intersects with the player hitbox
     public void touchedEnemy() {
         for (Enemy enemy : map.getActiveEnemies()) {
-            if(enemy instanceof BearEnemy){// && rectangle.intersects(enemy)) {
-                enemy.hurtEnemy(); // this is where I would put the code to hurt the enemy but I honestly have no idea how to make that work here  
-            } else if (enemy instanceof BreakableLog){ //&& rectangle.intersects(enemy)){
+            if(enemy instanceof BearEnemy && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
+                enemy.hurtEnemy();  
+            } else if (enemy instanceof BreakableLog && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
                 enemy.hurtEnemy();
-            } else if(enemy instanceof BreakableBranch){ //&& rectangle.intersects(enemy)){
+            } else if(enemy instanceof BreakableBranch && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
                 enemy.hurtEnemy();
             }
         }
@@ -462,9 +510,10 @@ public abstract class Player extends MapEntity {
     }
 
     // Uncomment this to have game draw player's bounds to make it easier to visualize
-    public void draw(GraphicsHandler graphicsHandler) {
-        super.draw(graphicsHandler);
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-        attackRectangle.draw(graphicsHandler);
-    }
+    // public void draw(GraphicsHandler graphicsHandler) {
+    //     super.draw(graphicsHandler);
+    //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    //     stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
+    //     slingshotRectangle.drawBounds(graphicsHandler, Color.BLACK);
+    // }
 }

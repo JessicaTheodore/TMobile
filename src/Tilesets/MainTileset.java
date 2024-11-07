@@ -18,7 +18,7 @@ public class MainTileset extends Tileset {
         super(ImageLoader.load("MainTileset.png"), 16, 16, 3);
     }
 
-    @Override
+    @Override 
     public ArrayList<MapTileBuilder> defineTiles() {
         ArrayList<MapTileBuilder> mapTiles = new ArrayList<>();
 
@@ -924,7 +924,7 @@ public class MainTileset extends Tileset {
             .build();
 
         MapTileBuilder upperCliffInsideCornerTLTile = new MapTileBuilder(upperCliffInsideCornerTLFrame)
-            .withTileType(TileType.NOT_PASSABLE);
+            .withTileType(TileType.PASSABLE);
 
         mapTiles.add(upperCliffInsideCornerTLTile);
 
@@ -936,7 +936,7 @@ public class MainTileset extends Tileset {
             .build();
 
         MapTileBuilder upperCliffInsideCornerTRTile = new MapTileBuilder(upperCliffInsideCornerTRFrame)
-            .withTileType(TileType.NOT_PASSABLE);
+            .withTileType(TileType.PASSABLE);
 
         mapTiles.add(upperCliffInsideCornerTRTile);
 
@@ -988,9 +988,137 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(leavesBR_brightGrassTL_Tile);
 
+        // Roots 1 left - bright grass
+
+        Frame roots1LBrightFrame = new FrameBuilder(getSubImage(10, 0))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder roots1LBrightTile = new MapTileBuilder(roots1LBrightFrame);
+
+        mapTiles.add(roots1LBrightTile);
+    
+        // Bottom log 1 - bright grass
+
+        Frame bottomLog1BrightFrame = new FrameBuilder(getSubImage(10, 1))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder bottomLog1BrightTile = new MapTileBuilder(bottomLog1BrightFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(bottomLog1BrightTile);
+    
+            
+        // Roots 1 right - bright grass
+
+        Frame roots1RBrightFrame = new FrameBuilder(getSubImage(10, 2))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder roots1RBrightTile = new MapTileBuilder(roots1RBrightFrame);
+
+        mapTiles.add(roots1RBrightTile);
+        
+    
+        // Roots 2 left - bright grass
+
+        Frame roots2LBrightFrame = new FrameBuilder(getSubImage(10, 3))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder roots2LBrightTile = new MapTileBuilder(roots2LBrightFrame);
+
+        mapTiles.add(roots2LBrightTile);
+
+            // Bottom log 2 - bright grass
+    
+            Frame bottomLog2BrightFrame = new FrameBuilder(getSubImage(10, 4))
+                .withScale(tileScale)
+                .build();
+    
+            MapTileBuilder bottomLog2BrightTile = new MapTileBuilder(bottomLog2BrightFrame)
+                .withTileType(TileType.NOT_PASSABLE);
+    
+            mapTiles.add(bottomLog2BrightTile);
+    
+    
+            // Roots 2 right - bright grass
+    
+            Frame roots2RBrightFrame = new FrameBuilder(getSubImage(10, 5))
+                .withScale(tileScale)
+                .build();
+    
+            MapTileBuilder roots2RBrightTile = new MapTileBuilder(roots2RBrightFrame);
+    
+            mapTiles.add(roots2RBrightTile);
+
+            // Flowers - bright grass
+
+            Frame flowersBrightFrame = new FrameBuilder(getSubImage(11, 0))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder flowersBrightTile = new MapTileBuilder(flowersBrightFrame);
+
+            mapTiles.add(flowersBrightTile);
+
+            // Rosebush bottom - bright grass
+
+            Frame roseBushBottomBrightFrame = new FrameBuilder(getSubImage(11, 1))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder roseBushBottomBrightTile = new MapTileBuilder(roseBushBottomBrightFrame)
+                .withTileType(TileType.NOT_PASSABLE);
+
+            mapTiles.add(roseBushBottomBrightTile);
+
+            // Rosebush top - bright grass
+
+            Frame roseBushTopBrightFrame = new FrameBuilder(getSubImage(0, 7))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder roseBushTopBrightTile = new MapTileBuilder(brightGrassFrame)
+                .withTopLayer(roseBushTopBrightFrame)
+                .withTileType(TileType.PASSABLE);
+
+            mapTiles.add(roseBushTopBrightTile);
+
+            // Mushroom 1 - bright grass
+
+            Frame mushroom1BrightFrame = new FrameBuilder(getSubImage(11, 2))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder mushroom1BrightTile = new MapTileBuilder(mushroom1BrightFrame);
+
+            mapTiles.add(mushroom1BrightTile);
+
+
+            // Mushroom 2 - bright grass
+
+            Frame mushroom2BrightFrame = new FrameBuilder(getSubImage(11, 3))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder mushroom2BrightTile = new MapTileBuilder(mushroom2BrightFrame);
+
+            mapTiles.add(mushroom2BrightTile);
+
+
+            // Mushroom 3 - bright grass
+
+            Frame mushroom3BrightFrame = new FrameBuilder(getSubImage(11, 4))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder mushroom3BrightTile = new MapTileBuilder(mushroom3BrightFrame);
+
+            mapTiles.add(mushroom3BrightTile);
 
         
-
         return mapTiles;
     }
 

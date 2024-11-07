@@ -9,6 +9,7 @@ import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
 
+import Enemies.EvilMushroom;
 import Engine.GraphicsHandler;
 
 public class Level2 extends Map {
@@ -18,7 +19,7 @@ public class Level2 extends Map {
     
     public Level2() {
         super("lvl2.txt", new MainTileset());
-        this.playerStartPosition = new Point(0,0);
+        this.playerStartPosition = new Point(1060,2890);
     }
 
     public Level2(float x, float y) {
@@ -43,7 +44,11 @@ public class Level2 extends Map {
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
 
-        // Add Enemies here
+        EvilMushroom shroom1 = new EvilMushroom(0,1, new Point(400,1900));
+        enemies.add(shroom1);
+
+        EvilMushroom shroom2 = new EvilMushroom(0,1, new Point(300,1700));
+        enemies.add(shroom2);
 
         return enemies;
     }

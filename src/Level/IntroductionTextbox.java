@@ -87,33 +87,33 @@ public class IntroductionTextbox extends Textbox {
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
         
         script = new LinkedList<>();
-        script.add(new SpriteFont("Park Ranger: Heading up the Giant, huh?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false, true));
-        script.add(new SpriteFont("Player: Beautiful day for some hiking, I think.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true, true));
-        script.add(new SpriteFont("R: …Hiking? Say, the park closes in 3 hours.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false, true));
-        script.add(new SpriteFont("R: You won't make it back in time, why don't you come\n back another day?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false, true));
-        script.add(new SpriteFont("Player: *Laughs.* I've hiked harder trails faster than\n that. Thanks, but I'll be fine.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true, true));
-        script.add(new SpriteFont("R: Listen, I'll be frank with you, boy. Strange things are\n happening on that mountain.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: It's not wise to head up the Giant now. ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("Player: Strange things?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Rumors have been spreading by those who make it off\n the mountain… ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Grizzlies with glowing eyes, whispering trees attacking\n those who come too close…", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: I've even seen some just like you go up and never come\n back.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Some say the legend is to blame.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("Player: The legend?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: … ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: The Legend of Hobbomock.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("Player: …Who?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: That's precisely the point, boy.\n You're messing with things you don't understand.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Stories that are coming to life… \n Spirits that are waking up. ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("Player: Whatever man- people have made up crazier\n rumors on campus.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("Player: I heard something about a pipe bomb last week?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("Player: Besides, I'm going on my hike, some random\n warnings won't stop me. ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
+        script.add(new SpriteFont("Park Ranger: Heading up the Giant, huh?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false));
+        script.add(new SpriteFont("Player: Beautiful day for some hiking, I think.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
+        script.add(new SpriteFont("R: …Hiking? Say, the park closes in 3 hours.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false));
+        script.add(new SpriteFont("R: You won't make it back in time, why don't you come\n back another day?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false));
+        script.add(new SpriteFont("Player: *Laughs.* I've hiked harder trails faster than\n that. Thanks, but I'll be fine.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
+        script.add(new SpriteFont("R: Listen, I'll be frank with you, boy. Strange things are\n happening on that mountain.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false));
+        script.add(new SpriteFont("R: It's not wise to head up the Giant now. ", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("Player: Strange things?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,true));
+        script.add(new SpriteFont("R: Rumors have been spreading by those who make it off\n the mountain… ", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: Grizzlies with glowing eyes, whispering trees attacking\n those who come too close…", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: I've even seen some just like you go up and never come\n back.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: Some say the legend is to blame.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("Player: The legend?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
+        script.add(new SpriteFont("R: … ", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: The Legend of Hobbomock.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("Player: …Who?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
+        script.add(new SpriteFont("R: That's precisely the point, boy.\n You're messing with things you don't understand.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: Stories that are coming to life… \n Spirits that are waking up. ", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("Player: Whatever man- people have made up crazier\n rumors on campus.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
+        script.add(new SpriteFont("Player: I heard something about a pipe bomb last week?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
+        script.add(new SpriteFont("Player: Besides, I'm going on my hike, some random\n warnings won't stop me. ", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
         //based off of the sprite font boolean, the pop up dialogue will show
-        script.add(new SpriteFont("R: Say, what's your name boy?", x, y + 10, maruMonica.deriveFont(33f), Color.black, true));
-        script.add(new SpriteFont("R: Ok %s... you seem like a nice kid.", true, x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: If you can keep your wits about you, go ahead and\n climb the Giant…", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Ignore the warnings and the legends.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
-        script.add(new SpriteFont("R: Just don't say I didn't warn you.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
+        script.add(new SpriteFont("R: Say, what's your name boy?", x, y + 10, maruMonica.deriveFont(33f), Color.black, true, level1Map, false));
+        script.add(new SpriteFont("R: Ok %s... you seem like a nice kid.", true, x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: If you can keep your wits about you, go ahead and\n climb the Giant…", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: Ignore the warnings and the legends.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
+        script.add(new SpriteFont("R: Just don't say I didn't warn you.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map,false));
     }
     
 }

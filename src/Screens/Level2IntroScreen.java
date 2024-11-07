@@ -77,7 +77,7 @@ public class Level2IntroScreen extends Screen {
             keyLocker.unlockKey(Key.E);
         }
         if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
-                screenCoordinator.setGameState(GameState.MENU);
+                screenCoordinator.setGameState(GameState.LEVEL2);
         }
         // textbox.update();
         
