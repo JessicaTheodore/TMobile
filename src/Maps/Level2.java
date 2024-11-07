@@ -47,7 +47,6 @@ public class Level2 extends Map {
         // Add Enemies here
         EvilMushroom shroom1 = new EvilMushroom(0,1, new Point(400,1900));
         enemies.add(shroom1);
-
         return enemies;
     }
 

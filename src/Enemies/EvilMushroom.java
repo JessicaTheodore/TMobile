@@ -50,8 +50,13 @@ public class EvilMushroom extends Enemy {
 
     @Override
     public void hurtEnemy() {
-        this.shroomHP--;
-        System.out.println("hit the mushroom" + getShroomHP());
+       if(shroomHP > 0){
+            if (iFrames == 0) {
+                iFrames = 60;
+                this.shroomHP--;
+                System.out.println("hit the shroom " + getShroomHP());
+            }
+        }
 
         if (shroomHP <= 0) {
             mapEntityStatus = MapEntityStatus.REMOVED;

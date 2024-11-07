@@ -50,7 +50,7 @@ public class BearEnemy extends Enemy {
             if (iFrames == 0) {
                 iFrames = 60;
                 this.bearHP--;
-                System.out.println("hit the bear" + getBearHP());
+                System.out.println("hit the bear " + getBearHP());
             }
         }
 
