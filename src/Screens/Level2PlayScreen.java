@@ -1,6 +1,7 @@
 package Screens;
 
 import Enemies.BearEnemy;
+import Enemies.SquirrelEnemy;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import Engine.Key;
@@ -208,6 +209,9 @@ public class Level2PlayScreen extends Screen {
                 map.update(player);
                 for (MapEntity enemy : map.getEnemies()) {
                     if (enemy instanceof BearEnemy) {
+                        enemy.update(); // Call the update method for each bear
+                    }
+                    if (enemy instanceof SquirrelEnemy) {
                         enemy.update(); // Call the update method for each bear
                     }
                 }
