@@ -63,7 +63,7 @@ public class SquirrelEnemy extends Enemy {
         }
     }
 
-    public int getSquirelHP() {
+    public int getSquirrelHP() {
         return this.squirrelHP;
     }
 
