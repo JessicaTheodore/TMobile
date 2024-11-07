@@ -9,6 +9,7 @@ import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
 
+import Enemies.EvilMushroom;
 import Engine.GraphicsHandler;
 
 public class Level2 extends Map {
@@ -44,6 +45,8 @@ public class Level2 extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
 
         // Add Enemies here
+        EvilMushroom shroom1 = new EvilMushroom(0,5, new Point(100,100));
+        enemies.add(shroom1);
 
         return enemies;
     }
