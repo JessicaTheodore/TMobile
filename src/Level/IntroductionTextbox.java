@@ -34,9 +34,10 @@ public class IntroductionTextbox extends Textbox {
         super(map);
         this.screenCoordinator = screenCoordinator;
         this.map = map;
+        this.level1Map = (IntroductionScreenMap) map;
         keyLocker.lockKey(interactKey);
         initializeScript();
-        this.level1Map = (IntroductionScreenMap) map;
+        
     }
 
     public void update() {
