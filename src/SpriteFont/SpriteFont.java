@@ -47,7 +47,7 @@ public class SpriteFont {
 		this.treesAreSpeaking = true;
 	}
 
-	public SpriteFont(String text, float x, float y, Font font, Color color, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1, boolean whatever) {
+	public SpriteFont(String text, float x, float y, Font font, Color color, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1) {
 		this.text = text;
 		this.font = font;
 		this.x = x;
