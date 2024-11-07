@@ -91,7 +91,7 @@ public void update() {
     float newY = startLocation.y + radius * (float) Math.sin(angle);
 
     // Add more apparent vertical oscillation
-    float verticalOscillation = 10 * (float) Math.sin(angle * 8); // Oscillation range increased to 10 pixels
+    float verticalOscillation = 10 * (float) Math.sin(angle * 2); // Oscillation range increased to 10 pixels
 
     // Combine the circular motion with the vertical oscillation
     newY += verticalOscillation;
