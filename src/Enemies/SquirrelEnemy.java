@@ -36,7 +36,7 @@ public class SquirrelEnemy extends Enemy {
         return new HashMap<String, Frame[]>() {{
             put("STAND", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0),12)
-                    .withScale(3)
+                    .withScale(2)
                     .withBounds(4, 5, 50, 50)
                     .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                     .build(), 
