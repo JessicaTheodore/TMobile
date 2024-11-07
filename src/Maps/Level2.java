@@ -44,9 +44,12 @@ public class Level2 extends Map {
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
 
-        // Add Enemies here
         EvilMushroom shroom1 = new EvilMushroom(0,1, new Point(400,1900));
         enemies.add(shroom1);
+
+        EvilMushroom shroom2 = new EvilMushroom(0,1, new Point(300,1700));
+        enemies.add(shroom2);
+
         return enemies;
     }
 

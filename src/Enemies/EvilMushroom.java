@@ -35,13 +35,13 @@ public class EvilMushroom extends Enemy {
     public HashMap<String, Frame[]> loadAnimations(SpriteSheet spriteSheet) {
         return new HashMap<String, Frame[]>() {{
             put("HOPPING", new Frame[] {
-                new FrameBuilder(spriteSheet.getSprite(0, 0), 10)
+                new FrameBuilder(spriteSheet.getSprite(0, 0), 8)
                     .withScale(2)
-                    .withBounds(0, 0, 34, 34)
+                    .withBounds(4, 4, 30, 28)
                     .build(),
-                new FrameBuilder(spriteSheet.getSprite(0, 1), 10)
+                new FrameBuilder(spriteSheet.getSprite(0, 1), 12)
                     .withScale(2)
-                    .withBounds(0, 0, 34, 34)
+                    .withBounds(4, 4, 30, 28)
                     .build()
 
             });

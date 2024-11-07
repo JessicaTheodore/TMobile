@@ -9,7 +9,7 @@ import ScriptActions.*;
 
 // Script to make the BreakableLog break when hit by the player
 // In the future, this won't be a script it will be based off hitbox of the stick attack
-public class NearSlingShot extends Script {
+public class SlingShotAcquired extends Script {
     
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
@@ -17,10 +17,9 @@ public class NearSlingShot extends Script {
 
         scriptActions.add(new ConditionalScriptAction() {{
             addConditionalScriptActionGroup(new ConditionalScriptActionGroup() {{
-                addScriptAction(new ChangeFlagScriptAction("nearSlingShot", true));
+                addScriptAction(new ChangeFlagScriptAction("slingshotAcquired", true));
             }});
         }});
-        
         return scriptActions;
     }
 
