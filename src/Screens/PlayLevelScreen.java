@@ -13,12 +13,14 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.Sprite;
 import NPCs.Bear;
+import NPCs.Slingshot;
 import Level.*;
 import Maps.Level1;
 import Players.Cat;
 import Utils.Colors;
 import Utils.Direction;
 import Utils.HealthSystem;
+import Utils.Point;
 
 // This class is for when the RPG game is actually being played
 public class PlayLevelScreen extends Screen {
@@ -48,6 +50,7 @@ public class PlayLevelScreen extends Screen {
     protected boolean helpNew = true; 
 
     private HealthSystem healthSystem;
+    private Slingshot slingshot;
 
 
     public PlayLevelScreen(ScreenCoordinator screenCoordinator) {
@@ -132,6 +135,9 @@ public class PlayLevelScreen extends Screen {
             // Preload all scripts ahead of time rather than loading them dynamically
             map.preloadScripts();
 
+
+            slingshot = new Slingshot(1, new Point(300, 200));  // Set initial position
+            map.addNPC(slingshot); 
             // Initialize win screen
             winScreen = new WinScreen(this);
 
@@ -220,6 +226,10 @@ public class PlayLevelScreen extends Screen {
     if(flagManager.isFlagSet("pickedUpSlingShot")) {
         player.changeSlingshotStatus();
     }
+
+    for (NPC npc : map.getNPCs()) {
+        npc.update();  // Call update on each NPC (including Slingshot)
+
     if (playerCollidesWithBear()) {
         healthSystem.decreaseHealth();
         
@@ -227,11 +237,16 @@ public class PlayLevelScreen extends Screen {
         if (healthSystem.getCurrentHealth() <= 0) {
             screenCoordinator.setGameState(GameState.GAMEOVER);
         }
-    }  
+    }
+}  
+    
 
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
+
+        for (NPC npc : map.getNPCs()) {
+            npc.draw(graphicsHandler);  // Draw each NPC
         // Based on screen state, draw appropriate graphics
         if (helpOn) {
 
@@ -273,6 +288,7 @@ public class PlayLevelScreen extends Screen {
                     break;
             }
         }
+    }
         //map.getTriggers().get(map.getTriggers().size()-1).draw(graphicsHandler);
     }
 
