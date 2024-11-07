@@ -86,11 +86,11 @@ public class IntroductionTextbox extends Textbox {
         int y = !map.getCamera().isAtBottomOfMap() ? bottomY : topY;
         
         script = new LinkedList<>();
-        script.add(new SpriteFont("Park Ranger: Heading up the Giant, huh?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false));
-        script.add(new SpriteFont("Player: Beautiful day for some hiking, I think.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
-        script.add(new SpriteFont("R: …Hiking? Say, the park closes in 3 hours.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false));
-        script.add(new SpriteFont("R: You won't make it back in time, why don't you come\n back another day?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false));
-        script.add(new SpriteFont("Player: *Laughs.* I've hiked harder trails faster than\n that. Thanks, but I'll be fine.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true));
+        script.add(new SpriteFont("Park Ranger: Heading up the Giant, huh?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false, true));
+        script.add(new SpriteFont("Player: Beautiful day for some hiking, I think.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true, true));
+        script.add(new SpriteFont("R: …Hiking? Say, the park closes in 3 hours.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false, true));
+        script.add(new SpriteFont("R: You won't make it back in time, why don't you come\n back another day?", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, false, true));
+        script.add(new SpriteFont("Player: *Laughs.* I've hiked harder trails faster than\n that. Thanks, but I'll be fine.", x, y + 10, maruMonica.deriveFont(33f), Color.black, level1Map, true, true));
         script.add(new SpriteFont("R: Listen, I'll be frank with you, boy. Strange things are\n happening on that mountain.", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("R: It's not wise to head up the Giant now. ", x, y + 10, maruMonica.deriveFont(33f), Color.black));
         script.add(new SpriteFont("Player: Strange things?", x, y + 10, maruMonica.deriveFont(33f), Color.black));
