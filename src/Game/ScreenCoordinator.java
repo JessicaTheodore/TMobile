@@ -25,6 +25,7 @@ import Screens.IntroductionScreen;
 import Screens.Level1Screen;
 import Screens.Level2DialogueScreen;
 import Screens.Level2IntroScreen;
+import Screens.Level2PlayScreen;
 import Screens.LevelCompleteScreen;
 import Screens.LevelLoseScreen;
 
@@ -78,6 +79,9 @@ public class ScreenCoordinator extends Screen {
 					case NEWLEVEL:
 						currentScreen = new PlayLevelScreen(this);
 						level = currentScreen;
+						break;
+					case LEVEL2:
+						currentScreen = new Level2PlayScreen(this);
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
