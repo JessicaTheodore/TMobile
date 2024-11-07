@@ -50,6 +50,7 @@ public class Enemy extends MapEntity {
     // Original update that requires Player object
     public void update(Player player) {
         super.update();
+        this.performAction(player); // new testing for enemy movement
         if (intersects(player.stickRectangle) || intersects(player.slingshotRectangle)) {
             System.out.println("Attack Intersected");
             player.touchedEnemy();
@@ -58,6 +59,9 @@ public class Enemy extends MapEntity {
             player.hurtPlayer();
         }
     }
+
+    // new testing for enemy movement 
+    protected void performAction(Player player) {}
 
     // Overriding update without Player argument
     @Override
