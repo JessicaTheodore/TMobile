@@ -53,10 +53,6 @@ public class IntroductionScreen extends Screen {
                 e.printStackTrace();
             } 
 
-        credits = new SpriteFont("Press 'X' to skip", 360, 433, maruMonica.deriveFont(16f), Color.white);
-        credits.setOutlineColor(Color.black);
-        credits.setOutlineThickness(3);
-
         background = new IntroductionScreenMap();
         background.setAdjustCamera(false);
         
@@ -81,7 +77,6 @@ public class IntroductionScreen extends Screen {
     
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
-        credits.draw(graphicsHandler);
         textbox.draw(graphicsHandler);
     }
 }
