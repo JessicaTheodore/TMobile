@@ -1,6 +1,7 @@
 package Maps;
 
 import Level.Enemy;
+import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
 import Level.Player;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import Enemies.EvilMushroom;
 import Enemies.SquirrelEnemy;
 import Engine.GraphicsHandler;
+import EnhancedMapTiles.Ladder;
 
 public class Level2 extends Map {
 
@@ -63,6 +65,19 @@ public class Level2 extends Map {
 
         return enemies;
     }
+
+    // Enhanced Map Tiles
+
+    @Override
+    public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
+        ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
+
+        Ladder ladder = new Ladder(new Point(570,330));
+        enhancedMapTiles.add(ladder);
+
+        return enhancedMapTiles;
+    }
+
 
     // Triggers
     @Override

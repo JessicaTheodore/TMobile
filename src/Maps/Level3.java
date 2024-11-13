@@ -1,6 +1,7 @@
 package Maps;
 
 import Level.Enemy;
+import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
 import Level.Player;
@@ -10,6 +11,7 @@ import Utils.Point;
 import java.util.ArrayList;
 
 import Engine.GraphicsHandler;
+import EnhancedMapTiles.Ladder;
 
 public class Level3 extends Map {
     
