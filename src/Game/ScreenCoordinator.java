@@ -141,4 +141,8 @@ public class ScreenCoordinator extends Screen {
 		// call the draw method for the currentScreen
 		currentScreen.draw(graphicsHandler);
 	}
+
+	public boolean beatLvl1(){
+		return beatLvl1;
+	}
 }

@@ -238,10 +238,6 @@ public class PauseScreen extends Screen{
     public void draw(GraphicsHandler graphicsHandler){
         background.draw(graphicsHandler);
         back.draw(graphicsHandler);
-        //pauseSprite.draw(graphicsHandler);
-        //playLevelScreen.drawMap(graphicsHandler);
-        //graphicsHandler.drawFilledRectangle(0, 0, ScreenManager.getScreenWidth(), ScreenManager.getScreenHeight(), Color.pink);
-        //graphicsHandler.drawImage((pauseMenu), 0, 0, 800, 550);
         words.draw(graphicsHandler);
         controls.draw(graphicsHandler);
         exit.draw(graphicsHandler);

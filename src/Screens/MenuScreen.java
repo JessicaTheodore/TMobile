@@ -176,7 +176,11 @@ public class MenuScreen extends Screen {
             menuItemSelected = currentMenuItemHovered;
             if (menuItemSelected == 0) {
                 //goes into the introduction screen dialogue
-                screenCoordinator.setGameState(GameState.INTRO);
+                if(!screenCoordinator.beatLvl1()){
+                    screenCoordinator.setGameState(GameState.INTRO);
+                }else{
+                    screenCoordinator.setGameState(GameState.NEWLEVEL);
+                }
                 // screenCoordinator.setGameState(GameState.LEVEL2); // DEBUG <----------------
             } else if (menuItemSelected == 1) {
                 screenCoordinator.setGameState(GameState.CONTROLSHOME);
