@@ -102,11 +102,11 @@ public class Level2PlayScreen extends Screen {
             flagManager.addFlag("hasTalkedToWalrus", false);
             flagManager.addFlag("hasTalkedToDinosaur", false);
             flagManager.addFlag("hasFoundBall", false);
-            flagManager.addFlag("brokeLog", false);
+            flagManager.addFlag("brokeLog", true);
             flagManager.addFlag("pickedUpSlingShot", false);
             flagManager.addFlag("beatLvl1", false);
             flagManager.addFlag("nearSlingShot", false);
-            flagManager.addFlag("SpaceBreak", false);
+            flagManager.addFlag("SpaceBreak", true);
 
             // triger for beating level
 

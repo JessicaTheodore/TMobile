@@ -41,6 +41,7 @@ public class ScreenCoordinator extends Screen {
 	protected Screen level;
 	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 	protected FlagManager flagManager = new FlagManager();
+	protected boolean beatLvl1 = false;
 
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
@@ -77,11 +78,16 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = level;
 						break;
 					case NEWLEVEL:
+					if(!beatLvl1){
 						currentScreen = new PlayLevelScreen(this);
+					}else{
+						currentScreen = new Level2PlayScreen(this);
+					}
 						level = currentScreen;
 						break;
 					case LEVEL2:
 						currentScreen = new Level2PlayScreen(this);
+						level = currentScreen;
 						break;
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
@@ -105,6 +111,9 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new LevelLoseScreen(this);
 						break;
 					case LEVELCOMPLETE:
+						if(!beatLvl1){
+							beatLvl1 = true;
+						}
 						currentScreen = new LevelCompleteScreen(this);
 						break;
 					case LEVEL2DIALOGUE:

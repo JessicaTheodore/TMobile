@@ -163,6 +163,10 @@ public class PlayLevelScreen extends Screen {
         helpScreen.changeStatus();
         keyLocker.lockKey(Key.H);
     }
+    if (Keyboard.isKeyDown(Key.U) && !keyLocker.isKeyLocked(Key.U)) {
+        screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
+        keyLocker.lockKey(Key.U);
+    }
     if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn && !pauseOn) {
         helpOn = true;
         helpNew = false;

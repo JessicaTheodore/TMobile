@@ -38,6 +38,7 @@ public class BreakableLog extends Enemy {
         this.logHP--;
         if(this.logHP == 0){
             mapEntityStatus = MapEntityStatus.REMOVED;
+            
         }
     }
 
