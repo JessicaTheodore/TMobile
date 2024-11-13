@@ -6,6 +6,7 @@ import Level.Map;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
+import NPCs.Altar;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
@@ -37,7 +38,8 @@ public class Level2 extends Map {
     public ArrayList<NPC> loadNPCs() {
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        // Add NPCs here
+        Altar altar = new Altar(0, new Point(3152,1752));
+        npcs.add(altar);
 
         return npcs;
     }
