@@ -151,26 +151,28 @@ public class Level2PlayScreen extends Screen {
             keyLocker.unlockKey(Key.H);
         }
         
-        // Based on screen state, perform specific actions
-        switch (playLevelScreenState) {
-            // If level is "running" update player and map to keep game logic for the platformer level going
-            case RUNNING:
-                player.update();
-                map.update(player);
-                for (MapEntity enemy : map.getEnemies()) {
-                    if (enemy instanceof BearEnemy) {
-                        enemy.update(); // Call the update method for each bear
+        if(!helpOn){
+            // Based on screen state, perform specific actions
+            switch (playLevelScreenState) {
+                // If level is "running" update player and map to keep game logic for the platformer level going
+                case RUNNING:
+                    player.update();
+                    map.update(player);
+                    for (MapEntity enemy : map.getEnemies()) {
+                        if (enemy instanceof BearEnemy) {
+                            enemy.update(); // Call the update method for each bear
+                        }
+                        if (enemy instanceof SquirrelEnemy) {
+                            enemy.update(); // Call the update method for each bear
+                        }
                     }
-                    if (enemy instanceof SquirrelEnemy) {
-                        enemy.update(); // Call the update method for each bear
-                    }
-                }
-                break;
-            // If level has been completed, bring up level cleared screen
-            case LEVEL_COMPLETED:
-                winScreen.update();
-                break;
-        }
+                    break;
+                // If level has been completed, bring up level cleared screen
+                case LEVEL_COMPLETED:
+                    winScreen.update();
+                    break;
+            }
+        }  
         
         // Health stuff
         if (playerCollidesWithBear()) {
