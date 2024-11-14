@@ -80,6 +80,7 @@ public class Level2PlayScreen extends Screen {
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("beatLvl2", false);
+            flagManager.addFlag("hasTalkedToAltar", false);
 
             // Define/setup map
             map = new Level2();

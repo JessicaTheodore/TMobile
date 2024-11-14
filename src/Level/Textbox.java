@@ -113,6 +113,10 @@ public class Textbox {
             // to prevent it from covering the player
             int fontY = !map.getCamera().isAtBottomOfMap() ? fontBottomY : fontTopY;
 
+            // create text spritefont that will be drawn in textbox
+            text = new SpriteFont(currentTextItem.getText(), fontX, fontY, "Arial", 30, Color.black);
+
+
             // if there are options associated with this text item, prepare option spritefont text to be drawn in options textbox
             if (currentTextItem.getOptions() != null) {
                 // if camera is at bottom of screen, text is drawn at top of screen instead of the bottom like usual

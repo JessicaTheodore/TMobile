@@ -7,6 +7,7 @@ import Level.NPC;
 import Level.Player;
 import Level.Trigger;
 import NPCs.Altar;
+import Scripts.Level2.AltarScript;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class Level2 extends Map {
         ArrayList<NPC> npcs = new ArrayList<>();
 
         Altar altar = new Altar(0, new Point(3152,1752));
+        altar.setInteractScript(new AltarScript());
         npcs.add(altar);
 
         return npcs;
@@ -74,8 +76,9 @@ public class Level2 extends Map {
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
 
-        Ladder ladder = new Ladder(new Point(570,330));
-        enhancedMapTiles.add(ladder);
+        // commented out cause this shouldnt be here from the start and it should get added when you talk to the altar
+        // Ladder ladder = new Ladder(new Point(570,330));
+        // enhancedMapTiles.add(ladder);
 
         return enhancedMapTiles;
     }
