@@ -107,9 +107,6 @@ public class PlayLevelScreen extends Screen {
         if(start){
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
-            flagManager.addFlag("hasTalkedToWalrus", false);
-            flagManager.addFlag("hasTalkedToDinosaur", false);
-            flagManager.addFlag("hasFoundBall", false);
             flagManager.addFlag("brokeLog", false);
             flagManager.addFlag("pickedUpSlingShot", false);
             flagManager.addFlag("beatLvl1", false);
@@ -165,7 +162,9 @@ public class PlayLevelScreen extends Screen {
         keyLocker.lockKey(Key.H);
     }
     if (Keyboard.isKeyDown(Key.U) && !keyLocker.isKeyLocked(Key.U)) {
-        screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
+        System.out.println("Debug - skipped level 1");
+        screenCoordinator.toggleLvl1();
+        screenCoordinator.setGameState(GameState.LEVEL2);
         keyLocker.lockKey(Key.U);
     }
     if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn && !pauseOn) {

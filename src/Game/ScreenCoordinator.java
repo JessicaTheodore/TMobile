@@ -145,4 +145,8 @@ public class ScreenCoordinator extends Screen {
 	public boolean beatLvl1(){
 		return beatLvl1;
 	}
+
+	public void toggleLvl1(){
+		beatLvl1 = true;
+	}
 }
