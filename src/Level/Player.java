@@ -154,12 +154,12 @@ public abstract class Player extends MapEntity {
             stickRectangle.setWidth(50);
         }
 
-        if(screenCoordinator.getGameState().equals(GameState.NEWLEVEL) || screenCoordinator.getGameState().equals(GameState.LEVEL)){
+        if(!screenCoordinator.beatLvl1() &&screenCoordinator.getGameState().equals(GameState.NEWLEVEL) || screenCoordinator.getGameState().equals(GameState.LEVEL)){
             upBound = -50;
             downBound = 3260;
             leftBound = -50;
             rightBound = 2773;
-        }else if(screenCoordinator.getGameState().equals(GameState.LEVEL2)){
+        }else if(screenCoordinator.beatLvl1() &&screenCoordinator.getGameState().equals(GameState.NEWLEVEL) ||screenCoordinator.getGameState().equals(GameState.LEVEL2)){
             upBound = -50;
             downBound = 2967;
             leftBound = -50;
