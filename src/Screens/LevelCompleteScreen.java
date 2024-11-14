@@ -132,7 +132,13 @@ public class LevelCompleteScreen extends Screen {
             chosen = curr;
             if (chosen == 0) {
                 // Proceed to the next level.
-                screenCoordinator.setGameState(GameState.LEVEL2DIALOGUE);
+                if(screenCoordinator.beatLvl1()){
+                    if(screenCoordinator.beatLvl2()){
+                        screenCoordinator.setGameState(GameState.NEWLEVEL);
+                    }else{
+                        screenCoordinator.setGameState(GameState.LEVEL2DIALOGUE);
+                    }
+                }
             } else if (chosen == 1) {
                 // Restart the current level.
                 screenCoordinator.setGameState(GameState.LEVEL);

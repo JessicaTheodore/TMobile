@@ -8,6 +8,8 @@ import Level.Player;
 import Level.Trigger;
 import NPCs.Altar;
 import Scripts.Level2.AltarScript;
+import Scripts.Level1.NextLevel;
+import Scripts.Level2.Beat2;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
@@ -25,13 +27,14 @@ public class Level2 extends Map {
     public Level2() {
         super("lvl2.txt", new MainTileset());
         this.playerStartPosition = new Point(1060,2890);
+        //this.playerStartPosition = new Point(70,70);
     }
 
     public Level2(float x, float y) {
         super("lvl2.txt", new MainTileset());
         this.x = x;
         this.y = y;
-        this.playerStartPosition = new Point(0, 0);
+        this.playerStartPosition = new Point(1060, 2890);
     }
 
     // NPCs
@@ -88,8 +91,8 @@ public class Level2 extends Map {
     @Override
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
-
         // Add triggers here
+        triggers.add(new Trigger(0, 96, 20, 144, new Beat2(), "beatLvl2"));
 
         return triggers;
     }
