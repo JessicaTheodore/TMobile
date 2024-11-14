@@ -79,7 +79,6 @@ public class Level2PlayScreen extends Screen {
         if(start){
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
-            flagManager.addFlag("pickedUpSlingShot", false);
             flagManager.addFlag("beatLvl2", false);
 
             // Define/setup map
@@ -94,6 +93,7 @@ public class Level2PlayScreen extends Screen {
             player.setMap(map);
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);
+            player.changeSlingshotStatus();
             map.setPlayer(player);
 
             // Let pieces of map know which button to listen for as the "interact" button
@@ -150,11 +150,6 @@ public class Level2PlayScreen extends Screen {
         if (Keyboard.isKeyUp(Key.H)) {
             keyLocker.unlockKey(Key.H);
         }
-
-        // Allows player to use slingshot attack
-        if(flagManager.isFlagSet("pickedUpSlingShot")) {
-            player.changeSlingshotStatus();
-        }
         
         // Based on screen state, perform specific actions
         switch (playLevelScreenState) {
@@ -204,7 +199,6 @@ public class Level2PlayScreen extends Screen {
                     break;
                 }
             }
-            
         }else {
             switch (playLevelScreenState) {
                 case RUNNING:
