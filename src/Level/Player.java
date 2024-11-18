@@ -18,6 +18,7 @@ import GameObject.SpriteSheet;
 import Utils.Direction;
 import Enemies.*; 
 import Level.Enemy;
+import Screens.PlayLevelScreen;
 import Utils.HealthSystem;
 
 // used to extend GameObject, changed it to MapEntity for convenience, I don't know the repurcussions of this
@@ -37,7 +38,8 @@ public abstract class Player extends MapEntity {
     protected int downBound;
     protected int leftBound;
     protected int rightBound;
-
+    protected boolean hurt;
+    protected int hurtTimer = 100;
 
     protected GameObject stickRectangle = new GameObject(50, 50);
     protected GameObject slingshotRectangle = new GameObject(200, 50);
@@ -85,6 +87,8 @@ public abstract class Player extends MapEntity {
     }
 
     public void update() {
+
+        
         if (!isLocked) {
             moveAmountX = 0;
             moveAmountY = 0;
@@ -103,6 +107,10 @@ public abstract class Player extends MapEntity {
 
         if(iFrames > 0){
             iFrames--;
+        }
+
+        if(iFrames%5 == 1){
+            hurt = false;
         }
         
         handlePlayerAnimation();
@@ -465,6 +473,7 @@ public abstract class Player extends MapEntity {
             if(iFrames == 0) {
                 playerHP--;
                 iFrames = 60;
+                hurt = true;
                 System.out.println("Player is hit\n" + getCurrentHealth());
                 health.decreaseHealth();
             } 
@@ -476,6 +485,10 @@ public abstract class Player extends MapEntity {
             System.out.println("Player is dead");
             playerHP = 5;
         }
+    }
+
+    public boolean getHurt(){
+        return hurt;
     }
 
     public static int getCurrentHealth(){

@@ -51,6 +51,8 @@ public class PlayLevelScreen extends Screen {
     protected Trigger trigger;
     protected boolean helpNew = true;
     protected int counter = 0;
+    protected boolean hurt = false;
+    protected Sprite flash;
 
     private HealthSystem healthSystem;
     private Slingshot slingshot;
@@ -68,6 +70,10 @@ public class PlayLevelScreen extends Screen {
         newHelp = new Sprite(ImageLoader.loadSubImage("exclam.png", Colors.MAGENTA, 0, 0, 29, 29));
         newHelp.setScale(1);
         newHelp.setLocation(726, 487); 
+
+        flash = new Sprite(ImageLoader.loadSubImage("darkFlash.png", Colors.MAGENTA, 0, 0, 800, 605));
+        flash.setScale(1);
+        flash.setLocation(0, 0);
 
         pickUp = new Sprite(ImageLoader.loadSubImage("PickUp.png", Colors.MAGENTA, 0, 0, 99, 37));
         pickUp.setScale(2);
@@ -289,6 +295,9 @@ public class PlayLevelScreen extends Screen {
                     map.draw(player, graphicsHandler);
                     for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
+                    }
+                    if(player.getHurt()){
+                        flash.draw(graphicsHandler);
                     }
                     ranger.draw(graphicsHandler);
                     if(helpNew){
