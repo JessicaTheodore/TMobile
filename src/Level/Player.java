@@ -120,7 +120,11 @@ public abstract class Player extends MapEntity {
             iFrames--;
         }
 
+<<<<<<< HEAD
+        if(iFrames%13 == 1){
+=======
         if(iFrames%5 == 1) {
+>>>>>>> origin
             hurt = false;
         }
         
