@@ -21,11 +21,11 @@ public class Altar extends NPC {
         return new HashMap<String, Frame[]>() {{
             put("FIRE_1", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0), 8)
-                    .withScale(2)
+                    .withScale(1.5f)
                     .withBounds(3, 40, 39, 50)
                     .build(),
                 new FrameBuilder(spriteSheet.getSprite(0, 1), 8)
-                    .withScale(2)
+                    .withScale(1.5f)
                     .withBounds(3, 40, 39, 50)
                     .build()
            });
