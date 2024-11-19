@@ -13,12 +13,15 @@ import Utils.Point;
 import java.util.HashMap;
 import java.awt.Color;
 import Level.*;
+import java.util.Random;
 
 public class SquirrelEnemy extends Enemy {
     protected Point startLocation;
     protected int squirrelHP;
     protected float movementSpeed = 3f;
     protected int iFrames = 0;
+
+    protected Random random = new Random();
 
     protected SquirrelState squirrelState;
 
@@ -83,7 +86,7 @@ public class SquirrelEnemy extends Enemy {
             int nutY = Math.round(getY()) + 80;
 
             // create Nuts enemy
-            Nuts nuts = new Nuts(new Point(nutX, nutY), movementSpeed, 100);
+            Nuts nuts = new Nuts(new Point(nutX, nutY), movementSpeed, 200);
 
             // add fireball enemy to the map for it to spawn in the level
             map.addEnemy(nuts);
@@ -92,7 +95,7 @@ public class SquirrelEnemy extends Enemy {
             squirrelState = SquirrelState.WAIT;
 
             // reset shoot wait timer so the process can happen again (dino walks around, then waits, then shoots)
-            shootWaitTimer = 100;
+            shootWaitTimer = random.nextInt(110 - 80 + 1) + 80;
         }
         super.update(player);
     }

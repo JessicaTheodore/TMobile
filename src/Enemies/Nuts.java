@@ -20,8 +20,8 @@ public class Nuts extends Enemy {
     public Nuts(Point location, float movementSpeed, int existenceFrames) {
         super(location.x, location.y, new SpriteSheet(ImageLoader.load("Nut.png"), 16, 16), "DEFAULT");
         this.movementSpeed = movementSpeed;
-
-        // how long the nut will exist for before disappearing
+        isUncollidable = true;
+        // how long the nut will exist before disappearing
         this.existenceFrames = existenceFrames;
 
         initialize();
