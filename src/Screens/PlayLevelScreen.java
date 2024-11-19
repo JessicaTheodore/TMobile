@@ -110,7 +110,7 @@ public class PlayLevelScreen extends Screen {
             flagManager.addFlag("hasTalkedToDinosaur", false);
             flagManager.addFlag("hasFoundBall", false);
             flagManager.addFlag("brokeLog", false);
-            flagManager.addFlag("pickedUpSlingShot", false);
+            flagManager.addFlag("pickedUpSlingShot", true);
             flagManager.addFlag("beatLvl1", false);
             flagManager.addFlag("nearSlingShot", false);
             flagManager.addFlag("SpaceBreak", false);
