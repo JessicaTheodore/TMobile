@@ -49,6 +49,7 @@ public class Level2PlayScreen extends Screen {
     protected Trigger trigger;
     protected boolean helpNew = true; 
     protected boolean swap;
+    protected Sprite flash;
 
     private HealthSystem healthSystem;
 
@@ -57,6 +58,10 @@ public class Level2PlayScreen extends Screen {
         this.screenCoordinator = screenCoordinator;
 
         player.resetHealth();
+
+        flash = new Sprite(ImageLoader.loadSubImage("darkFlash.png", Colors.MAGENTA, 0, 0, 800, 605));
+        flash.setScale(1);
+        flash.setLocation(0, 0);
 
         ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
         ranger.setScale(1);
@@ -219,8 +224,11 @@ public class Level2PlayScreen extends Screen {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
-                    for(int i = 0; i < map.getTriggers().size(); i ++){
+                    /* for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
+                    } */
+                    if(player.getHurt()){
+                        flash.draw(graphicsHandler);
                     }
                     ranger.draw(graphicsHandler);
                     if(helpNew){

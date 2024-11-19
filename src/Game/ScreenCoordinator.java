@@ -158,7 +158,7 @@ public class ScreenCoordinator extends Screen {
 	}
 
 	public void toggleLvl1(){
-		beatLvl1 = true;
+		beatLvl1 = !beatLvl1;
 	}
 
 	public boolean beatLvl2(){
@@ -166,6 +166,6 @@ public class ScreenCoordinator extends Screen {
 	}
 
 	public void toggleLvl2(){
-		beatLvl2 = true;
+		beatLvl2 = !beatLvl2;
 	}
 }

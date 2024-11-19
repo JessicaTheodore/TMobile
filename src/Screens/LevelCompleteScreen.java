@@ -141,6 +141,13 @@ public class LevelCompleteScreen extends Screen {
                 }
             } else if (chosen == 1) {
                 // Restart the current level.
+                if(screenCoordinator.beatLvl1()){
+                    if(screenCoordinator.beatLvl2()){
+                        screenCoordinator.toggleLvl2();
+                    }else{
+                        screenCoordinator.toggleLvl1();
+                    }
+                }
                 screenCoordinator.setGameState(GameState.LEVEL);
             } else if (chosen == 2) {
                 // Return to the menu.
