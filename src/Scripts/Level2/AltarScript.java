@@ -27,7 +27,9 @@ public class AltarScript extends Script {
 
         // Text
         scriptActions.add(new TextboxScriptAction() {{
-            addText("Hello!");
+            addText("A mysterious spirit rewards you for escaping the \n squirrels!");
+            addText("A ladder has been manifested to continue your \n journey...");
+
         }});    
         // Ladder & Tiles
         scriptActions.add(new ConditionalScriptAction() {{
