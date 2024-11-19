@@ -6,10 +6,13 @@ import Level.Map;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
+import NPCs.BrokenBranch;
+import NPCs.Hobbomock;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
 
+import Enemies.BearEnemy;
 import Engine.GraphicsHandler;
 import EnhancedMapTiles.Ladder;
 
@@ -25,7 +28,8 @@ public class Level3 extends Map {
     public ArrayList<NPC> loadNPCs(){
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        // add NPCs here
+        Hobbomock hobo = new Hobbomock(0, new Point(100, 200));
+        npcs.add(hobo);
 
         return npcs;
     }
