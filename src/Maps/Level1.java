@@ -12,6 +12,7 @@ import Tilesets.MainTileset;
 import Enemies.BearEnemy;
 import Enemies.BreakableBranch;
 import Enemies.BreakableLog;
+import Enemies.SquirrelEnemy;
 import NPCs.BrokenBranch;
 import NPCs.Slingshot;
 import Scripts.Level1.BreakLog;
@@ -68,6 +69,9 @@ public class Level1 extends Map {
 
         BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(13, 54).getLocation(), bearMovementRadius);
         enemies.add(bear1);
+
+        SquirrelEnemy squirrel = new SquirrelEnemy(7, 1, getMapTile(13, 50).getLocation(), 0);
+        enemies.add(squirrel);
 
         BearEnemy bear2 = new BearEnemy(1, 2, getMapTile(6, 26).getLocation(), bearMovementRadius);
         enemies.add(bear2);

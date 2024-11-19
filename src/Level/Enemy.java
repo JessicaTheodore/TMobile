@@ -16,6 +16,10 @@ public class Enemy extends MapEntity {
         this.enemyHP = enemyHP;
     }
 
+    public Enemy(float x, float y, SpriteSheet spriteSheet, String startingAnimation) {
+        super(x, y, spriteSheet, startingAnimation);
+    }
+
     public Enemy(int id, int enemyHP, float x, float y, HashMap<String, Frame[]> animations, String startingAnimation) {
         super(x, y, animations, startingAnimation);
         this.id = id;
