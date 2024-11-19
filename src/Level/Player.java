@@ -120,11 +120,7 @@ public abstract class Player extends MapEntity {
             iFrames--;
         }
 
-<<<<<<< HEAD
         if(iFrames%13 == 1){
-=======
-        if(iFrames%5 == 1) {
->>>>>>> origin
             hurt = false;
         }
         
@@ -157,7 +153,6 @@ public abstract class Player extends MapEntity {
         // This is where the slingshot hitbox is being put in the direction that the player is facing
         if(i < 10){
             if (facingDirection == Direction.RIGHT && currentAnimationName.equals("ROCK_RIGHT")) {
-                
                 slingshotRectangle.setBounds(new Rectangle(0,0,16,16));
                 
                 slingshotRectangle.setLocation((getX()+60) + (i*20), getY()+50);
@@ -192,6 +187,7 @@ public abstract class Player extends MapEntity {
         if(playerState.equals(PlayerState.WALKING) || playerState.equals(PlayerState.STANDING)){
             stickRectangle.setBounds(new Rectangle(0,0,0,0));
             slingshotRectangle.setBounds(new Rectangle(0,0,0,0));
+            i = 0;
         } else if (playerState.equals(PlayerState.STICK_ATTACK)) {
             stickRectangle.setWidth(50);
         }
@@ -569,8 +565,8 @@ public abstract class Player extends MapEntity {
     // Uncomment this to have game draw player's bounds to make it easier to visualize
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-        stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
-        slingshotRectangle.drawBounds(graphicsHandler, Color.DARK_GRAY);
+        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        // stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
+        slingshotRectangle.drawBounds(graphicsHandler, Color.BLACK);
     }
 }
