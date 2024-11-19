@@ -8,6 +8,7 @@ import Engine.Screen;
 import Level.FlagManager;
 import Maps.Level1;
 import Maps.Level2IntroScreenMap;
+import Maps.Level3;
 import Screens.ControlsHome;
 import Screens.ControlsScreen;
 import Screens.CreditsScreen;
@@ -26,6 +27,7 @@ import Screens.Level1Screen;
 import Screens.Level2DialogueScreen;
 import Screens.Level2IntroScreen;
 import Screens.Level2PlayScreen;
+import Screens.Level3PlayScreen;
 import Screens.LevelCompleteScreen;
 import Screens.LevelLoseScreen;
 
@@ -41,6 +43,8 @@ public class ScreenCoordinator extends Screen {
 	protected Screen level;
 	ArrayList<ScriptAction> scriptActions = new ArrayList<>();
 	protected FlagManager flagManager = new FlagManager();
+	protected boolean beatLvl1 = false;
+	protected boolean beatLvl2 = false;
 
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
@@ -77,12 +81,19 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = level;
 						break;
 					case NEWLEVEL:
+					if(!beatLvl1){
 						currentScreen = new PlayLevelScreen(this);
+					}else if(!beatLvl2){
+						currentScreen = new Level2PlayScreen(this);
+					}else{
+						currentScreen = new Level3PlayScreen(this);
+					}
 						level = currentScreen;
 						break;
 					case LEVEL2:
 						currentScreen = new Level2PlayScreen(this);
-						break;
+						level = currentScreen;
+						break; 
 					case CREDITS:
 						currentScreen = new CreditsScreen(this);
 						break;
@@ -105,6 +116,11 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new LevelLoseScreen(this);
 						break;
 					case LEVELCOMPLETE:
+						if(!beatLvl1){
+							beatLvl1 = true;
+						}else if(!beatLvl2){
+							beatLvl2 = true;
+						}
 						currentScreen = new LevelCompleteScreen(this);
 						break;
 					case LEVEL2DIALOGUE:
@@ -115,6 +131,10 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case LEVEL2INTROSCREEN:
 						currentScreen = new Level2IntroScreen(this);
+						break;
+					case LEVEL3:
+						currentScreen = new Level3PlayScreen(this);
+						break;
 					default:
 						break;
 				}
@@ -131,5 +151,21 @@ public class ScreenCoordinator extends Screen {
 	public void draw(GraphicsHandler graphicsHandler) {
 		// call the draw method for the currentScreen
 		currentScreen.draw(graphicsHandler);
+	}
+
+	public boolean beatLvl1(){
+		return beatLvl1;
+	}
+
+	public void toggleLvl1(){
+		beatLvl1 = !beatLvl1;
+	}
+
+	public boolean beatLvl2(){
+		return beatLvl2;
+	}
+
+	public void toggleLvl2(){
+		beatLvl2 = !beatLvl2;
 	}
 }

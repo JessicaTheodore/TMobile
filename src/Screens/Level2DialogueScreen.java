@@ -54,10 +54,6 @@ public class Level2DialogueScreen extends Screen {
                 e.printStackTrace();
             } 
 
-        pressX = new SpriteFont("Press 'X' to skip", 360, 433, maruMonica.deriveFont(16f), Color.white);
-        pressX.setOutlineColor(Color.black);
-        pressX.setOutlineThickness(3);
-
         background = new Level2ScreenMap();
         background.setAdjustCamera(false);
         
@@ -82,7 +78,6 @@ public class Level2DialogueScreen extends Screen {
     
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
-        pressX.draw(graphicsHandler);
         level2Textbox.draw(graphicsHandler);
     }
 }

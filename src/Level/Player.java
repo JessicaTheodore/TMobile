@@ -23,6 +23,8 @@ import GameObject.SpriteSheet;
 import Utils.Direction;
 import Enemies.*; 
 import Level.*;
+import Level.Enemy;
+import Screens.PlayLevelScreen;
 import Utils.HealthSystem;
 import Utils.Point;
 import javax.imageio.ImageIO;
@@ -45,7 +47,8 @@ public abstract class Player extends MapEntity {
     protected int downBound;
     protected int leftBound;
     protected int rightBound;
-    protected String lastAnimationName;
+
+    protected boolean hurt;
 
     protected GameObject stickRectangle = new GameObject(50, 50);
     protected GameObject slingshotRectangle = new GameObject(200, 50);
@@ -95,6 +98,8 @@ public abstract class Player extends MapEntity {
     }
 
     public void update() {
+
+        
         if (!isLocked) {
             moveAmountX = 0;
             moveAmountY = 0;
@@ -115,6 +120,10 @@ public abstract class Player extends MapEntity {
             iFrames--;
         }
 
+        if(iFrames%5 == 1) {
+            hurt = false;
+        }
+        
         handlePlayerAnimation();
 
         updateLockedKeys();
@@ -183,12 +192,12 @@ public abstract class Player extends MapEntity {
             stickRectangle.setWidth(50);
         }
 
-        if(screenCoordinator.getGameState().equals(GameState.NEWLEVEL) || screenCoordinator.getGameState().equals(GameState.LEVEL)){
+        if(!screenCoordinator.beatLvl1() && screenCoordinator.getGameState().equals(GameState.NEWLEVEL) || screenCoordinator.getGameState().equals(GameState.LEVEL)){
             upBound = -50;
             downBound = 3260;
             leftBound = -50;
             rightBound = 2773;
-        }else if(screenCoordinator.getGameState().equals(GameState.LEVEL2)){
+        }else if(screenCoordinator.beatLvl1() && screenCoordinator.getGameState().equals(GameState.NEWLEVEL) ||screenCoordinator.getGameState().equals(GameState.LEVEL2)){
             upBound = -50;
             downBound = 2967;
             leftBound = -50;
@@ -197,6 +206,13 @@ public abstract class Player extends MapEntity {
 
         // update player's animation
         super.update();
+    }
+
+    public void setInteractionRange(){
+        this.interactionRange = 100;
+    }
+    public void resetInteractionRange(){
+        this.interactionRange = 1;
     }
 
     // based on player's current state, call appropriate player state handling method
@@ -488,6 +504,7 @@ public abstract class Player extends MapEntity {
             if(iFrames == 0) {
                 playerHP--;
                 iFrames = 60;
+                hurt = true;
                 System.out.println("Player is hit\n" + getCurrentHealth());
                 health.decreaseHealth();
             } 
@@ -499,6 +516,10 @@ public abstract class Player extends MapEntity {
             System.out.println("Player is dead");
             playerHP = 5;
         }
+    }
+
+    public boolean getHurt(){
+        return hurt;
     }
 
     public static int getCurrentHealth(){

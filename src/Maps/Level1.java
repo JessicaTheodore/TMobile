@@ -1,5 +1,6 @@
 package Maps;
 
+import java.awt.RenderingHints.Key;
 import java.util.ArrayList;
 import Engine.GraphicsHandler;
 import GameObject.Sprite;
@@ -29,6 +30,7 @@ public class Level1 extends Map {
     protected Sprite ranger;
     protected float x;
     protected float y;
+    BreakableLog log;
 
     public Level1() {
         super("lvl1.txt", new MainTileset());
@@ -84,7 +86,8 @@ public class Level1 extends Map {
         enemies.add(bear5);
 
         // Adding breakable objects
-        BreakableLog log = new BreakableLog(5, 1, new Point(1150, 1750));
+        log = new BreakableLog(5, 1, new Point(1150, 1750));
+        log.setInteractScript(new BrokeLog());
         enemies.add(log);
         BreakableBranch branch = new BreakableBranch(6, 1, new Point(480, 25));
         enemies.add(branch);
@@ -96,9 +99,9 @@ public class Level1 extends Map {
     public ArrayList<Trigger> loadTriggers() {
         ArrayList<Trigger> triggers = new ArrayList<>();
         triggers.add(new Trigger(0, 00, 5000, 80, new NextLevel(), "beatLvl1"));
-        triggers.add(new Trigger(1335, 1860, 70, 180, new BrokeLog(), "brokeLog"));
-        triggers.add(new Trigger(1320, 1850, 0, 190, new BreakLog(), "SpaceBreak"));
-        triggers.add(new Trigger(477, 1255, 37, 52, new NearSlingShot(), "nearSlingShot"));
+        //triggers.add(new Trigger(1335, 1860, 70, 180, new BrokeLog(), "brokeLog"));
+        triggers.add(new Trigger(1270, 1850, 20, 190, new BreakLog(), "SpaceBreak"));
+        triggers.add(new Trigger(477, 1257, 37, 32, new NearSlingShot(), "nearSlingShot"));
         return triggers;
     }
 

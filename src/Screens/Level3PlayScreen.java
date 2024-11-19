@@ -14,6 +14,7 @@ import GameObject.Sprite;
 import Level.*;
 import Maps.Level1;
 import Maps.Level2;
+import Maps.Level3;
 import Maps.TestMap;
 import NPCs.Bear;
 import Players.Cat;
@@ -23,7 +24,7 @@ import Utils.HealthSystem;
 import Utils.Point;
 
 // This class is for when the RPG game is actually being played
-public class Level2PlayScreen extends Screen {
+public class Level3PlayScreen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -48,20 +49,14 @@ public class Level2PlayScreen extends Screen {
     protected float y;
     protected Trigger trigger;
     protected boolean helpNew = true; 
-    protected boolean swap;
-    protected Sprite flash;
 
     private HealthSystem healthSystem;
 
 
-    public Level2PlayScreen(ScreenCoordinator screenCoordinator) {
+    public Level3PlayScreen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
 
         player.resetHealth();
-
-        flash = new Sprite(ImageLoader.loadSubImage("darkFlash.png", Colors.MAGENTA, 0, 0, 800, 605));
-        flash.setScale(1);
-        flash.setLocation(0, 0);
 
         ranger = new Sprite(ImageLoader.loadSubImage("HelpIcon.png", Colors.MAGENTA, 0, 0, 64, 64));
         ranger.setScale(1);
@@ -85,11 +80,10 @@ public class Level2PlayScreen extends Screen {
         if(start){
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
-            flagManager.addFlag("beatLvl2", false);
-            flagManager.addFlag("hasTalkedToAltar", false);
+            flagManager.addFlag("beatLvl3", false);
 
             // Define/setup map
-            map = new Level2();
+            map = new Level3();
             map.setFlagManager(flagManager);
 
             // Setup pause screen
@@ -119,7 +113,7 @@ public class Level2PlayScreen extends Screen {
 
     public void update() {
         // Logic for beating level changed game state if player reached trigger to beat level 2
-        if(flagManager.isFlagSet("beatLvl2")){
+        if(flagManager.isFlagSet("beatLvl3")){
             screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
             System.out.println("beat lvl 2");
         }
@@ -137,7 +131,6 @@ public class Level2PlayScreen extends Screen {
         }
         if(!helpStages[1]){
         }
-        
 
         // Pause screen logic
         if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && helpOn) {
@@ -156,9 +149,6 @@ public class Level2PlayScreen extends Screen {
         }
         if (Keyboard.isKeyUp(Key.H)) {
             keyLocker.unlockKey(Key.H);
-        }
-        if (Keyboard.isKeyUp(Key.M)) {
-            keyLocker.unlockKey(Key.M);
         }
         
         if(!helpOn){
@@ -199,15 +189,6 @@ public class Level2PlayScreen extends Screen {
             screenCoordinator.setGameState(GameState.DEATH);
             keyLocker.lockKey(Key.L);
         }
-        if(Keyboard.isKeyDown(Key.M) && !keyLocker.isKeyLocked(Key.M) && !swap){
-            player.setLocation(70, 70);
-            keyLocker.lockKey(Key.M);
-            swap = true;
-        }else if(Keyboard.isKeyDown(Key.M) && !keyLocker.isKeyLocked(Key.M) && swap){
-            player.setLocation(1060,2890);
-            keyLocker.lockKey(Key.M);
-            swap = false;
-        }
     }
 
     public void draw(GraphicsHandler graphicsHandler) {
@@ -224,11 +205,8 @@ public class Level2PlayScreen extends Screen {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
-                    /* for(int i = 0; i < map.getTriggers().size(); i ++){
+                    for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
-                    } */
-                    if(player.getHurt()){
-                        flash.draw(graphicsHandler);
                     }
                     ranger.draw(graphicsHandler);
                     if(helpNew){

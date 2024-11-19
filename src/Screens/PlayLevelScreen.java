@@ -3,6 +3,7 @@ package Screens;
 import java.util.ArrayList;
 
 import Enemies.BearEnemy;
+import Enemies.BreakableLog;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import Engine.Key;
@@ -50,6 +51,8 @@ public class PlayLevelScreen extends Screen {
     protected Trigger trigger;
     protected boolean helpNew = true;
     protected int counter = 0;
+    protected boolean hurt = false;
+    protected Sprite flash;
 
     private HealthSystem healthSystem;
     private Slingshot slingshot;
@@ -67,6 +70,10 @@ public class PlayLevelScreen extends Screen {
         newHelp = new Sprite(ImageLoader.loadSubImage("exclam.png", Colors.MAGENTA, 0, 0, 29, 29));
         newHelp.setScale(1);
         newHelp.setLocation(726, 487); 
+
+        flash = new Sprite(ImageLoader.loadSubImage("darkFlash.png", Colors.MAGENTA, 0, 0, 800, 605));
+        flash.setScale(1);
+        flash.setLocation(0, 0);
 
         pickUp = new Sprite(ImageLoader.loadSubImage("PickUp.png", Colors.MAGENTA, 0, 0, 99, 37));
         pickUp.setScale(2);
@@ -106,11 +113,8 @@ public class PlayLevelScreen extends Screen {
         if(start){
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
-            flagManager.addFlag("hasTalkedToWalrus", false);
-            flagManager.addFlag("hasTalkedToDinosaur", false);
-            flagManager.addFlag("hasFoundBall", false);
             flagManager.addFlag("brokeLog", false);
-            flagManager.addFlag("pickedUpSlingShot", true);
+            flagManager.addFlag("pickedUpSlingShot", false);
             flagManager.addFlag("beatLvl1", false);
             flagManager.addFlag("nearSlingShot", false);
             flagManager.addFlag("SpaceBreak", false);
@@ -163,6 +167,12 @@ public class PlayLevelScreen extends Screen {
         helpScreen.changeStatus();
         keyLocker.lockKey(Key.H);
     }
+    if (Keyboard.isKeyDown(Key.U) && !keyLocker.isKeyLocked(Key.U)) {
+        System.out.println("Debug - skipped level 1");
+        screenCoordinator.toggleLvl1();
+        screenCoordinator.setGameState(GameState.LEVEL2);
+        keyLocker.lockKey(Key.U);
+    }
     if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && !helpOn && !pauseOn) {
         helpOn = true;
         helpNew = false;
@@ -191,6 +201,17 @@ public class PlayLevelScreen extends Screen {
     }
     if (Keyboard.isKeyUp(Key.ESC)) {
         keyLocker.unlockKey(Key.ESC);
+    }
+
+    /* if(map.getSurroundingMapEntities(player).contains(map.getEnemies())){
+
+    } */
+
+    if(!player.intersects(map.getTriggers().get(1))){
+        flagManager.unsetFlag("SpaceBreak");
+    }
+    if(!player.intersects(map.getTriggers().get(2))){
+        flagManager.unsetFlag("nearSlingShot");
     }
     
     if(!helpStages[1]){
@@ -275,6 +296,9 @@ public class PlayLevelScreen extends Screen {
                     /* for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
                     } */
+                    if(player.getHurt()){
+                        flash.draw(graphicsHandler);
+                    }
                     ranger.draw(graphicsHandler);
                     if(helpNew){
                         newHelp.draw(graphicsHandler);
@@ -284,7 +308,8 @@ public class PlayLevelScreen extends Screen {
                         pickUp.draw(graphicsHandler);
                         //flagManager.setFlag("nearSlingShot");
                         //flagManager.unsetFlag("pickedUpSlingShot");
-                    } else if (flagManager.isFlagSet("pickedUpSlingShot") && flagManager.isFlagSet("nearSlingShot")) {
+                    }
+                    if (flagManager.isFlagSet("pickedUpSlingShot")) {
                         if(counter < 600) {
                             slingShotAcquired.draw(graphicsHandler);
                         } 
