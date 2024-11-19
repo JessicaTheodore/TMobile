@@ -109,7 +109,7 @@ public abstract class Player extends MapEntity {
             iFrames--;
         }
 
-        if(iFrames%5 == 1){
+        if(iFrames%13 == 1){
             hurt = false;
         }
         
