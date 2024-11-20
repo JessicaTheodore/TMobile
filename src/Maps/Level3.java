@@ -22,7 +22,7 @@ public class Level3 extends Map {
     
     public Level3(){
         super("lvl3.txt", new MainTileset());
-        this.playerStartPosition = new Point(1000,600);
+        this.playerStartPosition = getMapTile(38,27).getLocation();
     }
 
     // NPCs
