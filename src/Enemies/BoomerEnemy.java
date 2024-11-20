@@ -8,6 +8,8 @@ import GameObject.ImageEffect;
 import GameObject.SpriteSheet;
 import Level.Enemy;
 import Level.MapEntityStatus;
+import Level.Trigger;
+import Scripts.Level3.EnterFloor2;
 import Utils.Point;
 import java.util.HashMap;
 import java.awt.Color;
@@ -56,6 +58,13 @@ public class BoomerEnemy extends Enemy {
 
         if (boomerHP <= 0) {
             mapEntityStatus = MapEntityStatus.REMOVED;
+
+            Trigger stairsTrigger = (new Trigger(380, 330, 50, 130, new EnterFloor2(), "enterFloor2"));
+            stairsTrigger.setMap(map);
+            map.addTrigger(stairsTrigger);
+
+            System.out.println("STAIR TRIGGER APPEARS");
+
         }
     }
 
