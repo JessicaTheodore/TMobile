@@ -1199,6 +1199,51 @@ public class MainTileset extends Tileset {
 
             mapTiles.add(doorBRTile);
 
+            // Curved brick 1 left
+
+            Frame curveBrick1LFrame = new FrameBuilder(getSubImage(13, 0))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder curveBrick1LTile = new MapTileBuilder(curveBrick1LFrame);
+
+            mapTiles.add(curveBrick1LTile);
+
+
+            // Curved brick 2 left
+
+            Frame curveBrick2LFrame = new FrameBuilder(getSubImage(13, 4))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder curveBrick2LTile = new MapTileBuilder(curveBrick2LFrame);
+
+            mapTiles.add(curveBrick2LTile);
+
+
+            // Curved brick 1 right
+
+            Frame curveBrick1RFrame = new FrameBuilder(getSubImage(13, 0))
+                .withScale(tileScale)
+                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                .build();
+
+            MapTileBuilder curveBrick1RTile = new MapTileBuilder(curveBrick1RFrame);
+
+            mapTiles.add(curveBrick1RTile);
+
+
+            // Curved brick 2 right
+
+            Frame curveBrick2RFrame = new FrameBuilder(getSubImage(13, 4))
+                .withScale(tileScale)
+                .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+                .build();
+
+            MapTileBuilder curveBrick2RTile = new MapTileBuilder(curveBrick2RFrame);
+
+            mapTiles.add(curveBrick2RTile);
+
 
 
         
