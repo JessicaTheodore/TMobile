@@ -72,27 +72,23 @@ public class BoomerEnemy extends Enemy {
 
     // Override update to implement circular movement
     @Override
-    public void update() {
-        super.update();
+public void update() {
+    super.update();
 
-        if (iFrames > 0) {
-            iFrames--;
-        }
-
-        // Update the angle to create circular movement
-        angle += movementSpeed * 0.01; // Increment the angle (adjust speed multiplier as needed)
-
-        // Calculate new X and Y positions for circular motion
-        float newX = startLocation.x + radius * (float) Math.cos(angle);
-        float newY = startLocation.y + radius * (float) Math.sin(angle);
-
-        // Add more apparent vertical oscillation
-        float verticalOscillation = 10 * (float) Math.sin(angle * 8); // Oscillation range increased to 10 pixels
-
-        // Combine the circular motion with the vertical oscillation
-        newY += verticalOscillation;
-
-        // Set the bear's new position
-        this.setLocation(newX, newY);
+    // Handle invincibility frames countdown
+    if (iFrames > 0) {
+        iFrames--;
     }
+
+    // Create vertical oscillation
+    float verticalOscillation = 10 * (float) Math.sin(angle); // Oscillates up and down within a range of 10 pixels
+    angle += movementSpeed * 0.01; // Increment the angle to continue the oscillation
+
+    // Update the Y position only
+    float newY = startLocation.y + verticalOscillation;
+
+    // Keep X constant and update Y
+    this.setLocation(startLocation.x, newY);
+}
+
 }

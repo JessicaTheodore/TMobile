@@ -46,7 +46,7 @@ public class Level3 extends Map {
 
         // add enemies here
 
-        BoomerEnemy boomer = new BoomerEnemy(4, 2, getMapTile(13, 23).getLocation(), boomerMovementRadius);
+        BoomerEnemy boomer = new BoomerEnemy(4, 2, getMapTile(5, 7).getLocation(), boomerMovementRadius);
         enemies.add(boomer);
 
 
