@@ -107,6 +107,7 @@ public abstract class Player extends MapEntity {
         if(iFrames%16 == 1){
             if(hurt){
                 hurtFalse();
+                updateCurrentFrame();
             }
             hurt = false;
         }
@@ -505,6 +506,7 @@ public abstract class Player extends MapEntity {
                 iFrames = 60;
                 hurt = true;
                 hurtTrue();
+                updateCurrentFrame();
                 System.out.println("Player is hit\n" + getCurrentHealth());
                 health.decreaseHealth();
             }
