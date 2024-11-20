@@ -508,7 +508,9 @@ public abstract class Player extends MapEntity {
                 enemy.hurtEnemy();
             }  else if(enemy instanceof EvilMushroom && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))) {
                 enemy.hurtEnemy();
-            } 
+            } else if(enemy instanceof BoomerEnemy && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))) {
+                enemy.hurtEnemy();
+            }
         }
     }
 
@@ -581,6 +583,6 @@ public abstract class Player extends MapEntity {
         super.draw(graphicsHandler);
         // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
         // stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
-        slingshotRectangle.drawBounds(graphicsHandler, Color.BLACK);
+        slingshotRectangle.drawBounds(graphicsHandler, Color.DARK_GRAY);
     }
 }
