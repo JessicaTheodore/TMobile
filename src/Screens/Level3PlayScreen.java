@@ -179,9 +179,9 @@ public class Level3PlayScreen extends Screen {
                         if (enemy instanceof SquirrelEnemy) {
                             enemy.update(); // Call the update method for each bear
                         }
-                        if (enemy instanceof BoomerEnemy) {
-                            enemy.update(); // Call the update method for each bear
-                        }
+                        // if (enemy instanceof BoomerEnemy) {
+                        //     enemy.update(); // Call the update method for each bear
+                        // }
                     }
                     break;
                 // If level has been completed, bring up level cleared screen

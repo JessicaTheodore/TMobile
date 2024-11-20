@@ -38,7 +38,7 @@ public class BoomerEnemy extends Enemy {
                 new FrameBuilder(spriteSheet.getSprite(0, 0), 12)
                     .withScale(0.8f) // Scale down the sprite to half its size
                     .withBounds(4, 5, 15, 15) 
-                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+               
                     .build(),
             });
         }};
@@ -72,13 +72,13 @@ public class BoomerEnemy extends Enemy {
 
     // Override update to implement circular movement
     @Override
-public void update() {
-    super.update();
+    public void update() {
+        super.update();
 
-    // Handle invincibility frames countdown
-    if (iFrames > 0) {
-        iFrames--;
-    }
+        // Handle invincibility frames countdown
+        if (iFrames > 0) {
+            iFrames--;
+        }
 
     // Create vertical oscillation
     float verticalOscillation = 10 * (float) Math.sin(angle); // Oscillates up and down within a range of 10 pixels
@@ -89,6 +89,6 @@ public void update() {
 
     // Keep X constant and update Y
     this.setLocation(startLocation.x, newY);
-}
+    }
 
 }

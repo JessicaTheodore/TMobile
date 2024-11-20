@@ -60,6 +60,15 @@ public class Level2 extends Map {
         EvilMushroom shroom2 = new EvilMushroom(1,1, new Point(300,1700));
         enemies.add(shroom2);
 
+        SquirrelEnemy Squirrel9 = new SquirrelEnemy (0,1, new Point(1200,1550), 10);
+        enemies.add(Squirrel9);
+        
+        SquirrelEnemy Squirrel7 = new SquirrelEnemy (0,1, new Point(1300,1550), 10);
+        enemies.add(Squirrel7);
+
+        SquirrelEnemy Squirrel8 = new SquirrelEnemy (0,1, new Point(1400,1550), 10);
+        enemies.add(Squirrel8);
+
         SquirrelEnemy Squirrel1 = new SquirrelEnemy (0,1, new Point(1500,1550), 10);
         enemies.add(Squirrel1);
 
@@ -77,6 +86,15 @@ public class Level2 extends Map {
 
         SquirrelEnemy Squirrel6 = new SquirrelEnemy (0,1, new Point(2400,1670), 10);
         enemies.add(Squirrel6);
+
+        SquirrelEnemy Squirrel10 = new SquirrelEnemy (0,1, new Point(2500,1670), 10);
+        enemies.add(Squirrel10);
+        
+        SquirrelEnemy Squirrel11 = new SquirrelEnemy (0,1, new Point(2600,1670), 10);
+        enemies.add(Squirrel11);
+
+        SquirrelEnemy Squirrel12 = new SquirrelEnemy (0,1, new Point(2700,1670), 10);
+        enemies.add(Squirrel12);
 
         return enemies;
     }

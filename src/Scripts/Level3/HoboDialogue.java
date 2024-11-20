@@ -22,20 +22,6 @@ public class HoboDialogue extends Script {
     @Override
     public ArrayList<ScriptAction> loadScriptActions() {
 
-           //importing font type
-        // try {
-        //     InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
-        //     if (is != null) {
-        //         maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
-        //     } else {
-        //         System.out.println("Font not found");
-        //     }
-        // } catch (FontFormatException e) {
-        //     e.printStackTrace();
-        // } catch (IOException e) {
-        //     e.printStackTrace();
-        // } 
-
         ArrayList<ScriptAction> scriptActions = new ArrayList<>();
         scriptActions.add(new LockPlayerScriptAction());
 
