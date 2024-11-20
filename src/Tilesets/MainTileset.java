@@ -1427,6 +1427,17 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(insideDoorRTile);
 
+        // Bright H fence
+
+        Frame brightHFenceFrame = new FrameBuilder(getSubImage(10, 6))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder brightHFenceTile = new MapTileBuilder(brightHFenceFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(brightHFenceTile);
+
         return mapTiles;
     }
 
