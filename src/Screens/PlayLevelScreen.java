@@ -146,8 +146,6 @@ public class PlayLevelScreen extends Screen {
             map.preloadScripts();
 
 
-            slingshot = new Slingshot(1, new Point(300, 200));  // Set initial position
-            map.addNPC(slingshot); 
             // Initialize win screen
             winScreen = new WinScreen(this);
 

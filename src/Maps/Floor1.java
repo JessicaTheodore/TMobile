@@ -2,9 +2,11 @@ package Maps;
 
 import Level.Enemy;
 import Level.Map;
+import Level.MapEntityStatus;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
+import NPCs.Lock;
 import Enemies.BoomerEnemy;
 import Tilesets.MainTileset;
 import Utils.Point;
@@ -14,6 +16,7 @@ import Engine.GraphicsHandler;
 // import Enemies.BoomerEnemy;
 
 public class Floor1 extends Map {
+    protected Lock lock;
 
     public Floor1(){
         super("floor1.txt", new MainTileset());
@@ -25,7 +28,8 @@ public class Floor1 extends Map {
     public ArrayList<NPC> loadNPCs(){
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        // npcs here
+        lock = new Lock(1, new Point(200,200));
+        npcs.add(lock);
 
         return npcs;
     }
@@ -56,6 +60,11 @@ public class Floor1 extends Map {
     @Override
     public void update(Player player) {
         super.update(player); 
+        // if (getEnemiesById(0).mapEntityStatus == MapEntityStatus.REMOVED){
+        //     // getNPCById(1).mapEntityStatus = MapEntityStatus.REMOVED;
+        //     System.out.println("AKUDEHABSJKD");
+        // }
+
     }
 
     @Override
