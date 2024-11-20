@@ -9,6 +9,7 @@ import GameObject.SpriteSheet;
 import Level.Enemy;
 import Level.MapEntityStatus;
 import Level.Trigger;
+import NPCs.Lock;
 import Scripts.Level3.EnterFloor2;
 import Utils.Point;
 import java.util.HashMap;
@@ -48,6 +49,7 @@ public class BoomerEnemy extends Enemy {
 
     @Override
     public void hurtEnemy() {
+
         if(boomerHP > 0){
             if (iFrames == 0) {
                 iFrames = 60;
@@ -62,8 +64,6 @@ public class BoomerEnemy extends Enemy {
             Trigger stairsTrigger = (new Trigger(380, 330, 50, 130, new EnterFloor2(), "enterFloor2"));
             stairsTrigger.setMap(map);
             map.addTrigger(stairsTrigger);
-
-            System.out.println("STAIR TRIGGER APPEARS");
 
         }
     }
