@@ -1174,7 +1174,7 @@ public class MainTileset extends Tileset {
                 .withScale(tileScale)
                 .build();
 
-            MapTileBuilder battlementTile = new MapTileBuilder(grassFrame)
+            MapTileBuilder battlementTile = new MapTileBuilder(brightGrassFrame)
                 .withTopLayer(battlementFrame);
 
             mapTiles.add(battlementTile);
@@ -1199,7 +1199,7 @@ public class MainTileset extends Tileset {
 
             mapTiles.add(doorBRTile);
 
-            
+
 
         
         return mapTiles;
