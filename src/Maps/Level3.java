@@ -1,22 +1,16 @@
 package Maps;
 
 import Level.Enemy;
-import Level.EnhancedMapTile;
 import Level.Map;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
-import NPCs.BrokenBranch;
 import NPCs.Hobbomock;
-import Scripts.Level2.AltarScript;
 import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
-
-import Enemies.BearEnemy;
 import Engine.GraphicsHandler;
-import EnhancedMapTiles.Ladder;
 
 public class Level3 extends Map {
     
