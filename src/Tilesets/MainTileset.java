@@ -1355,7 +1355,29 @@ public class MainTileset extends Tileset {
             .withTileType(TileType.PASSABLE);
 
         mapTiles.add(stairsTile);
-        
+
+        // Barrel top
+
+        Frame barrelTopFrame = new FrameBuilder(getSubImage(13, 5))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder barrelTopTile = new MapTileBuilder(barrelTopFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(barrelTopTile);
+
+        // Barrel bottom
+
+        Frame barrelBottomFrame = new FrameBuilder(getSubImage(14, 5))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder barrelBottomTile = new MapTileBuilder(barrelBottomFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(barrelBottomTile);
+
         return mapTiles;
     }
 
