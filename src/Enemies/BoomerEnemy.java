@@ -41,7 +41,7 @@ public class BoomerEnemy extends Enemy {
                 new FrameBuilder(spriteSheet.getSprite(0, 0), 12)
                     .withScale(0.8f) // Scale down the sprite to half its size
                     .withBounds(20, 0, 160, 250) 
-                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL) 
+                    // .withImageEffect(ImageEffect.FLIP_HORIZONTAL) 
                     .build(),
             });
         }};

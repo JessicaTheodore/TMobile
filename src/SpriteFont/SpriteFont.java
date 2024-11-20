@@ -1,6 +1,7 @@
 package SpriteFont;
 
 import Engine.GraphicsHandler;
+import Maps.FinalSceneMap;
 import Maps.IntroductionScreenMap;
 import Maps.Level2ScreenMap;
 
@@ -20,6 +21,7 @@ public class SpriteFont {
 	protected boolean showRanger = true;
 	protected IntroductionScreenMap level1Map;
 	protected Level2ScreenMap level2Map;
+	protected FinalSceneMap finalSceneMap;
 	protected boolean isPlayerSpeaking = true;
 	protected boolean isPlayerSpeaking1 = true;
 	protected boolean treesAreSpeaking = false;
@@ -69,6 +71,18 @@ public class SpriteFont {
 		this.treesAreSpeaking = true;
 	}
 
+	public SpriteFont(String text, float x, float y, Font font, Color color, FinalSceneMap finalSceneMap) {
+		this.text = text;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.showTextField = false;
+		this.needName = false;
+		this.finalSceneMap = finalSceneMap;
+		this.treesAreSpeaking = true;
+	}
+	
 	public SpriteFont(String text, float x, float y, Font font, Color color, Level2ScreenMap level2Map, boolean showRanger) {
 		this.text = text;
 		this.font = font;
@@ -81,6 +95,19 @@ public class SpriteFont {
 		this.treesAreSpeaking = true;
 		this.showRanger = showRanger;
 	}
+
+	// public SpriteFont(String text, float x, float y, Font font, Color color, FinalSceneMap finalSceneMap, boolean showRanger) {
+	// 	this.text = text;
+	// 	this.font = font;
+	// 	this.x = x;
+	// 	this.y = y;
+	// 	this.color = color;
+	// 	this.showTextField = false;
+	// 	this.needName = false;
+	// 	this.finalSceneMap = finalSceneMap;
+	// 	this.treesAreSpeaking = true;
+	// 	this.showRanger = showRanger;
+	// }
 
 	public SpriteFont(String text, float x, float y, Font font, Color color, boolean showTextField, IntroductionScreenMap level1Map, boolean isPlayerSpeaking1) {
 		this.text = text;
@@ -104,6 +131,17 @@ public class SpriteFont {
 		this.showTextField = false;
 		this.level1Map = level1Map;
 		this.isPlayerSpeaking1 = isPlayerSpeaking1;
+	}
+
+	public SpriteFont(String text, float x, float y, Font font, Color color, FinalSceneMap finalSceneMapMap, boolean isPlayerSpeaking) {
+		this.text = text;
+		this.font = font;
+		this.x = x;
+		this.y = y;
+		this.color = color;
+		this.showTextField = false;
+		this.finalSceneMap = finalSceneMapMap;
+		this.isPlayerSpeaking = isPlayerSpeaking;
 	}
 
 	public SpriteFont(String text, float x, float y, Font font, Color color, boolean showRanger, Level2ScreenMap level2Map, boolean isPlayerSpeaking) {
@@ -252,6 +290,10 @@ public class SpriteFont {
 			this.level1Map.setPlayerSpeaking1(this.isPlayerSpeaking1);
 		}
 
+		if(finalSceneMap != null) {
+			this.finalSceneMap.setPlayerSpeaking(this.isPlayerSpeaking);
+		}
+
 		int ascent = getAscent(graphicsHandler.getGraphics());
 		if (outlineColor != null && !outlineColor.equals(color)) {
 			graphicsHandler.drawStringWithOutline(text, Math.round(x), Math.round(y) + ascent, font, color, outlineColor, outlineThickness);
@@ -270,6 +312,10 @@ public class SpriteFont {
 
 		if (level1Map != null) {
 			this.level1Map.setPlayerSpeaking1(this.isPlayerSpeaking1);
+		}
+
+		if(finalSceneMap != null) {
+			this.finalSceneMap.setPlayerSpeaking(this.isPlayerSpeaking);
 		}
 
 		int ascent = getAscent(graphicsHandler.getGraphics());

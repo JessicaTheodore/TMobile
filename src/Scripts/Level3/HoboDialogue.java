@@ -24,7 +24,7 @@ public class HoboDialogue extends Script {
                     addText("Hobbomock: Indeed, it is I, the Sleeping Giant.");
                     addText("Player: …You seem awfully calm for an evil spirit who was \njust tried to kill me using my school's mascot.");
                     addText("Hobbomock: In my defense, your school has been causing \nquite an issue for me.");
-                    addText("Player: What do you mean, we've been causing issues for \nyou?");
+                    addText("Player: Erm..what do you mean, we've been causing issues \nfor you?");
                     addText("Hobbomock: Your school's expansion disrupted the harmony \nof this mountain.");
                     addText("Hobbomock: Forests torn down, waters polluted...\n It awoke me from my slumber.");
                     addText("Player: That… doesn't sound great. But unleashing mascots \nand evil squirrels wasn't exactly great either.");
