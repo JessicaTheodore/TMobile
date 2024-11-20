@@ -40,7 +40,7 @@ public class BoomerEnemy extends Enemy {
                 new FrameBuilder(spriteSheet.getSprite(0, 0), 12)
                     .withScale(0.8f) // Scale down the sprite to half its size
                     .withBounds(20, 0, 160, 250) 
-                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL) 
+                    // .withImageEffect(ImageEffect.FLIP_HORIZONTAL) 
                     .build(),
             });
         }};
@@ -76,7 +76,7 @@ public class BoomerEnemy extends Enemy {
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         // Draws the hitbox
-        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+        // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
     }
 
     // Override update to implement circular movement

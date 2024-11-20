@@ -566,7 +566,7 @@ public abstract class Player extends MapEntity {
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
         // drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-        // stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
+        stickRectangle.drawBounds(graphicsHandler, Color.BLACK);
         slingshotRectangle.drawBounds(graphicsHandler, Color.DARK_GRAY);
     }
 }
