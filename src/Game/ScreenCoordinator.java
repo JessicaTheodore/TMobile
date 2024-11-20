@@ -31,6 +31,7 @@ import Screens.Level2DialogueScreen;
 import Screens.Level2IntroScreen;
 import Screens.Level2PlayScreen;
 import Screens.Level3PlayScreen;
+import Screens.Level3Screen;
 import Screens.LevelCompleteScreen;
 import Screens.LevelLoseScreen;
 
@@ -147,6 +148,8 @@ public class ScreenCoordinator extends Screen {
 					case FINALSCENE:
 						currentScreen = new FinalSceneScreen(this);
 						break;
+					 case LEVEL3INTROSCREEN:
+						currentScreen = new Level3Screen(this);
 					default:
 						break;
 				}
