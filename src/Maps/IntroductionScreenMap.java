@@ -23,9 +23,9 @@ import Utils.Point;
 
         public IntroductionScreenMap() {
             super("title_screen_map.txt", new CommonTileset());
-            back = new Sprite(ImageLoader.loadSubImage("Intro.png", Colors.MAGENTA, 0, 0, 800, 600));
+            back = new Sprite(ImageLoader.loadSubImage("ParkEntrance.png", Colors.MAGENTA, 0, 0, 800, 600));
             back.setScale(1);
-            back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
+            //back.setImageEffect(ImageEffect.FLIP_HORIZONTAL);
             back.setLocation(0, 0);
 
             Point hikerLocation = getMapTile(3, 6).getLocation().subtractX(6).subtractY(7);
