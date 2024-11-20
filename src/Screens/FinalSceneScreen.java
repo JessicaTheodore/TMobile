@@ -9,6 +9,7 @@ import java.io.InputStream;
 import Engine.*;
 import Game.GameState;
 import Game.ScreenCoordinator;
+import Level.FinalSceneTextbox;
 import Level.FlagManager;
 import Level.Map;
 import Level.Player;
@@ -29,7 +30,7 @@ public class FinalSceneScreen extends Screen {
     protected FlagManager flagManager;
     protected Map background;
     protected SpriteFont credits;
-    //protected IntroductionTextbox textbox;
+    protected FinalSceneTextbox textbox;
     private Font maruMonica;
 
     public FinalSceneScreen(ScreenCoordinator screenCoordinator) {
@@ -59,7 +60,7 @@ public class FinalSceneScreen extends Screen {
         
         background.preloadScripts();
 
-        //textbox = new IntroductionTextbox(background, screenCoordinator);
+        textbox = new FinalSceneTextbox(background, screenCoordinator);
        
         keyLocker.lockKey(Key.X);
     }
@@ -72,11 +73,11 @@ public class FinalSceneScreen extends Screen {
         if (!keyLocker.isKeyLocked(Key.X) && Keyboard.isKeyDown(Key.X)) {
                 screenCoordinator.setGameState(GameState.CREDITS);
         }
-        //textbox.update();
+        textbox.update();
     }
     
     public void draw(GraphicsHandler graphicsHandler) {
         background.draw(graphicsHandler);
-        //textbox.draw(graphicsHandler);
+        textbox.draw(graphicsHandler);
     }
 }
