@@ -133,6 +133,13 @@ public class Level3PlayScreen extends Screen {
         if(!helpStages[1]){
         }
 
+        if (Keyboard.isKeyDown(Key.Y) && !keyLocker.isKeyLocked(Key.Y)) {
+            System.out.println("Debug - completed level 3");
+            screenCoordinator.toggleLvl1();
+            screenCoordinator.setGameState(GameState.FINALSCENE);
+            keyLocker.lockKey(Key.Y);
+        }
+
         // Pause screen logic
         if (Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && helpOn) {
             helpOn = false;

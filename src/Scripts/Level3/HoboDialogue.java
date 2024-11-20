@@ -46,7 +46,6 @@ public class HoboDialogue extends Script {
                     addText("what's up man?");
                 }});
                 addScriptAction(new ChangeFlagScriptAction("hasTalkedToHobo", true));
-                System.out.println("second checkpoint");
             }});
         }});
         scriptActions.add(new UnlockPlayerScriptAction());
