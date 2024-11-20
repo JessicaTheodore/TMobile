@@ -123,6 +123,10 @@ public class Floor2Screen extends Screen {
             System.out.println("beat lvl 2");
         }
 
+        if(flagManager.isFlagSet("hasTalkedToHobo")){
+            screenCoordinator.setGameState(GameState.FINALSCENE);
+        }
+
         // Help screen logic
         if (Keyboard.isKeyDown(Key.H) && !keyLocker.isKeyLocked(Key.H) && helpOn) {
             helpOn = false;

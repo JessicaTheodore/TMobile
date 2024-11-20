@@ -205,6 +205,11 @@ public abstract class Player extends MapEntity {
             downBound = 2967;
             leftBound = -50;
             rightBound = 4229;
+        }else if(screenCoordinator.beatLvl1() && screenCoordinator.beatLvl2() && screenCoordinator.getGameState().equals(GameState.NEWLEVEL) ||screenCoordinator.getGameState().equals(GameState.LEVEL3)){
+            upBound = -50;
+            downBound = 2967;
+            leftBound = -50;
+            rightBound = 4229;
         }else if(screenCoordinator.getGameState().equals(GameState.FLOOR1) || screenCoordinator.getGameState().equals(GameState.FLOOR2)){
             upBound = -50;
             downBound = 2967;
