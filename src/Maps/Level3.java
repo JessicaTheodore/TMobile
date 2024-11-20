@@ -8,6 +8,8 @@ import Level.Player;
 import Level.Trigger;
 import NPCs.BrokenBranch;
 import NPCs.Hobbomock;
+import Scripts.Level2.AltarScript;
+import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
@@ -29,6 +31,7 @@ public class Level3 extends Map {
         ArrayList<NPC> npcs = new ArrayList<>();
 
         Hobbomock hobo = new Hobbomock(0, new Point(100, 200));
+        hobo.setInteractScript(new HoboDialogue());
         npcs.add(hobo);
 
         return npcs;

@@ -27,12 +27,12 @@ public class Hobbomock extends NPC {
         return new HashMap<String, Frame[]>() {{
             put("FLOATING", new Frame[] {
                     new FrameBuilder(spriteSheet.getSprite(0, 0), 8)
-                        .withScale(2)
+                        .withScale(3)
                         .withBounds(4, 4, 30, 28)
                         //.withImageEffect(ImageEffect.FLIP_HORIZONTAL)
                         .build(),
                     new FrameBuilder(spriteSheet.getSprite(0, 1), 12)
-                        .withScale(2)
+                        .withScale(3)
                         .withBounds(4, 4, 30, 28)
                         .build()
             });       
@@ -43,6 +43,4 @@ public class Hobbomock extends NPC {
     public void draw(GraphicsHandler graphicsHandler) {
         super.draw(graphicsHandler);
     }
-
-
 }

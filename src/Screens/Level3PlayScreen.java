@@ -81,6 +81,7 @@ public class Level3PlayScreen extends Screen {
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("beatLvl3", false);
+            flagManager.addFlag("hasTalkedToHobo", false);
 
             // Define/setup map
             map = new Level3();
