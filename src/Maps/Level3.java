@@ -10,6 +10,9 @@ import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
+
+import Enemies.BearEnemy;
+import Enemies.BoomerEnemy;
 import Engine.GraphicsHandler;
 
 public class Level3 extends Map {
@@ -35,8 +38,13 @@ public class Level3 extends Map {
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
+        float boomerMovementRadius = 50.0f; // Adjust this value as needed
 
         // add enemies here
+
+        BoomerEnemy boomer = new BoomerEnemy(4, 2, getMapTile(5, 7).getLocation(), boomerMovementRadius);
+        enemies.add(boomer);
+
 
         return enemies;
     }
