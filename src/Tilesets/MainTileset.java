@@ -1378,6 +1378,55 @@ public class MainTileset extends Tileset {
 
         mapTiles.add(barrelBottomTile);
 
+        // Railing 1 
+
+        Frame railing1Frame = new FrameBuilder(getSubImage(14, 6))
+            .withScale(tileScale)
+            .build();
+
+        MapTileBuilder railing1Tile = new MapTileBuilder(railing1Frame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(railing1Tile);
+
+        // Railing 2
+
+        Frame railing2Frame = new FrameBuilder(getSubImage(14, 6))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_HORIZONTAL)
+            .build();
+
+        MapTileBuilder railing2Tile = new MapTileBuilder(railing2Frame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(railing2Tile);
+
+
+
+        // Inside door left
+
+        Frame insideDoorLFrame = new FrameBuilder(getSubImage(14, 7))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_VERTICAL)
+            .build();
+
+        MapTileBuilder insideDoorLTile = new MapTileBuilder(insideDoorLFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(insideDoorLTile);
+
+        // Inside door right 
+
+        Frame insideDoorRFrame = new FrameBuilder(getSubImage(14, 8))
+            .withScale(tileScale)
+            .withImageEffect(ImageEffect.FLIP_VERTICAL)
+            .build();
+
+        MapTileBuilder insideDoorRTile = new MapTileBuilder(insideDoorRFrame)
+            .withTileType(TileType.NOT_PASSABLE);
+
+        mapTiles.add(insideDoorRTile);
+
         return mapTiles;
     }
 
