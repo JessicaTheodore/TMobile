@@ -205,6 +205,11 @@ public abstract class Player extends MapEntity {
             downBound = 2967;
             leftBound = -50;
             rightBound = 4229;
+        }else if(screenCoordinator.getGameState().equals(GameState.FLOOR1)){
+            upBound = -50;
+            downBound = 2967;
+            leftBound = -50;
+            rightBound = 4229;
         }
 
         // update player's animation

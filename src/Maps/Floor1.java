@@ -15,7 +15,7 @@ public class Floor1 extends Map {
 
     public Floor1(){
         super("floor1.txt", new MainTileset());
-        this.playerStartPosition = new Point(0,0);
+        this.playerStartPosition = new Point(500,500);
     }
 
     // NPCs

@@ -13,6 +13,7 @@ import Game.GameState;
 import Game.ScreenCoordinator;
 import GameObject.Sprite;
 import Level.*;
+import Maps.Floor1;
 import Maps.Level1;
 import Maps.Level2;
 import Maps.Level3;
@@ -25,7 +26,7 @@ import Utils.HealthSystem;
 import Utils.Point;
 
 // This class is for when the RPG game is actually being played
-public class Level3PlayScreen extends Screen {
+public class Floor1Screen extends Screen {
     protected ScreenCoordinator screenCoordinator;
     protected Map map;
     protected Player player;
@@ -54,7 +55,7 @@ public class Level3PlayScreen extends Screen {
     private HealthSystem healthSystem;
 
 
-    public Level3PlayScreen(ScreenCoordinator screenCoordinator) {
+    public Floor1Screen(ScreenCoordinator screenCoordinator) {
         this.screenCoordinator = screenCoordinator;
 
         player.resetHealth();
@@ -86,7 +87,7 @@ public class Level3PlayScreen extends Screen {
             flagManager.addFlag("hasTalkedToHobo", false);
 
             // Define/setup map
-            map = new Level3();
+            map = new Floor1();
             map.setFlagManager(flagManager);
 
             // Setup pause screen
@@ -118,11 +119,7 @@ public class Level3PlayScreen extends Screen {
         // Logic for beating level changed game state if player reached trigger to beat level 2
         if(flagManager.isFlagSet("beatLvl3")){
             screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
-            System.out.println("beat lvl 3");
-        }
-
-        if(flagManager.isFlagSet("enterFloor1")){
-            screenCoordinator.setGameState(GameState.FLOOR1);
+            System.out.println("beat lvl 2");
         }
 
         // Help screen logic

@@ -13,6 +13,7 @@ import Screens.ControlsHome;
 import Screens.ControlsScreen;
 import Screens.CreditsScreen;
 import Screens.FinalSceneScreen;
+import Screens.Floor1Screen;
 import Screens.GameOverScreen;
 import Screens.MenuScreen;
 import Screens.PauseScreen;
@@ -136,8 +137,12 @@ public class ScreenCoordinator extends Screen {
 					case LEVEL3:
 						currentScreen = new Level3PlayScreen(this);
 						break;
+					case FLOOR1:
+						currentScreen = new Floor1Screen(this);
+						break;
 					case FINALSCENE:
 						currentScreen = new FinalSceneScreen(this);
+						break;
 					default:
 						break;
 				}

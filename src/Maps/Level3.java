@@ -9,6 +9,8 @@ import Level.Trigger;
 import NPCs.BrokenBranch;
 import NPCs.Hobbomock;
 import Scripts.Level2.AltarScript;
+import Scripts.Level2.Beat2;
+import Scripts.Level3.EnterFloor1;
 import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
@@ -23,7 +25,7 @@ public class Level3 extends Map {
     
     public Level3(){
         super("lvl3.txt", new MainTileset());
-        this.playerStartPosition = new Point(123,123);
+        this.playerStartPosition = new Point(1000,600);
     }
 
     // NPCs
@@ -59,6 +61,7 @@ public class Level3 extends Map {
         ArrayList<Trigger> triggers = new ArrayList<>();
 
         // Add triggers here
+        triggers.add(new Trigger(970, 505, 80, 120, new EnterFloor1(), "enterFloor1"));
 
         return triggers;
     }
