@@ -1134,7 +1134,8 @@ public class MainTileset extends Tileset {
             .withScale(tileScale)
             .build();
 
-        MapTileBuilder brickTile = new MapTileBuilder(brickFrame);
+        MapTileBuilder brickTile = new MapTileBuilder(brickFrame)
+            .withTileType(TileType.NOT_PASSABLE);
 
         mapTiles.add(brickTile);
 

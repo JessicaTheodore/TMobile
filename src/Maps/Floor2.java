@@ -5,10 +5,7 @@ import Level.Map;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
-import NPCs.Altar;
 import NPCs.Hobbomock;
-import Scripts.Level2.AltarScript;
-import Scripts.Level2.Beat2;
 import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
@@ -20,7 +17,7 @@ public class Floor2 extends Map {
 
     public Floor2(){
         super("floor2.txt", new MainTileset());
-        this.playerStartPosition = new Point(300,300);
+        this.playerStartPosition = new Point(340,380);
     }
 
     // NPCs

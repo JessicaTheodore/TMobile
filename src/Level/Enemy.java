@@ -76,8 +76,8 @@ public class Enemy extends MapEntity {
     }
 
     public void hurtEnemy() {
-        super.spriteSheet.setImage(spriteSheet.tintExcludingColor(spriteSheet.getImage(), Color.red, .5f, 0xff00ff));
-        super.animations = loadAnimations(spriteSheet);
+        // super.spriteSheet.setImage(spriteSheet.tintExcludingColor(spriteSheet.getImage(), Color.red, .5f, 0xff00ff));
+        // super.animations = loadAnimations(spriteSheet);
     }
 
     // @Override

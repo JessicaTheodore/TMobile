@@ -8,7 +8,6 @@ import Level.Player;
 import Level.Trigger;
 import NPCs.Altar;
 import Scripts.Level2.AltarScript;
-import Scripts.Level1.NextLevel;
 import Scripts.Level2.Beat2;
 import Tilesets.MainTileset;
 import Utils.Point;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import Enemies.EvilMushroom;
 import Enemies.SquirrelEnemy;
 import Engine.GraphicsHandler;
-import EnhancedMapTiles.Ladder;
 
 public class Level2 extends Map {
 
@@ -59,6 +57,12 @@ public class Level2 extends Map {
 
         EvilMushroom shroom2 = new EvilMushroom(1,1, new Point(300,1700));
         enemies.add(shroom2);
+
+        EvilMushroom shroom3 = new EvilMushroom(1,1, new Point(400,1600));
+        enemies.add(shroom3);
+
+        EvilMushroom shroom4 = new EvilMushroom(1,1, new Point(500,1500));
+        enemies.add(shroom4);
 
         SquirrelEnemy Squirrel9 = new SquirrelEnemy (0,1, new Point(1200,1550), 10);
         enemies.add(Squirrel9);
@@ -104,10 +108,6 @@ public class Level2 extends Map {
     @Override
     public ArrayList<EnhancedMapTile> loadEnhancedMapTiles() {
         ArrayList<EnhancedMapTile> enhancedMapTiles = new ArrayList<>();
-
-        // commented out cause this shouldnt be here from the start and it should get added when you talk to the altar
-        // Ladder ladder = new Ladder(new Point(570,330));
-        // enhancedMapTiles.add(ladder);
 
         return enhancedMapTiles;
     }

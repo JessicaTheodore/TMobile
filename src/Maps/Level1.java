@@ -1,6 +1,5 @@
 package Maps;
 
-import java.awt.RenderingHints.Key;
 import java.util.ArrayList;
 import Engine.GraphicsHandler;
 import GameObject.Sprite;
@@ -12,18 +11,15 @@ import Tilesets.MainTileset;
 import Enemies.BearEnemy;
 import Enemies.BreakableBranch;
 import Enemies.BreakableLog;
-import Enemies.SquirrelEnemy;
 import NPCs.BrokenBranch;
 import NPCs.Slingshot;
 import Scripts.Level1.BreakLog;
-// import NPCs.BranchBridge;
 import Scripts.Level1.BrokeLog;
 import Scripts.Level1.NearSlingShot;
 import Scripts.Level1.NextLevel;
 import Scripts.Level1.PickUpSlingShot;
 import Utils.Point;
 import Level.Player; // Import the Player class
-import Level.Script;
 
 public class Level1 extends Map {
 
@@ -55,9 +51,6 @@ public class Level1 extends Map {
         BrokenBranch brokenBranch = new BrokenBranch(2, new Point(480, 25));
         npcs.add(brokenBranch);
 
-        // BranchBridge bridge = new BranchBridge(3, new Point(720, 80));
-        // npcs.add(bridge);
-
         return npcs;
     }
 
@@ -66,12 +59,6 @@ public class Level1 extends Map {
         ArrayList<Enemy> enemies = new ArrayList<>();
         // Define a radius for the circular movement
         float bearMovementRadius = 50.0f; // Adjust this value as needed
-
-        // BearEnemy bear1 = new BearEnemy(0, 2, getMapTile(13, 54).getLocation(), bearMovementRadius);
-        // enemies.add(bear1);
-
-        // SquirrelEnemy squirrel = new SquirrelEnemy(7, 1, getMapTile(13, 50).getLocation(), 0);
-        // enemies.add(squirrel);
 
         BearEnemy bear2 = new BearEnemy(1, 2, getMapTile(6, 26).getLocation(), bearMovementRadius);
         enemies.add(bear2);

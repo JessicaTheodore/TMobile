@@ -1,14 +1,11 @@
 package Maps;
 
-import java.util.ArrayList;
 
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
 import GameObject.ImageEffect;
 import GameObject.Sprite;
 import Level.Map;
-import Level.Trigger;
-import Scripts.Level1.IntroScript;
 import Tilesets.CommonTileset;
 import Utils.Colors;
 import Utils.Point;
