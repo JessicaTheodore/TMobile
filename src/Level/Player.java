@@ -120,7 +120,10 @@ public abstract class Player extends MapEntity {
             iFrames--;
         }
 
-        if(iFrames%13 == 1){
+        if(iFrames%16 == 1){
+            if(hurt){
+                hurtFalse();
+            }
             hurt = false;
         }
         
@@ -505,9 +508,10 @@ public abstract class Player extends MapEntity {
                 playerHP--;
                 iFrames = 60;
                 hurt = true;
+                hurtTrue();
                 System.out.println("Player is hit\n" + getCurrentHealth());
                 health.decreaseHealth();
-            } 
+            }
         }
         
         // when the player's HP gets down to 0, they die and have to restart from the beginning of the level

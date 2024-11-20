@@ -59,7 +59,7 @@ public class Level2PlayScreen extends Screen {
 
         player.resetHealth();
 
-        flash = new Sprite(ImageLoader.loadSubImage("darkFlash.png", Colors.MAGENTA, 0, 0, 800, 605));
+        flash = new Sprite(ImageLoader.loadSubImage("darkFlash.png", Colors.MAGENTA, 0, 0, 800, 605), true);
         flash.setScale(1);
         flash.setLocation(0, 0);
 
@@ -228,7 +228,7 @@ public class Level2PlayScreen extends Screen {
                         map.getTriggers().get(i).draw(graphicsHandler);
                     } */
                     if(player.getHurt()){
-                        flash.draw(graphicsHandler);
+                        //flash.draw(graphicsHandler);
                     }
                     ranger.draw(graphicsHandler);
                     if(helpNew){

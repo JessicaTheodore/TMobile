@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class Cat extends Player {
     
     public Cat(float x, float y, ScreenCoordinator screenCoordinator) {
-        super(new SpriteSheet(ImageLoader.load("Hiker.png"), 64, 64), x, y, "STAND_DOWN", screenCoordinator);
+        super(new SpriteSheet(ImageLoader.load("Hiker.png"), 64, 64, true), x, y, "STAND_DOWN", screenCoordinator);
         walkSpeed = 4f;
     }
 

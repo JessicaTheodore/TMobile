@@ -1118,6 +1118,89 @@ public class MainTileset extends Tileset {
 
             mapTiles.add(mushroom3BrightTile);
 
+            // Black Tile
+
+            Frame blackFrame = new FrameBuilder(getSubImage(12, 0))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder blackTile = new MapTileBuilder(blackFrame);
+
+            mapTiles.add(blackTile);
+            
+            // Brick Wall Tile
+
+            Frame brickFrame = new FrameBuilder(getSubImage(12, 1))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder brickTile = new MapTileBuilder(brickFrame);
+
+            mapTiles.add(brickTile);
+
+            // Door TL
+            
+            Frame doorTLFrame = new FrameBuilder(getSubImage(12, 2))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder doorTLTile = new MapTileBuilder(doorTLFrame);
+
+            mapTiles.add(doorTLTile);
+
+            // Door TR
+
+            Frame doorTRFrame = new FrameBuilder(getSubImage(12, 3))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder doorTRTile = new MapTileBuilder(doorTRFrame);
+
+            mapTiles.add(doorTRTile);
+
+            // Window
+
+            Frame windowFrame = new FrameBuilder(getSubImage(12, 4))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder windowTile = new MapTileBuilder(windowFrame);
+
+            mapTiles.add(windowTile);
+
+            // Battlement --> set background
+
+            Frame battlementFrame = new FrameBuilder(getSubImage(13, 1))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder battlementTile = new MapTileBuilder(brightGrassFrame)
+                .withTopLayer(battlementFrame);
+
+            mapTiles.add(battlementTile);
+
+            // Door BL
+
+            Frame doorBLFrame = new FrameBuilder(getSubImage(13, 2))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder doorBLTile = new MapTileBuilder(doorBLFrame);
+
+            mapTiles.add(doorBLTile);
+
+            // Door BR
+
+            Frame doorBRFrame = new FrameBuilder(getSubImage(13, 3))
+                .withScale(tileScale)
+                .build();
+
+            MapTileBuilder doorBRTile = new MapTileBuilder(doorBRFrame);
+
+            mapTiles.add(doorBRTile);
+
+
+
         
         return mapTiles;
     }

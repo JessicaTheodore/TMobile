@@ -97,6 +97,9 @@ public class Textbox {
         }
     }
 
+    public void loadFont() {
+        
+    }
     // returns whether the textQueue is out of items to display or not
     // useful for scripts to know when to complete
     public boolean isTextQueueEmpty() {
@@ -104,6 +107,21 @@ public class Textbox {
     }
 
     public void update() {
+
+          //importing font type
+          try {
+            InputStream is = getClass().getResourceAsStream("/Level/font/x12y16pxMaruMonica.ttf");
+            if (is != null) {
+                maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+            } else {
+                System.out.println("Font not found");
+            }
+        } catch (FontFormatException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } 
+
         // if textQueue has more text to display and the interact key button was pressed previously, display new text
         if (!textQueue.isEmpty() && keyLocker.isKeyLocked(interactKey)) {
             currentTextItem = textQueue.peek();
@@ -114,7 +132,7 @@ public class Textbox {
             int fontY = !map.getCamera().isAtBottomOfMap() ? fontBottomY : fontTopY;
 
             // create text spritefont that will be drawn in textbox
-            text = new SpriteFont(currentTextItem.getText(), fontX, fontY, "Arial", 30, Color.black);
+            text = new SpriteFont(currentTextItem.getText(), fontX, fontY, maruMonica.deriveFont(33f), Color.black);
 
 
             // if there are options associated with this text item, prepare option spritefont text to be drawn in options textbox

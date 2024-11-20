@@ -4,6 +4,7 @@ import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.SpriteSheet;
 
+import java.awt.Color;
 import java.util.HashMap;
 
 // This class represents a map entity, which is any "entity" on a map besides the player
@@ -92,6 +93,16 @@ public class MapEntity extends GameObject {
 
     public void setExistenceFlag(String existenceFlag) {
         this.existenceFlag = existenceFlag;
+    }
+
+    public void hurtFalse(){
+        super.spriteSheet.setImage(spriteSheet.removeTint(spriteSheet.getImage(), 0xff0000, .5f));
+        super.animations = loadAnimations(spriteSheet);
+    }
+
+    public void hurtTrue(){
+        super.spriteSheet.setImage(spriteSheet.tintExcludingColor(spriteSheet.getImage(), Color.red, .5f, 0xff00ff));
+        super.animations = loadAnimations(spriteSheet);
     }
 
     public boolean isUncollidable() {
