@@ -1,34 +1,18 @@
 package Level;
 
 import java.awt.Color;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.util.HashMap;
-
-import javax.swing.ImageIcon;
-
-import Builders.FrameBuilder;
 import Engine.GraphicsHandler;
 import Engine.Key;
 import Engine.KeyLocker;
 import Engine.Keyboard;
-import Engine.Screen;
-import Game.Game;
 import Game.GameState;
 import Game.ScreenCoordinator;
-import GameObject.Frame;
 import GameObject.GameObject;
 import GameObject.Rectangle;
 import GameObject.SpriteSheet;
 import Utils.Direction;
 import Enemies.*; 
-import Level.*;
-import Level.Enemy;
-import Screens.PlayLevelScreen;
 import Utils.HealthSystem;
-import Utils.Point;
-import javax.imageio.ImageIO;
-import java.io.File;
 
 // used to extend GameObject, changed it to MapEntity for convenience, I don't know the repurcussions of this
 public abstract class Player extends MapEntity {

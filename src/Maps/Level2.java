@@ -8,7 +8,6 @@ import Level.Player;
 import Level.Trigger;
 import NPCs.Altar;
 import Scripts.Level2.AltarScript;
-import Scripts.Level1.NextLevel;
 import Scripts.Level2.Beat2;
 import Tilesets.MainTileset;
 import Utils.Point;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 import Enemies.EvilMushroom;
 import Enemies.SquirrelEnemy;
 import Engine.GraphicsHandler;
-import EnhancedMapTiles.Ladder;
 
 public class Level2 extends Map {
 

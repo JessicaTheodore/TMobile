@@ -1,6 +1,5 @@
 package Maps;
 
-import java.awt.RenderingHints.Key;
 import java.util.ArrayList;
 import Engine.GraphicsHandler;
 import GameObject.Sprite;
@@ -12,18 +11,15 @@ import Tilesets.MainTileset;
 import Enemies.BearEnemy;
 import Enemies.BreakableBranch;
 import Enemies.BreakableLog;
-import Enemies.SquirrelEnemy;
 import NPCs.BrokenBranch;
 import NPCs.Slingshot;
 import Scripts.Level1.BreakLog;
-// import NPCs.BranchBridge;
 import Scripts.Level1.BrokeLog;
 import Scripts.Level1.NearSlingShot;
 import Scripts.Level1.NextLevel;
 import Scripts.Level1.PickUpSlingShot;
 import Utils.Point;
 import Level.Player; // Import the Player class
-import Level.Script;
 
 public class Level1 extends Map {
 

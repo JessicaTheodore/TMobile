@@ -6,8 +6,6 @@ import Level.NPC;
 import Level.Player;
 import Level.Trigger;
 import Enemies.BoomerEnemy;
-import Scripts.Level2.Beat2;
-import Scripts.Level3.EnterFloor2;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;

@@ -1,19 +1,9 @@
 package Scripts.Level3;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
-import EnhancedMapTiles.Ladder;
 import ScriptActions.*;
-import SpriteFont.SpriteFont;
 import Level.Script;
-import Level.ScriptState;
-import Level.TileType;
-import Utils.Point;
 
 public class HoboDialogue extends Script {
 

@@ -6,16 +6,12 @@ import Level.NPC;
 import Level.Player;
 import Level.Trigger;
 import NPCs.Hobbomock;
-import Scripts.Level2.AltarScript;
-import Scripts.Level2.Beat2;
 import Scripts.Level3.EnterFloor1;
 import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
 
-import Enemies.BearEnemy;
-import Enemies.BoomerEnemy;
 import Engine.GraphicsHandler;
 
 public class Level3 extends Map {
