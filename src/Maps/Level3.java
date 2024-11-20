@@ -6,12 +6,9 @@ import Level.NPC;
 import Level.Player;
 import Level.Trigger;
 import NPCs.Hobbomock;
-<<<<<<< HEAD
 import Scripts.Level2.AltarScript;
 import Scripts.Level2.Beat2;
 import Scripts.Level3.EnterFloor1;
-=======
->>>>>>> origin
 import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
