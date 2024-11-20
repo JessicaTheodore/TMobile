@@ -5,6 +5,8 @@ import Level.Map;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
+import Scripts.Level2.Beat2;
+import Scripts.Level3.EnterFloor2;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
@@ -44,6 +46,7 @@ public class Floor1 extends Map {
         ArrayList<Trigger> triggers = new ArrayList<>();
 
         // Add triggers here
+        triggers.add(new Trigger(380, 330, 50, 130, new EnterFloor2(), "enterFloor2"));
 
         return triggers;
     }

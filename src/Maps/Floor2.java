@@ -5,6 +5,11 @@ import Level.Map;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
+import NPCs.Altar;
+import NPCs.Hobbomock;
+import Scripts.Level2.AltarScript;
+import Scripts.Level2.Beat2;
+import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
@@ -15,7 +20,7 @@ public class Floor2 extends Map {
 
     public Floor2(){
         super("floor2.txt", new MainTileset());
-        this.playerStartPosition = new Point(0,0);
+        this.playerStartPosition = new Point(300,300);
     }
 
     // NPCs
@@ -24,7 +29,9 @@ public class Floor2 extends Map {
         ArrayList<NPC> npcs = new ArrayList<>();
 
         // npcs here
-
+        Hobbomock hobbomock = new Hobbomock(0, new Point(500,500));
+        hobbomock.setInteractScript(new HoboDialogue());
+        npcs.add(hobbomock);
         return npcs;
     }
 
