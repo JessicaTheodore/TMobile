@@ -41,12 +41,12 @@ public class Level3 extends Map {
     @Override
     public ArrayList<Enemy> loadEnemies() {
         ArrayList<Enemy> enemies = new ArrayList<>();
-        float boomerMovementRadius = 50.0f; // Adjust this value as needed
+        // float boomerMovementRadius = 50.0f; // Adjust this value as needed
 
-        // add enemies here
+        // // add enemies here
 
-        BoomerEnemy boomer = new BoomerEnemy(4, 2, getMapTile(5, 7).getLocation(), boomerMovementRadius);
-        enemies.add(boomer);
+        // BoomerEnemy boomer = new BoomerEnemy(4, 2, getMapTile(8, 6).getLocation(), boomerMovementRadius);
+        // enemies.add(boomer);
 
 
         return enemies;

@@ -86,7 +86,7 @@ public class SquirrelEnemy extends Enemy {
             int nutY = Math.round(getY()) + 80;
 
             // create Nuts enemy
-            Nuts nuts = new Nuts(new Point(nutX, nutY), movementSpeed, 200);
+            Nuts nuts = new Nuts(new Point(nutX, nutY), movementSpeed, 400);
 
             // add fireball enemy to the map for it to spawn in the level
             map.addEnemy(nuts);
@@ -95,7 +95,7 @@ public class SquirrelEnemy extends Enemy {
             squirrelState = SquirrelState.WAIT;
 
             // reset shoot wait timer so the process can happen again (dino walks around, then waits, then shoots)
-            shootWaitTimer = random.nextInt(110 - 80 + 1) + 80;
+            shootWaitTimer = random.nextInt(120 - 70 + 1) + 70;
         }
         super.update(player);
     }
