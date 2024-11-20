@@ -14,6 +14,7 @@ import Screens.ControlsScreen;
 import Screens.CreditsScreen;
 import Screens.FinalSceneScreen;
 import Screens.Floor1Screen;
+import Screens.Floor2Screen;
 import Screens.GameOverScreen;
 import Screens.MenuScreen;
 import Screens.PauseScreen;
@@ -139,6 +140,9 @@ public class ScreenCoordinator extends Screen {
 						break;
 					case FLOOR1:
 						currentScreen = new Floor1Screen(this);
+						break;
+					case FLOOR2:
+						currentScreen = new Floor2Screen(this);
 						break;
 					case FINALSCENE:
 						currentScreen = new FinalSceneScreen(this);

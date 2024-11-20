@@ -5,6 +5,7 @@ import Level.Map;
 import Level.NPC;
 import Level.Player;
 import Level.Trigger;
+import Scripts.Level2.Beat2;
 import Tilesets.MainTileset;
 import Utils.Point;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ public class Floor2 extends Map {
 
     public Floor2(){
         super("floor2.txt", new MainTileset());
-        this.playerStartPosition = new Point(0,0);
+        this.playerStartPosition = new Point(300,300);
     }
 
     // NPCs
