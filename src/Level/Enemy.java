@@ -2,6 +2,8 @@ package Level;
 
 import GameObject.Frame;
 import GameObject.SpriteSheet;
+
+import java.awt.Color;
 import java.util.HashMap;
 import Engine.GraphicsHandler;
 
@@ -74,7 +76,8 @@ public class Enemy extends MapEntity {
     }
 
     public void hurtEnemy() {
-        // Define how the enemy gets hurt
+        super.spriteSheet.setImage(spriteSheet.tintExcludingColor(spriteSheet.getImage(), Color.red, .5f, 0xff00ff));
+        super.animations = loadAnimations(spriteSheet);
     }
 
     // @Override

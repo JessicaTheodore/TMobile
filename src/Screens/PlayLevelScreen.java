@@ -114,7 +114,7 @@ public class PlayLevelScreen extends Screen {
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("brokeLog", false);
-            flagManager.addFlag("pickedUpSlingShot", true);
+            flagManager.addFlag("pickedUpSlingShot", false);
             flagManager.addFlag("beatLvl1", false);
             flagManager.addFlag("nearSlingShot", false);
             flagManager.addFlag("SpaceBreak", false);
@@ -156,6 +156,7 @@ public class PlayLevelScreen extends Screen {
     }
 
     public void update() {
+
     // Opens help screen when h is clicked
     if(flagManager.isFlagSet("beatLvl1")){
         screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
@@ -297,7 +298,6 @@ public class PlayLevelScreen extends Screen {
                         map.getTriggers().get(i).draw(graphicsHandler);
                     } */
                     if(player.getHurt()){
-                        flash.draw(graphicsHandler);
                     }
                     ranger.draw(graphicsHandler);
                     if(helpNew){

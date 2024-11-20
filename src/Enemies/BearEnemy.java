@@ -54,6 +54,7 @@ public class BearEnemy extends Enemy {
             if (iFrames == 0) {
                 iFrames = 60;
                 this.bearHP--;
+                this.hurtEnemy();
                 System.out.println("hit the bear " + getBearHP());
             }
         }
