@@ -1,6 +1,7 @@
 package Screens;
 
 import Enemies.BearEnemy;
+import Enemies.BoomerEnemy;
 import Enemies.SquirrelEnemy;
 import Engine.GraphicsHandler;
 import Engine.ImageLoader;
@@ -164,6 +165,9 @@ public class Level3PlayScreen extends Screen {
                             enemy.update(); // Call the update method for each bear
                         }
                         if (enemy instanceof SquirrelEnemy) {
+                            enemy.update(); // Call the update method for each bear
+                        }
+                        if (enemy instanceof BoomerEnemy) {
                             enemy.update(); // Call the update method for each bear
                         }
                     }
