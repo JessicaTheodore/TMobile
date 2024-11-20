@@ -100,7 +100,7 @@ public class FinalSceneTextbox extends Textbox {
         script.add(new SpriteFont("Player: Bro I literally don't know who you people are", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
         script.add(new SpriteFont("Mishmash: I am the god of good and creation", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
         script.add(new SpriteFont("Player: Wait, weren't you dead or something?", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
-        script.add(new SpriteFont("Mishmash: I was boy, weakeded and trapped in this human form. \nBut you've freed me now.", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
+        script.add(new SpriteFont("Mishmash: I was boy, weakeded and trapped in this human\n form. But you've freed me now.", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
         script.add(new SpriteFont("Mismash: This forest is in debt to you. Thank you.", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
         script.add(new SpriteFont("Mishmash: On behalf of the forest, we'll grant you one wish.", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
         script.add(new SpriteFont("Player: Any wish?", x, y + 10, maruMonica.deriveFont(33f), Color.black, finalsceneMap));
