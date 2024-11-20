@@ -37,8 +37,8 @@ public class BoomerEnemy extends Enemy {
             put("STAND", new Frame[] {
                 new FrameBuilder(spriteSheet.getSprite(0, 0), 12)
                     .withScale(0.8f) // Scale down the sprite to half its size
-                    .withBounds(4, 5, 15, 15) 
-               
+                    .withBounds(20, 0, 160, 250) 
+                    .withImageEffect(ImageEffect.FLIP_HORIZONTAL) 
                     .build(),
             });
         }};
@@ -63,12 +63,12 @@ public class BoomerEnemy extends Enemy {
         return this.boomerHP;
     }
 
-    // @Override
-    // public void draw(GraphicsHandler graphicsHandler) {
-    //     super.draw(graphicsHandler);
-    //     // Draws the hitbox
-    //     drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
-    // }
+    @Override
+    public void draw(GraphicsHandler graphicsHandler) {
+        super.draw(graphicsHandler);
+        // Draws the hitbox
+        drawBounds(graphicsHandler, new Color(255, 0, 0, 100));
+    }
 
     // Override update to implement circular movement
     @Override
@@ -80,15 +80,15 @@ public class BoomerEnemy extends Enemy {
             iFrames--;
         }
 
-    // Create vertical oscillation
-    float verticalOscillation = 10 * (float) Math.sin(angle); // Oscillates up and down within a range of 10 pixels
-    angle += movementSpeed * 0.01; // Increment the angle to continue the oscillation
+        // Create vertical oscillation
+        float verticalOscillation = 10 * (float) Math.sin(angle); // Oscillates up and down within a range of 10 pixels
+        angle += movementSpeed * 0.01; // Increment the angle to continue the oscillation
 
-    // Update the Y position only
-    float newY = startLocation.y + verticalOscillation;
+        // Update the Y position only
+        float newY = startLocation.y + verticalOscillation;
 
-    // Keep X constant and update Y
-    this.setLocation(startLocation.x, newY);
+        // Keep X constant and update Y
+        this.setLocation(startLocation.x, newY);
     }
 
 }
