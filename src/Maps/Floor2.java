@@ -27,7 +27,7 @@ public class Floor2 extends Map {
         ArrayList<NPC> npcs = new ArrayList<>();
 
         // npcs here
-        Hobbomock hobbomock = new Hobbomock(0, new Point(500,500));
+        Hobbomock hobbomock = new Hobbomock(0, new Point(700,500));
         hobbomock.setInteractScript(new HoboDialogue());
         npcs.add(hobbomock);
         return npcs;
