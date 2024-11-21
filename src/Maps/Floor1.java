@@ -29,7 +29,8 @@ public class Floor1 extends Map {
     public ArrayList<NPC> loadNPCs(){
         ArrayList<NPC> npcs = new ArrayList<>();
 
-        lock = new Lock(1, new Point(200,200));
+        lock = new Lock(1, new Point(390,440));
+        lock.setScale(2);
         npcs.add(lock);
 
         return npcs;
@@ -62,10 +63,15 @@ public class Floor1 extends Map {
     @Override
     public void update(Player player) {
         super.update(player); 
-        // if (getEnemiesById(0).mapEntityStatus == MapEntityStatus.REMOVED){
-        //     // getNPCById(1).mapEntityStatus = MapEntityStatus.REMOVED;
-        //     System.out.println("AKUDEHABSJKD");
-        // }
+        /* if(getEnemies().get(0).mapEntityStatus == MapEntityStatus.REMOVED){
+            getNPCs().get(0).mapEntityStatus = MapEntityStatus.REMOVED;
+        } */
+        
+    
+         if (getEnemiesById(0) == null && getNPCById(1) != null){
+            System.out.println("AKUDEHABSJKD");
+            getNPCById(1).mapEntityStatus = MapEntityStatus.REMOVED;
+        }
 
     }
 
@@ -76,6 +82,8 @@ public class Floor1 extends Map {
             triggers.get(i).draw(graphicsHandler);
         }
     }
+
+    
 
 
     

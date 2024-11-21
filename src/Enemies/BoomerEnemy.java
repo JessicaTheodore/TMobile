@@ -63,7 +63,7 @@ public class BoomerEnemy extends Enemy {
 
         if (boomerHP <= 0) {
             mapEntityStatus = MapEntityStatus.REMOVED;
-
+        
             Trigger stairsTrigger = (new Trigger(380, 330, 50, 130, new EnterFloor2(), "enterFloor2"));
             stairsTrigger.setMap(map);
             map.addTrigger(stairsTrigger);
