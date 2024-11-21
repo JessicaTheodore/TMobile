@@ -134,7 +134,7 @@ public class LevelCompleteScreen extends Screen {
                 // Proceed to the next level.
                 if(screenCoordinator.beatLvl1()){
                     if(screenCoordinator.beatLvl2()){
-                        screenCoordinator.setGameState(GameState.NEWLEVEL);
+                        screenCoordinator.setGameState(GameState.LEVEL3INTROSCREEN);
                     }else{
                         screenCoordinator.setGameState(GameState.LEVEL2DIALOGUE);
                     }
