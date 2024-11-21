@@ -43,7 +43,7 @@ public class Floor1 extends Map {
         float boomerMovementRadius = 50.0f; // Adjust this value as needed
         // add enemies here
 
-        BoomerEnemy boomer = new BoomerEnemy(0, 5, getMapTile(15, 7).getLocation(), boomerMovementRadius);
+        BoomerEnemy boomer = new BoomerEnemy(0, 5, getMapTile(12, 8).getLocation(), boomerMovementRadius);
         enemies.add(boomer);
         return enemies;
     }

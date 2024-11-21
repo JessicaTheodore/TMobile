@@ -1,0 +1,36 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        { "type": "java",
+        "name": "Launch JavaFX App",
+        "request": "launch",
+        "mainClass": "Game.BackgroundMusic",  // Update this with your main class if needed
+        "vmArgs": "--module-path C:/path/to/javafx-sdk/lib --add-modules=javafx.controls,javafx.media",
+        "projectName": "TMobile"}
+        {
+            "type": "java",
+            "name": "Game",
+            "request": "launch",
+            "mainClass": "Game.Game",
+            "projectName": "TMobile_dc3c1912"
+        },
+        {
+            "type": "java",
+            "name": "MapEditor",
+            "request": "launch",
+            "mainClass": "MapEditor.MapEditor",
+            "projectName": "TMobile_dc3c1912"
+        },
+
+    
+    ]
+}

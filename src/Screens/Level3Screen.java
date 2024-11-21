@@ -59,11 +59,11 @@ public class Level3Screen extends Screen {
         background.setAdjustCamera(false);
         background.preloadScripts();
 
-        welcomeMessage = new SpriteFont("LEVEL 3: THE CASTLE", 200, 250, maruMonica.deriveFont(76f), Color.WHITE);
+        welcomeMessage = new SpriteFont("LEVEL 3: THE CASTLE", 150, 250, maruMonica.deriveFont(76f), Color.WHITE);
         welcomeMessage.setOutlineColor(Color.black);
         welcomeMessage.setOutlineThickness(6);
 
-        pressE = new SpriteFont(("Press E to continue"), 300, 330, maruMonica.deriveFont(33f), Color.WHITE);
+        pressE = new SpriteFont(("Press E to continue"), 250, 330, maruMonica.deriveFont(33f), Color.WHITE);
         pressE.setOutlineColor(Color.black);
         pressE.setOutlineThickness(5);
         // textbox = new IntroductionTextbox(background, screenCoordinator);
