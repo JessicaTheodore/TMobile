@@ -31,7 +31,7 @@ public class HoboDialogue extends Script {
                     addText("Hobbomock: Fair point. I let my anger guide me—perhaps too \nmuch.");
                     addText("Hobbomock: I am sorry for the pain I've caused… perhaps I've \nbeen too cruel.");
                     addText("Hobbomock: I'll release the spirits of the forest.");
-                    addText("Hobbomock: …I'm afraid I can't undo the quality of the caf \nfood");
+                    addText("Hobbomock: …I'm afraid I can't undo the quality of the caf \nfood though");
                     addText("Hobbomock: or the hockey team's losing streak");
                     addText("Hobbomock: or Judy's bike accident...");
                     addText("Player: That was you???");
