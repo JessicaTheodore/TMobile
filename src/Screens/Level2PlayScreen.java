@@ -46,6 +46,7 @@ public class Level2PlayScreen extends Screen {
     protected boolean start = true;
     protected float x;
     protected float y;
+    protected Direction dir;
     protected Trigger trigger;
     protected boolean helpNew = true; 
     protected boolean swap;
@@ -82,7 +83,7 @@ public class Level2PlayScreen extends Screen {
     public void initialize() {
         flagManager = new FlagManager();
 
-        if(start){
+        
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("beatLvl2", false);
@@ -97,6 +98,10 @@ public class Level2PlayScreen extends Screen {
 
             // Setup player
             player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, screenCoordinator);
+            if(!start){
+                player.setLocation(x, y);
+                player.setFacingDirection(dir);
+            }
             player.setMap(map);
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);
@@ -114,7 +119,7 @@ public class Level2PlayScreen extends Screen {
             //winScreen = new WinScreen(this);
 
             healthSystem = new HealthSystem(player.getCurrentHealth()); // 5 hearts initially
-        }
+        
     }
 
     public void update() {
@@ -146,6 +151,9 @@ public class Level2PlayScreen extends Screen {
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             start = false;
+            x = player.getX();
+            y = player.getY();
+            dir = player.getFacingDirection();
             screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
         }

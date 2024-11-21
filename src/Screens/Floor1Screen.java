@@ -51,6 +51,7 @@ public class Floor1Screen extends Screen {
     protected float y;
     protected Trigger trigger;
     protected boolean helpNew = true; 
+    protected Direction dir;
 
     private HealthSystem healthSystem;
 
@@ -79,11 +80,12 @@ public class Floor1Screen extends Screen {
     public void initialize() {
         flagManager = new FlagManager();
 
-        if(start){
+        
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("beatLvl3", false);
             flagManager.addFlag("enterFloor2", false);
+            flagManager.addFlag("exitCastle", false);
             flagManager.addFlag("hasTalkedToHobo", false);
 
             // Define/setup map
@@ -95,9 +97,13 @@ public class Floor1Screen extends Screen {
 
             // Setup player
             player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, screenCoordinator);
+            player.setFacingDirection(Direction.UP);
+            if(!start){
+                player.setLocation(x, y-10);
+                player.setFacingDirection(dir);
+            }
             player.setMap(map);
             playLevelScreenState = PlayLevelScreenState.RUNNING;
-            player.setFacingDirection(Direction.DOWN);
             player.changeSlingshotStatus();
             map.setPlayer(player);
 
@@ -112,18 +118,26 @@ public class Floor1Screen extends Screen {
             //winScreen = new WinScreen(this);
 
             healthSystem = new HealthSystem(player.getCurrentHealth()); // 5 hearts initially
-        }
+        
     }
 
     public void update() {
         // Logic for beating level changed game state if player reached trigger to beat level 2
-        if(flagManager.isFlagSet("beatLvl3")){
-            screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
-            System.out.println("beat lvl 2");
-        }
 
         if(flagManager.isFlagSet("enterFloor2")){
+            flagManager.unsetFlag("enterFloor2");
+            x = player.getX();
+            y = player.getY();
+            dir = player.getFacingDirection();
+            start = false;
             screenCoordinator.setGameState(GameState.FLOOR2);
+        }
+        if(flagManager.isFlagSet("exitCastle")){
+            x = player.getX();
+            y = player.getY();
+            start = true;
+            flagManager.unsetFlag("exitCastle");
+            screenCoordinator.setGameState(GameState.LEVEL3);
         }
 
         // Help screen logic
@@ -154,6 +168,9 @@ public class Floor1Screen extends Screen {
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             start = false;
+            x = player.getX();
+            y = player.getY();
+            dir = player.getFacingDirection();
             screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
         }

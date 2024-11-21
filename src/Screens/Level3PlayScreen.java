@@ -50,6 +50,7 @@ public class Level3PlayScreen extends Screen {
     protected float y;
     protected Trigger trigger;
     protected boolean helpNew = true; 
+    protected Direction dir;
 
     private HealthSystem healthSystem;
 
@@ -78,7 +79,7 @@ public class Level3PlayScreen extends Screen {
     public void initialize() {
         flagManager = new FlagManager();
 
-        if(start){
+        
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("beatLvl3", false);
@@ -98,6 +99,10 @@ public class Level3PlayScreen extends Screen {
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);
             player.changeSlingshotStatus();
+            if(!start){
+                player.setLocation(x, y);
+                player.setFacingDirection(dir);
+            }
             map.setPlayer(player);
 
             // Let pieces of map know which button to listen for as the "interact" button
@@ -111,7 +116,7 @@ public class Level3PlayScreen extends Screen {
             //winScreen = new WinScreen(this);
 
             healthSystem = new HealthSystem(player.getCurrentHealth()); // 5 hearts initially
-        }
+        
     }
 
     public void update() {
@@ -122,6 +127,10 @@ public class Level3PlayScreen extends Screen {
         }
 
         if(flagManager.isFlagSet("enterFloor1")){
+            start = false;
+            player.setLocation(player.getX(), player.getY()+20);
+            x = player.getX();
+            y = player.getY();
             screenCoordinator.setGameState(GameState.FLOOR1);
         }
 
@@ -153,6 +162,9 @@ public class Level3PlayScreen extends Screen {
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             start = false;
+            x = player.getX();
+            y = player.getY();
+            dir = player.getFacingDirection();
             screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
         }
@@ -222,9 +234,9 @@ public class Level3PlayScreen extends Screen {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
-                    /* for(int i = 0; i < map.getTriggers().size(); i ++){
+                    for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
-                    } */
+                    }
                     ranger.draw(graphicsHandler);
                     if(helpNew){
                         newHelp.draw(graphicsHandler);

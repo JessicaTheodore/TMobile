@@ -77,7 +77,7 @@ public class Level3Screen extends Screen {
             keyLocker.unlockKey(Key.E);
         }
         if (!keyLocker.isKeyLocked(Key.E) && Keyboard.isKeyDown(Key.E)) {
-                screenCoordinator.setGameState(GameState.LEVEL3);
+                screenCoordinator.setGameState(GameState.NEWLEVEL);
         }
         // textbox.update();
         

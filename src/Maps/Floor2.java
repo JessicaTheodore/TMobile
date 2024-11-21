@@ -6,6 +6,7 @@ import Level.NPC;
 import Level.Player;
 import Level.Trigger;
 import NPCs.Hobbomock;
+import Scripts.Level3.ExitFloor2;
 import Scripts.Level3.HoboDialogue;
 import Tilesets.MainTileset;
 import Utils.Point;
@@ -48,7 +49,7 @@ public class Floor2 extends Map {
         ArrayList<Trigger> triggers = new ArrayList<>();
 
         // Add triggers here
-
+        triggers.add(new Trigger(380, 280, 50, 130, new ExitFloor2(), "exitFloor2"));
         return triggers;
     }
 

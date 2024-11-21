@@ -17,6 +17,7 @@ public class BearEnemy extends Enemy {
     protected int bearHP;
     protected float movementSpeed = 3f;
     protected int iFrames = 0;
+    protected boolean hurt = false;
 
     // Variables for circular movement
     private float radius; // Radius of the circular path
@@ -54,6 +55,8 @@ public class BearEnemy extends Enemy {
             if (iFrames == 0) {
                 iFrames = 60;
                 this.bearHP--;
+                hurtTrue();
+                hurt = true;
                 this.hurtEnemy();
                 System.out.println("hit the bear " + getBearHP());
             }
@@ -82,6 +85,14 @@ public class BearEnemy extends Enemy {
 
         if (iFrames > 0) {
             iFrames--;
+        }
+
+        if(iFrames%16 == 1){
+            if(hurt){
+                hurtFalse();
+                updateCurrentFrame();
+            }
+            hurt = false;
         }
 
         // Update the angle to create circular movement

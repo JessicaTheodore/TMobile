@@ -6,6 +6,7 @@ import Engine.DefaultScreen;
 import Engine.GraphicsHandler;
 import Engine.Screen;
 import Level.FlagManager;
+import Level.Map;
 import Maps.Level1;
 import Maps.Level2IntroScreenMap;
 import Maps.Level3;
@@ -49,6 +50,10 @@ public class ScreenCoordinator extends Screen {
 	protected FlagManager flagManager = new FlagManager();
 	protected boolean beatLvl1 = false;
 	protected boolean beatLvl2 = false;
+	protected boolean beenInFloor1 = false;
+	protected Screen floor1;
+	protected Screen level3;
+	protected Map holdMap;
 
 
 	// keep track of gameState so ScreenCoordinator knows which Screen to show
@@ -137,13 +142,27 @@ public class ScreenCoordinator extends Screen {
 						currentScreen = new Level2IntroScreen(this);
 						break;
 					case LEVEL3:
-						currentScreen = new Level3PlayScreen(this);
+						if(beenInFloor1){
+							currentScreen = level3;
+						}else{
+							currentScreen = new Level3PlayScreen(this);
+						}
+						level = currentScreen;
 						break;
 					case FLOOR1:
-						currentScreen = new Floor1Screen(this);
+						if(!beenInFloor1){
+							level3 = currentScreen;
+							beenInFloor1 = true;
+							currentScreen = new Floor1Screen(this);
+							floor1 = currentScreen;
+						}else{
+							currentScreen = floor1;
+						}
+						level = currentScreen;
 						break;
 					case FLOOR2:
 						currentScreen = new Floor2Screen(this);
+						level = currentScreen;
 						break;
 					case FINALSCENE:
 						currentScreen = new FinalSceneScreen(this);
@@ -183,4 +202,6 @@ public class ScreenCoordinator extends Screen {
 	public void toggleLvl2(){
 		beatLvl2 = !beatLvl2;
 	}
+
+
 }

@@ -7,6 +7,7 @@ import Level.NPC;
 import Level.Player;
 import Level.Trigger;
 import NPCs.Lock;
+import Scripts.Level3.ExitCastle;
 import Enemies.BoomerEnemy;
 import Tilesets.MainTileset;
 import Utils.Point;
@@ -20,7 +21,7 @@ public class Floor1 extends Map {
 
     public Floor1(){
         super("floor1.txt", new MainTileset());
-        this.playerStartPosition = new Point(500,500);
+        this.playerStartPosition = new Point(610,650);
     }
 
     // NPCs
@@ -53,6 +54,7 @@ public class Floor1 extends Map {
 
         // Add triggers here
         // triggers.add(new Trigger(380, 330, 50, 130, new EnterFloor2(), "enterFloor2"));
+        triggers.add(new Trigger(639, 767, 66, 2, new ExitCastle(), "exitCastle"));
 
         return triggers;
     }

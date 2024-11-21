@@ -54,6 +54,7 @@ public class EvilMushroom extends Enemy {
             if (iFrames == 0) {
                 iFrames = 60;
                 this.shroomHP--;
+                hurtTrue();
                 System.out.println("hit the shroom " + getShroomHP());
             }
         }

@@ -11,6 +11,8 @@ import Engine.GraphicsHandler;
 public class Enemy extends MapEntity {
     protected int enemyHP;
     protected int id;
+    protected boolean canBeRed = true;
+    protected int timer = 0;
 
     public Enemy(int id, int enemyHP, float x, float y, SpriteSheet spriteSheet, String startingAnimation) {
         super(x, y, spriteSheet, startingAnimation);
@@ -56,9 +58,17 @@ public class Enemy extends MapEntity {
     // Original update that requires Player object
     public void update(Player player) {
         super.update();
+        updateCurrentFrame();
+        if(timer > 0 ){
+            timer--;
+        }
+        
         this.performAction(player); // new testing for enemy movement
-        if (intersects(player.stickRectangle) || intersects(player.slingshotRectangle)) {
+        if (intersects(player.stickRectangle) || intersects(player.slingshotRectangle) && timer == 0) {
             System.out.println("Attack Intersected");
+            timer = 60;
+            //hurtTrue();
+            canBeRed = false;
             player.touchedEnemy();
         } else if(intersects(player)) {
             System.out.println("Player Intersected");

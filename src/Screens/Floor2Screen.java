@@ -52,6 +52,7 @@ public class Floor2Screen extends Screen {
     protected float y;
     protected Trigger trigger;
     protected boolean helpNew = true; 
+    protected Direction dir;
 
     private HealthSystem healthSystem;
 
@@ -80,11 +81,12 @@ public class Floor2Screen extends Screen {
     public void initialize() {
         flagManager = new FlagManager();
 
-        if(start){
+        
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("beatLvl3", false);
             flagManager.addFlag("enterFloor1", false);
+            flagManager.addFlag("exitFloor2", false);
             flagManager.addFlag("hasTalkedToHobo", false);
 
             // Define/setup map
@@ -100,6 +102,10 @@ public class Floor2Screen extends Screen {
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);
             player.changeSlingshotStatus();
+            if(!start){
+                player.setLocation(x, y);
+                player.setFacingDirection(dir);;
+            }
             map.setPlayer(player);
 
             // Let pieces of map know which button to listen for as the "interact" button
@@ -113,14 +119,13 @@ public class Floor2Screen extends Screen {
             //winScreen = new WinScreen(this);
 
             healthSystem = new HealthSystem(player.getCurrentHealth()); // 5 hearts initially
-        }
+        
     }
 
     public void update() {
         // Logic for beating level changed game state if player reached trigger to beat level 2
-        if(flagManager.isFlagSet("beatLvl3")){
-            screenCoordinator.setGameState(GameState.LEVELCOMPLETE);
-            System.out.println("beat lvl 2");
+        if(flagManager.isFlagSet("exitFloor2")){
+            screenCoordinator.setGameState(GameState.FLOOR1);
         }
 
         if(flagManager.isFlagSet("hasTalkedToHobo")){
@@ -155,6 +160,9 @@ public class Floor2Screen extends Screen {
         }
         if(Keyboard.isKeyDown(Key.ESC) && !keyLocker.isKeyLocked(Key.ESC) && !helpOn){
             start = false;
+            x = player.getX();
+            y = player.getY();
+            dir = player.getFacingDirection();
             screenCoordinator.setGameState(GameState.PAUSE);
             keyLocker.lockKey(Key.ESC);
         }

@@ -20,6 +20,7 @@ public class BoomerEnemy extends Enemy {
     protected int boomerHP;
     protected float movementSpeed = 3f;
     protected int iFrames = 0;
+    protected boolean hurt = false;
 
     // Variables for circular movement
     private float radius; // Radius of the circular path
@@ -54,7 +55,9 @@ public class BoomerEnemy extends Enemy {
             if (iFrames == 0) {
                 iFrames = 60;
                 this.boomerHP--;
+                hurt = true;
                 System.out.println("hit the boomer " + getBoomerHP());
+                hurtTrue();
             }
         }
 
@@ -87,6 +90,14 @@ public class BoomerEnemy extends Enemy {
         // Handle invincibility frames countdown
         if (iFrames > 0) {
             iFrames--;
+        }
+
+        if(iFrames%16 == 1){
+            if(hurt){
+                hurtFalse();
+                updateCurrentFrame();
+            }
+            hurt = false;
         }
 
         // Create vertical oscillation

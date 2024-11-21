@@ -53,6 +53,9 @@ public class PlayLevelScreen extends Screen {
     protected int counter = 0;
     protected boolean hurt = false;
     protected Sprite flash;
+    protected float xLocation; 
+    protected float yLocation;
+    protected Direction dir;
 
     private HealthSystem healthSystem;
     private Slingshot slingshot;
@@ -110,7 +113,8 @@ public class PlayLevelScreen extends Screen {
     public void initialize() {
         flagManager = new FlagManager();
 
-        if(start){
+            
+        
             // Setup flag manager
             flagManager.addFlag("gameStart", false);
             flagManager.addFlag("brokeLog", false);
@@ -134,6 +138,9 @@ public class PlayLevelScreen extends Screen {
 
             // Setup player
             player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, screenCoordinator);
+            if(!start){
+                player.setLocation(xLocation, yLocation);
+            }
             player.setMap(map);
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);
@@ -150,7 +157,7 @@ public class PlayLevelScreen extends Screen {
             winScreen = new WinScreen(this);
 
             healthSystem = new HealthSystem(player.getCurrentHealth()); // 5 hearts initially
-        }
+        
     }
 
     public void update() {
@@ -188,6 +195,9 @@ public class PlayLevelScreen extends Screen {
         //pauseOn = !pauseOn;
         //pauseScreen.changeStatus();
         start = false;
+        xLocation = player.getX();
+        yLocation = player.getY();
+        dir = player.getFacingDirection(); 
         screenCoordinator.setGameState(GameState.PAUSE);
         keyLocker.lockKey(Key.ESC);
     }
@@ -292,9 +302,9 @@ public class PlayLevelScreen extends Screen {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
-                    /* for(int i = 0; i < map.getTriggers().size(); i ++){
+                    for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
-                    } */
+                    }
                     if(player.getHurt()){
                     }
                     ranger.draw(graphicsHandler);

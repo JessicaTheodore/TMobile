@@ -486,7 +486,8 @@ public abstract class Player extends MapEntity {
     public void touchedEnemy() {
         for (Enemy enemy : map.getActiveEnemies()) {
             if(enemy instanceof BearEnemy && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
-                enemy.hurtEnemy();  
+                enemy.hurtEnemy(); 
+
             } else if (enemy instanceof BreakableLog && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
                 enemy.hurtEnemy();
             } else if(enemy instanceof BreakableBranch && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
