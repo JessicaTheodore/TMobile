@@ -232,9 +232,9 @@ public class Floor2Screen extends Screen {
             switch (playLevelScreenState) {
                 case RUNNING:
                     map.draw(player, graphicsHandler);
-                    for(int i = 0; i < map.getTriggers().size(); i ++){
+                    /* for(int i = 0; i < map.getTriggers().size(); i ++){
                         map.getTriggers().get(i).draw(graphicsHandler);
-                    }
+                    } */
                     ranger.draw(graphicsHandler);
                     if(helpNew){
                         newHelp.draw(graphicsHandler);
