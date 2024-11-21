@@ -69,7 +69,7 @@ public class Floor1Screen extends Screen {
         newHelp.setScale(1);
         newHelp.setLocation(726, 487); 
 
-        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Floor1Help.png", Colors.MAGENTA, 0, 0, 800, 605)));
         helpScreenSprite[0].setScale(1);
         helpScreenSprite[0].setLocation(0, 0); 
 

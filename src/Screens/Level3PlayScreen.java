@@ -68,7 +68,7 @@ public class Level3PlayScreen extends Screen {
         newHelp.setScale(1);
         newHelp.setLocation(726, 487); 
 
-        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Level3Help.png", Colors.MAGENTA, 0, 0, 800, 605)));
         helpScreenSprite[0].setScale(1);
         helpScreenSprite[0].setLocation(0, 0); 
 

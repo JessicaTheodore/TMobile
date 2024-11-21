@@ -72,7 +72,7 @@ public class Level2PlayScreen extends Screen {
         newHelp.setScale(1);
         newHelp.setLocation(726, 487); 
 
-        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Helper.png", Colors.MAGENTA, 0, 0, 800, 605)));
+        helpScreenSprite[0] = (new Sprite(ImageLoader.loadSubImage("Level2Help.png", Colors.MAGENTA, 0, 0, 800, 605)));
         helpScreenSprite[0].setScale(1);
         helpScreenSprite[0].setLocation(0, 0); 
 
@@ -98,14 +98,14 @@ public class Level2PlayScreen extends Screen {
 
             // Setup player
             player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, screenCoordinator);
-            if(!start){
-                player.setLocation(x, y);
-                player.setFacingDirection(dir);
-            }
             player.setMap(map);
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);
             player.changeSlingshotStatus();
+            if(!start){
+                player.setLocation(x, y);
+                player.setFacingDirection(dir);
+            }
             map.setPlayer(player);
 
             // Let pieces of map know which button to listen for as the "interact" button

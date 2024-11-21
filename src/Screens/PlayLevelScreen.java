@@ -138,12 +138,13 @@ public class PlayLevelScreen extends Screen {
 
             // Setup player
             player = new Cat(map.getPlayerStartPosition().x, map.getPlayerStartPosition().y, screenCoordinator);
-            if(!start){
-                player.setLocation(xLocation, yLocation);
-            }
             player.setMap(map);
             playLevelScreenState = PlayLevelScreenState.RUNNING;
             player.setFacingDirection(Direction.DOWN);
+            if(!start){
+                player.setLocation(xLocation, yLocation);
+                player.setFacingDirection(dir);
+            }
             map.setPlayer(player);
 
             // Let pieces of map know which button to listen for as the "interact" button
