@@ -20,8 +20,7 @@ import Utils.Point;
         private boolean showRanger = true;
         private Sprite playerSpeaking;
         private Sprite rangerSpeaking;
-        private boolean playerIsSpeaking = true;
-        private boolean treesAreSpeaking = true;
+        private boolean playerIsSpeaking2 = true;
 
         public FinalSceneMap() {
             super("title_screen_map.txt", new CommonTileset());
@@ -59,11 +58,7 @@ import Utils.Point;
         }
 
         public void setPlayerSpeaking(boolean flag) {
-            playerIsSpeaking = flag;
-        }
-
-        public void setTreesSpeaking(boolean flag) {
-            treesAreSpeaking = flag;
+            playerIsSpeaking2 = flag;
         }
 
         @Override
@@ -75,13 +70,10 @@ import Utils.Point;
             if (showRanger) {
                 ranger.draw(graphicsHandler);
             }
-
-            if (!treesAreSpeaking) {
-                if (playerIsSpeaking) {
-                    playerSpeaking.draw(graphicsHandler);
-                } else {
-                    rangerSpeaking.draw(graphicsHandler);
-                }
+            if (playerIsSpeaking2) {
+                playerSpeaking.draw(graphicsHandler);
+            } else {
+                rangerSpeaking.draw(graphicsHandler);
             }
             
     }
