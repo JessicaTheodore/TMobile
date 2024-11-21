@@ -173,8 +173,9 @@ public abstract class Player extends MapEntity {
 
         // This is where we would make the hitboxes dissapear when they are not attacking
         if(playerState.equals(PlayerState.WALKING) || playerState.equals(PlayerState.STANDING)){
-            stickRectangle.setBounds(new Rectangle(0,0,0,0));
+            // stickRectangle.setBounds(new Rectangle(0,0,0,0));
             slingshotRectangle.setBounds(new Rectangle(0,0,0,0));
+            stickRectangle.setLocation(0,0);
             i = 0;
         } else if (playerState.equals(PlayerState.STICK_ATTACK)) {
             stickRectangle.setWidth(50);
@@ -487,7 +488,6 @@ public abstract class Player extends MapEntity {
         for (Enemy enemy : map.getActiveEnemies()) {
             if(enemy instanceof BearEnemy && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
                 enemy.hurtEnemy(); 
-
             } else if (enemy instanceof BreakableLog && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
                 enemy.hurtEnemy();
             } else if(enemy instanceof BreakableBranch && (stickRectangle.intersects(enemy) || slingshotRectangle.intersects(enemy))){ 
