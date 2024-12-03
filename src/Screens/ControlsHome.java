@@ -65,7 +65,7 @@ public class ControlsHome extends Screen{
         controls[5] = new SpriteFont("H: Help Screen",322, 330, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[6] = new SpriteFont("ESC: Pasue / Exit",310, 370, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         controls[7] = new SpriteFont("L Shift: Ranged Attack",283, 410, maruMonica.deriveFont(30f), new Color(255, 255, 255));
-        controls[8] = new SpriteFont("Space: Mele Attack",300, 450, maruMonica.deriveFont(30f), new Color(255, 255, 255));
+        controls[8] = new SpriteFont("Space: Melee Attack",300, 450, maruMonica.deriveFont(30f), new Color(255, 255, 255));
         for(int i = 0; i < controls.length; i++){
             controls[i].setOutlineColor(Color.black);
             controls[i].setOutlineThickness(3);
