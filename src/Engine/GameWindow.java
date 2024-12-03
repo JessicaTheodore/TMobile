@@ -17,6 +17,12 @@ public class GameWindow {
 	public GameWindow() {
 		gameWindow = new JFrame("The Legend of Hobbomock");
 		gamePanel = new GamePanel();
+		try { 
+			gameWindow.setIconImage(ImageIO.read(new File("sword.png"))); 
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
+
 		gamePanel.setFocusable(true);
 		gamePanel.requestFocusInWindow();
 		gameWindow.setContentPane(gamePanel);
@@ -26,13 +32,9 @@ public class GameWindow {
 		gameWindow.setVisible(true);
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // it'd be nice if this actually worked more than 1/3rd of the time
 		gamePanel.setupGame();
-
-		try { 
-			gameWindow.setIconImage(ImageIO.read(new File("sword.png"))); 
-		} catch (IOException e) { 
-			e.printStackTrace(); 
-		}
 	}
+
+	
 
 	// triggers the game loop to start as defined in the GamePanel class
 	public void startGame() {
