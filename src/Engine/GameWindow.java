@@ -1,5 +1,9 @@
 package Engine;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /*
@@ -11,7 +15,7 @@ public class GameWindow {
 	private GamePanel gamePanel;
 
 	public GameWindow() {
-		gameWindow = new JFrame("Game");
+		gameWindow = new JFrame("The Legend of Hobbomock");
 		gamePanel = new GamePanel();
 		gamePanel.setFocusable(true);
 		gamePanel.requestFocusInWindow();
@@ -22,6 +26,12 @@ public class GameWindow {
 		gameWindow.setVisible(true);
 		gameWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // it'd be nice if this actually worked more than 1/3rd of the time
 		gamePanel.setupGame();
+
+		try { 
+			gameWindow.setIconImage(ImageIO.read(new File("sword.png"))); 
+		} catch (IOException e) { 
+			e.printStackTrace(); 
+		}
 	}
 
 	// triggers the game loop to start as defined in the GamePanel class
