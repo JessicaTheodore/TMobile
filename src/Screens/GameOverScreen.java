@@ -1,7 +1,10 @@
 package Screens;
 
 import Engine.GraphicsHandler;
+import Engine.Key;
+import Engine.Keyboard;
 import Engine.Screen;
+import Game.GameState;
 import Game.ScreenCoordinator;
 import SpriteFont.SpriteFont;
 import java.awt.Color;
